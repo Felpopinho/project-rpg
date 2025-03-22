@@ -3,6 +3,7 @@ import 'dotenv/config'
 
 const privateKey64 = process.env.ENCODE_PRIVATE_KEY
 const privateKey = Buffer.from(privateKey64, 'base64').toString('ascii');
+console.log(privateKey)
 
 const firestoreConfig = {
     type: process.env.TYPE,
