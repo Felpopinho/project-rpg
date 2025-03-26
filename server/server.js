@@ -3,11 +3,11 @@ import 'dotenv/config'
 import { userRouter } from './api/routes/usuarios.js';
 import cors from 'cors';
 
-app.use(cors());
 
 const app = express();
 const port = 3000 || process.env.PORT
 
+app.use(cors());
 app.use(express.json())
 app.use("/", userRouter)
 
