@@ -8,6 +8,12 @@ const port = 3000 || process.env.PORT
 
 app.use(express.json())
 app.use("/", userRouter)
-app.use(cors({origin: 'http://localhost:5173'}));
+app.use(cors({
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }));
 
 app.listen(port, ()=>{console.log(`http://localhost:${port}`)});
