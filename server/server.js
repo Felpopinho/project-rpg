@@ -3,13 +3,7 @@ import 'dotenv/config'
 import { userRouter } from './api/routes/usuarios.js';
 import cors from 'cors';
 
-app.use(cors({
-    'allowedHeaders': ['sessionId', 'Content-Type'],
-    'exposedHeaders': ['sessionId'],
-    'origin': '*',
-    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    'preflightContinue': false
-  }));
+app.use(cors());
 
 const app = express();
 const port = 3000 || process.env.PORT
