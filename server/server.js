@@ -8,6 +8,6 @@ const port = 3000 || process.env.PORT
 
 app.use(express.json())
 app.use("/", userRouter)
-app.use(cors());
+app.use(cors({origin: 'http://localhost:5173'}));
 
 app.listen(port, ()=>{console.log(`http://localhost:${port}`)});
