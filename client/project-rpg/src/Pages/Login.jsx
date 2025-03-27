@@ -34,7 +34,7 @@ export function Login(props) {
 
   return (
     <Box>
-        <h1>Login</h1>
+        <h1 style={{marginBottom: "10px"}}>Login</h1>
         <form ref={ref} onSubmit={(e)=>{logarConta(e)}}>
             <FormControl sx={{}}>
                 <Box sx={{marginBottom: "10px"}}>

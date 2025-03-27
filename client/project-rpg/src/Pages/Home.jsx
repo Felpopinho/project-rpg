@@ -1,15 +1,25 @@
 import { Box } from '@mui/material'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export function Home(props){
     const navigate = useNavigate()
-    return(<>
 
-        {props.user === "" ? navigate("/") : <Box>
+    const verificarLogin = () =>{
+        if(props.user === ""){
+            navigate("/")
+        } else{
+            return
+        }
+    }
+
+    useEffect(()=>{
+        verificarLogin()
+    },[])
+    return(<Box>
             
-            <p>Home Page</p>
+        <h1>Bem vindo {props.user[0].nome}</h1>
         
-        </Box>}
         
-    </>)
+    </Box>)
 }

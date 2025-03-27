@@ -34,7 +34,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login setUser={setUser}/>}/>
-          <Route path='/signin' element={<Signin/>}/>
+          <Route path='/signin' element={<Signin setUser={setUser}/>}/>
           <Route path='/home' element={<Home user={user}/>}/>
         </Routes>
       </BrowserRouter>
