@@ -30,7 +30,7 @@ export const logUser = async (req, res) =>{
     try {
         const values ={
             nome: req.body.nome,
-            senha: req.body.nome
+            senha: req.body.senha
         }
 
         db.collection('usuarios')
