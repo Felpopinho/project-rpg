@@ -3,9 +3,10 @@ import { Box } from '@mui/material'
 import { Login } from './Login'
 import axios from "axios"
 
+export const baseURL = 'https://projectrpg-api.vercel.app'
+
 function App() {
 
-  const baseURL = 'https://projectrpg-api.vercel.app'
   const [users, setUsers] = useState("")
 
   const getUser = async () =>{
@@ -24,7 +25,9 @@ function App() {
   }, [])
 
   return (
-    <Login users={users}/>
+    <Box className="app">
+      <Login users={users}/>
+    </Box>
   )
 }
 
