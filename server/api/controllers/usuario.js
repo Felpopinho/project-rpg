@@ -34,7 +34,7 @@ export const logUser = async (req, res) =>{
         }
 
         db.collection('usuarios')
-        .where('nome','==',values.nome).where('senha', '==', values.senha)
+        .where('nome','==',values.nome).where('senha','==',values.senha)
         .get().then(snapshot =>{
             if (snapshot.empyt) return res.status(404).json("Usuario não encontrado");
 
