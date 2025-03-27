@@ -11,29 +11,27 @@ export const baseURL = 'https://projectrpg-api.vercel.app'
 function App() {
 
   const [users, setUsers] = useState("")
-
   const [user, setUser] = useState("")
+  const [logado,  setLogado] = useState(false)
 
-  const getUser = async () =>{
-    try {
-      await axios.get(baseURL+'/usuarios').then(res=>{
-        setUsers(res.data)
-        console.log(res.data)
-      })
-    } catch (e) {
-      console.log(e)
-    }
+  const getUser = () =>{
+    Object.keys(localStorage).forEach(key =>{
+      setUser(JSON.parse(localStorage.getItem(key)))
+    })
+    setLogado(true)
   }
 
-  //useEffect(()=>{
-  //  getUser()
-  //}, [])
+
+  useEffect(()=>{
+    getUser()
+  }, [])
+
 
   return (
-    <Box className="app">
+    <Box >
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Login setUser={setUser}/>}/>
+          <Route path='/' element={<Login logado={logado} user={user} setUser={setUser}/>}/>
           <Route path='/signin' element={<Signin setUser={setUser}/>}/>
           <Route path='/home' element={<Home user={user}/>}/>
         </Routes>

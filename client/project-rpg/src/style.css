@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Faculty+Glyphic&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
 
 *{
     margin: 0;
@@ -6,11 +8,4 @@
 
 body{
     font-family: "Faculty Glyphic", sans-serif;
-}
-
-.app{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

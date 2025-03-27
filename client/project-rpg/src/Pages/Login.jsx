@@ -1,10 +1,19 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Box, FormControl, TextField, FormHelperText, InputLabel, Button, Typography } from '@mui/material'
 import { baseURL } from "../App.jsx"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export function Login(props) {
+
+    const getUser = () =>{
+        if(typeof(props.user) === "object"){
+            navigate("/home")
+            console.log("a")
+        } else{
+
+        }
+    }
 
     const ref = useRef()
     const navigate = useNavigate()
@@ -21,6 +30,7 @@ export function Login(props) {
             }).then(res =>{
                 if(res.data.length){
                     props.setUser(res.data)
+                    localStorage.setItem(res.data[0].email, JSON.stringify(res.data))
                     navigate("/home")
                 } else{
                     console.log("Usuario não encontrado")
@@ -31,19 +41,22 @@ export function Login(props) {
         }
     }
 
+    useEffect(()=>{
+        getUser()
+    }, [props.logado])
 
   return (
     <Box>
-        <h1 style={{marginBottom: "10px"}}>Login</h1>
+        <h1>Login</h1>
         <form ref={ref} onSubmit={(e)=>{logarConta(e)}}>
-            <FormControl sx={{}}>
-                <Box sx={{marginBottom: "10px"}}>
+            <FormControl>
+                <Box>
                     <TextField label="Nome" variant="outlined" required name="nome" fullWidth/>
                 </Box>
-                <Box sx={{marginBottom: "10px"}}>
+                <Box>
                     <TextField label="Senha" variant="outlined" required name="senha" fullWidth/>
                 </Box>
-                <Button variant='contained' type='submit' sx={{marginBottom: "10px"}}>Enviar</Button>
+                <Button variant='contained' type='submit'>Enviar</Button>
                 <Button variant='contained' onClick={()=>{navigate("/signin")}}>Criar conta</Button>
             </FormControl>
         </form>

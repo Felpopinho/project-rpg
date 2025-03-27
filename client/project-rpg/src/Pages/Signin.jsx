@@ -37,19 +37,19 @@ export function Signin(props) {
         }
 
     return(<Box className="signin">
-        <h1 style={{marginBottom: "10px"}}>Sign in</h1>
+        <h1 >Sign in</h1>
         <form ref={ref} onSubmit={(e)=>{criarConta(e)}}>
-            <FormControl sx={{}}>
-                <Box sx={{marginBottom: "10px"}}>
+            <FormControl >
+                <Box >
                     <TextField label="Nome" variant="outlined" required name="nome" fullWidth/>
                 </Box>
-                <Box sx={{marginBottom: "10px"}}>
+                <Box >
                     <TextField label="Email" variant="outlined" required name="email" fullWidth/>
                 </Box>
-                <Box sx={{marginBottom: "10px"}}>
+                <Box >
                     <TextField label="Senha" variant="outlined" required name="senha" fullWidth/>
                 </Box>
-                <Button variant='contained' type='submit' sx={{marginBottom: "10px"}}>Enviar</Button>
+                <Button variant='contained' type='submit'>Enviar</Button>
                 <Button variant='contained' onClick={()=>{navigate("/")}}>Logar conta</Button>
             </FormControl>
         </form>
