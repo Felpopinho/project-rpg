@@ -40,9 +40,9 @@ export const logUser = async (req, res) =>{
                 ...doc.data(),
                 uid: doc.id
             }))
+            return res.status(200).json(data)
         })
 
-        return res.status(200).json(data)
     } catch (error) {
         return res.status(500).json(error)
     }
