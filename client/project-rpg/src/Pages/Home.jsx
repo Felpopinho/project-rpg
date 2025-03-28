@@ -22,7 +22,9 @@ export function Home(props){
 
     const getPersonagens = async () =>{
         try {
-            await axios.get(baseURL+"/personagens").then(res =>{
+            await axios.post(baseURL+"/personagens", {
+                userId: props.user[0].uid
+            }).then(res =>{
                 setPersonagens(res.data)
             })
         } catch (error) {
@@ -30,11 +32,14 @@ export function Home(props){
         }
         
     }
+    console.log(personagens)
 
     useEffect(()=>{
         verificarLogin()
-        getPersonagens()
     },[])
+    useEffect(()=>{
+        getPersonagens()
+    }, [props.user])
 
     return(<div>
         <div className="flex w-full h-20 justify-between items-center p-4">
@@ -53,9 +58,9 @@ export function Home(props){
             <Button variant='contained' color='secondary'>Criar personagem</Button>
         </div>
         <Divider sx={{margin: "2vh 0"}}/>
-        <div>
+        <div className='grid-cols-4 gap-4'>
             {Array.from(personagens).map(personagem =>(
-                <Personagem p={personagem}/>
+                <Personagem key={personagem.uid} p={personagem}/>
             ))}
         </div>
     </div>)

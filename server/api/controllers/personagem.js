@@ -3,14 +3,17 @@ import { db } from "../db.js";
 export const getPersonagens = (req, res) =>{
 
     try {
-        const uid = req.body.userId
+        const values = {
+            idUser: req.body.userId
+        }
 
-        db.collection("personagens").where("userId", "==", uid).get().then(snapshot =>{
+        db.collection("personagens").where("userId", "==", values.idUser).get().then(snapshot =>{
         if (snapshot.empyt) return res.status(404).json("Nenhum personagem encontrado");
-        const data = snapshot.docs.map(doc=>({
-            ...doc.data(),
-            uid: doc.id
-        }));
+        
+        const data = []
+        snapshot.docs.map(doc=>(
+            data.push(doc.data())
+        ));
         return res.status(200).json(data)
     })
     } catch (error) {
