@@ -17,7 +17,7 @@ export const addUser = async (req, res) => {
             email: req.body.email,
             senha: req.body.senha,
         }
-        const docRef = await db.collection('usuarios').add(values)
+        await db.collection('usuarios').add(values)
         return res.status(200).json(`Usuario criado com sucesso`)
     } catch (error) {
         return res.status(404).json({error: error.message})

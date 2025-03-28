@@ -2,10 +2,6 @@
 @import "tailwindcss";
 
 
-*{
-    margin: 0;
-}
-
 body{
     font-family: "Faculty Glyphic", sans-serif;
 }

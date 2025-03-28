@@ -46,20 +46,22 @@ export function Login(props) {
     }, [props.logado])
 
   return (
-    <Box>
-        <h1>Login</h1>
-        <form ref={ref} onSubmit={(e)=>{logarConta(e)}}>
-            <FormControl>
-                <Box>
-                    <TextField label="Nome" variant="outlined" required name="nome" fullWidth/>
-                </Box>
-                <Box>
-                    <TextField label="Senha" variant="outlined" required name="senha" fullWidth/>
-                </Box>
-                <Button variant='contained' type='submit'>Enviar</Button>
-                <Button variant='contained' onClick={()=>{navigate("/signin")}}>Criar conta</Button>
-            </FormControl>
-        </form>
-    </Box>
+    <div className='w-dvw h-dvh flex justify-center items-center flex-col'>
+        <div className='flex flex-col justify-between align-center'>
+            <h1 className='text-4xl font-bold'>Login</h1>
+            <form ref={ref} onSubmit={(e)=>{logarConta(e)}}>
+                <FormControl>
+                    <div>
+                        <TextField label="Nome" variant="outlined" required name="nome" fullWidth/>
+                    </div>
+                    <div>
+                        <TextField label="Senha" variant="outlined" required name="senha" fullWidth/>
+                    </div>
+                    <Button variant='contained' type='submit'>Enviar</Button>
+                    <Button variant='contained' onClick={()=>{navigate("/signin")}}>Criar conta</Button>
+                </FormControl>
+            </form>
+        </div>
+    </div>
   )
 }

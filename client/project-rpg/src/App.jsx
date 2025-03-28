@@ -3,6 +3,7 @@ import { Box } from '@mui/material'
 import { Login } from './Pages/Login.jsx'
 import { Signin } from './Pages/Signin.jsx'
 import { Home } from './Pages/Home.jsx'
+import { FormPersonagem } from './Pages/FormPersonagem.jsx'
 import axios from "axios"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -34,6 +35,7 @@ function App() {
           <Route path='/' element={<Login logado={logado} user={user} setUser={setUser}/>}/>
           <Route path='/signin' element={<Signin setUser={setUser}/>}/>
           <Route path='/home' element={<Home user={user}/>}/>
+          <Route path='/form-personagem' element={<FormPersonagem user={user}/>}/>
         </Routes>
       </BrowserRouter>
     </Box>

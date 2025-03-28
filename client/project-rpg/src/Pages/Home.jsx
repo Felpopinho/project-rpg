@@ -55,13 +55,13 @@ export function Home(props){
         <div className='flex justify-between p-4'>
             <h1 className='text-4xl font-bold'>Fichas de personagens</h1>
             <TextField sx={{width: "40%"}} label="Pesquisar personagens"></TextField>
-            <Button variant='contained' color='secondary'>Criar personagem</Button>
+            <Button variant='contained' color='secondary' onClick={()=>{navigate("/form-personagem")}}>Criar personagem</Button>
         </div>
         <Divider sx={{margin: "2vh 0"}}/>
-        <div className='grid-cols-4 gap-4'>
-            {Array.from(personagens).map(personagem =>(
+        <div className='grid grid-cols-2 gap-y-20 gap-x-20 p-10'>
+            {personagens.length? Array.from(personagens).map(personagem =>(
                 <Personagem key={personagem.uid} p={personagem}/>
-            ))}
+            )) : <h1>Você ainda não criou nenhum personagem</h1>}
         </div>
     </div>)
 }
