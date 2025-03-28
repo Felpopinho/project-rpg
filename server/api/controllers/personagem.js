@@ -11,7 +11,7 @@ export const getPersonagens = (req, res) =>{
         if (snapshot.empyt) return res.status(404).json("Nenhum personagem encontrado");
         
         const data = []
-        snapshot.docs.forEach(doc=>{
+        snapshot.forEach(doc=>{
             data.push({uid: doc.id, ...doc.data()})
         });
         return res.status(200).json(data)
