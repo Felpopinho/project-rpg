@@ -1,17 +1,28 @@
 import { useRef, useState, useEffect } from 'react'
-import { Box, FormControl, TextField, FormHelperText, InputLabel, Button, Typography } from '@mui/material'
+import { Box, FormControl, TextField, FormHelperText, InputLabel, Button, Typography, IconButton, Icon } from '@mui/material'
 import { baseURL } from "../App.jsx"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useColorScheme } from '@mui/material/styles';
 
 export function Login(props) {
 
+    const {mode, setMode} = useColorScheme()
+
+    const trocarTema = (t) =>{
+      const html = document.querySelector("html")
+      if(t === "dark"){
+          html.classList.add("dark")
+      }else{
+          html.classList.remove("dark")
+      }
+      localStorage.setItem("tailwind-mode", t)
+      setMode(t)
+    }
+
     const getUser = () =>{
         if(typeof(props.user) === "object"){
-            navigate("/home")
-            console.log("a")
-        } else{
-
+            return navigate("/home")
         }
     }
 
@@ -46,21 +57,23 @@ export function Login(props) {
     }, [props.logado])
 
   return (
-    <div className='w-dvw h-dvh flex justify-center items-center flex-col'>
-        <div className='flex flex-col justify-between align-center'>
-            <h1 className='text-4xl font-bold'>Login</h1>
-            <form ref={ref} onSubmit={(e)=>{logarConta(e)}}>
-                <FormControl>
-                    <div>
-                        <TextField label="Nome" variant="outlined" required name="nome" fullWidth/>
-                    </div>
-                    <div>
-                        <TextField label="Senha" variant="outlined" required name="senha" fullWidth/>
-                    </div>
-                    <Button variant='contained' type='submit'>Enviar</Button>
-                    <Button variant='contained' onClick={()=>{navigate("/signin")}}>Criar conta</Button>
-                </FormControl>
+    <div className='w-dvw h-dvh flex justify-center items-center flex-col bg-white relative dark:bg-gray-900'>
+        <div className='flex flex-col justify-between align-center bg-gray-100 p-10 rounded-2xl dark:bg-gray-800'>
+            <h1 className='text-4xl font-bold text-center mb-6 text-black dark:text-white'>Login</h1>
+            <form ref={ref} onSubmit={(e)=>{logarConta(e)}} className='grid grid-rows-4 gap-5'>
+                <div>
+                    <TextField label="Nome" variant="outlined" required name="nome" fullWidth/>
+                </div>
+                <div>
+                    <TextField label="Senha" variant="outlined" required name="senha" fullWidth/>
+                </div>
+                <Button variant='contained' type='submit'>Enviar</Button>
+                <Button variant='outlined' onClick={()=>{navigate("/signin")}}>Criar conta</Button>
             </form>
+        </div>
+        <div className='absolute bottom-5 grid grid-cols-2 gap-x-5 '>
+            <IconButton onClick={()=>{trocarTema("light")}} ><Icon>light_mode</Icon></IconButton>
+            <IconButton onClick={()=>{trocarTema("dark")}} ><Icon>dark_mode</Icon></IconButton>
         </div>
     </div>
   )
