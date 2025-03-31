@@ -54,8 +54,8 @@ function App() {
 
 
   return (
-    <ThemeProvider theme={modo}>
-    <Box >
+    <ThemeProvider theme={modo} defaultMode='light'>
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login logado={logado} user={user} setUser={setUser}/>}/>
@@ -64,7 +64,7 @@ function App() {
           <Route path='/form-personagem' element={<FormPersonagem user={user} setUser={setUser}/>}/>
         </Routes>
       </BrowserRouter>
-    </Box>
+    </div>
     </ThemeProvider>
   )
 }

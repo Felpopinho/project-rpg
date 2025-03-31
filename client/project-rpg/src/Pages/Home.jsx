@@ -67,7 +67,7 @@ export function Home(props){
         getPersonagens()
     }, [props.user])
 
-    return(<div className='bg-white min-h-dvh dark:bg-gray-900'>
+    return(<div className='min-h-dvh'>
         <div className="flex w-full h-20 justify-between items-center p-4">
             <div className="flex justify-between w-1/4">
                 <Avatar>{username.slice(0,1)}</Avatar>

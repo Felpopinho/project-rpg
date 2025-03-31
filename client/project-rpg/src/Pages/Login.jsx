@@ -57,7 +57,7 @@ export function Login(props) {
     }, [props.logado])
 
   return (
-    <div className='w-dvw h-dvh flex justify-center items-center flex-col bg-white relative dark:bg-gray-900'>
+    <div className='w-dvw h-dvh flex justify-center items-center flex-col relative'>
         <div className='flex flex-col justify-between align-center bg-gray-100 p-10 rounded-2xl dark:bg-gray-800'>
             <h1 className='text-4xl font-bold text-center mb-6 text-black dark:text-white'>Login</h1>
             <form ref={ref} onSubmit={(e)=>{logarConta(e)}} className='grid grid-rows-4 gap-5'>
