@@ -83,7 +83,6 @@ export function FormPersonagem(props){
     const [antecedente, setAntecedente] = useState("")
     const [descClasse, setDescClasse] = useState("")
     const [descRaca, setDescRaca] = useState("")
-    const [descAntecedente, setDescAntecedente] = useState("")
 
     const arrData = [classes, races, backgrounds]
 
@@ -135,7 +134,6 @@ export function FormPersonagem(props){
                 return
             }
         })
-        n === 0 ? setDescClasse(data.desc.replace("#","")) : n === 1 ? setDescRaca(data.desc.replace("#","")) : setDescAnte(data.desc.replace("#",""))
     }
 
     const [sAlinhamentoUm, setSalinhamentoUm] = useState('')
@@ -182,7 +180,7 @@ export function FormPersonagem(props){
                         {classes === "" ? <LinearProgress sx={{position: "absolute", width: "100%", top: '0', left: "0"}}/> : <Fragment>
                             <NativeSelect className='w-full' sx={{fontSize: "1.3rem"}} id='selectClasses' label="Classes" onChange={(e)=>{setVdata(0,e)}}><option></option></NativeSelect>
                             <div className='overflow-y-auto w-90% h-90 '>{ classe === "" ? "" :
-                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{descClasse}</span></h1>
+                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{classe.desc.replaceAll("#","")}</span></h1>
                             }</div>
                         </Fragment>}
                         
@@ -192,7 +190,7 @@ export function FormPersonagem(props){
                         {races === "" ? <LinearProgress sx={{position: "absolute", width: "100%", top: '0', left: "0"}}/> : <Fragment>
                         <NativeSelect className='w-full' sx={{fontSize: "1.3rem"}} id='selectRacas' label="Raças" onChange={(e)=>{setVdata(1,e)}}><option></option></NativeSelect>
                         <div className='h-50 overflow-y-auto w-90% h-90'>{ raca === "" ? "" :
-                                <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{descRaca}</span></h1>
+                                <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{raca.desc.replaceAll("#","")}</span></h1>
                         }</div>
                         </Fragment>}
                     </div>
@@ -201,7 +199,7 @@ export function FormPersonagem(props){
                         {backgrounds === "" ? <LinearProgress sx={{position: "absolute", width: "100%", top: '0', left: "0"}}/> : <Fragment>
                         <NativeSelect className='w-full' sx={{fontSize: "1.3rem"}} id='selectAntecedentes' label="Antecedentes" onChange={(e)=>{setVdata(2,e)}}><option></option></NativeSelect>
                         <div className='h-50 overflow-y-auto w-90% h-90'>{ antecedente === "" ? "" :
-                                <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{descAntecedente}</span></h1>
+                                <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{antecedente.desc.replaceAll("#","")}</span></h1>
                         }</div>
                         </Fragment>}
                     </div>
