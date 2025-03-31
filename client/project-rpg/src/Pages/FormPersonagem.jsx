@@ -135,6 +135,7 @@ export function FormPersonagem(props){
                 return
             }
         })
+        n === 0 ? setDescClasse(data.desc.replace("#","")) : n === 1 ? setDescRaca(data.desc.replace("#","")) : setDescAnte(data.desc.replace("#",""))
     }
 
     const [sAlinhamentoUm, setSalinhamentoUm] = useState('')
