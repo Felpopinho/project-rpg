@@ -8,6 +8,7 @@ import axios from "axios"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { createTheme, useColorScheme } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
+import 'dotenv/config'
 
 const modo = createTheme({
   palette: {
