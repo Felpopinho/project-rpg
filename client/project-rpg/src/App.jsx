@@ -5,10 +5,9 @@ import { Signin } from './Pages/Signin.jsx'
 import { Home } from './Pages/Home.jsx'
 import { FormPersonagem } from './Pages/FormPersonagem.jsx'
 import axios from "axios"
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import { createTheme, useColorScheme } from '@mui/material/styles';
 import { purple } from '@mui/material/colors';
-import 'dotenv/config'
 
 const modo = createTheme({
   palette: {
@@ -24,11 +23,12 @@ const modo = createTheme({
   },
 });
 
-const url = process.env.URL
 
 export const baseURL = 'https://projectrpg-api.vercel.app'
 
 function App() {
+
+  const url = import.meta.env.URL
 
   const [users, setUsers] = useState("")
   const [user, setUser] = useState("")
@@ -59,14 +59,14 @@ function App() {
   return (
     <ThemeProvider theme={modo} defaultMode='light'>
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
-          <Route path={`${url}/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
-          <Route path={`${url}/signin`} element={<Signin setUser={setUser}/>}/>
-          <Route path={`${url}/home`} element={<Home user={user}/>}/>
-          <Route path={`${url}/form-personagem`} element={<FormPersonagem user={user} setUser={setUser}/>}/>
+          <Route path={`/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
+          <Route path={`/signin`} element={<Signin setUser={setUser}/>}/>
+          <Route path={`/home`} element={<Home user={user}/>}/>
+          <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser}/>}/>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
     </ThemeProvider>
   )
