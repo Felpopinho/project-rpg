@@ -1,7 +1,7 @@
 {
     "rewrites": [
       {
-        "source": "/home",
+        "source": "/:path*",
         "destination": "https://project-rpg.vercel.app/"
       }
     ]
