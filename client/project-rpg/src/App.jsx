@@ -24,6 +24,8 @@ const modo = createTheme({
   },
 });
 
+const url = process.env.URL
+
 export const baseURL = 'https://projectrpg-api.vercel.app'
 
 function App() {
@@ -59,10 +61,10 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path={`${process.env.URL}/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
-          <Route path={`${process.env.URL}/signin`} element={<Signin setUser={setUser}/>}/>
-          <Route path={`${process.env.URL}/home`} element={<Home user={user}/>}/>
-          <Route path={`${process.env.URL}/form-personagem`} element={<FormPersonagem user={user} setUser={setUser}/>}/>
+          <Route path={`${url}/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
+          <Route path={`${url}/signin`} element={<Signin setUser={setUser}/>}/>
+          <Route path={`${url}/home`} element={<Home user={user}/>}/>
+          <Route path={`${url}/form-personagem`} element={<FormPersonagem user={user} setUser={setUser}/>}/>
         </Routes>
       </BrowserRouter>
     </div>
