@@ -58,10 +58,10 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Login logado={logado} user={user} setUser={setUser}/>}/>
-          <Route path='/signin' element={<Signin setUser={setUser}/>}/>
-          <Route path='/home' element={<Home user={user}/>}/>
-          <Route path='/form-personagem' element={<FormPersonagem user={user} setUser={setUser}/>}/>
+          <Route path={`${process.env.URL}/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
+          <Route path={`${process.env.URL}/signin`} element={<Signin setUser={setUser}/>}/>
+          <Route path={`${process.env.URL}/home`} element={<Home user={user}/>}/>
+          <Route path={`${process.env.URL}/form-personagem`} element={<FormPersonagem user={user} setUser={setUser}/>}/>
         </Routes>
       </BrowserRouter>
     </div>

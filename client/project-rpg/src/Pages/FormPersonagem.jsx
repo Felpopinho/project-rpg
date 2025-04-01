@@ -62,22 +62,25 @@ export function FormPersonagem(props){
     const [passo, setPasso] = useState(1)
     const [title, setTitle] = useState("Habilidades")
 
+    const [classes, setClasses] = useState("")
+    const [races, setRaces] = useState("")
+    const [backgrounds, setBackgrounds] = useState("")
+
     const proxPasso = (n) =>{
         const npasso = passo+n
         setPasso(passo+n)
         if(npasso === 1){
             setTitle("Habilidades")
         }else if(npasso === 2){
-            getData()
+            setSdata(0, classes)
+            setSdata(1, races)
+            setSdata(2, backgrounds)
             setTitle("Classe, Raça e Antecedente")
         } else{
             setTitle("Dados do personagem")
         }
     }
 
-    const [classes, setClasses] = useState("")
-    const [races, setRaces] = useState("")
-    const [backgrounds, setBackgrounds] = useState("")
     const [classe, setClasse] = useState("")
     const [raca, setRaca] = useState("")
     const [antecedente, setAntecedente] = useState("")
@@ -99,28 +102,35 @@ export function FormPersonagem(props){
 
     const [dataSet, setDataSet] = useState(false)
 
-    const getData = async () =>{
+    const getClasses = async () =>{
         try {
             await axios.get("https://api.open5e.com/v1/classes/").then(res =>{
                 setClasses(res.data)
-                setSdata(0, res.data) 
+                 
             })
-            await axios.get("https://api.open5e.com/v2/races/").then(res =>{
-                setRaces(res.data)
-                setSdata(1, res.data)
-            })
-            await axios.get("https://api.open5e.com/v2/backgrounds/").then(res =>{
-                setBackgrounds(res.data)
-                setSdata(2, res.data)
-            })
-            return setDataSet(true)
         } catch (error) {
             console.log(error)
-            if(dataSet === true){
-                return
-            } else{
-                return getData()
-            }
+        }
+    }
+    const getRaces = async () =>{
+        try {
+            await axios.get("https://api.open5e.com/v2/races/").then(res =>{
+                setRaces(res.data)
+                
+            })
+        } catch (error) {
+            console.log(error)
+
+        }
+    }
+    const getBackgrounds = async () =>{
+        try {
+            await axios.get("https://api.open5e.com/v2/backgrounds/").then(res =>{
+                setBackgrounds(res.data)
+                
+            })
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -153,6 +163,9 @@ export function FormPersonagem(props){
 
     useEffect(()=>{
         loginSet === false ?  verificarLogin() : ""
+        getClasses()
+        getRaces()
+        getBackgrounds()
     },[])
 
     return(<div className='h-dvh dark:bg-gray'>
