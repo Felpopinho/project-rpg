@@ -34,12 +34,29 @@ function App() {
   const [user, setUser] = useState("")
   const [logado,  setLogado] = useState(false)
 
-  //const getUser = () =>{
-  //  Object.keys(localStorage).forEach(key =>{
-  //    setUser(JSON.parse(localStorage.getItem(key)))
-  //  })
-  //  setLogado(true)
-  //}
+  const getUsers = async () =>{
+    try {
+        await axios.get(baseURL+"/usuarios").then(res=>{
+            res.data.forEach(usuario => {
+                if(localStorage.getItem(usuario.email)!==null){
+                    setUser([usuario])
+                } else{
+                    return
+                }
+            });
+        })
+    } catch (error) {
+        console.log(error)
+    }
+  }
+  const setLogin = ()=>{
+    if(user !== ""){
+      setLogado(true)
+    } else{
+      setLogado(false)
+    }
+  }
+
   const getMode = () =>{
     const tailwindMode = localStorage.getItem("tailwind-mode")
     if(tailwindMode === "dark"){
@@ -48,12 +65,53 @@ function App() {
       document.querySelector("html").classList.remove("dark")
     }
   }
-//
-//
+
+  const [classes, setClasses] = useState("")
+  const [races, setRaces] = useState("")
+  const [backgrounds, setBackgrounds] = useState("")
+
+  const getClasses = async () =>{
+    try {
+        await axios.get("https://api.open5e.com/v1/classes/").then(res =>{
+            setClasses(res.data)
+            console.log(res.data)
+        })
+    } catch (error) {
+        console.log(error)
+    }
+  }
+  const getRaces = async () =>{
+      try {
+          await axios.get("https://api.open5e.com/v2/races/").then(res =>{
+              setRaces(res.data)
+              console.log(res.data)
+          })
+      } catch (error) {
+          console.log(error)
+
+      }
+  }
+  const getBackgrounds = async () =>{
+      try {
+          await axios.get("https://api.open5e.com/v2/backgrounds/").then(res =>{
+              setBackgrounds(res.data)
+              console.log(res.data)
+          })
+      } catch (error) {
+          console.log(error)
+      }
+  }
+
   useEffect(()=>{
-  //  getUser()
-      getMode()
+    getUsers()
+    getMode()
+    getClasses()
+    getRaces()
+    getBackgrounds()
   }, [])
+  useEffect(()=>{
+    setLogin()
+  }, [user])
 
 
   return (
@@ -64,7 +122,7 @@ function App() {
           <Route path={`/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
           <Route path={`/signin`} element={<Signin setUser={setUser}/>}/>
           <Route path={`/home`} element={<Home user={user}/>}/>
-          <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser}/>}/>
+          <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser} classes={classes} races={races} backgrounds={backgrounds}/>}/>
         </Routes>
       </HashRouter>
     </div>

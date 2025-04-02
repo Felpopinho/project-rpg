@@ -62,20 +62,18 @@ export function FormPersonagem(props){
     const [passo, setPasso] = useState(1)
     const [title, setTitle] = useState("Habilidades")
 
-    const [classes, setClasses] = useState("")
-    const [races, setRaces] = useState("")
-    const [backgrounds, setBackgrounds] = useState("")
-
     const proxPasso = (n) =>{
         const npasso = passo+n
         setPasso(passo+n)
         if(npasso === 1){
             setTitle("Habilidades")
         }else if(npasso === 2){
-            setSdata(0, classes)
-            setSdata(1, races)
-            setSdata(2, backgrounds)
             setTitle("Classe, Raça e Antecedente")
+            setTimeout(()=>{
+                setSdata(0, props.classes)
+                setSdata(1, props.races)
+                setSdata(2, props.backgrounds)
+            }, "4000")
         } else{
             setTitle("Dados do personagem")
         }
@@ -84,55 +82,23 @@ export function FormPersonagem(props){
     const [classe, setClasse] = useState("")
     const [raca, setRaca] = useState("")
     const [antecedente, setAntecedente] = useState("")
-    const [descClasse, setDescClasse] = useState("")
-    const [descRaca, setDescRaca] = useState("")
 
-    const arrData = [classes, races, backgrounds]
+    const arrData = [props.classes, props.races, props.backgrounds]
 
     const setSdata = (n, data) =>{
         const select = document.getElementById(`${n === 0 ? "selectClasses" : n === 1 ? "selectRacas" : "selectAntecedentes"}`)
-        if(select.children.length >= 2){return}else{
-            data.results.forEach(result =>{
+        if(!(select.children.length >= 2 )){
+            Array.from(data.results).forEach(result =>{
                 const option = document.createElement("option")
                 option.textContent = result.name
                 select.appendChild(option)
             })
+        }else{
+            return
         }
     }
 
     const [dataSet, setDataSet] = useState(false)
-
-    const getClasses = async () =>{
-        try {
-            await axios.get("https://api.open5e.com/v1/classes/").then(res =>{
-                setClasses(res.data)
-                 
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    const getRaces = async () =>{
-        try {
-            await axios.get("https://api.open5e.com/v2/races/").then(res =>{
-                setRaces(res.data)
-                
-            })
-        } catch (error) {
-            console.log(error)
-
-        }
-    }
-    const getBackgrounds = async () =>{
-        try {
-            await axios.get("https://api.open5e.com/v2/backgrounds/").then(res =>{
-                setBackgrounds(res.data)
-                
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     const setVdata = async (n, e) =>{
         let data
@@ -163,9 +129,7 @@ export function FormPersonagem(props){
 
     useEffect(()=>{
         loginSet === false ?  verificarLogin() : ""
-        getClasses()
-        getRaces()
-        getBackgrounds()
+
     },[])
 
     return(<div className='h-dvh dark:bg-gray'>
@@ -190,31 +154,34 @@ export function FormPersonagem(props){
                 <div className='grid grid-cols-3 gap-20 w-9/10 h-8/10'>
                     <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-100 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
                         <h1 className='text-2xl text-bold text-black dark:text-white'>Classe</h1>
-                        {classes === "" ? <LinearProgress sx={{position: "absolute", width: "100%", top: '0', left: "0"}}/> : <Fragment>
+                        <LinearProgress sx={props.classes === "" ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
+                        <div>
                             <NativeSelect className='w-full' sx={{fontSize: "1.3rem"}} id='selectClasses' label="Classes" onChange={(e)=>{setVdata(0,e)}}><option></option></NativeSelect>
                             <div className='overflow-y-auto w-90% h-90 '>{ classe === "" ? "" :
                                     <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{classe.desc.replaceAll("#","")}</span></h1>
                             }</div>
-                        </Fragment>}
-                        
+                        </div>
                     </div>
                     <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-100 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
                         <h1 className='text-2xl text-bold text-black dark:text-white'>Raça</h1>
-                        {races === "" ? <LinearProgress sx={{position: "absolute", width: "100%", top: '0', left: "0"}}/> : <Fragment>
-                        <NativeSelect className='w-full' sx={{fontSize: "1.3rem"}} id='selectRacas' label="Raças" onChange={(e)=>{setVdata(1,e)}}><option></option></NativeSelect>
-                        <div className='h-50 overflow-y-auto w-90% h-90'>{ raca === "" ? "" :
-                                <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{raca.desc.replaceAll("#","")}</span></h1>
-                        }</div>
-                        </Fragment>}
+                        <LinearProgress sx={props.races === "" ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
+                        <div>
+                            <NativeSelect className='w-full' sx={{fontSize: "1.3rem"}} id='selectRacas' label="Raças" onChange={(e)=>{setVdata(1,e)}}><option></option></NativeSelect>
+                            <div className='h-50 overflow-y-auto w-90% h-90'>{ raca === "" ? "" :
+                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{raca.desc.replaceAll("#","")}</span></h1>
+                            }</div>
+                        </div>
+                        
                     </div>
                     <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-100 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
                         <h1 className='text-2xl text-bold text-black dark:text-white'>Antecedente</h1>
-                        {backgrounds === "" ? <LinearProgress sx={{position: "absolute", width: "100%", top: '0', left: "0"}}/> : <Fragment>
-                        <NativeSelect className='w-full' sx={{fontSize: "1.3rem"}} id='selectAntecedentes' label="Antecedentes" onChange={(e)=>{setVdata(2,e)}}><option></option></NativeSelect>
-                        <div className='h-50 overflow-y-auto w-90% h-90'>{ antecedente === "" ? "" :
-                                <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{antecedente.desc.replaceAll("#","")}</span></h1>
-                        }</div>
-                        </Fragment>}
+                        <LinearProgress sx={props.backgrounds === "" ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
+                        <div>
+                            <NativeSelect className='w-full' sx={{fontSize: "1.3rem"}} id='selectAntecedentes' label="Antecedentes" onChange={(e)=>{setVdata(2,e)}}><option></option></NativeSelect>
+                            <div className='h-50 overflow-y-auto w-90% h-90'>{ antecedente === "" ? "" :
+                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{antecedente.desc.replaceAll("#","")}</span></h1>
+                            }</div>
+                        </div>
                     </div>
                 </div>
             </Fragment>) : (<Fragment>

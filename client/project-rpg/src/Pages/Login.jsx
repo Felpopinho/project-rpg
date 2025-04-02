@@ -20,12 +20,6 @@ export function Login(props) {
       setMode(t)
     }
 
-    const getUser = () =>{
-        if(typeof(props.user) === "object"){
-            return navigate("/home")
-        }
-    }
-
     const ref = useRef()
     const navigate = useNavigate()
 
@@ -52,8 +46,12 @@ export function Login(props) {
         }
     }
 
+    const getLogin = () =>{
+        if(props.logado === true) navigate("/home")
+    }
+
     useEffect(()=>{
-        getUser()
+        getLogin()
     }, [props.logado])
 
   return (
