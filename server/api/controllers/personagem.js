@@ -24,7 +24,7 @@ export const getPersonagens = (req, res) =>{
 export const addPersonagem = async (req, res) =>{
     try {
         const values = {
-
+            data: FieldValue.serverTimestamp(),
             habilidades: [
                 req.body.forca,
                 req.body.destreza,
