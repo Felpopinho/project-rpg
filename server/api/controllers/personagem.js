@@ -1,4 +1,5 @@
 import { db } from "../db.js";
+import admin from 'firebase-admin'
 
 export const getPersonagens = (req, res) =>{
 
@@ -24,7 +25,8 @@ export const getPersonagens = (req, res) =>{
 export const addPersonagem = async (req, res) =>{
     try {
         const values = {
-            data: FieldValue.serverTimestamp(),
+            data: admin.firestore.FieldValue.serverTimestamp(),
+            userId: req.body.userId,
             habilidades: [
                 req.body.forca,
                 req.body.destreza,

@@ -134,6 +134,7 @@ export function FormPersonagem(props){
 
         try {
             await axios.post(baseURL+"/personagens/add", {
+                userId: props.user.uid,
                 forca: objSkills.Forca,
                 destreza: objSkills.Destreza,
                 constituicao: objSkills.Constituicao,
