@@ -42,7 +42,7 @@ export function Home(props){
                 userId: props.user[0].uid
             }).then(res =>{
                 setPersonagens(res.data)
-                setNpersonagens(res.data)
+                setNpersonagens([res.data])
                 if(!(res.data.length)){
                     setAvisoPers("Você ainda não criou nenhum personagem")
                 }
@@ -89,9 +89,7 @@ export function Home(props){
         </div>
         <Divider sx={{margin: "2vh 0"}}/>
         <div className='grid grid-cols-2 gap-y-20 gap-x-20 p-10'>
-            {nPersonagens.length? Array.from(nPersonagens).map(personagem =>(
-                <Personagem key={personagem.uid} p={personagem}/>
-            )) : <h1 className='text-black dark:text-white'>{avisoPers}</h1>}
+            {nPersonagens.length? <Personagem personagens={nPersonagens}/> : <h1 className='text-black dark:text-white'>{avisoPers}</h1>}
         </div>
     </div>)
 }
