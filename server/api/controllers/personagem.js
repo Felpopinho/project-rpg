@@ -24,24 +24,37 @@ export const getPersonagens = (req, res) =>{
 export const addPersonagem = async (req, res) =>{
     try {
         const values = {
-            data: FieldValue.serverTimestamp(),
-            forca: req.body.forca,
-            destreza: req.body.destreza,
-            constituicao: req.body.constituicao,
-            inteligencia: req.body.inteligencia,
-            sabedoria: req.body.sabedoria,
-            carisma: req.body.carisma,
-            classe: req.body.classe,
-            raca: req.body.raca,
-            antecedente: req.body.antecedente,
-            nome: req.body.nome,
-            jogador: req.body.jogador,
-            personalidade: req.body.personalidade,
-            ideais: req.body.ideais,
-            alinhamento: req.body.alinhamento,
-            fraquezas: req.body.fraquezas,
-            historia: req.body.historia,
-            objetivo: req.body.objetivo,
+
+            habilidades: [
+                req.body.forca,
+                req.body.destreza,
+                req.body.constituicao,
+                req.body.inteligencia,
+                req.body.sabedoria,
+                req.body.carisma
+            ],
+            cra: [
+                req.body.classe,
+                req.body.raca,
+                req.body.antecedente,
+            ],
+            identidade: [
+                req.body.nome,
+                req.body.jogador,
+                req.body.historia,
+                req.body.objetivo,
+            ],
+            caracteristicas: [
+                req.body.idade,
+                req.body.peso,
+                req.body.aparencia,
+            ],
+            mentalidade: [
+                req.body.alinhamento,
+                req.body.personalidade,
+                req.body.ideais,
+                req.body.vinculos,
+            ]
         }
 
         await db.collection("personagens").add(values)

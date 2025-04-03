@@ -1,7 +1,8 @@
 import { Button, Divider, FormControl, LinearProgress, MenuItem, NativeSelect, Select, TextField, InputLabel } from '@mui/material'
 import axios from 'axios'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { baseURL } from '../App.jsx'
 
 export function FormPersonagem(props){
 
@@ -16,6 +17,8 @@ export function FormPersonagem(props){
         Sabedoria: "",
         Carisma: "",
     })
+
+    const ref = useRef()
 
     const [loginSet, setLoginSet] = useState(false)
 
@@ -119,12 +122,44 @@ export function FormPersonagem(props){
         n === 1 ? setSalinhamentoUm(e.target.value) : setSalinhamentoDois(e.target.value)
     }
 
-    const finalizarPers = () =>{
-        console.log(objSkills)
-        console.log(classe.name)
-        console.log(raca.name)
-        console.log(antecedente.name)
-        console.log("objDados")
+    const finalizarPers = async (e) =>{
+
+        e.preventDefault()
+
+        const d = ref.current
+
+        console.log(d.Nome.value)
+
+        const rAlinhamento = (d.AlinhamentoUm.value+d.AlinhamentoDois.value).toUpperCase()
+
+        try {
+            await axios.post(baseURL+"/personagens/add", {
+                forca: objSkills.Forca,
+                destreza: objSkills.Destreza,
+                constituicao: objSkills.Constituicao,
+                inteligencia: objSkills.Inteligencia,
+                sabedoria: objSkills.Sabedoria,
+                carisma: objSkills.Carisma,
+                classe: classe.name,
+                raca: raca.name,
+                antecedente: antecedente.name,
+                nome: d.Nome.value,
+                jogador: d.Jogador.value,
+                historia: d.Historia.value,
+                objetivo: d.Objetivo.value,
+                idade: d.Idade.value,
+                peso: d.Peso.value,
+                aparencia: d.Aparencia.value,
+                alinhamento: rAlinhamento,
+                personalidade: d.Personalidade.value,
+                ideais: d.Ideais.value,
+                vinculos: d.Vinculos.value
+            }).then(res =>{
+                console.log(res.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(()=>{
@@ -133,10 +168,10 @@ export function FormPersonagem(props){
     },[])
 
     return(<div className='h-dvh dark:bg-gray'>
-    
         <h1 className='text-5xl text-bold p-5 text-black dark:text-white'>Criação de personagem</h1>
         <Divider sx={{margin: "2vh"}}/>
         <div className='flex flex-col justify-between items-center w-1/1 h-8/10'>
+        <form action="" ref={ref} onSubmit={(e)=>{finalizarPers(e)}}>
             <h1 className='text-3xl text-bold p-5 mb-4 w-full text-black dark:text-white'>{title}</h1>
             {passo === 1 ? (<Fragment>
                 <div className='grid grid-cols-3 gap-20'>
@@ -186,13 +221,13 @@ export function FormPersonagem(props){
                 </div>
             </Fragment>) : (<Fragment>
                 <div className='grid grid-cols-4 gap-5'>
-                    <TextField label="Nome" className='col-span-2'></TextField>
-                    <TextField label="Jogador" className='col-span-2'></TextField>
-                    <TextField label="Idade"></TextField>
-                    <TextField label="Peso"></TextField>
+                    <TextField label="Nome" name="Nome" className='col-span-2'></TextField>
+                    <TextField label="Jogador" name="Jogador" className='col-span-2'></TextField>
+                    <TextField label="Idade" name="Idade"></TextField>
+                    <TextField label="Peso" name="Peso"></TextField>
                     <FormControl className='flex'>
                         <InputLabel>Alinhamento</InputLabel>
-                        <Select value={sAlinhamentoUm} label="Alinhamento" onChange={(e)=>{handleAlinhamento(e, 1)}}>
+                        <Select id='selectAlinhamentoUm' value={sAlinhamentoUm} label="Alinhamento" name='AlinhamentoUm' onChange={(e)=>{handleAlinhamento(e, 1)}}>
                             <MenuItem value={"o"}>Ordeiro</MenuItem>
                             <MenuItem value={"b"}>Bom</MenuItem>
                             <MenuItem value={"n"}>Neutro</MenuItem>
@@ -202,7 +237,7 @@ export function FormPersonagem(props){
                     </FormControl>
                     <FormControl className='flex'>
                         <InputLabel>Alinhamento</InputLabel>
-                        <Select value={sAlinhamentoDois} label="Alinhamento" onChange={(e)=>{handleAlinhamento(e, 2)}}>
+                        <Select value={sAlinhamentoDois} label="Alinhamento" name="AlinhamentoDois" onChange={(e)=>{handleAlinhamento(e, 2)}}>
                             <MenuItem value={"O"}>Ordeiro</MenuItem>
                             <MenuItem value={"B"}>Bom</MenuItem>
                             <MenuItem value={"N"}>Neutro</MenuItem>
@@ -210,18 +245,20 @@ export function FormPersonagem(props){
                             <MenuItem value={"C"}>Caotico</MenuItem>
                         </Select>
                     </FormControl>
-                    <TextField multiline rows={2} label="Caracteristicas" className='col-span-4'></TextField>
-                    <TextField multiline rows={2} label="Personalidade" className='col-span-4'></TextField>
-                    <TextField multiline rows={2} label="Ideais" className='col-span-4'></TextField>
-                    <TextField multiline rows={2} label="Vinculos" className='col-span-4'></TextField>
-                    <TextField multiline rows={4} label="Historia" className='col-span-4'></TextField>
-                    <TextField multiline rows={3} label="Objetivo" className='col-span-4'></TextField>
+                    <TextField multiline rows={2} label="Aparência" name="Aparencia" className='col-span-4'></TextField>
+                    <TextField multiline rows={2} label="Personalidade" name="Personalidade" className='col-span-4'></TextField>
+                    <TextField multiline rows={2} label="Ideais" name="Ideais" className='col-span-4'></TextField>
+                    <TextField multiline rows={2} label="Vinculos" name="Vinculos" className='col-span-4'></TextField>
+                    <TextField multiline rows={4} label="Historia" name="Historia" className='col-span-4'></TextField>
+                    <TextField multiline rows={3} label="Objetivo" name="Objetivo" className='col-span-4'></TextField>
                 </div>
             </Fragment>)}
             <div className='flex p-5 w-2/3 justify-around'>
                 <Button variant='outlined' onClick={()=>{proxPasso(-1)}}>Voltar</Button>
-                <Button variant='contained' onClick={passo === 3 ? ()=>{finalizarPers()} : ()=>{proxPasso(1)}}>{passo === 3 ? "Finalizar" : "Proximo"}</Button>
+                {passo === 3 ? <Button variant='contained' type='submit'>finalizar</Button>:
+                <Button variant='contained' onClick={()=>{proxPasso(1)}}>Proximo</Button>}
             </div>
+        </form>
         </div>
     
     </div>)

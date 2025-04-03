@@ -74,7 +74,7 @@ function App() {
     try {
         await axios.get("https://api.open5e.com/v1/classes/").then(res =>{
             setClasses(res.data)
-            console.log(res.data)
+
         })
     } catch (error) {
         console.log(error)
@@ -84,7 +84,6 @@ function App() {
       try {
           await axios.get("https://api.open5e.com/v2/races/").then(res =>{
               setRaces(res.data)
-              console.log(res.data)
           })
       } catch (error) {
           console.log(error)
@@ -95,7 +94,6 @@ function App() {
       try {
           await axios.get("https://api.open5e.com/v2/backgrounds/").then(res =>{
               setBackgrounds(res.data)
-              console.log(res.data)
           })
       } catch (error) {
           console.log(error)
