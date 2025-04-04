@@ -40,11 +40,11 @@ export function Home(props){
             await axios.post(baseURL+"/personagens", {
                 userId: props.user[0].uid
             }).then(res =>{
+                if(!(res.data.length)){
+                    return setAvisoPers("Você ainda não criou nenhum personagem")
+                }
                 props.setPersonagens(res.data)
                 setNpersonagens([res.data])
-                if(!(res.data.length)){
-                    setAvisoPers("Você ainda não criou nenhum personagem")
-                }
             })
         } catch (error) {
             console.log(error)
@@ -67,28 +67,30 @@ export function Home(props){
     }, [props.user])
 
     return(<div className='min-h-dvh'>
-        <div className="flex w-full h-20 justify-between items-center p-4">
-            <div className="flex justify-between w-1/4">
+        <div className="flex w-full text-nowrap h-20 justify-between items-center p-4 max-md:grid grid-rows-2 grid-cols-2 h-auto place-content-between gap-5">
+            <div className="flex gap-x-5 max-md:col-span-2 justify-self-center">
                 <Avatar>{username.slice(0,1)}</Avatar>
-                <h1 className='text-4xl text-black font-bold dark:text-white'>Bem vindo {username}</h1>
+                <h1 className='text-4xl text-black font-bold max-md:text-3xl dark:text-white '>Bem vindo {username}</h1>
             </div>
-            <div className="flex ">
-                <h1 className='text-4xl text-black font-bold dark:text-white'>Fichas D&D</h1>
+            <div className="flex max-md:col-start-2 row-start-2 justify-self-end">
+                <h1 className='text-4xl text-black font-bold max-md:text-3xl dark:text-white '>Fichas D&D</h1>
             </div>
-            <div className='grid grid-cols-2 gap-x-5 '>
+            <div className='grid grid-cols-2 gap-x-5 max-md:flex'>
                 <IconButton onClick={()=>{trocarTema("light")}} ><Icon>light_mode</Icon></IconButton>
                 <IconButton onClick={()=>{trocarTema("dark")}}><Icon>dark_mode</Icon></IconButton>
             </div>
         </div>
         <Divider sx={{margin: "2vh 0"}}/>
-        <div className='flex justify-between p-4'>
-            <h1 className='text-4xl text-black font-bold dark:text-white'>Fichas de personagens</h1>
-            <TextField sx={{width: "40%"}} label="Pesquisar personagens" onChange={(e)=>{pesquisarPersonagens(e)}}></TextField>
-            <Button variant='contained' onClick={()=>{navigate("/form-personagem")}}>Criar personagem</Button>
+        <div className='flex justify-between items-center p-4 gap-x-10 max-lg:grid grid-cols-2 items-center gap-y-5'>
+            <h1 className='text-4xl text-black font-bold dark:text-white text-nowrap max-lg:col-start-1 max-md:text-3xl'>Fichas</h1>
+            <TextField fullWidth label="Pesquisar personagens" className='max-lg:col-span-2' onChange={(e)=>{pesquisarPersonagens(e)}}></TextField>
+            <div className='flex self-stretch max-lg:col-start-2 row-start-1 justify-self-end'>
+                <Button variant='contained' onClick={()=>{navigate("/form-personagem")}}><Icon>note_add</Icon></Button> 
+            </div>
         </div>
         <Divider sx={{margin: "2vh 0"}}/>
-        <div className='grid grid-cols-2 gap-y-20 gap-x-20 p-10'>
-            {nPersonagens.length? <Personagem personagens={nPersonagens} setActualPers={props.setActualPers}/> : <h1 className='text-black dark:text-white'>{avisoPers}</h1>}
+        <div className='grid grid-cols-2 gap-y-20 gap-x-20 p-10 max-lg:grid-cols-1'>
+            {nPersonagens.length ? <Personagem personagens={nPersonagens} setActualPers={props.setActualPers}/> : <h1 className='text-black text-3xl dark:text-white'>{avisoPers}</h1>}
         </div>
     </div>)
 }

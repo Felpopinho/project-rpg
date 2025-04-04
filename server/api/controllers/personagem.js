@@ -27,36 +27,36 @@ export const addPersonagem = async (req, res) =>{
         const values = {
             data: admin.firestore.FieldValue.serverTimestamp(),
             userId: req.body.userId,
-            habilidades: [
-                req.body.forca,
-                req.body.destreza,
-                req.body.constituicao,
-                req.body.inteligencia,
-                req.body.sabedoria,
-                req.body.carisma
-            ],
-            cra: [
-                req.body.classe,
-                req.body.raca,
-                req.body.antecedente,
-            ],
-            identidade: [
-                req.body.nome,
-                req.body.jogador,
-                req.body.historia,
-                req.body.objetivo,
-            ],
-            caracteristicas: [
-                req.body.idade,
-                req.body.peso,
-                req.body.aparencia,
-            ],
-            mentalidade: [
-                req.body.alinhamento,
-                req.body.personalidade,
-                req.body.ideais,
-                req.body.vinculos,
-            ]
+            habilidades: {
+                forca: req.body.forca,
+                destreza: req.body.destreza,
+                constituicao: req.body.constituicao,
+                inteligencia: req.body.inteligencia,
+                sabedoria: req.body.sabedoria,
+                carisma: req.body.carisma
+            },
+            cra: {
+                classe: req.body.classe,
+                raca: req.body.raca,
+                antecedente: req.body.antecedente,
+            },
+            identidade: {
+                nome:req.body.nome,
+                jogador:req.body.jogador,
+                historia:req.body.historia,
+                objetivo:req.body.objetivo,
+            },
+            caracteristicas: {
+                idade:req.body.idade,
+                peso:req.body.peso,
+                aparencia:req.body.aparencia,
+            },
+            mentalidade: {
+                alinhamento:req.body.alinhamento,
+                personalidade:req.body.personalidade,
+                ideais:req.body.ideais,
+                vinculos:req.body.vinculos,
+            }
         }
 
         await db.collection("personagens").add(values)

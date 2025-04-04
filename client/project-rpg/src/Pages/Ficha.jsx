@@ -17,10 +17,14 @@ export function Ficha(props){
 
     const [skills, setSkills] = useState("")
 
+    const [skillValue, setSkillValue] = useState("")
+    const [skillMvalue, setSkillMvalue] = useState("")
+
     const getSkills = async () =>{
         try {
             await axios.get("https://www.dnd5eapi.co/api/2014/skills/").then(res=>{
                 setSkills(res.data)
+                console.log(props.pers)
             })
         } catch (error) {
             console.log(error)
@@ -31,7 +35,7 @@ export function Ficha(props){
         getSkills()
     },[])
 
-    const arrSkills = ["Forca","Destreza","Constituicao","Inteligencia","Sabedoria","Carisma"]
+    const arrSkills = ["forca","destreza","constituicao","inteligencia","sabedoria","carisma"]
 
     return (<>
     
@@ -41,11 +45,11 @@ export function Ficha(props){
                     <img className='' src='https://orbedosdragoes.com/wp-content/uploads/2017/06/DD5-Guerreiro_1.jpg'/>
                 </div>
                 <div className='grid grid-cols-6 justify-items-start items-center font-bold'>
-                    <h1 className='text-2xl text-black text-center dark:text-white col-span-3'>Nome: <span className='font-light'>{props.pers.identidade[0]}</span></h1> 
-                    <h1 className='text-2xl text-black text-center dark:text-white col-span-3'>Jogador: <span className='font-light'>{props.pers.identidade[1]}</span></h1> 
-                    <p className='text-lg text-black dark:text-white col-span-2'>Classe: <span className='font-light'>{props.pers.cra[0]}</span></p>
-                    <p className='text-lg text-black dark:text-white col-span-2'>Raça: <span className='font-light'>{props.pers.cra[1]}</span></p>
-                    <p className='text-lg text-black dark:text-white col-span-2'>Antecedente: <span className='font-light'>{props.pers.cra[2]}</span></p>
+                    <h1 className='text-2xl text-black text-center dark:text-white col-span-3'>Nome: <span className='font-light'>{props.pers.identidade.nome}</span></h1> 
+                    <h1 className='text-2xl text-black text-center dark:text-white col-span-3'>Jogador: <span className='font-light'>{props.pers.identidade.jogador}</span></h1> 
+                    <p className='text-lg text-black dark:text-white col-span-2'>Classe: <span className='font-light'>{props.pers.cra.classe}</span></p>
+                    <p className='text-lg text-black dark:text-white col-span-2'>Raça: <span className='font-light'>{props.pers.cra.raca}</span></p>
+                    <p className='text-lg text-black dark:text-white col-span-2'>Antecedente: <span className='font-light'>{props.pers.cra.antecedente}</span></p>
                 </div>
             </div>
             <Divider sx={{ margin: "3vh 0" }}/>
@@ -53,10 +57,10 @@ export function Ficha(props){
                 <div className='grid grid-rows-6 gap-10 w-1/8'>
                     {arrSkills.map(skill =>(
                         <div key={skill} className='flex flex-col justify-center items-center w-1/1 bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white'>
-                            <h1 className='text-center text-black dark:text-white'>{skill}</h1>
+                            <h1 className='text-center text-black dark:text-white capitalize'>{skill}</h1>
                             <div className='flex flex-col justify-between items-center relative w-1/1 h-1/1'>
-                                <input name="" id={`${skill}M`} readOnly className=' top-0 absolute  text-center text-3xl text-black dark:text-white focus:border-0 outline-0 '/>                
-                                <input type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-16 h-10 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100 text-black dark:text-white dark:bg-gray-800 focus:border-0'/>                
+                                <input value={skillValue} name="" id={`${skill}M`} readOnly className=' top-0 absolute  text-center text-3xl text-black dark:text-white focus:border-0 outline-0 '/>                
+                                <input value={skillMvalue} type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-16 h-10 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100 text-black dark:text-white dark:bg-gray-800 focus:border-0'/>                
                             </div>
                         </div>
                     ))}
@@ -99,8 +103,8 @@ export function Ficha(props){
                             <Input type='number' fullWidth variant='standard'/>
                         </div>
                         <div className='h-4/5'>
-                            <Input type='number' fullWidth variant='standard' sx={{height: "60%", fontSize: "2rem"}}/>
-                            <h1 className='1/5'>Dado de vida</h1>
+                            <Input type='number' fullWidth variant='standard' sx={{height: "75%", fontSize: "2rem"}}/>
+                            <h1 className='h-1/4'>Dado de vida</h1>
                         </div>
                     </div>
                     <div className='col-span-3 '>
