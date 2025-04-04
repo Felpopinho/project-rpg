@@ -1,7 +1,16 @@
 import { Button, Icon, IconButton, Divider } from '@mui/material'
 import { useEffect, useState } from 'react'
+import { useNavigate, HashRouter, Routes, Route } from 'react-router-dom'
+import { Ficha } from './Ficha'
 
 export function Personagem(props){
+
+    const navigate = useNavigate()
+
+    const navFicha = (pers) =>{
+        props.setActualPers(pers)
+        navigate("/ficha")
+    }
 
     return(<>{Array.from(props.personagens[0]).map(pers => (<div key={pers.uid} className='w-1/1 grid grid-cols-2 bg-gray-100 rounded-2xl p-7 gap-4 dark:bg-gray-800'>
 
@@ -18,7 +27,7 @@ export function Personagem(props){
         </div>
         <Divider sx={{ gridColumn: "1/3"}}/>
         <div className='flex justify-between col-span-2'>
-            <Button variant='outlined'>Ficha</Button>
+            <Button variant='outlined' onClick={()=>{navFicha(pers)}}>Ficha</Button>
             <div>
                 <IconButton><Icon>settings</Icon></IconButton>
                 <IconButton><Icon>delete</Icon></IconButton>

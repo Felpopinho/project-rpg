@@ -32,7 +32,6 @@ export function Home(props){
     }
 
     const [username, setUsername] = useState("")
-    const [personagens, setPersonagens] = useState("")
     const [nPersonagens, setNpersonagens] = useState([])
     const [avisoPers, setAvisoPers] = useState("")
 
@@ -41,7 +40,7 @@ export function Home(props){
             await axios.post(baseURL+"/personagens", {
                 userId: props.user[0].uid
             }).then(res =>{
-                setPersonagens(res.data)
+                props.setPersonagens(res.data)
                 setNpersonagens([res.data])
                 if(!(res.data.length)){
                     setAvisoPers("Você ainda não criou nenhum personagem")
@@ -54,7 +53,7 @@ export function Home(props){
     }
 
     const pesquisarPersonagens = (e) =>{
-        setNpersonagens(personagens.filter((personagem)=>
+        setNpersonagens(props.personagens.filter((personagem)=>
             personagem.nome.toLowerCase().startsWith(e.target.value.toLowerCase())
         ))
         if(!(nPersonagens.length)) setAvisoPers("Nenhum personagem encontrado")
@@ -89,7 +88,7 @@ export function Home(props){
         </div>
         <Divider sx={{margin: "2vh 0"}}/>
         <div className='grid grid-cols-2 gap-y-20 gap-x-20 p-10'>
-            {nPersonagens.length? <Personagem personagens={nPersonagens}/> : <h1 className='text-black dark:text-white'>{avisoPers}</h1>}
+            {nPersonagens.length? <Personagem personagens={nPersonagens} setActualPers={props.setActualPers}/> : <h1 className='text-black dark:text-white'>{avisoPers}</h1>}
         </div>
     </div>)
 }

@@ -4,6 +4,7 @@ import { Login } from './Pages/Login.jsx'
 import { Signin } from './Pages/Signin.jsx'
 import { Home } from './Pages/Home.jsx'
 import { FormPersonagem } from './Pages/FormPersonagem.jsx'
+import { Ficha } from './Pages/Ficha.jsx'
 import axios from "axios"
 import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import { createTheme, useColorScheme } from '@mui/material/styles';
@@ -66,6 +67,9 @@ function App() {
     }
   }
 
+  const [personagens, setPersonagens] = useState("")
+  const [actualPers, setActualPers] = useState("")
+
   const [classes, setClasses] = useState("")
   const [races, setRaces] = useState("")
   const [backgrounds, setBackgrounds] = useState("")
@@ -119,8 +123,9 @@ function App() {
         <Routes>
           <Route path={`/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
           <Route path={`/signin`} element={<Signin setUser={setUser}/>}/>
-          <Route path={`/home`} element={<Home user={user}/>}/>
+          <Route path={`/home/*`} element={<Home user={user} personagens={personagens} setPersonagens={setPersonagens} setActualPers={setActualPers}/>}/>
           <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser} classes={classes} races={races} backgrounds={backgrounds}/>}/>
+          <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} />}/>
         </Routes>
       </HashRouter>
     </div>
