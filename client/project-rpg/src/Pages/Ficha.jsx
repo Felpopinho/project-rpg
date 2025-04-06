@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, FormControlLabel, FormGroup, Input, Slider, LinearProgress, FormHelperText } from '@mui/material'
+import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, FormControlLabel, FormGroup, Input, Slider, LinearProgress, FormHelperText, ThemeProvider } from '@mui/material'
 import axios from 'axios'
 import { red } from '@mui/material/colors'
 import { baseURL } from '../App'
@@ -31,10 +31,6 @@ export function Ficha(props){
             console.log(error)
         }
     }
-
-    useEffect(()=>{
-        putPersonagem()
-    }, [props.pers])
 
     const [skills, setSkills] = useState("")
 
@@ -101,6 +97,34 @@ export function Ficha(props){
         setPontosVida("")
     }
 
+    const setNewValues = (e) =>{
+        props.pers[e.target.name][e.target.id] = e.target.value
+        console.log(props.pers[e.target.name][e.target.id])
+    }
+    const setNewChecked = (e) =>{
+        const name = parseInt(e.target.name)
+
+        if(!(e.target.checked)){
+            props.setActualPers(prevState =>({
+                ...prevState,
+                status: {
+                    ...props.pers.status,
+                    salvaguarda: name === 0 ? [parseInt(e.target.id.slice(4,5))-1, props.pers.status.salvaguarda[1]] : [props.pers.status.salvaguarda[0], parseInt(e.target.id.slice(4,5))-1]
+                }
+            }))
+        } else{
+            props.setActualPers(prevState =>({
+                ...prevState,
+                status: {
+                    ...props.pers.status,
+                    salvaguarda: name === 0 ? [parseInt(e.target.id.slice(4,5)), props.pers.status.salvaguarda[1]] : [props.pers.status.salvaguarda[0], parseInt(e.target.id.slice(4,5))]
+                }
+            }))
+        }  
+        console.log(props.pers.status.salvaguarda[parseInt(e.target.name)])
+        
+    }
+
     useEffect(()=>{
         props.pers === "" ? "" : setModificadores()
     }, [props.pers])
@@ -113,7 +137,6 @@ export function Ficha(props){
     const arrSkills = ["forca","destreza","constituicao","inteligencia","sabedoria","carisma"]
 
     return (<>
-    
         {props.pers !== "" ? <div className='w-1/1 p-15'>
             <div className='flex gap-x-20 h-[10%]'>
                 <div className='w-25 h-25 overflow-hidden'>
@@ -151,7 +174,7 @@ export function Ficha(props){
                     {skills === "" ? "" : Array.from(skills.results).map(skill => (
                         <div key={skill.name} className='flex h-10 items-center gap-x-5'>
                             <IconButton><Icon>casino</Icon></IconButton>
-                            <Checkbox checked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
+                            <Checkbox onChange={(e)=>{setNewProf(e)}} name={`per`} id={skill.index.replaceAll("-", "")} defaultChecked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
                             <h1 className='grow text-xs'>{skill.name}</h1>
                             <TextField value={props.pers.pericias[skill.index.replaceAll("-", "")][0]} variant='standard' size='small' sx={{width: "40px"}}/>
                         </div>
@@ -201,67 +224,66 @@ export function Ficha(props){
                         <div className='col-span-3 p-5 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                             <div className='flex items-center'>
                                 <h1 className='grow'>Sucessos</h1>
-                                <Checkbox checked={props.pers.status.salvaguarda[0] === 1}/>
-                                <Checkbox checked={props.pers.status.salvaguarda[0] === 2}/>
-                                <Checkbox checked={props.pers.status.salvaguarda[0] === 3}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] > 1} name="0" id='suc-1' checked={props.pers.status.salvaguarda[0] > 0}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] <= 0} name="0" id='suc-2' checked={props.pers.status.salvaguarda[0] > 1}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] <= 1} name="0" id='suc-3' checked={props.pers.status.salvaguarda[0] > 2}/>
                             </div>
                             <div className='flex items-center'>
                                 <h1 className='grow'>Falhas</h1>
-                                <Checkbox checked={props.pers.status.salvaguarda[1] === 1}/>
-                                <Checkbox checked={props.pers.status.salvaguarda[1] === 2}/>
-                                <Checkbox checked={props.pers.status.salvaguarda[1] === 3}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] > 1} name="1" id='fal-1' checked={props.pers.status.salvaguarda[1] > 0}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] < 1} name="1" id='fal-2' checked={props.pers.status.salvaguarda[1] > 1}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] < 2} name="1" id='fal-3' checked={props.pers.status.salvaguarda[1] > 2}/>
                             </div>
                             <FormHelperText>Salvaguarda contra a morte</FormHelperText>
                         </div>
                     </div>
                     <div className="h-1/2 rounded-xl flex flex-col gap-4 dark:bg-gray-950">
                         <div className="flex gap-2">
-                            <div className="p-3 rounded-xl bg-gray-100">
-                                <TextField label="Inspiração" value={props.pers.status.inspiracao}/>
+                            <div className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800">
+                                <TextField label="Inspiração" name="status" id="inspiracao" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.inspiracao}/>
                             </div>
-                            <div className="p-3 rounded-xl bg-gray-100">
-                                <TextField label="Sabedoria p." value={props.pers.caracteristicas.sabpassiva}/>
+                            <div className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800">
+                                <TextField label="Sabedoria p." name="caracteristicas" id="sabpassiva" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.sabpassiva}/>
                             </div>
-                            <div className="p-3 rounded-xl bg-gray-100">
-                                <TextField label="Intuição p." value={props.pers.caracteristicas.intupassiva}/>
+                            <div className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800    ">
+                                <TextField label="Intuição p." name="caracteristicas" id="intupassiva" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.intupassiva}/>
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
                             <h1 className="text-center text-xl">Proficiências</h1>
-                            <div className="bg-gray-100 relative">
-                                <TextField variant="filled" label="Armas" fullWidth value={props.pers.proficiencias.armas}/>
+                            <div className="bg-gray-100 relative rounded-xl overflow-hidden dark:bg-gray-800">
+                                <TextField variant="filled" label="Armas" fullWidth name="proficiencias" id="armas" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.proficiencias.armas}/>
                             </div>
-                            <div className="bg-gray-100 relative">
-                                <TextField variant="filled" label="Armaduras" fullWidth value={props.pers.proficiencias.armaduras}/>
+                            <div className="bg-gray-100 relative rounded-xl overflow-hidden dark:bg-gray-800">
+                                <TextField variant="filled" label="Armaduras" fullWidth name="proficiencias" id="armaduras" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.proficiencias.armaduras}/>
                             </div>
-                            <div className="bg-gray-100 relative">
-                                <TextField variant="filled" label="Idiomas" fullWidth value={props.pers.proficiencias.idiomas}/>
+                            <div className="bg-gray-100 relative rounded-xl overflow-hidden dark:bg-gray-800">
+                                <TextField variant="filled" label="Idiomas" fullWidth name="proficiencias" id="idiomas" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.proficiencias.idiomas}/>
                             </div>
-                            <div className="bg-gray-100 relative">
-                                <TextField variant="filled" label="Ferramentas" fullWidth value={props.pers.proficiencias.ferramentas}/>
+                            <div className="bg-gray-100 relative rounded-xl overflow-hidden dark:bg-gray-800">
+                                <TextField variant="filled" label="Ferramentas" fullWidth name="proficiencias" id="ferramentas" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.proficiencias.ferramentas}/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='grid grid-rows-4 gap-y-5 p-5 h-1/1 w-4/10 rounded-xl bg-gray-200 dark:bg-gray-950'>
                     <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" label="Personalidade" multiline rows={3} value={props.pers.mentalidade.personalidade} />
+                        <TextField variant="filled" id='personalidade' name='mentalidade' label="Personalidade" multiline rows={3} defaultValue={props.pers.mentalidade.personalidade} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                     <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" label="Ideais" multiline rows={3} value={props.pers.mentalidade.ideais}/>
+                        <TextField variant="filled" id='ideais' name='mentalidade' label="Ideais" multiline rows={3} defaultValue={props.pers.mentalidade.ideais} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                     <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" label="Vinculos" multiline rows={3} value={props.pers.mentalidade.vinculos}/>
+                        <TextField variant="filled" id='vinculos' name='mentalidade' label="Vinculos" multiline rows={3} defaultValue={props.pers.mentalidade.vinculos} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                     <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" label="Caracteristicas" multiline rows={3} value={props.pers.caracteristicas.aparencia}/>
+                        <TextField variant="filled" id='aparencia' name='caracteristicas' label="Caracteristicas" multiline rows={3} defaultValue={props.pers.caracteristicas.aparencia} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                     <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" label="Historia" multiline rows={3} value={props.pers.identidade.historia} onChange={()=>{setActualPers(props.pers.identidade.historia)}}/>
+                        <TextField variant="filled" id='historia' name='identidade' label="Historia" multiline rows={3} defaultValue={props.pers.identidade.historia} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                 </div>
             </div>
         </div> : ""}
-    
     </>)
 }
