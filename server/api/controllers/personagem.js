@@ -109,10 +109,15 @@ export const addPersonagem = async (req, res) =>{
 }
 
 export const updatePersonagem = async (req, res) =>{
-    const values = {
-        id: req.body.id,
-        personagem: req.body.personagem
+    try {
+        const values = {
+            id: req.body.id,
+            personagem: req.body.personagem
+        }
+    
+        await db.collection("personagens").doc(values.id).update(values.personagem)
+        return res.status(200).json("personagem atualizado com sucesso")
+    } catch (error) {
+        return res.status(500).json(error)
     }
-
-    await db.collection("personagens").doc(values.id).update(values.personagem)
 }
