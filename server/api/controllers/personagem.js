@@ -23,9 +23,13 @@ export const getPersonagens = (req, res) =>{
 }
 
 export const addPersonagem = async (req, res) =>{
+
+    const timestamp = admin.firestore.FieldValue.serverTimestamp()
+    const date = new Date(timestamp.seconds*1000)
+
     try {
         const values = {
-            data: admin.firestore.FieldValue.serverTimestamp(),
+            data: date.toLocaleDateString("pt-BR"),
             userId: req.body.userId,
             habilidades: {
                 forca: req.body.forca,
