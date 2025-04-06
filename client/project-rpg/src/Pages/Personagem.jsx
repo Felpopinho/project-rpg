@@ -8,6 +8,7 @@ export function Personagem(props){
     const navigate = useNavigate()
 
     const navFicha = (pers) =>{
+        localStorage.setItem("personagem", JSON.stringify(pers))
         props.setActualPers(pers)
         navigate("/ficha")
     }

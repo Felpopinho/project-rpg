@@ -8,7 +8,7 @@ import { Ficha } from './Pages/Ficha.jsx'
 import axios from "axios"
 import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import { createTheme, useColorScheme } from '@mui/material/styles';
-import { purple } from '@mui/material/colors';
+import { purple, red } from '@mui/material/colors';
 
 const modo = createTheme({
   palette: {
@@ -18,6 +18,9 @@ const modo = createTheme({
     secondary: {
       main: '#f44336',
     },
+    red: {
+      main: red["400"]
+    }
   },
   colorSchemes:{
     dark:true
@@ -78,7 +81,7 @@ function App() {
     try {
         await axios.get("https://api.open5e.com/v1/classes/").then(res =>{
             setClasses(res.data)
-
+            console.log(res.data)
         })
     } catch (error) {
         console.log(error)
@@ -125,7 +128,7 @@ function App() {
           <Route path={`/signin`} element={<Signin setUser={setUser}/>}/>
           <Route path={`/home/*`} element={<Home user={user} personagens={personagens} setPersonagens={setPersonagens} setActualPers={setActualPers}/>}/>
           <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser} classes={classes} races={races} backgrounds={backgrounds}/>}/>
-          <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} />}/>
+          <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} classes={classes} races={races} backgrounds={backgrounds} setActualPers={setActualPers}/>}/>
         </Routes>
       </HashRouter>
     </div>

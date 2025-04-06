@@ -27,6 +27,8 @@ export function Home(props){
             navigate("/")
         } else{
             setUsername(props.user[0].nome)
+            props.setActualPers("")
+            localStorage.removeItem("personagem")
             return
         }
     }

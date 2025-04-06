@@ -56,6 +56,36 @@ export const addPersonagem = async (req, res) =>{
                 personalidade:req.body.personalidade,
                 ideais:req.body.ideais,
                 vinculos:req.body.vinculos,
+            },
+            pericias: {
+                acrobatics: ["",false],
+                animalhandling: ["",false],
+                arcana: ["",false],
+                athletics: ["",false],
+                deception: ["",false],
+                history: ["",false],
+                insight: ["",false],
+                intimidation: ["",false],
+                investigation: ["",false],
+                medicine: ["",false],
+                nature: ["",false],
+                perception: ["",false],
+                performance: ["",false],
+                persuasion: ["",false],
+                religion: ["",false],
+                sleightofhand: ["",false],
+                stealth: ["",false],
+                survival: ["",false],
+            },
+            status: {
+                ca: 10,
+                iniciativa: 0,
+                deslocamento: 9,
+                pv: 0,
+                pvatual: 0,
+                dadovida: 0,
+                dadovidaatual: 0,
+                salvaguarda: [0, 0]
             }
         }
 
