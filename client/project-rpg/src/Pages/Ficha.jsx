@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, FormControlLabel, FormGroup, Input, Slider, LinearProgress, FormHelperText } from '@mui/material'
 import axios from 'axios'
 import { red } from '@mui/material/colors'
+import { baseURL } from '../App'
 
 export function Ficha(props){
 
@@ -17,6 +18,23 @@ export function Ficha(props){
             return navigate("/home")
         }
     }
+
+    const putPersonagem = async () =>{
+        try {
+            await axios.put(baseURL+"/personagens/update", {
+                id: props.pers.uid,
+                personagem: props.pers
+            }).then(res =>{
+                console.log(res.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(()=>{
+        putPersonagem()
+    }, [props.pers])
 
     const [skills, setSkills] = useState("")
 
