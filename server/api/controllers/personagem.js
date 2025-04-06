@@ -54,6 +54,8 @@ export const addPersonagem = async (req, res) =>{
                 idade:req.body.idade,
                 peso:req.body.peso,
                 aparencia:req.body.aparencia,
+                sabpassiva: "",
+                intupassiva: ""
             },
             mentalidade: {
                 alinhamento:req.body.alinhamento,
