@@ -107,3 +107,12 @@ export const addPersonagem = async (req, res) =>{
         return res.status(500).json(error)
     }
 }
+
+export const updatePersonagem = async (req, res) =>{
+    const values = {
+        id: req.body.id,
+        personagem: req.body.personagem
+    }
+
+    await db.collection("personagens").doc(values.id).update(values.personagem)
+}
