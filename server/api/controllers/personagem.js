@@ -86,6 +86,12 @@ export const addPersonagem = async (req, res) =>{
                 dadovida: 0,
                 dadovidaatual: 0,
                 salvaguarda: [0, 0]
+            },
+            proficiencias:{
+                armas: "",
+                armaduras: "",
+                idiomas: "",
+                ferramentas: "",
             }
         }
 
