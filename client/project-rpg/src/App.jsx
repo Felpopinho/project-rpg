@@ -7,13 +7,14 @@ import { FormPersonagem } from './Pages/FormPersonagem.jsx'
 import { Ficha } from './Pages/Ficha.jsx'
 import axios from "axios"
 import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
-import { createTheme, useColorScheme } from '@mui/material/styles';
+import { createTheme, useColorScheme, alpha } from '@mui/material/styles';
 import { purple, red } from '@mui/material/colors';
 
 const modo = createTheme({
   palette: {
+    mode: localStorage.getItem("mui-mode"),
     primary: {
-      main: purple[500],
+      main: purple[400],
     },
     secondary: {
       main: '#f44336',

@@ -91,7 +91,8 @@ export const addPersonagem = async (req, res) =>{
                 pvatual: 0,
                 dadovida: 0,
                 dadovidaatual: 0,
-                salvaguarda: [0, 0]
+                salvaguarda: [0, 0],
+                experiencia: 0
             },
             proficiencias:{
                 armas: "",

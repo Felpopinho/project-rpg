@@ -98,7 +98,19 @@ export function Ficha(props){
     }
 
     const setNewValues = (e) =>{
-        props.pers[e.target.name][e.target.id] = e.target.value
+        let nValue;
+        if(Number(e.target.value)===true){
+            nValue = Number(e.target.value)
+        }else{
+            nValue = e.target.value
+        }
+        props.setActualPers(prevState => ({
+            ...prevState,
+            [e.target.name]: {
+                ...props.pers[e.target.name],
+                [e.target.id]:nValue
+            }
+        }))
         console.log(props.pers[e.target.name][e.target.id])
     }
     const setNewChecked = (e) =>{
@@ -125,6 +137,56 @@ export function Ficha(props){
         
     }
 
+    const [nivel, setNivel] = useState(0)
+
+    const setarNivel = () =>{
+        if(props.pers.status.experiencia < 300){
+            setNivel(1)
+        } else if(props.pers.status.experiencia < 900){
+            setNivel(2)
+        } else if(props.pers.status.experiencia < 2700){
+            setNivel(3)
+        } else if(props.pers.status.experiencia < 6500){
+            setNivel(4)
+        } else if(props.pers.status.experiencia < 14000){
+            setNivel(5)
+        } else if(props.pers.status.experiencia < 23000){
+            setNivel(6)
+        } else if(props.pers.status.experiencia < 34000){
+            setNivel(7)
+        } else if(props.pers.status.experiencia < 48000){
+            setNivel(8)
+        } else if(props.pers.status.experiencia < 64000){
+            setNivel(9)
+        } else if(props.pers.status.experiencia < 85000){
+            setNivel(10)
+        } else if(props.pers.status.experiencia < 10000){
+            setNivel(11)
+        } else if(props.pers.status.experiencia < 120000){
+            setNivel(12)
+        } else if(props.pers.status.experiencia < 140000){
+            setNivel(13)
+        } else if(props.pers.status.experiencia < 165000){
+            setNivel(14)
+        } else if(props.pers.status.experiencia < 195000){
+            setNivel(15)
+        } else if(props.pers.status.experiencia < 225000){
+            setNivel(16)
+        } else if(props.pers.status.experiencia < 265000){
+            setNivel(17)
+        } else if(props.pers.status.experiencia < 305000){
+            setNivel(18)
+        } else if(props.pers.status.experiencia < 355000){
+            setNivel(19)
+        } else{
+            setNivel(20)
+        }
+    }
+
+    useEffect(()=>{
+        setarNivel()
+    }, [props.pers.status.experiencia])
+
     useEffect(()=>{
         props.pers === "" ? "" : setModificadores()
     }, [props.pers])
@@ -137,34 +199,63 @@ export function Ficha(props){
     const arrSkills = ["forca","destreza","constituicao","inteligencia","sabedoria","carisma"]
 
     return (<>
-        {props.pers !== "" ? <div className='w-1/1 p-15'>
-            <div className='flex gap-x-20 h-[10%]'>
-                <div className='w-25 h-25 overflow-hidden'>
-                    <img className='' src='https://orbedosdragoes.com/wp-content/uploads/2017/06/DD5-Guerreiro_1.jpg'/>
+        {props.pers !== "" ? <div className='w-1/1 p-10'>
+            <div className='p-5 rounded-xl bg-gray-300 flex gap-x-5 dark:bg-gray-950'>
+                <div className='grid grid-cols-[auto_auto_auto] gap-4 justify-items-start p-3 items-center font-bold text-lg bg-gray-200 rounded-lg dark:bg-gray-800'>
+                    <div className='col-span-3 grid grid-cols-[100px_auto] gap-5 w-1/1 rounded-lg overflow-hidden'>
+                        <div className='w-[100px] h-25 overflow-hidden rounded-lg'>
+                            <img className='' src='https://orbedosdragoes.com/wp-content/uploads/2017/06/DD5-Guerreiro_1.jpg'/>
+                        </div>
+                        <Input  sx={{fontSize: "2rem", height: "100%"}} variant="filled" size='normal' className='text-xl' fullWidth defaultValue={props.pers.identidade.nome}/>
+                    </div>
+                    <div className='rounded-lg overflow-hidden'>
+                        <TextField label="Jogador" variant="filled" size='small' className='' defaultValue={props.pers.identidade.jogador}/>
+                    </div> 
+                    <div className='rounded-lg overflow-hidden'>
+                        <TextField label="Classe" variant="filled" size='small' className='' defaultValue={props.pers.cra.classe}/>
+                    </div>
+                    <div className='rounded-lg overflow-hidden'>
+                        <TextField label="Raça" variant="filled" size='small' className='' defaultValue={props.pers.cra.raca}/>
+                    </div>
+                    <div className='rounded-lg overflow-hidden'>
+                        <TextField label="Alinhamento" variant="filled" size='small' className='' defaultValue={props.pers.mentalidade.alinhamento}/>
+                    </div>
+                    <div className='rounded-lg overflow-hidden'>
+                        <TextField label="Idade" variant="filled" size='small' className='' defaultValue={props.pers.caracteristicas.peso}/>
+                    </div>
+                    <div className='rounded-lg overflow-hidden'>
+                        <TextField label="Peso" variant="filled" size='small' className='' defaultValue={props.pers.caracteristicas.idade}/>
+                    </div>
                 </div>
-                <div className='grid grid-cols-3 justify-items-start items-center font-bold text-lg'>
-                    <h1 className='text-black text-center dark:text-white'>Nome: <span className='font-light'>{props.pers.identidade.nome}</span></h1> 
-                    <h1 className='text-black text-center dark:text-white'>Jogador: <span className='font-light'>{props.pers.identidade.jogador}</span></h1> 
-                    <p className='text-black dark:text-white'>Classe: <span className='font-light'>{props.pers.cra.classe}</span></p>
-                    <p className='text-black dark:text-white'>Raça: <span className='font-light'>{props.pers.cra.raca}</span></p>
-                    <p className='text-black dark:text-white'>Alinhamento: <span className='font-light'>{props.pers.mentalidade.alinhamento}</span></p>
-                    <p className='text-black dark:text-white'>Pontos de experiencia: <span className='font-light'>{"0"}</span></p>
+                <div className='grid grid-cols-[auto_auto] gap-5 bg-gray-200 rounded-lg p-3 dark:bg-gray-800'>
+                    <div>
+                        <TextField variant="filled" defaultValue={props.pers.status.experiencia} label="Pontos de experiência"/>
+                    </div>
+                    <div>
+                        <TextField variant="filled" defaultValue={nivel} label="Nivel"/>
+                    </div>
+                    <div className='col-span-2 flex justify-between items-center'>
+                        <IconButton><Icon>chevron_left</Icon></IconButton>
+                        <TextField variant="filled" fullWidth size='small' label="Pontos"/>
+                        <IconButton><Icon>chevron_right</Icon></IconButton>
+                    </div>
+                    <FormHelperText className='col-span-2 self-end'>Coloque o numero de pontos e clique em alguma seta</FormHelperText>
                 </div>
             </div>
             <Divider sx={{ margin: "2% 0" }}/>
             <div className='flex justify-between gap-x-5'>
-                <div className='grid h-1/1 grid-rows-6 w-1/10 gap-15 pt-10 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-200 dark:bg-gray-950'>
+                <div className='grid h-1/1 grid-rows-6 w-1/10 gap-15 pt-10 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-300 dark:bg-gray-950'>
                     {arrSkills.map(skill =>(
                         <div key={skill} className='flex w-30 h-20 flex-col justify-center items-center bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white'>
-                            <h1 className='text-center text-black dark:text-white capitalize'>{skill}</h1>
+                            <h1 className='text-center  capitalize'>{skill}</h1>
                             <div className='h-12 flex flex-col justify-between items-center relative '>
-                                <input value={skillMvalue[skill]} name="" id={`${skill}M`} readOnly className='h-10 text-center text-2xl text-black dark:text-white focus:border-0 outline-0 '/>                
-                                <input value={props.pers.habilidades[skill]} type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-16 h-8 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100 text-black dark:text-white dark:bg-gray-800 focus:border-0'/>                
+                                <input value={skillMvalue[skill]} name="" id={`${skill}M`} readOnly className='h-10 text-center text-2xl  focus:border-0 outline-0 '/>                
+                                <input value={props.pers.habilidades[skill]} type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-16 h-8 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100  dark:bg-gray-800 focus:border-0'/>                
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className='grid grid-cols-1 h-1/1 p-10 w-2/10 rounded-xl bg-gray-200 dark:bg-gray-950'>
+                <div className='grid grid-cols-1 h-1/1 p-10 w-2/10 rounded-xl bg-gray-300 dark:bg-gray-950'>
                     <div className='flex justify-between h-10 items-center gap-x-5'>
                         <h1 className='text-xs'>Dado</h1>
                         <h1 className='text-xs'>Proficiencia</h1>
@@ -180,32 +271,27 @@ export function Ficha(props){
                         </div>
                     ))}
                 </div>
-                <div className='w-3/10 bg-gray-200 h-1/1 p-7 rounded-xl text-sm dark:bg-gray-950 '>
-                    <div className='grid grid-cols-6 h-1/2 grid-rows-[100px_180px_150px] gap-3 mb-5 dark:bg-gray-950'>
-                        <div className='col-span-2 p-5 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                            <h1 className='w-1/1'>CA</h1>
-                            <Input fullWidth value={props.pers.status.ca} type='number' variant='standard'/>
+                <div className='w-3/10 bg-gray-300 h-1/1 p-7 rounded-xl text-sm dark:bg-gray-950 '>
+                    <div className='grid grid-cols-6 h-1/2 grid-rows-[auto_auto_auto] gap-3 mb-5 dark:bg-gray-950'>
+                        <div className='col-span-2 overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                            <TextField fullWidth variant="filled" label="CA" name="status" id="ca" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.ca} type='number'/>
                         </div>
-                        <div className='col-span-2 p-5 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                            <h1 className='w-1/1'>Iniciativa</h1>
-                            <Input fullWidth value={props.pers.status.iniciativa} type='number' variant='standard'/>
+                        <div className='col-span-2 overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                            <TextField fullWidth variant="filled" label="Iniciativa" name="status" id="iniciativa" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.iniciativa} type='number'/>
                         </div>
-                        <div className='col-span-2 p-5 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                            <h1 className='w-1/1'>Deslocamento</h1>
-                            <Input fullWidth value={props.pers.status.deslocamento} type='number' variant='standard'/>
+                        <div className='col-span-2 overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                            <TextField fullWidth variant="filled" label="Deslocamento" name="status" id="deslocamento" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.deslocamento} type='number'/>
                         </div>
                         <div className='col-span-6 p-5 gap-1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                             <h1 className='w-1/1 text-center'>Pontos de vida</h1>
                             <div className="flex flex-col w-1/1 gap-1">
                                 <div className='flex w-1/1 h-10 items-stretch items-center justify-center relative'>
-                                    
                                     <LinearProgress color='red' variant="determinate" value={life} sx={{width: "100%", height: "100%", backgroundColor: props.pers.status.pvatual >= props.pers.status.pv ? "#ef5350" : "#2f1a1a"}}/>
-                                    
                                     <h1 className='absolute self-center text-white'>{props.pers.status.pvatual}/{props.pers.status.pv}</h1>
                                 </div>
                                 <div className="w-1/1 flex">
                                     <IconButton onClick={()=>{handleLife(0)}}><Icon>chevron_left</Icon></IconButton>
-                                    <TextField variant="filled" margin="small" fullWidth label="Pontos" value={pontosVida} onChange={(e)=>{setPontosVida(e.target.value)}} type='number'/>
+                                    <TextField variant="filled" margin="small" size="small" fullWidth label="Pontos" value={pontosVida} onChange={(e)=>{setPontosVida(e.target.value)}} type='number'/>
                                     <IconButton onClick={()=>{handleLife(1)}}><Icon>chevron_right</Icon></IconButton>
                                 </div>
                                 <FormHelperText>Coloque um numero de pontos e clique em alguma seta</FormHelperText>
@@ -225,13 +311,13 @@ export function Ficha(props){
                             <div className='flex items-center'>
                                 <h1 className='grow'>Sucessos</h1>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] > 1} name="0" id='suc-1' checked={props.pers.status.salvaguarda[0] > 0}/>
-                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] <= 0} name="0" id='suc-2' checked={props.pers.status.salvaguarda[0] > 1}/>
-                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] <= 1} name="0" id='suc-3' checked={props.pers.status.salvaguarda[0] > 2}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] < 1 || props.pers.status.salvaguarda[0] >= 3} name="0" id='suc-2' checked={props.pers.status.salvaguarda[0] > 1}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] < 2} name="0" id='suc-3' checked={props.pers.status.salvaguarda[0] > 2}/>
                             </div>
                             <div className='flex items-center'>
                                 <h1 className='grow'>Falhas</h1>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] > 1} name="1" id='fal-1' checked={props.pers.status.salvaguarda[1] > 0}/>
-                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] < 1} name="1" id='fal-2' checked={props.pers.status.salvaguarda[1] > 1}/>
+                                <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] < 1 || props.pers.status.salvaguarda[1] >= 3} name="1" id='fal-2' checked={props.pers.status.salvaguarda[1] > 1}/>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] < 2} name="1" id='fal-3' checked={props.pers.status.salvaguarda[1] > 2}/>
                             </div>
                             <FormHelperText>Salvaguarda contra a morte</FormHelperText>
@@ -239,14 +325,14 @@ export function Ficha(props){
                     </div>
                     <div className="h-1/2 rounded-xl flex flex-col gap-4 dark:bg-gray-950">
                         <div className="flex gap-2">
-                            <div className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800">
-                                <TextField label="Inspiração" name="status" id="inspiracao" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.inspiracao}/>
+                            <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
+                                <TextField variant="filled" label="Inspiração" name="status" id="inspiracao" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.inspiracao}/>
                             </div>
-                            <div className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800">
-                                <TextField label="Sabedoria p." name="caracteristicas" id="sabpassiva" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.sabpassiva}/>
+                            <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
+                                <TextField variant="filled" label="Sabedoria p." name="caracteristicas" id="sabpassiva" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.sabpassiva}/>
                             </div>
-                            <div className="p-3 rounded-xl bg-gray-100 dark:bg-gray-800    ">
-                                <TextField label="Intuição p." name="caracteristicas" id="intupassiva" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.intupassiva}/>
+                            <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800    ">
+                                <TextField variant="filled" label="Intuição p." name="caracteristicas" id="intupassiva" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.intupassiva}/>
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
@@ -266,21 +352,21 @@ export function Ficha(props){
                         </div>
                     </div>
                 </div>
-                <div className='grid grid-rows-4 gap-y-5 p-5 h-1/1 w-4/10 rounded-xl bg-gray-200 dark:bg-gray-950'>
-                    <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" id='personalidade' name='mentalidade' label="Personalidade" multiline rows={3} defaultValue={props.pers.mentalidade.personalidade} onChange={(e)=>{setNewValues(e)}}/>
+                <div className='grid grid-rows-4 gap-y-5 p-5 h-1/1 w-4/10 rounded-xl bg-gray-300 dark:bg-gray-950'>
+                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="filled" id='personalidade' name='mentalidade' label="Personalidade" multiline minRows={3} maxRows={6} defaultValue={props.pers.mentalidade.personalidade} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
-                    <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" id='ideais' name='mentalidade' label="Ideais" multiline rows={3} defaultValue={props.pers.mentalidade.ideais} onChange={(e)=>{setNewValues(e)}}/>
+                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="filled" id='ideais' name='mentalidade' label="Ideais" multiline minRows={3} maxRows={6} defaultValue={props.pers.mentalidade.ideais} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
-                    <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" id='vinculos' name='mentalidade' label="Vinculos" multiline rows={3} defaultValue={props.pers.mentalidade.vinculos} onChange={(e)=>{setNewValues(e)}}/>
+                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="filled" id='vinculos' name='mentalidade' label="Vinculos" multiline minRows={3} maxRows={6} defaultValue={props.pers.mentalidade.vinculos} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
-                    <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" id='aparencia' name='caracteristicas' label="Caracteristicas" multiline rows={3} defaultValue={props.pers.caracteristicas.aparencia} onChange={(e)=>{setNewValues(e)}}/>
+                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="filled" id='aparencia' name='caracteristicas' label="Caracteristicas" multiline minRows={3} maxRows={6} defaultValue={props.pers.caracteristicas.aparencia} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
-                    <div className='h-1/1 w-1/1 flex flex-col justify-between relative rounded-xl p-5 dark:bg-gray-800'>
-                        <TextField variant="filled" id='historia' name='identidade' label="Historia" multiline rows={3} defaultValue={props.pers.identidade.historia} onChange={(e)=>{setNewValues(e)}}/>
+                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="filled" id='historia' name='identidade' label="Historia" multiline minRows={3} maxRows={6} defaultValue={props.pers.identidade.historia} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                 </div>
             </div>
