@@ -137,46 +137,47 @@ export function Ficha(props){
         
     }
 
-    const [nivel, setNivel] = useState(0)
+    const [nivel, setNivel] = useState(1)
 
     const setarNivel = () =>{
-        if(props.pers.status.experiencia < 300){
+        const xp = parseInt(props.pers.status.experiencia)
+        if(xp < 300){
             setNivel(1)
-        } else if(props.pers.status.experiencia < 900){
+        } else if(xp < 900){
             setNivel(2)
-        } else if(props.pers.status.experiencia < 2700){
+        } else if(xp < 2700){
             setNivel(3)
-        } else if(props.pers.status.experiencia < 6500){
+        } else if(xp < 6500){
             setNivel(4)
-        } else if(props.pers.status.experiencia < 14000){
+        } else if(xp < 14000){
             setNivel(5)
-        } else if(props.pers.status.experiencia < 23000){
+        } else if(xp < 23000){
             setNivel(6)
-        } else if(props.pers.status.experiencia < 34000){
+        } else if(xp < 34000){
             setNivel(7)
-        } else if(props.pers.status.experiencia < 48000){
+        } else if(xp < 48000){
             setNivel(8)
-        } else if(props.pers.status.experiencia < 64000){
+        } else if(xp < 64000){
             setNivel(9)
-        } else if(props.pers.status.experiencia < 85000){
+        } else if(xp < 85000){
             setNivel(10)
-        } else if(props.pers.status.experiencia < 10000){
+        } else if(xp < 10000){
             setNivel(11)
-        } else if(props.pers.status.experiencia < 120000){
+        } else if(xp < 120000){
             setNivel(12)
-        } else if(props.pers.status.experiencia < 140000){
+        } else if(xp < 140000){
             setNivel(13)
-        } else if(props.pers.status.experiencia < 165000){
+        } else if(xp < 165000){
             setNivel(14)
-        } else if(props.pers.status.experiencia < 195000){
+        } else if(xp < 195000){
             setNivel(15)
-        } else if(props.pers.status.experiencia < 225000){
+        } else if(xp < 225000){
             setNivel(16)
-        } else if(props.pers.status.experiencia < 265000){
+        } else if(xp < 265000){
             setNivel(17)
-        } else if(props.pers.status.experiencia < 305000){
+        } else if(xp < 305000){
             setNivel(18)
-        } else if(props.pers.status.experiencia < 355000){
+        } else if(xp < 355000){
             setNivel(19)
         } else{
             setNivel(20)
@@ -209,30 +210,30 @@ export function Ficha(props){
                         <Input  sx={{fontSize: "2rem", height: "100%"}} variant="filled" size='normal' className='text-xl' fullWidth defaultValue={props.pers.identidade.nome}/>
                     </div>
                     <div className='rounded-lg overflow-hidden'>
-                        <TextField label="Jogador" variant="filled" size='small' className='' defaultValue={props.pers.identidade.jogador}/>
+                        <TextField label="Jogador" variant="filled" size='small' name="identidade" id="jogador" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.identidade.jogador}/>
                     </div> 
                     <div className='rounded-lg overflow-hidden'>
-                        <TextField label="Classe" variant="filled" size='small' className='' defaultValue={props.pers.cra.classe}/>
+                        <TextField label="Classe" variant="filled" size='small' name="cra" id="classe" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.cra.classe}/>
                     </div>
                     <div className='rounded-lg overflow-hidden'>
-                        <TextField label="Raça" variant="filled" size='small' className='' defaultValue={props.pers.cra.raca}/>
+                        <TextField label="Raça" variant="filled" size='small' name="cra" id="raca" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.cra.raca}/>
                     </div>
                     <div className='rounded-lg overflow-hidden'>
-                        <TextField label="Alinhamento" variant="filled" size='small' className='' defaultValue={props.pers.mentalidade.alinhamento}/>
+                        <TextField label="Alinhamento" variant="filled" size='small' name="mentalidade" id="alinhamento" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.mentalidade.alinhamento}/>
                     </div>
                     <div className='rounded-lg overflow-hidden'>
-                        <TextField label="Idade" variant="filled" size='small' className='' defaultValue={props.pers.caracteristicas.peso}/>
+                        <TextField label="Idade" variant="filled" size='small' name="caracteristicas" id="peso" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.peso}/>
                     </div>
                     <div className='rounded-lg overflow-hidden'>
-                        <TextField label="Peso" variant="filled" size='small' className='' defaultValue={props.pers.caracteristicas.idade}/>
+                        <TextField label="Peso" variant="filled" size='small' name="caracteristicas" id="idade" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.idade}/>
                     </div>
                 </div>
                 <div className='grid grid-cols-[auto_auto] gap-5 bg-gray-200 rounded-lg p-3 dark:bg-gray-800'>
                     <div>
-                        <TextField variant="filled" defaultValue={props.pers.status.experiencia} label="Pontos de experiência"/>
+                        <TextField variant="filled" defaultValue={props.pers.status.experiencia} name="status" id="experiencia" onChange={(e)=>{setNewValues(e)}} label="Pontos de experiência"/>
                     </div>
                     <div>
-                        <TextField variant="filled" defaultValue={nivel} label="Nivel"/>
+                        <TextField variant="filled" value={nivel} slotProps={{input: {readOnly: true,},}} label="Nivel"/>
                     </div>
                     <div className='col-span-2 flex justify-between items-center'>
                         <IconButton><Icon>chevron_left</Icon></IconButton>
@@ -258,16 +259,16 @@ export function Ficha(props){
                 <div className='grid grid-cols-1 h-1/1 p-10 w-2/10 rounded-xl bg-gray-300 dark:bg-gray-950'>
                     <div className='flex justify-between h-10 items-center gap-x-5'>
                         <h1 className='text-xs'>Dado</h1>
-                        <h1 className='text-xs'>Proficiencia</h1>
                         <h1 className='text-xs grow-1'>Pericia</h1>
+                        <h1 className='text-xs'>Proficiencia</h1>
                         <h1 className='text-xs'>outros</h1>
                     </div>
                     {skills === "" ? "" : Array.from(skills.results).map(skill => (
-                        <div key={skill.name} className='flex h-10 items-center gap-x-5'>
+                        <div key={skill.name} className='grid grid-cols-[auto_1fr_auto_auto] h-10 items-center justify-between'>
                             <IconButton><Icon>casino</Icon></IconButton>
+                            <h1 className='text-xs'>{skill.name}</h1>
                             <Checkbox onChange={(e)=>{setNewProf(e)}} name={`per`} id={skill.index.replaceAll("-", "")} defaultChecked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
-                            <h1 className='grow text-xs'>{skill.name}</h1>
-                            <TextField value={props.pers.pericias[skill.index.replaceAll("-", "")][0]} variant='standard' size='small' sx={{width: "40px"}}/>
+                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill.index.replaceAll("-", "")[0]}`} onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.pericias[skill.index.replaceAll("-", "")][0]} variant='standard' size='small' type='number'/>
                         </div>
                     ))}
                 </div>
@@ -308,13 +309,13 @@ export function Ficha(props){
                             </div>
                         </div>
                         <div className='col-span-3 p-5 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                            <div className='flex items-center'>
+                            <div className='grid grid-cols-[1fr_auto_auto_auto] items-center justify-between' >
                                 <h1 className='grow'>Sucessos</h1>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] > 1} name="0" id='suc-1' checked={props.pers.status.salvaguarda[0] > 0}/>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] < 1 || props.pers.status.salvaguarda[0] >= 3} name="0" id='suc-2' checked={props.pers.status.salvaguarda[0] > 1}/>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] < 2} name="0" id='suc-3' checked={props.pers.status.salvaguarda[0] > 2}/>
                             </div>
-                            <div className='flex items-center'>
+                            <div className='grid grid-cols-[1fr_auto_auto_auto] grid-flow-row items-center justify-between'>
                                 <h1 className='grow'>Falhas</h1>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] > 1} name="1" id='fal-1' checked={props.pers.status.salvaguarda[1] > 0}/>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] < 1 || props.pers.status.salvaguarda[1] >= 3} name="1" id='fal-2' checked={props.pers.status.salvaguarda[1] > 1}/>
