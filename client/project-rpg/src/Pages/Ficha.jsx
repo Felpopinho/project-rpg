@@ -244,8 +244,8 @@ export function Ficha(props){
                 </div>
             </div>
             <Divider sx={{ margin: "2% 0" }}/>
-            <div className='flex justify-between gap-x-5'>
-                <div className='grid h-1/1 grid-rows-6 w-1/10 gap-15 pt-10 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-300 dark:bg-gray-950'>
+            <div className='grid grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)_minmax(442px,_1fr)] justify-between gap-x-5 max-2xl:grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)] max-2xl:grid-rows-[1fr_1fr] max-lg:grid-cols-[auto_minmax(272px,_auto)]'>
+                <div className='grid h-1/1 grid-rows-6 w-1/1 gap-15 pt-10 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-300 dark:bg-gray-950'>
                     {arrSkills.map(skill =>(
                         <div key={skill} className='flex w-30 h-20 flex-col justify-center items-center bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white'>
                             <h1 className='text-center  capitalize'>{skill}</h1>
@@ -256,7 +256,7 @@ export function Ficha(props){
                         </div>
                     ))}
                 </div>
-                <div className='grid grid-cols-1 h-1/1 p-10 w-2/10 rounded-xl bg-gray-300 dark:bg-gray-950'>
+                <div className='grid grid-cols-1 h-1/1 p-5 w-1/1 rounded-xl bg-gray-300 dark:bg-gray-950'>
                     <div className='flex justify-between h-10 items-center gap-x-5'>
                         <h1 className='text-xs'>Dado</h1>
                         <h1 className='text-xs grow-1'>Pericia</h1>
@@ -264,7 +264,7 @@ export function Ficha(props){
                         <h1 className='text-xs'>outros</h1>
                     </div>
                     {skills === "" ? "" : Array.from(skills.results).map(skill => (
-                        <div key={skill.name} className='grid grid-cols-[auto_1fr_auto_auto] h-10 items-center justify-between'>
+                        <div key={skill.name} className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] h-10 items-center justify-between'>
                             <IconButton><Icon>casino</Icon></IconButton>
                             <h1 className='text-xs'>{skill.name}</h1>
                             <Checkbox onChange={(e)=>{setNewProf(e)}} name={`per`} id={skill.index.replaceAll("-", "")} defaultChecked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
@@ -272,7 +272,7 @@ export function Ficha(props){
                         </div>
                     ))}
                 </div>
-                <div className='w-3/10 bg-gray-300 h-1/1 p-7 rounded-xl text-sm dark:bg-gray-950 '>
+                <div className='w-1/1 bg-gray-300 h-1/1 p-7 rounded-xl text-sm dark:bg-gray-950 '>
                     <div className='grid grid-cols-6 h-1/2 grid-rows-[auto_auto_auto] gap-3 mb-5 dark:bg-gray-950'>
                         <div className='col-span-2 overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                             <TextField fullWidth variant="filled" label="CA" name="status" id="ca" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.ca} type='number'/>
@@ -308,15 +308,15 @@ export function Ficha(props){
                                 <FormHelperText className=''>Dado de vida</FormHelperText>
                             </div>
                         </div>
-                        <div className='col-span-3 p-5 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                            <div className='grid grid-cols-[1fr_auto_auto_auto] items-center justify-between' >
-                                <h1 className='grow'>Sucessos</h1>
+                        <div className='col-span-3 p-3 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                            <div className='grid grid-cols-[auto_auto_auto] items-center justify-between' >
+                                <h1 className='col-span-3 text-center'>Sucessos</h1>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] > 1} name="0" id='suc-1' checked={props.pers.status.salvaguarda[0] > 0}/>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] < 1 || props.pers.status.salvaguarda[0] >= 3} name="0" id='suc-2' checked={props.pers.status.salvaguarda[0] > 1}/>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[0] < 2} name="0" id='suc-3' checked={props.pers.status.salvaguarda[0] > 2}/>
                             </div>
-                            <div className='grid grid-cols-[1fr_auto_auto_auto] grid-flow-row items-center justify-between'>
-                                <h1 className='grow'>Falhas</h1>
+                            <div className='grid grid-cols-[auto_auto_auto] items-center justify-between'>
+                                <h1 className='col-span-3 text-center'>Falhas</h1>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] > 1} name="1" id='fal-1' checked={props.pers.status.salvaguarda[1] > 0}/>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] < 1 || props.pers.status.salvaguarda[1] >= 3} name="1" id='fal-2' checked={props.pers.status.salvaguarda[1] > 1}/>
                                 <Checkbox onChange={(e)=>{setNewChecked(e)}} disabled={props.pers.status.salvaguarda[1] < 2} name="1" id='fal-3' checked={props.pers.status.salvaguarda[1] > 2}/>
@@ -353,7 +353,7 @@ export function Ficha(props){
                         </div>
                     </div>
                 </div>
-                <div className='grid grid-rows-4 gap-y-5 p-5 h-1/1 w-4/10 rounded-xl bg-gray-300 dark:bg-gray-950'>
+                <div className='grid grid-rows-4 gap-y-5 p-5 h-1/1 w-1/1 rounded-xl bg-gray-300 dark:bg-gray-950'>
                     <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
                         <TextField variant="filled" id='personalidade' name='mentalidade' label="Personalidade" multiline minRows={3} maxRows={6} defaultValue={props.pers.mentalidade.personalidade} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
