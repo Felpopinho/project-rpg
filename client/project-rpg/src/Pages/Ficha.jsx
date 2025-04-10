@@ -10,10 +10,10 @@ export function Ficha(props){
     const navigate = useNavigate()
 
     const verificarLogin = () =>{
-        if(props.user === ""){
+        if(localStorage.getItem("personagem").length){
+            props.setActualPers(JSON.parse(localStorage.getItem("personagem")))
+        }else if(props.user === ""){
             return navigate("/")
-        }else if(localStorage.getItem("personagem").length){
-            return props.setActualPers(JSON.parse(localStorage.getItem("personagem")))
         }else{
             return navigate("/home")
         }
@@ -95,6 +95,31 @@ export function Ficha(props){
             setLife(life+n2)
         }
         setPontosVida("")
+    }
+
+    const [pontosXp, setPontosXp] = useState("")
+
+    const handleXp = (num) =>{
+        const pontos = pontosXp.length ? Number(pontosXp) : 1
+
+        if(num === 0){
+            props.setActualPers(prevState =>({
+                ...prevState,
+                status: {
+                    ...props.pers.status,
+                    experiencia: props.pers.status.experiencia - pontos
+                }
+            }))
+        } else{
+            props.setActualPers(prevState =>({
+                ...prevState,
+                status: {
+                    ...props.pers.status,
+                    experiencia: props.pers.status.experiencia + pontos
+                }
+            }))
+        }
+        
     }
 
     const setNewValues = (e) =>{
@@ -185,11 +210,8 @@ export function Ficha(props){
     }
 
     useEffect(()=>{
-        setarNivel()
-    }, [props.pers.status.experiencia])
-
-    useEffect(()=>{
         props.pers === "" ? "" : setModificadores()
+        props.pers === "" ? "" : setarNivel()
     }, [props.pers])
 
     useEffect(()=>{
@@ -230,22 +252,22 @@ export function Ficha(props){
                 </div>
                 <div className='grid grid-cols-[auto_auto] gap-5 bg-gray-200 rounded-lg p-3 dark:bg-gray-800'>
                     <div>
-                        <TextField variant="filled" defaultValue={props.pers.status.experiencia} name="status" id="experiencia" onChange={(e)=>{setNewValues(e)}} label="Pontos de experiência"/>
+                        <TextField variant="filled" value={props.pers.status.experiencia} name="status" id="experiencia" label="Pontos de experiência" slotProps={{input: {readOnly: true,},}}/>
                     </div>
                     <div>
                         <TextField variant="filled" value={nivel} slotProps={{input: {readOnly: true,},}} label="Nivel"/>
                     </div>
                     <div className='col-span-2 flex justify-between items-center'>
-                        <IconButton><Icon>chevron_left</Icon></IconButton>
-                        <TextField variant="filled" fullWidth size='small' label="Pontos"/>
-                        <IconButton><Icon>chevron_right</Icon></IconButton>
+                        <IconButton onClick={()=>{handleXp(0)}}><Icon>remove</Icon></IconButton>
+                        <TextField variant="filled" fullWidth size='small' label="Pontos" value={pontosXp} onChange={(e)=>{setPontosXp(e.target.value)}}/>
+                        <IconButton onClick={()=>{handleXp(1)}}><Icon>add</Icon></IconButton>
                     </div>
-                    <FormHelperText className='col-span-2 self-end'>Coloque o numero de pontos e clique em alguma seta</FormHelperText>
+                    <FormHelperText className='col-span-2 self-end'>Valor padrão: 1</FormHelperText>
                 </div>
             </div>
             <Divider sx={{ margin: "2% 0" }}/>
-            <div className='grid grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)_minmax(442px,_1fr)] justify-between gap-x-5 max-2xl:grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)] max-2xl:grid-rows-[1fr_1fr] max-lg:grid-cols-[auto_minmax(272px,_auto)]'>
-                <div className='grid h-1/1 grid-rows-6 w-1/1 gap-15 pt-10 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-300 dark:bg-gray-950'>
+            <div className='@container grid grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)_minmax(442px,_1fr)] justify-between gap-x-5 max-2xl:flex flex-wrap gap-y-5'>
+                <div className='grid h-1/1 grid-rows-6 gap-15 pt-10 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-300 dark:bg-gray-950 max-2xl:flex max-2xl:w-1/1 max-2xl:h-auto max-2xl:order-1 @max-6xl:flex-col @max-6xl:w-auto @max-2xl:grid @max-2xl:grid-cols-[1fr_1fr_1fr] @max-2xl:grid-rows-[1fr_1fr]'>
                     {arrSkills.map(skill =>(
                         <div key={skill} className='flex w-30 h-20 flex-col justify-center items-center bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white'>
                             <h1 className='text-center  capitalize'>{skill}</h1>
@@ -256,15 +278,15 @@ export function Ficha(props){
                         </div>
                     ))}
                 </div>
-                <div className='grid grid-cols-1 h-1/1 p-5 w-1/1 rounded-xl bg-gray-300 dark:bg-gray-950'>
-                    <div className='flex justify-between h-10 items-center gap-x-5'>
+                <div className='flex flex-col justify-between h-1/1 p-5 rounded-xl bg-gray-300 max-2xl:order-2 max-2xl:h-1/1 @max-2xl:w-1/1 dark:bg-gray-950'>
+                    <div className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] items-center justify-between gap-x-3'>
                         <h1 className='text-xs'>Dado</h1>
                         <h1 className='text-xs grow-1'>Pericia</h1>
                         <h1 className='text-xs'>Proficiencia</h1>
                         <h1 className='text-xs'>outros</h1>
                     </div>
                     {skills === "" ? "" : Array.from(skills.results).map(skill => (
-                        <div key={skill.name} className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] h-10 items-center justify-between'>
+                        <div key={skill.name} className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] items-center justify-between'>
                             <IconButton><Icon>casino</Icon></IconButton>
                             <h1 className='text-xs'>{skill.name}</h1>
                             <Checkbox onChange={(e)=>{setNewProf(e)}} name={`per`} id={skill.index.replaceAll("-", "")} defaultChecked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
@@ -272,7 +294,7 @@ export function Ficha(props){
                         </div>
                     ))}
                 </div>
-                <div className='w-1/1 bg-gray-300 h-1/1 p-7 rounded-xl text-sm dark:bg-gray-950 '>
+                <div className='bg-gray-300 p-7 rounded-xl h-1/1 text-sm dark:bg-gray-950 max-2xl:order-3 max-2xl:min-w-442px @max-6xl:min-w-1/1'>
                     <div className='grid grid-cols-6 h-1/2 grid-rows-[auto_auto_auto] gap-3 mb-5 dark:bg-gray-950'>
                         <div className='col-span-2 overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                             <TextField fullWidth variant="filled" label="CA" name="status" id="ca" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.ca} type='number'/>
@@ -291,11 +313,11 @@ export function Ficha(props){
                                     <h1 className='absolute self-center text-white'>{props.pers.status.pvatual}/{props.pers.status.pv}</h1>
                                 </div>
                                 <div className="w-1/1 flex">
-                                    <IconButton onClick={()=>{handleLife(0)}}><Icon>chevron_left</Icon></IconButton>
+                                    <IconButton onClick={()=>{handleLife(0)}}><Icon>remove</Icon></IconButton>
                                     <TextField variant="filled" margin="small" size="small" fullWidth label="Pontos" value={pontosVida} onChange={(e)=>{setPontosVida(e.target.value)}} type='number'/>
-                                    <IconButton onClick={()=>{handleLife(1)}}><Icon>chevron_right</Icon></IconButton>
+                                    <IconButton onClick={()=>{handleLife(1)}}><Icon>add</Icon></IconButton>
                                 </div>
-                                <FormHelperText>Coloque um numero de pontos e clique em alguma seta</FormHelperText>
+                                <FormHelperText>Valor padrão: 1</FormHelperText>
                             </div>
                         </div>
                         <div className='col-span-3 p-5 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
@@ -353,7 +375,7 @@ export function Ficha(props){
                         </div>
                     </div>
                 </div>
-                <div className='grid grid-rows-4 gap-y-5 p-5 h-1/1 w-1/1 rounded-xl bg-gray-300 dark:bg-gray-950'>
+                <div className='grid grid-rows-4 gap-y-5 p-5 h-1/1 w-1/1 rounded-xl bg-gray-300 dark:bg-gray-950 max-2xl:order-4'>
                     <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
                         <TextField variant="filled" id='personalidade' name='mentalidade' label="Personalidade" multiline minRows={3} maxRows={6} defaultValue={props.pers.mentalidade.personalidade} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
