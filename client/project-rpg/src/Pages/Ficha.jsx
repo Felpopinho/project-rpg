@@ -66,6 +66,13 @@ export function Ficha(props){
             ...prevState,
             [name]: cModificador
         }))
+        props.setActualPers(prevState => ({
+            ...prevState,
+            habilidades: {
+                ...props.pers.habilidades,
+                [e.target.name]: Number(e.target.value)
+            }
+        }))
     }
 
     const [life, setLife] = useState(0)
@@ -163,7 +170,34 @@ export function Ficha(props){
                 }
             }))
         }  
-        
+    }
+
+    const setNewProf = (e, n) =>{
+        let nValue;
+        console.log(e.target.value)
+        if(n === 1){
+            if(e.target.value === "on"){
+                nValue = true
+            } else{
+                nValue = false
+            }
+            props.setActualPers(prevState => ({
+                ...prevState,
+                [e.target.name]: {
+                    ...props.pers[e.target.name],
+                    [e.target.id]: [props.pers[e.target.name][e.target.id][0], nValue, props.pers[e.target.name][e.target.id][2]]
+                }
+            }))
+        } else{
+            props.setActualPers(prevState => ({
+                ...prevState,
+                pericias: {
+                    ...props.pers.pericias,
+                    [e.target.id]: [Number(e.target.value), props.pers[e.target.name][e.target.id][1], props.pers[e.target.name][e.target.id][2]]
+                }
+            }))
+        }
+        console.log(props.pers.pericias[e.target.id])
     }
 
     const [nivel, setNivel] = useState(1)
@@ -279,7 +313,7 @@ export function Ficha(props){
                             <h1 className='text-center capitalize max-[584px]:text-sm'>{skill}</h1>
                             <div className='h-12 flex flex-col justify-between items-center relative max-[584px]:h-10'>
                                 <input value={skillMvalue[skill]} name="" id={`${skill}M`} readOnly className='h-7 text-center text-2xl w-1/1 focus:border-0 outline-0 max-[584px]:text-lg'/>                
-                                <input value={props.pers.habilidades[skill]} type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-16 h-8 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100  dark:bg-gray-800 focus:border-0'/>                
+                                <input defaultValue={props.pers.habilidades[skill]} type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-16 h-8 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100  dark:bg-gray-800 focus:border-0'/>                
                             </div>
                         </div>
                     ))}
@@ -295,8 +329,8 @@ export function Ficha(props){
                         <div key={skill.name} className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] items-center justify-between'>
                             <IconButton><Icon>casino</Icon></IconButton>
                             <h1 className='text-xs'>{skill.name}</h1>
-                            <Checkbox onChange={(e)=>{setNewProf(e)}} name={`per`} id={skill.index.replaceAll("-", "")} defaultChecked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
-                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill.index.replaceAll("-", "")[0]}`} onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.pericias[skill.index.replaceAll("-", "")][0]} variant='standard' size='small' type='number'/>
+                            <Checkbox onChange={(e)=>{setNewProf(e, 1)}} name="pericias" id={skill.index.replaceAll("-", "")} defaultChecked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
+                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill.index.replaceAll("-", "")[0]}`} onChange={(e)=>{setNewProf(e, 1)}} defaultValue={props.pers.pericias[skill.index.replaceAll("-", "")][0]} variant='standard' size='small' type='number'/>
                         </div>
                     ))}
                 </div>

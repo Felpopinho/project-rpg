@@ -119,8 +119,6 @@ export function FormPersonagem(props){
         }
     }
 
-    const [dataSet, setDataSet] = useState(false)
-
     const setVdata = async (n, e) =>{
         arrData[n].results.forEach(result =>{
             if (result.name === e.target.value){
@@ -145,6 +143,8 @@ export function FormPersonagem(props){
         const d = ref.current
 
         const rAlinhamento = (`${d.AlinhamentoUm.value} e ${d.AlinhamentoDois.value}`).toUpperCase()
+
+        console.log(classe)
 
         try {
             await axios.post(baseURL+"/personagens/add", {
