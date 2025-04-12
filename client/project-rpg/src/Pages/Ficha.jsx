@@ -293,7 +293,7 @@ export function Ficha(props){
                     ))}
                 </div>
                 <div className='bg-gray-300 p-7 rounded-xl h-1/1 gap-y-3 flex flex-col justify-between text-sm dark:bg-gray-950 max-[1536px]:order-3 max-[1536px]:min-w-442px max-[1216px]:min-w-1/1'>
-                    <div className='grid grid-cols-6 h-1/2 grid-rows-[auto_1fr_1fr] gap-3 dark:bg-gray-950'>
+                    <div className='grid grid-cols-6 grid-rows-[auto_1fr_1fr] gap-3 dark:bg-gray-950'>
                         <div className='flex col-span-6 gap-5 h-auto'>
                             <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                                 <TextField fullWidth label="CA" variant="filled" name="status" id="ca" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.ca} type='number'/>
@@ -346,7 +346,7 @@ export function Ficha(props){
                             <FormHelperText>Salvaguarda contra a morte</FormHelperText>
                         </div>
                     </div>
-                    <div className="h-1/2 rounded-xl flex flex-col justify-end gap-4 dark:bg-gray-950">
+                    <div className="flex flex-col justify-end gap-4 dark:bg-gray-950">
                         <div className="flex gap-2">
                             <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
                                 <TextField variant="filled" label="Inspiração" name="status" id="inspiracao" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.inspiracao}/>
