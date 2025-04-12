@@ -30,7 +30,7 @@ export const addPersonagem = async (req, res) =>{
 
     try {
         const values = {
-            data: timestamp,
+            data: dataString,
             userId: req.body.userId,
             habilidades: {
                 forca: req.body.forca,
