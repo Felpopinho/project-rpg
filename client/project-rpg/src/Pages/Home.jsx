@@ -47,6 +47,7 @@ export function Home(props){
                 }
                 props.setPersonagens(res.data)
                 setNpersonagens([res.data])
+                console.log("a")
             })
         } catch (error) {
             console.log(error)
@@ -92,7 +93,7 @@ export function Home(props){
         </div>
         <Divider sx={{margin: "2vh 0"}}/>
         <div className='grid grid-cols-2 gap-y-20 gap-x-20 p-10 max-lg:grid-cols-1'>
-            {nPersonagens.length ? <Personagem personagens={nPersonagens} setActualPers={props.setActualPers}/> : <h1 className='text-black text-3xl dark:text-white'>{avisoPers}</h1>}
+            {nPersonagens.length ? <Personagem personagens={nPersonagens} setActualPers={props.setActualPers} getPersonagens={getPersonagens}/> : <h1 className='text-black text-3xl dark:text-white'>{avisoPers}</h1>}
         </div>
     </div>)
 }

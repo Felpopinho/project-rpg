@@ -25,8 +25,10 @@ export function Personagem(props){
         setAnchorEl(null);
         if(e === "delete"){
             deletarPersonagem(id)
-        } else{
+        } else if(e === "delete"){
             alterarImagem()
+        } else{
+            return
         }
     }
 
@@ -36,6 +38,7 @@ export function Personagem(props){
                 id: id
             }).then(res=>{
                 console.log(res.data)
+                props.getPersonagens()
             })
         } catch (error) {
             console.log(error)
