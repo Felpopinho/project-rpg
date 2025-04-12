@@ -21,7 +21,7 @@ export function Ficha(props){
 
     const putPersonagem = async () =>{
         try {
-            await axios.put(baseURL+"/personagens/update", {
+            await axios.post(baseURL+"/personagens/update", {
                 id: props.pers.uid,
                 personagem: props.pers
             }).then(res =>{
@@ -68,8 +68,14 @@ export function Ficha(props){
         }))
     }
 
-    const [life, setLife] = useState(100)
+    const [life, setLife] = useState(0)
     const [pontosVida, setPontosVida] = useState("")
+
+    const setarPv = () =>{
+        const n = 100/props.pers.status.pv
+        const n2 = n*props.pers.status.pvatual
+        setLife(n2)
+    }
 
     const handleLife = (num) =>{
         const pontos = pontosVida.length ? Number(pontosVida) : 1
@@ -210,6 +216,8 @@ export function Ficha(props){
     useEffect(()=>{
         props.pers === "" ? "" : setModificadores()
         props.pers === "" ? "" : setarNivel()
+        props.pers === "" ? "" : setarPv()
+        props.pers === "" ? "" : putPersonagem()
     }, [props.pers])
 
     useEffect(()=>{
@@ -310,7 +318,7 @@ export function Ficha(props){
                             <div className="flex flex-col w-1/1 gap-1">
                                 <div className='flex w-1/1 h-10 items-stretch items-center justify-center relative'>
                                     <LinearProgress color='red' variant="determinate" value={life} sx={{width: "100%", height: "100%", backgroundColor: props.pers.status.pvatual >= props.pers.status.pv ? "#ef5350" : "#2f1a1a"}}/>
-                                    <h1 className='absolute self-center text-white'>{props.pers.status.pvatual}/{props.pers.status.pv}</h1>
+                                    <h1 className='absolute self-center text-white flex'><p className='w-10 text-end'>{props.pers.status.pvatual+" /"}</p><input type='number' defaultValue={props.pers.status.pv} name='status' id='pv' onChange={(e)=>{setNewValues(e)}} className='min-w-10 max-w-15 focus:outline-0 focus:b-0'/></h1>
                                 </div>
                                 <div className="w-1/1 flex">
                                     <IconButton onClick={()=>{handleLife(0)}}><Icon>remove</Icon></IconButton>

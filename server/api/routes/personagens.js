@@ -5,5 +5,5 @@ export const persRouter = express.Router()
 
 persRouter.post('/personagens', getPersonagens)
 persRouter.post('/personagens/add', addPersonagem)
-persRouter.put('/personagens', updatePersonagem)
+persRouter.post('/personagens/update', updatePersonagem)
 persRouter.post('/personagens/delete', deletePersonagem)

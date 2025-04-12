@@ -25,11 +25,10 @@ export const getPersonagens = (req, res) =>{
 export const addPersonagem = async (req, res) =>{
 
     const timestamp = admin.firestore.FieldValue.serverTimestamp()
-    const date = new Date(timestamp.seconds*1000)
 
     try {
         const values = {
-            data: date.toLocaleDateString("pt-BR"),
+            data: timestamp.toLocaleDateString("pt-BR"),
             userId: req.body.userId,
             habilidades: {
                 forca: req.body.forca,
@@ -54,8 +53,8 @@ export const addPersonagem = async (req, res) =>{
                 idade:req.body.idade,
                 peso:req.body.peso,
                 aparencia:req.body.aparencia,
-                sabpassiva: "",
-                intupassiva: ""
+                sabpassiva: req.body.sabpassiva,
+                intupassiva: req.body.intupassiva
             },
             mentalidade: {
                 alinhamento:req.body.alinhamento,
@@ -64,41 +63,41 @@ export const addPersonagem = async (req, res) =>{
                 vinculos:req.body.vinculos,
             },
             pericias: {
-                acrobatics: ["",false, "destreza"],
-                animalhandling: ["",false, "sabedoria"],
-                arcana: ["",false, "inteligencia"],
-                athletics: ["",false, "forca"],
-                deception: ["",false, "carisma"],
-                history: ["",false, "inteligenci"],
-                insight: ["",false, "sabedoria"],
-                intimidation: ["",false, "carisma"],
-                investigation: ["",false, "inteligencia"],
-                medicine: ["",false, "sabedoria"],
-                nature: ["",false, "inteligencia"],
-                perception: ["",false, "sabedoria"],
-                performance: ["",false, "carisma"],
-                persuasion: ["",false, "carisma"],
-                religion: ["",false, "inteligencia"],
-                sleightofhand: ["",false, "destreza"],
-                stealth: ["",false, "destreza"],
-                survival: ["",false, "sabedoria"],
+                acrobatics: [req.body.acrobatics[0], req.body.acrobatics[1], "destreza"],
+                animalhandling: [req.body.animalhandling[0], req.body.animalhandling[1], "sabedoria"],
+                arcana: [req.body.arcana[0], req.body.arcana[1], "inteligencia"],
+                athletics: [req.body.athletics[0], req.body.athletics[1], "forca"],
+                deception: [req.body.deception[0], req.body.deception[1], "carisma"],
+                history: [req.body.history[0], req.body.history[1], "inteligenci"],
+                insight: [req.body.insight[0], req.body.insight[1], "sabedoria"],
+                intimidation: [req.body.intimidation[0], req.body.intimidation[1], "carisma"],
+                investigation: [req.body.investigation[0], req.body.investigation[1], "inteligencia"],
+                medicine: [req.body.medicine[0], req.body.medicine[1], "sabedoria"],
+                nature: [req.body.nature[0], req.body.nature[1], "inteligencia"],
+                perception: [req.body.perception[0], req.body.perception[1], "sabedoria"],
+                performance: [req.body.performance[0], req.body.performance[1], "carisma"],
+                persuasion: [req.body.persuasion[0], req.body.persuasion[1], "carisma"],
+                religion: [req.body.religion[0], req.body.religion[1], "inteligencia"],
+                sleightofhand: [req.body.sleightofhand[0], req.body.sleightofhand[1], "destreza"],
+                stealth: [req.body.stealth[0], req.body.stealth[1], "destreza"],
+                survival: [req.body.survival[0], req.body.survival[1], "sabedoria"],
             },
             status: {
-                ca: 10,
-                iniciativa: 0,
-                deslocamento: 9,
-                pv: 0,
-                pvatual: 0,
-                dadovida: 0,
-                dadovidaatual: 0,
-                salvaguarda: [0, 0],
-                experiencia: 0
+                ca: req.body.ca,
+                iniciativa: req.body.iniciativa,
+                deslocamento: req.body.deslocamento,
+                pv: req.body.pv,
+                pvatual: req.body.pvatual,
+                dadovida: req.body.dadovida,
+                dadovidaatual: req.body.dadovidaatual,
+                salvaguarda: req.body.salvaguarda,
+                experiencia: req.body.experiencia
             },
             proficiencias:{
-                armas: "",
-                armaduras: "",
-                idiomas: "",
-                ferramentas: "",
+                armas: req.body.armas,
+                armaduras: req.body.armaduras,
+                idiomas: req.body.idiomas,
+                ferramentas: req.body.ferramentas,
             }
         }
 

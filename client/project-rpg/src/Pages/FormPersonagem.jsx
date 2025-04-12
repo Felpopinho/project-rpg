@@ -1,4 +1,4 @@
-import { Button, Divider, FormControl, LinearProgress, MenuItem, NativeSelect, Select, TextField, InputLabel } from '@mui/material'
+import { Button, Divider, FormControl, LinearProgress, MenuItem, NativeSelect, Select, TextField, InputLabel, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import axios from 'axios'
 import { Fragment, useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -144,8 +144,7 @@ export function FormPersonagem(props){
 
         const d = ref.current
 
-
-        const rAlinhamento = (d.AlinhamentoUm.value+d.AlinhamentoDois.value).toUpperCase()
+        const rAlinhamento = (`${d.AlinhamentoUm.value} e ${d.AlinhamentoDois.value}`).toUpperCase()
 
         try {
             await axios.post(baseURL+"/personagens/add", {
@@ -166,12 +165,44 @@ export function FormPersonagem(props){
                 idade: d.Idade.value,
                 peso: d.Peso.value,
                 aparencia: d.Aparencia.value,
+                sabpassiva: 0,
+                intupassiva: 0,
                 alinhamento: rAlinhamento,
                 personalidade: d.Personalidade.value,
                 ideais: d.Ideais.value,
-                vinculos: d.Vinculos.value
+                vinculos: d.Vinculos.value,
+                acrobatics: ["", false],
+                animalhandling: ["", false],
+                arcana: ["", false],
+                athletics: ["", false],
+                deception: ["", false],
+                history: ["", false],
+                insight: ["", false],
+                intimidation: ["", false],
+                investigation: ["", false],
+                medicine: ["", false],
+                nature: ["", false],
+                perception: ["", false],
+                performance: ["", false],
+                persuasion: ["", false],
+                religion: ["", false],
+                sleightofhand: ["", false],
+                stealth: ["", false],
+                survival: ["", false],
+                ca: 10,
+                iniciativa: objSkills.Destreza[0],
+                deslocamento: 9,
+                pv: 0,
+                pvatual: 0,
+                dadovida: 0,
+                dadovidaatual: 0,
+                salvaguarda: [0, 0],
+                experiencia: 0,
+                armas: classe.prof_weapons,
+                armaduras: classe.prof_armor,
+                idiomas: raca.traits[5].desc,
+                ferramentas: classe.prof_tool,
             }).then(res =>{
-                navigate("/home")
                 console.log(res.data)
             })
         } catch (error) {
@@ -181,6 +212,16 @@ export function FormPersonagem(props){
 
     const backHome = () =>{
         navigate("/home")
+    }
+
+    const [dialog, setDialog] = useState(false)
+
+    const closeDialog = ()=>{
+        setDialog(false)
+        navigate("/home")
+    }
+    const openDialog = () =>{
+        setDialog(true)
     }
 
     useEffect(()=>{
@@ -251,21 +292,21 @@ export function FormPersonagem(props){
                     <FormControl className='flex max-[670px]:col-span-2'>
                         <InputLabel>Alinhamento</InputLabel>
                         <Select required id='selectAlinhamentoUm' value={sAlinhamentoUm} label="Alinhamento" name='AlinhamentoUm' onChange={(e)=>{handleAlinhamento(e, 1)}}>
-                            <MenuItem value={"l"}>Leal</MenuItem>
-                            <MenuItem value={"b"}>Bom</MenuItem>
-                            <MenuItem value={"n"}>Neutro</MenuItem>
-                            <MenuItem value={"m"}>Mau</MenuItem>
-                            <MenuItem value={"c"}>Caotico</MenuItem>
+                            <MenuItem value={"Leal"}>Leal</MenuItem>
+                            <MenuItem value={"Bom"}>Bom</MenuItem>
+                            <MenuItem value={"Neutro"}>Neutro</MenuItem>
+                            <MenuItem value={"Mau"}>Mau</MenuItem>
+                            <MenuItem value={"Caotico"}>Caotico</MenuItem>
                         </Select>
                     </FormControl>
                     <FormControl className='flex max-[670px]:col-span-2'>
                         <InputLabel>Alinhamento</InputLabel>
                         <Select required value={sAlinhamentoDois} label="Alinhamento" name="AlinhamentoDois" onChange={(e)=>{handleAlinhamento(e, 2)}}>
-                            <MenuItem value={"L"}>Leal</MenuItem>
-                            <MenuItem value={"B"}>Bom</MenuItem>
-                            <MenuItem value={"N"}>Neutro</MenuItem>
-                            <MenuItem value={"M"}>Mau</MenuItem>
-                            <MenuItem value={"C"}>Caotico</MenuItem>
+                            <MenuItem value={"leal"}>Leal</MenuItem>
+                            <MenuItem value={"bom"}>Bom</MenuItem>
+                            <MenuItem value={"neutro"}>Neutro</MenuItem>
+                            <MenuItem value={"mau"}>Mau</MenuItem>
+                            <MenuItem value={"caotico"}>Caotico</MenuItem>
                         </Select>
                     </FormControl>
                     <TextField multiline rows={2} label="Aparência" name="Aparencia" className='col-span-4'></TextField>
@@ -276,12 +317,26 @@ export function FormPersonagem(props){
                     <TextField multiline rows={3} label="Objetivo" name="Objetivo" className='col-span-4'></TextField>
                 </div>
             </Fragment>)}
+
+
             <div className='flex p-5 w-2/3 justify-around'>
                 {passo === 1 ? <Button variant='outlined' disbaled={passo > 1} onClick={()=>{backHome()}}>Sair</Button> :  
                 <Button variant='outlined' disabled={passo === 1} onClick={()=>{proxPasso(-1)}}>Voltar</Button>}
                 
-                {passo === 3 ? <Button variant='contained' type='submit'>finalizar</Button>:
+                {passo === 3 ? <Button variant='contained' type='submit' onClick={openDialog}>finalizar</Button> :
                 <Button disabled={iVerificacao === false} variant='contained' onClick={()=>{proxPasso(1)}}>Proximo</Button>}
+
+                <Dialog open={dialog} onClose={closeDialog}>
+                    <DialogTitle>{"O seu personagem está sendo criado"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Lembre-se a conclusão da sua ficha ainda não está perfeita. Após a criação entre e edite as informações para deixa-la 100%
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={closeDialog}>Entendi</Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         
         </div>
