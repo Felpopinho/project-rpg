@@ -179,6 +179,10 @@ export function FormPersonagem(props){
         }
     }
 
+    const backHome = () =>{
+        navigate("/home")
+    }
+
     useEffect(()=>{
         loginSet === false ?  verificarLogin() : ""
     },[])
@@ -187,31 +191,31 @@ export function FormPersonagem(props){
     }, [classe, raca, antecedente])
 
     return(<div className='h-dvh dark:bg-gray'>
-        <h1 className='text-5xl text-bold p-5 text-black dark:text-white'>Criação de personagem</h1>
+        <h1 className='text-5xl text-bold p-5 text-black dark:text-white max-[570px]:text-4xl max-[440px]:text-3xl'>Criação de personagem</h1>
         <Divider sx={{margin: "2vh"}}/>
-        <form className="h-8/10 w-1/1" action="" ref={ref} onSubmit={(e)=>{finalizarPers(e)}}>
+        <form className="h-8/10 w-1/1 max-[760px]:h-65/100" action="" ref={ref} onSubmit={(e)=>{finalizarPers(e)}}>
         <div className='flex flex-col justify-between items-center w-1/1 h-full'>
-            <h1 className='text-3xl text-bold p-5 mb-4 w-full text-black dark:text-white'>{title}</h1>
+            <h1 className='text-3xl text-bold p-5 w-full text-black dark:text-white max-[570px]:text-2xl'>{title}</h1>
             {passo === 1 ? (<Fragment>
-                <div className='grid grid-cols-3 gap-20'>
+                <div className='grid grid-cols-[1fr_1fr_1fr] grid-rows-[1fr_1fr] w-1/1 h-auto p-10 gap-20 max-[760px]:grid-cols-[1fr_1fr] max-[760px]:grid-rows-[1fr_1fr_1fr] max-[760px]:gap-10 max-[440px]:gap-x-5'>
                 {arrSkills.map(skill =>(
-                    <div key={skill} className='flex flex-col justify-center items-center h-1/1 w-1/1 bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white'>
-                        <h1 className='text-center h-10% text-2xl m-4 text-black dark:text-white'>{skill}</h1>
-                        <div className='flex flex-col justify-between items-center relative h-25 w-1/1'>
-                            <input name="" id={`${skill}M`} readOnly className='w-20 h-2/3 top-0 absolute  text-center text-3xl text-black dark:text-white focus:border-0 outline-0 '/>                
-                            <input type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-15 h-15 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100 text-black dark:text-white dark:bg-gray-800 focus:border-0'/>                
+                    <div key={skill} className='flex flex-col justify-center items-center size-1/1 bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white'>
+                        <h1 className='text-center h-10% text-2xl m-4 text-black dark:text-white max-[760px]:text-base'>{skill}</h1>
+                        <div className='flex flex-col justify-between items-center relative h-25 w-1/1 max-[760px]:h-15'>
+                            <input name="" id={`${skill}M`} readOnly className='w-1/1 h-2/3 top-0 absolute  text-center text-3xl text-black dark:text-white focus:border-0 outline-0 max-[760px]:text-xl'/>                
+                            <input type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-15 h-15 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100 text-black dark:text-white dark:bg-gray-800 focus:border-0 max-[760px]:h-10'/>                
                         </div>
                     </div>
                 ))}
                 </div>
             </Fragment>) : passo === 2 ? (<Fragment>
-                <div className='grid grid-cols-3 gap-20 w-9/10 h-8/10'>
+                <div className='grid grid-cols-3 gap-20 w-9/10 h-8/10 max-[1100px]:flex max-[1100px]:flex-col max-[1100px]:h-auto'>
                     <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-100 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
                         <h1 className='text-2xl text-bold text-black dark:text-white'>Classe</h1>
                         <LinearProgress sx={selectClass === false ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
                         <div>
                             <NativeSelect className='w-full' sx={selectClass === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectClasses' label="Classes" onChange={(e)=>{setVdata(0,e)}}><option></option></NativeSelect>
-                            <div className='overflow-y-auto w-90% h-90 '>{ classe === "" ? "" :
+                            <div className='overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ classe === "" ? "" :
                                     <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{classe.desc.replaceAll("#","")}</span></h1>
                             }</div>
                         </div>
@@ -221,7 +225,7 @@ export function FormPersonagem(props){
                         <LinearProgress sx={selectRaces === false ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
                         <div>
                             <NativeSelect className='w-full' sx={selectRaces === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectRacas' label="Raças" onChange={(e)=>{setVdata(1,e)}}><option></option></NativeSelect>
-                            <div className='h-50 overflow-y-auto w-90% h-90'>{ raca === "" ? "" :
+                            <div className='h-50 overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ raca === "" ? "" :
                                     <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{raca.desc.replaceAll("#","")}</span></h1>
                             }</div>
                         </div>
@@ -232,32 +236,32 @@ export function FormPersonagem(props){
                         <LinearProgress sx={selectBackgrounds === false ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
                         <div>
                             <NativeSelect className='w-full' sx={selectBackgrounds === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectAntecedentes' label="Antecedentes" onChange={(e)=>{setVdata(2,e)}}><option></option></NativeSelect>
-                            <div className='h-50 overflow-y-auto w-90% h-90'>{ antecedente === "" ? "" :
+                            <div className='h-50 overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ antecedente === "" ? "" :
                                     <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{antecedente.desc.replaceAll("#","")}</span></h1>
                             }</div>
                         </div>
                     </div>
                 </div>
             </Fragment>) : (<Fragment>
-                <div className='grid grid-cols-4 gap-5'>
-                    <TextField required label="Nome" name="Nome" className='col-span-2'></TextField>
-                    <TextField required label="Jogador" name="Jogador" className='col-span-2'></TextField>
-                    <TextField label="Idade" name="Idade"></TextField>
-                    <TextField label="Peso" name="Peso"></TextField>
-                    <FormControl className='flex'>
+                <div className='grid grid-cols-[1fr_1fr_1fr_1fr] gap-5 p-10'>
+                    <TextField required label="Nome" name="Nome" className='col-span-2 max-[670px]:col-span-4'></TextField>
+                    <TextField required label="Jogador" name="Jogador" className='col-span-2 max-[670px]:col-span-4'></TextField>
+                    <TextField label="Idade" name="Idade" className='max-[670px]:col-span-2'></TextField>
+                    <TextField label="Peso" name="Peso" className='max-[670px]:col-span-2'></TextField>
+                    <FormControl className='flex max-[670px]:col-span-2'>
                         <InputLabel>Alinhamento</InputLabel>
                         <Select required id='selectAlinhamentoUm' value={sAlinhamentoUm} label="Alinhamento" name='AlinhamentoUm' onChange={(e)=>{handleAlinhamento(e, 1)}}>
-                            <MenuItem value={"o"}>Ordeiro</MenuItem>
+                            <MenuItem value={"l"}>Leal</MenuItem>
                             <MenuItem value={"b"}>Bom</MenuItem>
                             <MenuItem value={"n"}>Neutro</MenuItem>
                             <MenuItem value={"m"}>Mau</MenuItem>
                             <MenuItem value={"c"}>Caotico</MenuItem>
                         </Select>
                     </FormControl>
-                    <FormControl className='flex'>
+                    <FormControl className='flex max-[670px]:col-span-2'>
                         <InputLabel>Alinhamento</InputLabel>
                         <Select required value={sAlinhamentoDois} label="Alinhamento" name="AlinhamentoDois" onChange={(e)=>{handleAlinhamento(e, 2)}}>
-                            <MenuItem value={"O"}>Ordeiro</MenuItem>
+                            <MenuItem value={"L"}>Leal</MenuItem>
                             <MenuItem value={"B"}>Bom</MenuItem>
                             <MenuItem value={"N"}>Neutro</MenuItem>
                             <MenuItem value={"M"}>Mau</MenuItem>
@@ -273,7 +277,9 @@ export function FormPersonagem(props){
                 </div>
             </Fragment>)}
             <div className='flex p-5 w-2/3 justify-around'>
-                <Button variant='outlined' onClick={()=>{proxPasso(-1)}}>Voltar</Button>
+                {passo === 1 ? <Button variant='outlined' disbaled={passo > 1} onClick={()=>{backHome()}}>Sair</Button> :  
+                <Button variant='outlined' disabled={passo === 1} onClick={()=>{proxPasso(-1)}}>Voltar</Button>}
+                
                 {passo === 3 ? <Button variant='contained' type='submit'>finalizar</Button>:
                 <Button disabled={iVerificacao === false} variant='contained' onClick={()=>{proxPasso(1)}}>Proximo</Button>}
             </div>

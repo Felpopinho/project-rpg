@@ -103,7 +103,7 @@ export const addPersonagem = async (req, res) =>{
         }
 
         await db.collection("personagens").add(values)
-        return res.status(200).json("personagem criado com sucesso")
+        return res.status(200).json("Personagem criado com sucesso")
     } catch (error) {
         return res.status(500).json(error)
     }
@@ -117,8 +117,21 @@ export const updatePersonagem = async (req, res) =>{
         }
     
         await db.collection("personagens").doc(values.id).update(values.personagem)
-        return res.status(200).json("personagem atualizado com sucesso")
+        return res.status(200).json("Personagem atualizado com sucesso")
     } catch (error) {
         return res.status(500).json(error)
+    }
+}
+
+export const deletePersonagem = async (req,res) =>{
+    try {
+        const values = {
+            id: req.body.id
+        }
+
+        await db.collection("personagens").doc(values.id).delete()
+        return res.status(200).json("Personagem excluido com sucesso")
+    } catch (error) {
+        console.log(error)
     }
 }

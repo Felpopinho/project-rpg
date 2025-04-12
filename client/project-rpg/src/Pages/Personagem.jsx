@@ -1,7 +1,9 @@
-import { Button, Icon, IconButton, Divider } from '@mui/material'
+import { Button, Icon, IconButton, Divider, Menu, MenuItem } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useNavigate, HashRouter, Routes, Route } from 'react-router-dom'
 import { Ficha } from './Ficha'
+import axios from 'axios'
+import { baseURL } from '../App'
 
 export function Personagem(props){
 
@@ -11,6 +13,33 @@ export function Personagem(props){
         localStorage.setItem("personagem", JSON.stringify(pers))
         props.setActualPers(pers)
         navigate("/ficha")
+    }
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl)
+    const openMenu = (e) => {
+        setAnchorEl(e.currentTarget);
+      };
+
+    const closeMenu = (e) =>{
+        setAnchorEl(null);
+        if(e === "delete"){
+            deletarPersonagem()
+        } else{
+            alterarImagem()
+        }
+    }
+
+    const deletarPersonagem = async () =>{
+        try {
+            await axios.post(baseURL+"/personagens/delete", {
+                id: props.pers.uid
+            }).then(res=>{
+                console.log(res.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -31,8 +60,11 @@ export function Personagem(props){
         <div className='flex justify-between col-span-2'>
             <Button variant='outlined' onClick={()=>{navFicha(pers)}}>Ficha</Button>
             <div>
-                <IconButton><Icon>settings</Icon></IconButton>
-                <IconButton><Icon>delete</Icon></IconButton>
+                <IconButton onClick={openMenu}><Icon>settings</Icon></IconButton>
+                <Menu anchorEl={anchorEl} open={open} onClose={closeMenu} anchorOrigin={{vertical: 'top', horizontal: 'left',}} transformOrigin={{vertical: 'top',horizontal: 'left', }}>
+                    <MenuItem onClick={()=>{closeMenu("delete")}}><Icon sx={{marginRight: "5px"}}>delete</Icon>Apagar</MenuItem>
+                    <MenuItem onClick={()=>{closeMenu("image")}}><Icon sx={{marginRight: "5px"}}>image</Icon>Imagem</MenuItem>
+                </Menu>
             </div>
         </div>
         
