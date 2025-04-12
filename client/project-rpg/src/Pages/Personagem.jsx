@@ -21,19 +21,19 @@ export function Personagem(props){
         setAnchorEl(e.currentTarget);
       };
 
-    const closeMenu = (e) =>{
+    const closeMenu = (id, e) =>{
         setAnchorEl(null);
         if(e === "delete"){
-            deletarPersonagem()
+            deletarPersonagem(id)
         } else{
             alterarImagem()
         }
     }
 
-    const deletarPersonagem = async () =>{
+    const deletarPersonagem = async (id) =>{
         try {
             await axios.post(baseURL+"/personagens/delete", {
-                id: props.pers.uid
+                id: id
             }).then(res=>{
                 console.log(res.data)
             })
@@ -62,8 +62,8 @@ export function Personagem(props){
             <div>
                 <IconButton onClick={openMenu}><Icon>settings</Icon></IconButton>
                 <Menu anchorEl={anchorEl} open={open} onClose={closeMenu} anchorOrigin={{vertical: 'top', horizontal: 'left',}} transformOrigin={{vertical: 'top',horizontal: 'left', }}>
-                    <MenuItem onClick={()=>{closeMenu("delete")}}><Icon sx={{marginRight: "5px"}}>delete</Icon>Apagar</MenuItem>
-                    <MenuItem onClick={()=>{closeMenu("image")}}><Icon sx={{marginRight: "5px"}}>image</Icon>Imagem</MenuItem>
+                    <MenuItem onClick={()=>{closeMenu(pers.uid, "delete")}}><Icon sx={{marginRight: "5px"}}>delete</Icon>Apagar</MenuItem>
+                    <MenuItem onClick={()=>{closeMenu(pers.uid, "image")}}><Icon sx={{marginRight: "5px"}}>image</Icon>Imagem</MenuItem>
                 </Menu>
             </div>
         </div>
