@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, FormControlLabel, FormGroup, Input, Slider, LinearProgress, FormHelperText, ThemeProvider } from '@mui/material'
+import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, FormControl, InputLabel, FilledInput } from '@mui/material'
 import axios from 'axios'
 import { red } from '@mui/material/colors'
 import { baseURL } from '../App'
@@ -136,7 +136,6 @@ export function Ficha(props){
                 [e.target.id]:nValue
             }
         }))
-        console.log(props.pers[e.target.name][e.target.id])
     }
     const setNewChecked = (e) =>{
         const name = parseInt(e.target.name)
@@ -158,7 +157,6 @@ export function Ficha(props){
                 }
             }))
         }  
-        console.log(props.pers.status.salvaguarda[parseInt(e.target.name)])
         
     }
 
@@ -222,8 +220,8 @@ export function Ficha(props){
     const arrSkills = ["forca","destreza","constituicao","inteligencia","sabedoria","carisma"]
 
     return (<>
-        {props.pers !== "" ? <div className='w-1/1 p-10'>
-            <div className='p-5 rounded-xl bg-gray-300 flex gap-x-5 dark:bg-gray-950'>
+        {props.pers !== "" ? <div className='w-1/1 p-10 max-[584px]:p-5'>
+            <div className='p-5 rounded-xl bg-gray-300 flex gap-5 dark:bg-gray-950 max-[800px]:flex-col'>
                 <div className='grid grid-cols-[auto_auto_auto] gap-4 justify-items-start p-3 items-center font-bold text-lg bg-gray-200 rounded-lg dark:bg-gray-800'>
                     <div className='col-span-3 grid grid-cols-[100px_auto] gap-5 w-1/1 rounded-lg overflow-hidden'>
                         <div className='w-[100px] h-25 overflow-hidden rounded-lg'>
@@ -266,19 +264,19 @@ export function Ficha(props){
                 </div>
             </div>
             <Divider sx={{ margin: "2% 0" }}/>
-            <div className='@container grid grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)_minmax(442px,_1fr)] justify-between gap-x-5 max-2xl:flex flex-wrap gap-y-5'>
-                <div className='grid h-1/1 grid-rows-6 gap-15 pt-10 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-300 dark:bg-gray-950 max-2xl:flex max-2xl:w-1/1 max-2xl:h-auto max-2xl:order-1 @max-6xl:flex-col @max-6xl:w-auto @max-2xl:grid @max-2xl:grid-cols-[1fr_1fr_1fr] @max-2xl:grid-rows-[1fr_1fr]'>
+            <div className='grid grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)_minmax(442px,_1fr)] justify-between gap-x-5 max-[1536px]:flex flex-wrap gap-y-5'>
+                <div className='grid h-1/1 w-auto grid-rows-6 gap-15 pt-5 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-300 dark:bg-gray-950 max-[1536px]:flex max-[1536px]:w-1/1 max-[1536px]:h-auto max-[1536px]:order-1 max-[1216px]:flex-col max-[1216px]:w-auto max-[1216px]:max-w-auto max-[584px]:grid max-[584px]:grid-cols-[1fr_1fr_1fr] max-[584px]:grid-rows-[1fr_1fr] max-[584px]:w-1/1 max-[584px]:gap-y-10 max-[584px]:gap-x-4 max-[444px]:grid-cols-[1fr_1fr] max-[444px]:grid-rows-[1fr_1fr_1fr]'>
                     {arrSkills.map(skill =>(
-                        <div key={skill} className='flex w-30 h-20 flex-col justify-center items-center bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white'>
-                            <h1 className='text-center  capitalize'>{skill}</h1>
-                            <div className='h-12 flex flex-col justify-between items-center relative '>
-                                <input value={skillMvalue[skill]} name="" id={`${skill}M`} readOnly className='h-10 text-center text-2xl  focus:border-0 outline-0 '/>                
+                        <div key={skill} className='flex w-30 h-20 flex-col justify-center items-center bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white max-[584px]:w-25 max-[584px]:h-15 max-[584px]:place-self-center'>
+                            <h1 className='text-center capitalize max-[584px]:text-sm'>{skill}</h1>
+                            <div className='h-12 flex flex-col justify-between items-center relative max-[584px]:h-10'>
+                                <input value={skillMvalue[skill]} name="" id={`${skill}M`} readOnly className='h-7 text-center text-2xl w-1/1 focus:border-0 outline-0 max-[584px]:text-lg'/>                
                                 <input value={props.pers.habilidades[skill]} type="number" name={skill} onChange={(e)=>{setarHabilidade(e)}} className='w-16 h-8 -bottom-6 absolute outline-3 outline-purple-900 rounded-full text-center bg-gray-100  dark:bg-gray-800 focus:border-0'/>                
                             </div>
                         </div>
                     ))}
                 </div>
-                <div className='flex flex-col justify-between h-1/1 p-5 rounded-xl bg-gray-300 max-2xl:order-2 max-2xl:h-1/1 @max-2xl:w-1/1 dark:bg-gray-950'>
+                <div className='flex flex-col justify-between h-1/1 p-5 rounded-xl bg-gray-300 max-[1536px]:order-2 max-[1536px]:h-1/1 max-[584px]:w-1/1 dark:bg-gray-950'>
                     <div className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] items-center justify-between gap-x-3'>
                         <h1 className='text-xs'>Dado</h1>
                         <h1 className='text-xs grow-1'>Pericia</h1>
@@ -294,16 +292,18 @@ export function Ficha(props){
                         </div>
                     ))}
                 </div>
-                <div className='bg-gray-300 p-7 rounded-xl h-1/1 text-sm dark:bg-gray-950 max-2xl:order-3 max-2xl:min-w-442px @max-6xl:min-w-1/1'>
-                    <div className='grid grid-cols-6 h-1/2 grid-rows-[auto_auto_auto] gap-3 mb-5 dark:bg-gray-950'>
-                        <div className='col-span-2 overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                            <TextField fullWidth variant="filled" label="CA" name="status" id="ca" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.ca} type='number'/>
-                        </div>
-                        <div className='col-span-2 overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                            <TextField fullWidth variant="filled" label="Iniciativa" name="status" id="iniciativa" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.iniciativa} type='number'/>
-                        </div>
-                        <div className='col-span-2 overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                            <TextField fullWidth variant="filled" label="Deslocamento" name="status" id="deslocamento" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.deslocamento} type='number'/>
+                <div className='bg-gray-300 p-7 rounded-xl h-1/1 gap-y-3 flex flex-col justify-between text-sm dark:bg-gray-950 max-[1536px]:order-3 max-[1536px]:min-w-442px max-[1216px]:min-w-1/1'>
+                    <div className='grid grid-cols-6 h-1/2 grid-rows-[auto_1fr_1fr] gap-3 dark:bg-gray-950'>
+                        <div className='flex col-span-6 gap-5 h-auto'>
+                            <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                <TextField fullWidth label="CA" variant="filled" name="status" id="ca" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.ca} type='number'/>
+                            </div>
+                            <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                <TextField fullWidth variant="filled" label="Iniciativa" name="status" id="iniciativa" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.iniciativa} type='number'/>
+                            </div>
+                            <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                <TextField fullWidth variant="filled" label="Deslocamento" name="status" id="deslocamento" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.deslocamento} type='number'/>
+                            </div>
                         </div>
                         <div className='col-span-6 p-5 gap-1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                             <h1 className='w-1/1 text-center'>Pontos de vida</h1>
@@ -346,7 +346,7 @@ export function Ficha(props){
                             <FormHelperText>Salvaguarda contra a morte</FormHelperText>
                         </div>
                     </div>
-                    <div className="h-1/2 rounded-xl flex flex-col gap-4 dark:bg-gray-950">
+                    <div className="h-1/2 rounded-xl flex flex-col justify-end gap-4 dark:bg-gray-950">
                         <div className="flex gap-2">
                             <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
                                 <TextField variant="filled" label="Inspiração" name="status" id="inspiracao" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.inspiracao}/>
@@ -375,21 +375,21 @@ export function Ficha(props){
                         </div>
                     </div>
                 </div>
-                <div className='grid grid-rows-4 gap-y-5 p-5 h-1/1 w-1/1 rounded-xl bg-gray-300 dark:bg-gray-950 max-2xl:order-4'>
-                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
-                        <TextField variant="filled" id='personalidade' name='mentalidade' label="Personalidade" multiline minRows={3} maxRows={6} defaultValue={props.pers.mentalidade.personalidade} onChange={(e)=>{setNewValues(e)}}/>
+                <div className='grid grid-rows-[1fr_1fr_1fr_1fr_1fr] gap-y-5 p-5 w-1/1 rounded-xl bg-gray-300 dark:bg-gray-950 max-[1536px]:order-4'>
+                    <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="standard" id='personalidade' name='mentalidade' label="Personalidade" multiline minRows={1} maxRows={4} defaultValue={props.pers.mentalidade.personalidade} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
-                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
-                        <TextField variant="filled" id='ideais' name='mentalidade' label="Ideais" multiline minRows={3} maxRows={6} defaultValue={props.pers.mentalidade.ideais} onChange={(e)=>{setNewValues(e)}}/>
+                    <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="standard" id='ideais' name='mentalidade' label="Ideais" multiline minRows={1} maxRows={4} defaultValue={props.pers.mentalidade.ideais} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
-                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
-                        <TextField variant="filled" id='vinculos' name='mentalidade' label="Vinculos" multiline minRows={3} maxRows={6} defaultValue={props.pers.mentalidade.vinculos} onChange={(e)=>{setNewValues(e)}}/>
+                    <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="standard" id='vinculos' name='mentalidade' label="Vinculos" multiline minRows={1} maxRows={4} defaultValue={props.pers.mentalidade.vinculos} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
-                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
-                        <TextField variant="filled" id='aparencia' name='caracteristicas' label="Caracteristicas" multiline minRows={3} maxRows={6} defaultValue={props.pers.caracteristicas.aparencia} onChange={(e)=>{setNewValues(e)}}/>
+                    <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="standard" id='aparencia' name='caracteristicas' label="Caracteristicas" multiline minRows={1} maxRows={4} defaultValue={props.pers.caracteristicas.aparencia} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
-                    <div className='h-1/1 bg-gray-100 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
-                        <TextField variant="filled" id='historia' name='identidade' label="Historia" multiline minRows={3} maxRows={6} defaultValue={props.pers.identidade.historia} onChange={(e)=>{setNewValues(e)}}/>
+                    <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden dark:bg-gray-800'>
+                        <TextField variant="standard" id='historia' name='identidade' label="Historia" multiline minRows={1} maxRows={4} defaultValue={props.pers.identidade.historia} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                 </div>
             </div>
