@@ -78,10 +78,14 @@ function App() {
   const [races, setRaces] = useState("")
   const [backgrounds, setBackgrounds] = useState("")
 
+  const [formDisabled, setFormDisabled] = useState(0)
+
   const getClasses = async () =>{
     try {
         await axios.get("https://api.open5e.com/v1/classes/").then(res =>{
             setClasses(res.data)
+            setFormDisabled(formDisabled + 1)
+            console.log(res.data)
         })
     } catch (error) {
         console.log(error)
@@ -91,6 +95,7 @@ function App() {
       try {
           await axios.get("https://api.open5e.com/v2/races/").then(res =>{
               setRaces(res.data)
+              setFormDisabled(formDisabled + 1)
           })
       } catch (error) {
           console.log(error)
@@ -101,6 +106,7 @@ function App() {
       try {
           await axios.get("https://api.open5e.com/v2/backgrounds/").then(res =>{
               setBackgrounds(res.data)
+              setFormDisabled(formDisabled + 1)
           })
       } catch (error) {
           console.log(error)
@@ -110,10 +116,11 @@ function App() {
   useEffect(()=>{
     getUsers()
     getMode()
-    getClasses()
-    getRaces()
-    getBackgrounds()
+    classes === "" ? getClasses() : ""
+    races === "" ? getRaces() : ""
+    backgrounds === "" ? getBackgrounds() : ""
   }, [])
+
   useEffect(()=>{
     setLogin()
   }, [user])
@@ -126,7 +133,7 @@ function App() {
         <Routes>
           <Route path={`/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
           <Route path={`/signin`} element={<Signin setUser={setUser}/>}/>
-          <Route path={`/home/*`} element={<Home user={user} personagens={personagens} setPersonagens={setPersonagens} setActualPers={setActualPers}/>}/>
+          <Route path={`/home/*`} element={<Home user={user} personagens={personagens} setPersonagens={setPersonagens} formDisabled={formDisabled} setActualPers={setActualPers}/>}/>
           <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser} classes={classes} races={races} backgrounds={backgrounds}/>}/>
           <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} classes={classes} races={races} backgrounds={backgrounds} setActualPers={setActualPers}/>}/>
         </Routes>

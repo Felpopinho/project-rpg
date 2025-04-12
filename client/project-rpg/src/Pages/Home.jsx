@@ -88,12 +88,12 @@ export function Home(props){
             <h1 className='text-4xl text-black font-bold dark:text-white text-nowrap max-lg:col-start-1 max-md:text-3xl'>Fichas</h1>
             <TextField fullWidth label="Pesquisar personagens" className='max-lg:col-span-2' onChange={(e)=>{pesquisarPersonagens(e)}}></TextField>
             <div className='flex self-stretch max-lg:col-start-2 row-start-1 justify-self-end'>
-                <Button variant='contained' onClick={()=>{navigate("/form-personagem")}}><Icon>note_add</Icon></Button> 
+                <Button disabled={props.formDisabled >= 1 ? false : true} variant='contained' onClick={()=>{navigate("/form-personagem")}}><Icon>note_add</Icon></Button> 
             </div>
         </div>
         <Divider sx={{margin: "2vh 0"}}/>
         <div className='grid grid-cols-2 gap-y-20 gap-x-20 p-10 max-lg:grid-cols-1'>
-            {nPersonagens.length ? <Personagem personagens={nPersonagens} setActualPers={props.setActualPers} getPersonagens={getPersonagens}/> : <h1 className='text-black text-3xl dark:text-white'>{avisoPers}</h1>}
+            {nPersonagens.length ? <Personagem personagens={nPersonagens} setActualPers={props.setActualPers} getPersonagens={getPersonagens} avisoPers={avisoPers}/> : <h1 className='text-black text-3xl dark:text-white'>{avisoPers}</h1>}
         </div>
     </div>)
 }

@@ -98,6 +98,10 @@ export function FormPersonagem(props){
     const [classe, setClasse] = useState("")
     const [raca, setRaca] = useState("")
     const [antecedente, setAntecedente] = useState("")
+    const [pWeapons, setPweapons] = useState("")
+    const [pArmor, setParmor] = useState("")
+    const [pLanguages, setPlanguages] = useState("")
+    const [pTools, setPtools] = useState("")
 
     const[selectClass, setSelectClass] = useState(false)
     const[selectRaces, setSelectRaces] = useState(false)
@@ -122,7 +126,17 @@ export function FormPersonagem(props){
     const setVdata = async (n, e) =>{
         arrData[n].results.forEach(result =>{
             if (result.name === e.target.value){
-                n === 0 ? setClasse(result) : n === 1 ? setRaca(result) : setAntecedente(result)
+                if(n === 0){
+                    setClasse(result)
+                    result.prof_weapons === undefined ? setPweapons("") : setPweapons(result.prof_weapons)
+                    result.prof_armor === undefined ? setParmor("") : setParmor(result.prof_armor)
+                    result.prof_tool === undefined ? setPtools("") : setPtools(result.prof_tool)
+                } else if(n === 1){
+                    setRaca(result)
+                    result.traits[6].desc === undefined ? setPlanguages("") : setPlanguages(result.traits[6].desc)
+                } else{
+                    setAntecedente(result)
+                }
             }else{
                 return
             }
@@ -144,7 +158,10 @@ export function FormPersonagem(props){
 
         const rAlinhamento = (`${d.AlinhamentoUm.value} e ${d.AlinhamentoDois.value}`).toUpperCase()
 
-        console.log(classe)
+        console.log(pWeapons)
+        console.log(pArmor)
+        console.log(pLanguages)
+        console.log(pTools)
 
         try {
             await axios.post(baseURL+"/personagens/add", {
@@ -198,10 +215,10 @@ export function FormPersonagem(props){
                 dadovidaatual: 0,
                 salvaguarda: [0, 0],
                 experiencia: 0,
-                armas: classe.prof_weapons,
-                armaduras: classe.prof_armor,
-                idiomas: raca.traits[5].desc,
-                ferramentas: classe.prof_tool,
+                armas: pWeapons,
+                armaduras: pArmor,
+                idiomas: pLanguages,
+                ferramentas: pTools,
             }).then(res =>{
                 console.log(res.data)
             })
@@ -250,7 +267,7 @@ export function FormPersonagem(props){
                 ))}
                 </div>
             </Fragment>) : passo === 2 ? (<Fragment>
-                <div className='grid grid-cols-3 gap-20 w-9/10 h-8/10 max-[1100px]:flex max-[1100px]:flex-col max-[1100px]:h-auto'>
+                <div className='grid grid-cols-3 gap-20 w-9/10 h-8/10 max-[1100px]:flex max-[1100px]:flex-col max-[1100px]:h-auto max-[1100px]:justify-start'>
                     <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-100 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
                         <h1 className='text-2xl text-bold text-black dark:text-white'>Classe</h1>
                         <LinearProgress sx={selectClass === false ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
@@ -320,7 +337,7 @@ export function FormPersonagem(props){
 
 
             <div className='flex p-5 w-2/3 justify-around'>
-                {passo === 1 ? <Button variant='outlined' disbaled={passo > 1} onClick={()=>{backHome()}}>Sair</Button> :  
+                {passo === 1 ? <Button variant='outlined' disabled={passo !== 1} onClick={()=>{backHome()}}>Sair</Button> :  
                 <Button variant='outlined' disabled={passo === 1} onClick={()=>{proxPasso(-1)}}>Voltar</Button>}
                 
                 {passo === 3 ? <Button variant='contained' type='submit' onClick={openDialog}>finalizar</Button> :

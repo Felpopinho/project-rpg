@@ -26,6 +26,7 @@ export function Ficha(props){
                 personagem: props.pers
             }).then(res =>{
                 console.log(res.data)
+                localStorage.setItem("personagem", JSON.stringify(props.pers))
             })
         } catch (error) {
             console.log(error)
@@ -174,7 +175,6 @@ export function Ficha(props){
 
     const setNewProf = (e, n) =>{
         let nValue;
-        console.log(e.target.value)
         if(n === 1){
             if(e.target.value === "on"){
                 nValue = true
@@ -183,9 +183,9 @@ export function Ficha(props){
             }
             props.setActualPers(prevState => ({
                 ...prevState,
-                [e.target.name]: {
-                    ...props.pers[e.target.name],
-                    [e.target.id]: [props.pers[e.target.name][e.target.id][0], nValue, props.pers[e.target.name][e.target.id][2]]
+                pericias: {
+                    ...props.pers.pericias,
+                    [e.target.id]: [props.pers.pericias[e.target.id][0], nValue, props.pers.pericias[e.target.id][2]]
                 }
             }))
         } else{
@@ -193,11 +193,10 @@ export function Ficha(props){
                 ...prevState,
                 pericias: {
                     ...props.pers.pericias,
-                    [e.target.id]: [Number(e.target.value), props.pers[e.target.name][e.target.id][1], props.pers[e.target.name][e.target.id][2]]
+                    [e.target.id]: [parseInt(e.target.value), props.pers.pericias[e.target.id][1], props.pers.pericias[e.target.id][2]]
                 }
             }))
         }
-        console.log(props.pers.pericias[e.target.id])
     }
 
     const [nivel, setNivel] = useState(1)
@@ -330,20 +329,20 @@ export function Ficha(props){
                             <IconButton><Icon>casino</Icon></IconButton>
                             <h1 className='text-xs'>{skill.name}</h1>
                             <Checkbox onChange={(e)=>{setNewProf(e, 1)}} name="pericias" id={skill.index.replaceAll("-", "")} defaultChecked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
-                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill.index.replaceAll("-", "")[0]}`} onChange={(e)=>{setNewProf(e, 1)}} defaultValue={props.pers.pericias[skill.index.replaceAll("-", "")][0]} variant='standard' size='small' type='number'/>
+                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill.index.replaceAll("-", "")}`} onChange={(e)=>{setNewProf(e, 2)}} defaultValue={props.pers.pericias[skill.index.replaceAll("-", "")][0]} variant='standard' size='small' type='number'/>
                         </div>
                     ))}
                 </div>
                 <div className='bg-gray-300 p-7 rounded-xl h-1/1 gap-y-3 flex flex-col justify-between text-sm dark:bg-gray-950 max-[1536px]:order-3 max-[1536px]:min-w-442px max-[1216px]:min-w-1/1'>
                     <div className='grid grid-cols-6 grid-rows-[auto_1fr_1fr] gap-3 dark:bg-gray-950'>
-                        <div className='flex col-span-6 gap-5 h-auto'>
-                            <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                        <div className='flex col-span-6 gap-5 h-auto justify-between'>
+                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                                 <TextField fullWidth label="CA" variant="filled" name="status" id="ca" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.ca} type='number'/>
                             </div>
-                            <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                                 <TextField fullWidth variant="filled" label="Iniciativa" name="status" id="iniciativa" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.iniciativa} type='number'/>
                             </div>
-                            <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                                 <TextField fullWidth variant="filled" label="Deslocamento" name="status" id="deslocamento" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.deslocamento} type='number'/>
                             </div>
                         </div>
@@ -389,14 +388,14 @@ export function Ficha(props){
                         </div>
                     </div>
                     <div className="flex flex-col justify-end gap-4 dark:bg-gray-950">
-                        <div className="flex gap-2">
-                            <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
+                        <div className="flex gap-2 justify-between">
+                            <div className="overflow-hidden h-1/1 rounded-xl bg-gray-100 dark:bg-gray-800">
                                 <TextField variant="filled" label="Inspiração" name="status" id="inspiracao" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.inspiracao}/>
                             </div>
-                            <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
+                            <div className="overflow-hidden h-1/1 rounded-xl bg-gray-100 dark:bg-gray-800">
                                 <TextField variant="filled" label="Sabedoria p." name="caracteristicas" id="sabpassiva" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.sabpassiva}/>
                             </div>
-                            <div className="overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800    ">
+                            <div className="overflow-hidden h-1/1 rounded-xl bg-gray-100 dark:bg-gray-800    ">
                                 <TextField variant="filled" label="Intuição p." name="caracteristicas" id="intupassiva" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.caracteristicas.intupassiva}/>
                             </div>
                         </div>

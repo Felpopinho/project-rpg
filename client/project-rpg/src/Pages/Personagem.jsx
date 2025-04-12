@@ -57,7 +57,7 @@ export function Personagem(props){
             <p className='text-black dark:text-white'><span>Classe:</span> {pers.cra.classe}</p>
             <p className='text-black dark:text-white'><span>Raça:</span> {pers.cra.raca}</p>
             <p className='text-black dark:text-white'><span>Antecedente:</span> {pers.cra.antecedente}</p>
-            <p className='text-black dark:text-white'>Criado em {pers.data.Data}</p>
+            <p className='text-black dark:text-white'>Criado em {pers.data.toDate().toLocaleString()}</p>
         </div>
         <Divider sx={{ gridColumn: "1/3"}}/>
         <div className='flex justify-between col-span-2'>
