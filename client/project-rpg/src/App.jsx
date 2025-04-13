@@ -9,21 +9,14 @@ import axios from "axios"
 import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
 import { createTheme, useColorScheme, alpha } from '@mui/material/styles';
 import { purple, red } from '@mui/material/colors';
+import modo from './theme.js'
 
-const modo = createTheme({
-  palette: {
-    mode: localStorage.getItem("mui-mode"),
-    primary: {
-      main: purple[400],
-    },
-    red: {
-      main: red["400"]
-    }
-  },
-  colorSchemes:{
-    dark:true
-  },
-});
+if(localStorage.getItem("historicoDados") === null){
+  localStorage.setItem("historicoDados", JSON.stringify({result: []}))
+}
+if(localStorage.getItem("mui-mode") === null){
+  localStorage.setItem("mui-mode", "light")
+}
 
 
 export const baseURL = 'https://projectrpg-api.vercel.app'
