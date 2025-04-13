@@ -117,7 +117,7 @@ function App() {
 
 
   return (
-    <ThemeProvider  defaultMode='light'>
+    
     <div>
       <HashRouter>
         <Routes>
@@ -129,7 +129,6 @@ function App() {
         </Routes>
       </HashRouter>
     </div>
-    </ThemeProvider>
   )
 }
 
