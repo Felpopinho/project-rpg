@@ -6,9 +6,7 @@ import { Home } from './Pages/Home.jsx'
 import { FormPersonagem } from './Pages/FormPersonagem.jsx'
 import { Ficha } from './Pages/Ficha.jsx'
 import axios from "axios"
-import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom'
-import { createTheme, useColorScheme, alpha } from '@mui/material/styles';
-import { purple, red } from '@mui/material/colors';
+import { Routes, Route, HashRouter } from 'react-router-dom'
 import modo from './theme.js'
 
 if(localStorage.getItem("historicoDados") === null){

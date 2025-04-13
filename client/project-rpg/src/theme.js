@@ -1,4 +1,5 @@
-import { createTheme, useColorScheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
+import { purple, red } from '@mui/material/colors';
 
 const modo = createTheme({
   palette: {
