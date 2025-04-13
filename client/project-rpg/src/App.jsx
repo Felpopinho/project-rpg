@@ -117,7 +117,7 @@ function App() {
 
 
   return (
-    <ThemeProvider theme={modo} defaultMode='light'>
+    <ThemeProvider  defaultMode='light'>
     <div>
       <HashRouter>
         <Routes>
