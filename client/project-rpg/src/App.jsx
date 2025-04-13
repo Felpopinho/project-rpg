@@ -16,9 +16,6 @@ const modo = createTheme({
     primary: {
       main: purple[400],
     },
-    secondary: {
-      main: '#f44336',
-    },
     red: {
       main: red["400"]
     }
@@ -33,11 +30,13 @@ export const baseURL = 'https://projectrpg-api.vercel.app'
 
 function App() {
 
-  const url = import.meta.env.URL
-
   const [users, setUsers] = useState("")
   const [user, setUser] = useState("")
   const [logado,  setLogado] = useState(false)
+
+  if(localStorage.getItem("historicoDados") === null){
+    localStorage.setItem("historicoDados", JSON.stringify({result: []}))
+  }
 
   const getUsers = async () =>{
     try {

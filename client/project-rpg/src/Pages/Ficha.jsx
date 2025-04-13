@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, FormControl, InputLabel, FilledInput } from '@mui/material'
+import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, FormControl, InputLabel, FilledInput, Tabs, Tab, Select, MenuItem, Alert, Snackbar, AlertTitle, Drawer } from '@mui/material'
 import axios from 'axios'
 import { red } from '@mui/material/colors'
 import { baseURL } from '../App'
@@ -9,6 +9,8 @@ export function Ficha(props){
 
     const navigate = useNavigate()
 
+    const [objHistoricoDados, setObjHistoricoDados] = useState("")
+
     const verificarLogin = () =>{
         if(localStorage.getItem("personagem").length){
             props.setActualPers(JSON.parse(localStorage.getItem("personagem")))
@@ -16,6 +18,10 @@ export function Ficha(props){
             return navigate("/")
         }else{
             return navigate("/home")
+        }
+
+        if(localStorage.getItem("historicoDados").length){
+            setObjHistoricoDados(JSON.parse(localStorage.getItem("historicoDados")))
         }
     }
 
@@ -246,6 +252,52 @@ export function Ficha(props){
         }
     }
 
+    const [tabValue, setTabValue] = useState("1")
+    const handleTab = (e, v) =>{
+        setTabValue(v)
+    }
+
+    const [sDadoValue, setSdadoValue] = useState(4)
+    const handleSdado = (e) =>{
+        setSdadoValue(e.target.value)
+    }
+    const [qDados, setQdados] = useState(0)
+    const [soma, setSoma] = useState(0)
+    const [resultDados, setResultDados] = useState(0)
+    const [arrResultDados, setArrResultDados] = useState([])
+
+    const rolarDados = (q, d, s) =>{
+        let result = 0;
+        let arrDados = []
+        for (let i = 0; i < q; i++) {
+            let dadoValue = Math.floor( 1 + d*Math.random())
+            arrDados.push(dadoValue)
+            result = result + dadoValue
+        }
+        result = result + s
+        let dadosResult = `${arrDados} + ${s} = ${result}`
+        setObjHistoricoDados(prevItems=>({
+            ...prevItems,
+            result: [...objHistoricoDados.result,
+                dadosResult
+            ]
+        }))
+        setArrResultDados(arrDados)
+        setResultDados(result)
+        setResultSnack(true)
+    }
+
+    const [resultSnack, setResultSnack] = useState(false)
+    const handleCloseResult = () =>{
+        setResultSnack(false)
+    }
+
+    const [historico, setHistorico] = useState(false)
+
+    useEffect(()=>{
+        objHistoricoDados === "" ? "" : localStorage.setItem("historicoDados", JSON.stringify(objHistoricoDados))
+    }, [objHistoricoDados])
+
     useEffect(()=>{
         props.pers === "" ? "" : setModificadores()
         props.pers === "" ? "" : setarNivel()
@@ -261,7 +313,8 @@ export function Ficha(props){
     const arrSkills = ["forca","destreza","constituicao","inteligencia","sabedoria","carisma"]
 
     return (<>
-        {props.pers !== "" ? <div className='w-1/1 p-10 max-[584px]:p-5'>
+        {props.pers !== "" ? 
+        <div className=' relative w-1/1 min-h-dvh p-10 max-[584px]:p-5'>
             <div className='p-5 rounded-xl bg-gray-300 flex gap-5 dark:bg-gray-950 max-[800px]:flex-col'>
                 <div className='grid grid-cols-[auto_auto_auto] gap-4 justify-items-start p-3 items-center font-bold text-lg bg-gray-200 rounded-lg dark:bg-gray-800'>
                     <div className='col-span-3 grid grid-cols-[100px_auto] gap-5 w-1/1 rounded-lg overflow-hidden'>
@@ -306,7 +359,17 @@ export function Ficha(props){
                 </div>
             </div>
             <Divider sx={{ margin: "2% 0" }}/>
-            <div className='grid grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)_minmax(442px,_1fr)] justify-between gap-x-5 max-[1536px]:flex flex-wrap gap-y-5'>
+            <div>
+                <Tabs value={tabValue} onChange={handleTab} sx={{margin: "2% 0"}}>
+                    <Tab value={"1"} label="Principal"/>
+                    <Tab value={"2"} label="Rolagem"/>
+                    <Tab value={"3"} label="Inventario"/>
+                    <Tab value={"4"} label="Magias"/>
+                    <Tab value={"5"} label="Habilidades"/>
+                </Tabs>
+            </div>
+
+            <div hidden={tabValue !== "1"} className='grid grid-cols-[auto_minmax(272px,_auto)_minmax(442px,_auto)_minmax(442px,_1fr)] justify-between gap-x-5 max-[1536px]:flex flex-wrap gap-y-5'>
                 <div className='grid h-1/1 w-auto grid-rows-6 gap-15 pt-5 pb-10 pl-5 pr-5 justify-center items-center rounded-xl bg-gray-300 dark:bg-gray-950 max-[1536px]:flex max-[1536px]:w-1/1 max-[1536px]:h-auto max-[1536px]:order-1 max-[1216px]:flex-col max-[1216px]:w-auto max-[1216px]:max-w-auto max-[584px]:grid max-[584px]:grid-cols-[1fr_1fr_1fr] max-[584px]:grid-rows-[1fr_1fr] max-[584px]:w-1/1 max-[584px]:gap-y-10 max-[584px]:gap-x-4 max-[444px]:grid-cols-[1fr_1fr] max-[444px]:grid-rows-[1fr_1fr_1fr]'>
                     {arrSkills.map(skill =>(
                         <div key={skill} className='flex w-30 h-20 flex-col justify-center items-center bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white max-[584px]:w-25 max-[584px]:h-15 max-[584px]:place-self-center'>
@@ -434,6 +497,45 @@ export function Ficha(props){
                         <TextField variant="standard" id='historia' name='identidade' label="Historia" multiline minRows={1} maxRows={4} defaultValue={props.pers.identidade.historia} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                 </div>
+            </div>
+
+            <div hidden={tabValue !== "2"} className='w-1/1'>
+                <div className='flex w-1/1'>
+                    <TextField value={qDados} label="Quantidade" type='number' onChange={(e)=>{setQdados(e.target.value)}}/>
+                    <Select value={sDadoValue} onChange={handleSdado}>
+                        <MenuItem value={4}>d4</MenuItem>
+                        <MenuItem value={6}>d6</MenuItem>
+                        <MenuItem value={8}>d8</MenuItem>
+                        <MenuItem value={10}>d10</MenuItem>
+                        <MenuItem value={12}>d12</MenuItem>
+                        <MenuItem value={20}>d20</MenuItem>
+                        <MenuItem value={100}>d100</MenuItem>
+                    </Select>
+                    <TextField value={soma} label="Adicionar" type='number' onChange={(e)=>{setSoma(e.target.value)}}/>
+                    <IconButton sx={{width: "50px", height: "50px", marginLeft: "10px"}} onClick={()=>{rolarDados(parseInt(qDados), parseInt(sDadoValue), parseInt(soma))}}><Icon>casino</Icon></IconButton>
+                </div>
+
+                <Snackbar open={resultSnack} onClose={handleCloseResult}>
+                    <Alert onClose={handleCloseResult} severity='info' >
+                        <AlertTitle>Resultado</AlertTitle>
+                        {`${arrResultDados} + ${soma} = ${resultDados}`}
+                    </Alert>
+                </Snackbar>
+            </div>
+
+            <div className='absolute bottom-5 right-5 bg-gray-300 rounded-full dark:bg-white'>
+                <IconButton color='primary' size='large' onClick={()=>{setHistorico(true)}}>
+                    <Icon fontSize='large'>history</Icon>
+                </IconButton>
+                <Drawer open={historico} onClose={()=>{setHistorico(false)}}>
+                    <div className='w-100 flex flex-col'>
+                        {Array(objHistoricoDados).map(result =>(
+                            <div key={result}>
+                                {result}
+                            </div>
+                        ))}
+                    </div>
+                </Drawer>
             </div>
         </div> : ""}
     </>)
