@@ -268,7 +268,7 @@ export function Ficha(props){
                         <div className='w-[100px] h-25 overflow-hidden rounded-lg'>
                             <img className='' src='https://orbedosdragoes.com/wp-content/uploads/2017/06/DD5-Guerreiro_1.jpg'/>
                         </div>
-                        <Input  sx={{fontSize: "2rem", height: "100%"}} variant="filled" size='normal' className='text-xl' fullWidth defaultValue={props.pers.identidade.nome}/>
+                        <Input sx={{fontSize: "2rem", height: "100%"}} name='identidade' id='nome' multiline maxRows={2} variant="filled" size='normal' className='text-xl' fullWidth defaultValue={props.pers.identidade.nome} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
                     <div className='rounded-lg overflow-hidden'>
                         <TextField label="Jogador" variant="filled" size='small' name="identidade" id="jogador" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.identidade.jogador}/>
@@ -290,6 +290,7 @@ export function Ficha(props){
                     </div>
                 </div>
                 <div className='grid grid-cols-[auto_auto] gap-5 bg-gray-200 rounded-lg p-3 dark:bg-gray-800'>
+                    <h1 className='col-span-2 text-2xl text-center'>Tabela de XP</h1>
                     <div>
                         <TextField variant="filled" value={props.pers.status.experiencia} name="status" id="experiencia" label="Pontos de experiência" slotProps={{input: {readOnly: true,},}}/>
                     </div>

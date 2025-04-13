@@ -100,7 +100,6 @@ export function FormPersonagem(props){
     const [antecedente, setAntecedente] = useState("")
     const [pWeapons, setPweapons] = useState("")
     const [pArmor, setParmor] = useState("")
-    const [pLanguages, setPlanguages] = useState("")
     const [pTools, setPtools] = useState("")
 
     const[selectClass, setSelectClass] = useState(false)
@@ -133,7 +132,6 @@ export function FormPersonagem(props){
                     result.prof_tool === undefined ? setPtools("") : setPtools(result.prof_tool)
                 } else if(n === 1){
                     setRaca(result)
-                    result.traits[6].desc === undefined ? setPlanguages("") : setPlanguages(result.traits[6].desc)
                 } else{
                     setAntecedente(result)
                 }
@@ -160,7 +158,6 @@ export function FormPersonagem(props){
 
         console.log(pWeapons)
         console.log(pArmor)
-        console.log(pLanguages)
         console.log(pTools)
 
         try {
@@ -217,7 +214,7 @@ export function FormPersonagem(props){
                 experiencia: 0,
                 armas: pWeapons,
                 armaduras: pArmor,
-                idiomas: pLanguages,
+                idiomas: "",
                 ferramentas: pTools,
             }).then(res =>{
                 console.log(res.data)
