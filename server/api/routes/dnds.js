@@ -6,5 +6,5 @@ export const dndRouter = express.Router()
 dndRouter.post('/addcollection', addCollection)
 
 dndRouter.get("/dnd/classes", getClasses)
-dndRouter.get("/dnd/classes", getRacas)
-dndRouter.get("/dnd/classes", getAntecedentes)
+dndRouter.get("/dnd/racas", getRacas)
+dndRouter.get("/dnd/antecedentes", getAntecedentes)
