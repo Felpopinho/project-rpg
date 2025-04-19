@@ -89,7 +89,7 @@ export function FormPersonagem(props){
                 setSdata(0, props.classes)
                 setSdata(1, props.races)
                 setSdata(2, props.backgrounds)
-            }, "4000")
+            },"2000")
         } else{
             setTitle("Dados do personagem")
         }
@@ -111,9 +111,9 @@ export function FormPersonagem(props){
     const setSdata = (n, data) =>{
         const select = document.getElementById(`${n === 0 ? "selectClasses" : n === 1 ? "selectRacas" : "selectAntecedentes"}`)
         if(!(select.children.length >= 2 )){
-            Array.from(data.results).forEach(result =>{
+            Array.from(data).forEach(result =>{
                 const option = document.createElement("option")
-                option.textContent = result.name
+                option.textContent = result[Object.entries(result)[0][0]].nome
                 select.appendChild(option)
                 n === 0 ? setSelectClass(true) : n === 1 ? setSelectRaces(true) : setSelectBackgrounds(true)
             })
@@ -123,17 +123,17 @@ export function FormPersonagem(props){
     }
 
     const setVdata = async (n, e) =>{
-        arrData[n].results.forEach(result =>{
-            if (result.name === e.target.value){
+        arrData[n].forEach(result =>{
+            if (result[Object.entries(result)[0][0]].nome === e.target.value){
                 if(n === 0){
-                    setClasse(result)
-                    result.prof_weapons === undefined ? setPweapons("") : setPweapons(result.prof_weapons)
-                    result.prof_armor === undefined ? setParmor("") : setParmor(result.prof_armor)
-                    result.prof_tool === undefined ? setPtools("") : setPtools(result.prof_tool)
+                    setClasse(result[Object.entries(result)[0][0]])
+                    setPweapons(result[Object.entries(result)[0][0]].proficiencias.armas)
+                    setParmor(result[Object.entries(result)[0][0]].proficiencias.armaduras)
+                    setPtools(result[Object.entries(result)[0][0]].proficiencias.ferramentas)
                 } else if(n === 1){
-                    setRaca(result)
+                    setRaca(result[Object.entries(result)[0][0]])
                 } else{
-                    setAntecedente(result)
+                    setAntecedente(result[Object.entries(result)[0][0]])
                 }
             }else{
                 return
@@ -220,7 +220,7 @@ export function FormPersonagem(props){
                 console.log(res.data)
             })
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
         }
     }
 
@@ -271,7 +271,7 @@ export function FormPersonagem(props){
                         <div>
                             <NativeSelect className='w-full' sx={selectClass === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectClasses' label="Classes" onChange={(e)=>{setVdata(0,e)}}><option></option></NativeSelect>
                             <div className='overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ classe === "" ? "" :
-                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{classe.desc.replaceAll("#","")}</span></h1>
+                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{classe.descricao}</span></h1>
                             }</div>
                         </div>
                     </div>
@@ -281,7 +281,7 @@ export function FormPersonagem(props){
                         <div>
                             <NativeSelect className='w-full' sx={selectRaces === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectRacas' label="Raças" onChange={(e)=>{setVdata(1,e)}}><option></option></NativeSelect>
                             <div className='h-50 overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ raca === "" ? "" :
-                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{raca.desc.replaceAll("#","")}</span></h1>
+                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{raca.descricao}</span></h1>
                             }</div>
                         </div>
                         
@@ -292,7 +292,7 @@ export function FormPersonagem(props){
                         <div>
                             <NativeSelect className='w-full' sx={selectBackgrounds === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectAntecedentes' label="Antecedentes" onChange={(e)=>{setVdata(2,e)}}><option></option></NativeSelect>
                             <div className='h-50 overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ antecedente === "" ? "" :
-                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{antecedente.desc.replaceAll("#","")}</span></h1>
+                                    <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{antecedente.descricao}</span></h1>
                             }</div>
                         </div>
                     </div>
