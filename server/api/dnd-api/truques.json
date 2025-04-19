@@ -1,0 +1,185 @@
+[ {
+    "nome": "Acender",
+    "nivel": 0,
+    "escola": "Transmutação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "Toque",
+    "componentes": ["V", "S", "M"],
+    "materiais": "Uma faísca, uma vela, um pedaço de carvão ou algo que produza uma chama",
+    "duracao": "Instantânea",
+    "descricao": "Você acende um objeto inflamável, como uma vela, um pedaço de madeira ou até mesmo um pedaço de papel."
+  },
+  {
+    "nome": "Consertar",
+    "nivel": 0,
+    "escola": "Transmutação",
+    "tempo_conjuracao": "1 minuto",
+    "alcance": "Toque",
+    "componentes": ["V", "S", "M"],
+    "materiais": "Dois ímãs minúsculos",
+    "duracao": "Instantânea",
+    "descricao": "Conserta uma única ruptura ou quebra em um objeto que você toca, como uma corrente partida ou uma garrafa rachada, desde que a ruptura não tenha mais de 30 centímetros em qualquer dimensão."
+  },
+  {
+    "nome": "Detectar Magia",
+    "nivel": 0,
+    "escola": "Adivinhação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "30 metros",
+    "componentes": ["V", "S"],
+    "duracao": "Concentração, até 1 minuto",
+    "descricao": "Você detecta a presença de magia em uma área à sua volta. Você sente a presença de magias em uma área de 30 metros de raio."
+  },
+  {
+    "nome": "Ilusão Menor",
+    "nivel": 0,
+    "escola": "Ilusão",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "9 metros",
+    "componentes": ["V", "S"],
+    "duracao": "1 minuto",
+    "descricao": "Você cria uma ilusão de um objeto ou som inofensivo que dura até 1 minuto. A ilusão pode ser algo simples, como um som, uma pequena chama ou uma luz bruxuleante."
+  },
+  {
+    "nome": "Luz",
+    "nivel": 0,
+    "escola": "Evocação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "Toque",
+    "componentes": ["V", "S"],
+    "duracao": "1 hora",
+    "descricao": "Você toca um objeto e o ilumina com uma luz intensa. O objeto brilha como uma tocha, fornecendo luz em um raio de 6 metros."
+  },
+  {
+    "nome": "Mãos Mágicas",
+    "nivel": 0,
+    "escola": "Conjuração",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "30 metros",
+    "componentes": ["V", "S"],
+    "duracao": "1 minuto",
+    "descricao": "Você cria uma mão mágica que pode manipular objetos. Ela pode pegar, segurar ou abrir pequenas portas, baús ou objetos. Não pode atacar nem carregar objetos pesados."
+  },
+  {
+    "nome": "Mensagem",
+    "nivel": 0,
+    "escola": "Adivinhação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "36 metros",
+    "componentes": ["V", "S"],
+    "duracao": "1 ação",
+    "descricao": "Você envia uma mensagem sussurrada para alguém dentro do alcance. A pessoa pode responder na mesma direção, e você ouve a resposta."
+  },
+  {
+    "nome": "Raio de Gelo",
+    "nivel": 0,
+    "escola": "Evocação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "30 metros",
+    "componentes": ["V", "S"],
+    "duracao": "Instantânea",
+    "descricao": "Você cria um raio de gelo que atinge uma criatura à sua escolha dentro do alcance. A criatura deve realizar um teste de Destreza, ou sofrerá 1d6 de dano de frio."
+  },
+  {
+    "nome": "Rastrear",
+    "nivel": 0,
+    "escola": "Adivinhação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "Toque",
+    "componentes": ["V", "S"],
+    "duracao": "1 hora",
+    "descricao": "Você consegue rastrear a direção de uma criatura ou objeto em movimento dentro de 1 hora. O rastreamento é preciso, desde que a criatura ou objeto tenha deixado vestígios claros, como pegadas ou sinais."
+  },
+  {
+    "nome": "Susto",
+    "nivel": 0,
+    "escola": "Ilusão",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "9 metros",
+    "componentes": ["V", "S"],
+    "duracao": "Instantânea",
+    "descricao": "Você cria uma sensação de medo imediato em uma criatura dentro do alcance. A criatura deve realizar um teste de Sabedoria, ou ficará assustada por 1 minuto."
+  },
+  {
+    "nome": "Telecinesia",
+    "nivel": 0,
+    "escola": "Transmutação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "30 metros",
+    "componentes": ["V", "S"],
+    "duracao": "1 minuto",
+    "descricao": "Você manipula objetos pequenos ou leves à distância. Pode mover até 5 kg com um simples movimento de sua mão."
+  },
+  {
+    "nome": "Voz Espiritual",
+    "nivel": 0,
+    "escola": "Conjuração",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "30 metros",
+    "componentes": ["V", "S"],
+    "duracao": "Instantânea",
+    "descricao": "Você cria uma voz invisível que pode ser ouvida dentro do alcance. A voz pode sussurrar uma mensagem curta, com volume suficiente para ser ouvida por uma criatura dentro do alcance."
+  },
+  {
+    "nome": "Armadura Mágica",
+    "nivel": 0,
+    "escola": "Abjuração",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "Toque",
+    "componentes": ["V", "S"],
+    "duracao": "1 hora",
+    "descricao": "Você envolve uma criatura tocada com uma armadura mágica invisível que fornece uma bonificação de +2 na Classe de Armadura."
+  },
+  {
+    "nome": "Amparo Mágico",
+    "nivel": 0,
+    "escola": "Abjuração",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "Toque",
+    "componentes": ["V", "S"],
+    "duracao": "Concentração, até 1 minuto",
+    "descricao": "Você envolve um aliado tocado com uma aura de proteção mágica, concedendo-lhe resistência a um tipo de dano específico por até 1 minuto."
+  },
+  {
+    "nome": "Passos Rápidos",
+    "nivel": 0,
+    "escola": "Transmutação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "Toque",
+    "componentes": ["V", "S"],
+    "duracao": "1 hora",
+    "descricao": "Acelera os movimentos do alvo tocado, permitindo que ele se mova mais rapidamente, com um aumento de 3 metros na sua velocidade de movimento por 1 hora."
+  },
+  {
+    "nome": "Mão Arrepiante",
+    "nivel": 0,
+    "escola": "Necromancia",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "30 metros",
+    "componentes": ["V", "S"],
+    "duracao": "Instantânea",
+    "descricao": "Você cria uma mão espectral que se move em direção ao alvo. A mão tenta agarrar uma criatura em um alcance de até 30 metros e a causa um dano necrótico."
+  },
+  {
+    "nome": "Mensagem",
+    "nivel": 0,
+    "escola": "Adivinhação",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "36 metros",
+    "componentes": ["V", "S"],
+    "duracao": "1 ação",
+    "descricao": "Você envia uma mensagem sussurrada para alguém dentro do alcance. A pessoa pode responder na mesma direção, e você ouve a resposta."
+  },
+  {
+    "nome": "Proteção contra o Mal e o Bem",
+    "nivel": 0,
+    "escola": "Abjuração",
+    "tempo_conjuracao": "1 ação",
+    "alcance": "Toque",
+    "componentes": ["V", "S"],
+    "duracao": "1 hora",
+    "descricao": "Você protege uma criatura tocada contra os efeitos de criaturas malignas ou benevolentes, concedendo-lhe vantagem em testes contra tais criaturas."
+  }
+]
+    
+  

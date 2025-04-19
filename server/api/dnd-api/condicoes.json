@@ -1,0 +1,59 @@
+{
+    "agarrado": {
+      "nome": "Agarrado",
+      "descricao": "O deslocamento de uma criatura agarrada se torna 0, e ela não pode se beneficiar de qualquer bônus em seu deslocamento. A condição se encerra caso a criatura que a agarrou fique incapacitada."
+    },
+    "amedrontado": {
+      "nome": "Amedrontado",
+      "descricao": "Uma criatura amedrontada sofre desvantagem em testes de habilidade e jogadas de ataque enquanto a fonte do seu medo estiver em sua linha de visão. A criatura não pode se mover voluntariamente para uma posição que a faça terminar o turno mais próxima da sua fonte de medo."
+    },
+    "atordoado": {
+      "nome": "Atordoado",
+      "descricao": "Uma criatura atordoada está incapacitada. Ela não pode se mover e somente pode falar hesitantemente. A criatura falha automaticamente em testes de resistência de Força ou Destreza. Jogadas de ataque contra a criatura possuem vantagem."
+    },
+    "caido": {
+      "nome": "Caído",
+      "descricao": "A única opção de movimento que uma criatura caída tem é rastejar. A criatura sofre desvantagem nas jogadas de ataque. Uma jogada de ataque contra a criatura possui vantagem se o atacante estiver a 1,5 metro dela."
+    },
+    "cega": {
+      "nome": "Cega",
+      "descricao": "Uma criatura cega falha automaticamente em qualquer teste de habilidade que requeira o uso da visão. Jogadas de ataque contra a criatura possuem vantagem, e os ataques da criatura sofrem desvantagem."
+    },
+    "enfeitiçada": {
+      "nome": "Enfeitiçada",
+      "descricao": "Uma criatura enfeitiçada não pode atacar quem a enfeitiçou ou tê-lo como alvo de habilidades ou efeitos mágicos nocivos. Quem a enfeitiçou possui vantagem em testes de habilidade feitos para interagir socialmente com a criatura."
+    },
+    "envenenada": {
+      "nome": "Envenenada",
+      "descricao": "Uma criatura envenenada sofre desvantagem em jogadas de ataque e testes de habilidade."
+    },
+    "impedida": {
+      "nome": "Impedida",
+      "descricao": "O deslocamento de uma criatura impedida se torna 0. Ela sofre desvantagem em testes de resistência e jogadas de ataque contra ela possuem vantagem."
+    },
+    "incapacitada": {
+      "nome": "Incapacitada",
+      "descricao": "A criatura não pode realizar nenhuma ação ou reação, e seu deslocamento se torna 0."
+    },
+    "inconsciente": {
+      "nome": "Inconsciente",
+      "descricao": "Uma criatura inconsciente não pode perceber nada e falha automaticamente em testes de resistência. Ela também não pode agir e sofre desvantagem em ataques."
+    },
+    "invisível": {
+      "nome": "Invisível",
+      "descricao": "Uma criatura invisível não pode ser vista. Jogadas de ataque contra ela têm desvantagem, e ela tem vantagem em ataques contra criaturas que não possam vê-la."
+    },
+    "paralisada": {
+      "nome": "Paralisada",
+      "descricao": "Uma criatura paralisada não pode se mover ou agir. Ataques contra ela têm vantagem."
+    },
+    "petrificada": {
+      "nome": "Petrificada",
+      "descricao": "Uma criatura petrificada não pode se mover ou agir e fica imune a efeitos que afetem a mente. Ela fica completamente transformada em pedra."
+    },
+    "surda": {
+      "nome": "Surda",
+      "descricao": "Uma criatura surda não pode perceber sons e tem desvantagem em testes de Percepção baseados na audição."
+    }
+}
+  

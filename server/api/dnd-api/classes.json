@@ -1,0 +1,342 @@
+{
+    "artifice": {
+      "nome": "Artífice",
+      "descricao": "Um mestre em criar itens mágicos e engenhocas, utilizando sua inteligência e habilidades em artesanato.",
+      "dado_vida": "d8",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Arcanismo",
+          "História",
+          "Investigação",
+          "Medicina",
+          "Natureza",
+          "Percepção"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves", "Armaduras médias"],
+        "armas": ["Armas simples", "Armas marciais"],
+        "ferramentas": ["Kit de artesão"],
+        "salvaguardas": ["Inteligência", "Destreza"]
+      },
+      "equipamento": [
+        "Uma arma simples ou uma besta de mão",
+        "Uma mochila de aventureiro",
+        "Kit de artesão"
+      ]
+    },
+    "guerreiro": {
+      "nome": "Guerreiro",
+      "descricao": "O clássico combatente, habilidoso em uma variedade de armas e armaduras, e sempre pronto para a batalha.",
+      "dado_vida": "d10",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Atletismo",
+          "Intimidação",
+          "Percepção",
+          "Sobrevivência"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves", "Armaduras médias", "Armaduras pesadas", "Escudos"],
+        "armas": ["Armas simples", "Armas marciais"],
+        "ferramentas": [],
+        "salvaguardas": ["Força", "Destreza"]
+      },
+      "equipamento": [
+        "Uma espada longa ou uma machadinha",
+        "Uma armadura de couro ou cota de malha",
+        "Um escudo",
+        "Um pacote de aventureiro"
+      ]
+    },
+    "guardiao": {
+      "nome": "Guardião",
+      "descricao": "Um combatente especializado em proteger os aliados, usando armaduras pesadas e habilidades de defesa.",
+      "dado_vida": "d10",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Atletismo",
+          "Intimidação",
+          "Percepção",
+          "Sobrevivência"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras pesadas", "Escudos"],
+        "armas": ["Armas simples", "Armas marciais"],
+        "ferramentas": [],
+        "salvaguardas": ["Força", "Constituição"]
+      },
+      "equipamento": [
+        "Uma espada longa ou uma maça",
+        "Uma armadura pesada",
+        "Um escudo",
+        "Um pacote de aventureiro"
+      ]
+    },
+    "barbaro": {
+      "nome": "Bárbaro",
+      "descricao": "Um guerreiro feroz da natureza, cuja fúria implacável é uma força da própria natureza.",
+      "dado_vida": "d12",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Adestrar Animais",
+          "Atletismo",
+          "Intimidação",
+          "Natureza",
+          "Percepção",
+          "Sobrevivência"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves", "Armaduras médias", "Escudos"],
+        "armas": ["Armas simples", "Armas marciais"],
+        "ferramentas": [],
+        "salvaguardas": ["Força", "Constituição"]
+      },
+      "equipamento": [
+        "Um machado grande ou qualquer arma marcial corpo-a-corpo",
+        "Dois machados de mão ou qualquer arma simples",
+        "Um pacote de aventureiro (explorador)",
+        "Quatro lanças"
+      ]
+    },
+    "bardo": {
+      "nome": "Bardo",
+      "descricao": "Um inspirador mágico cujo poder ecoa em música e palavras.",
+      "dado_vida": "d8",
+      "pericias": {
+        "escolha": 3,
+        "opcoes": [
+          "Acrobacia",
+          "Atuação",
+          "Enganação",
+          "História",
+          "Intuição",
+          "Intimidação",
+          "Investigação",
+          "Lidar com Animais",
+          "Medicina",
+          "Natureza",
+          "Percepção",
+          "Persuasão",
+          "Prestidigitação",
+          "Religião",
+          "Sobrevivência"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves"],
+        "armas": ["Armas simples", "Bestas manuais", "Espadas longas", "Espadas rapiers", "Espadas curtas"],
+        "ferramentas": ["Três instrumentos musicais à sua escolha"],
+        "salvaguardas": ["Destreza", "Carisma"]
+      },
+      "equipamento": [
+        "Uma rapieira, espada longa ou qualquer arma simples",
+        "Um pacote de diplomata ou de artista",
+        "Um alaúde ou outro instrumento musical",
+        "Armadura de couro e uma adaga"
+      ]
+    },
+    "bruxo": {
+      "nome": "Bruxo",
+      "descricao": "Usuário de magias com poderes provenientes de um pacto com um ser sobrenatural, como um demônio ou fada.",
+      "dado_vida": "d8",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Arcanismo",
+          "Enganação",
+          "Intimidação",
+          "Persuasão",
+          "Religião"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves"],
+        "armas": ["Armas simples"],
+        "ferramentas": [],
+        "salvaguardas": ["Carisma", "Inteligência"]
+      },
+      "equipamento": [
+        "Uma adaga ou uma clava",
+        "Um pacote de aventureiro (explorador)",
+        "Um grimório",
+        "Um amuleto de pacto"
+      ]
+    },
+    "clerigo": {
+      "nome": "Clérigo",
+      "descricao": "Um devoto guerreiro divino com acesso a magias poderosas que podem curar, proteger ou punir.",
+      "dado_vida": "d8",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Religião",
+          "Medicina",
+          "Intuição",
+          "Percepção"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves", "Armaduras médias", "Escudos"],
+        "armas": ["Armas simples"],
+        "ferramentas": [],
+        "salvaguardas": ["Sabedoria", "Carisma"]
+      },
+      "equipamento": [
+        "Um maço ou uma clava",
+        "Uma adaga ou uma espada curta",
+        "Uma armadura de couro ou uma cota de malha",
+        "Um símbolo sagrado",
+        "Um pacote de clérigo"
+      ]
+    },
+    "druida": {
+      "nome": "Druida",
+      "descricao": "Guardião da natureza e mestre das forças elementares, capaz de se transformar em animais.",
+      "dado_vida": "d8",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Arcanismo",
+          "Intuição",
+          "Medicina",
+          "Natureza",
+          "Percepção",
+          "Sobrevivência"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves", "Armaduras médias", "Escudos"],
+        "armas": ["Armas simples"],
+        "ferramentas": ["Kit de herbologia"],
+        "salvaguardas": ["Inteligência", "Sabedoria"]
+      },
+      "equipamento": [
+        "Um bastão ou uma clava",
+        "Uma adaga",
+        "Uma capa de peles",
+        "Um pacote de aventureiro (explorador)"
+      ]
+    },
+    "feiticeiro": {
+      "nome": "Feiticeiro",
+      "descricao": "Usuário de magia que tira poder de sua linhagem sobrenatural ou de uma força mística interior.",
+      "dado_vida": "d6",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Arcanismo",
+          "Enganação",
+          "Intuição",
+          "Persuasão",
+          "Religião"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves"],
+        "armas": ["Armas simples"],
+        "ferramentas": [],
+        "salvaguardas": ["Carisma", "Constituição"]
+      },
+      "equipamento": [
+        "Uma clava ou uma adaga",
+        "Um pacote de aventureiro (explorador)",
+        "Um grimório"
+      ]
+    },
+    "monge": {
+      "nome": "Monge",
+      "descricao": "Guerreiro espiritual que combina destreza física e foco mental para lutar com destreza e precisão.",
+      "dado_vida": "d8",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Acrobacia",
+          "Atletismo",
+          "Furtividade",
+          "Intuição",
+          "Percepção",
+          "Sobrevivência"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": [],
+        "armas": ["Armas simples", "Armas marciais"],
+        "ferramentas": [],
+        "salvaguardas": ["Força", "Destreza"]
+      },
+      "equipamento": [
+        "Dois pauzinhos (ou qualquer arma simples)",
+        "Uma capa",
+        "Cinco bolsas de pedra",
+        "Uma mochila de aventureiro"
+      ]
+    },
+    "ladino": {
+      "nome": "Ladino",
+      "descricao": "Mestre da furtividade, habilidade e astúcia, capaz de se infiltrar e desarmar armadilhas.",
+      "dado_vida": "d8",
+      "pericias": {
+        "escolha": 4,
+        "opcoes": [
+          "Acrobacia",
+          "Atuação",
+          "Enganação",
+          "Furtividade",
+          "Intuição",
+          "Investigação",
+          "Lidar com Animais",
+          "Percepção",
+          "Persuasão",
+          "Prestidigitação",
+          "Sobrevivência"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves"],
+        "armas": ["Armas simples", "Armas marciais", "Bestas de mão", "Espadas curtas"],
+        "ferramentas": ["Kit de ladrão"],
+        "salvaguardas": ["Destreza", "Inteligência"]
+      },
+      "equipamento": [
+        "Uma rapieira ou uma espada curta",
+        "Uma besta de mão e 20 virotes",
+        "Uma capa de couro e uma adaga",
+        "Um kit de ladrão"
+      ]
+    },
+    "mago": {
+      "nome": "Mago",
+      "descricao": "Estudioso das artes arcanas, com a habilidade de lançar magias poderosas e misteriosas.",
+      "dado_vida": "d6",
+      "pericias": {
+        "escolha": 2,
+        "opcoes": [
+          "Arcanismo",
+          "História",
+          "Investigação",
+          "Medicina",
+          "Religião"
+        ]
+      },
+      "proficiencias": {
+        "armaduras": ["Armaduras leves"],
+        "armas": ["Armas simples"],
+        "ferramentas": [],
+        "salvaguardas": ["Inteligência", "Sabedoria"]
+      },
+      "equipamento": [
+        "Um bastão, uma clava ou uma espada curta",
+        "Um pacote de mago",
+        "Uma capa e um grimório"
+      ]
+    }
+  }
+  

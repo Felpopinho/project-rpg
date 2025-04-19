@@ -1,0 +1,322 @@
+[
+    {
+      "nome": "Anões",
+      "descricao": "Anões são conhecidos por sua força e resistência, com uma longa história de feitos heroicos e habilidades em forjar metais e pedras.",
+      "subracas": [
+        {
+          "nome": "Anão da Colina",
+          "descricao": "Anões da colina são conhecidos pela sua resistência excepcional e habilidades em sobreviver em ambientes adversos.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Constituição": 2,
+              "Sabedoria": 1
+            },
+            "idiomas": [
+              "Comum",
+              "Anão"
+            ],
+            "habilidade racial": "Resistência: Você tem vantagem em testes de resistência contra veneno e resistência ao dano de veneno."
+          },
+          "pontos_de_modificador": {
+            "Constituição": 2,
+            "Sabedoria": 1
+          }
+        },
+        {
+          "nome": "Anão da Montanha",
+          "descricao": "Anões da montanha são conhecidos por sua força física e habilidades de combate excepcionais.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Constituição": 2,
+              "Força": 2
+            },
+            "idiomas": [
+              "Comum",
+              "Anão"
+            ],
+            "habilidade racial": "Resistência a Dano: Você tem resistência a dano de forças e pode usar armas de batalha com proficiência."
+          },
+          "pontos_de_modificador": {
+            "Constituição": 2,
+            "Força": 2
+          }
+        }
+      ]
+    },
+    {
+      "nome": "Elfos",
+      "descricao": "Os elfos são seres graciosos e imortais com forte conexão com a natureza e magia.",
+      "subracas": [
+        {
+          "nome": "Alto Elfo",
+          "descricao": "Alto Elfos são conhecidos pela sua inteligência aguçada e habilidades mágicas, frequentemente dedicando-se ao estudo das artes arcanas.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Destreza": 2,
+              "Inteligência": 1
+            },
+            "idiomas": [
+              "Comum",
+              "Élfico",
+              "Um idioma adicional"
+            ],
+            "habilidade racial": "Tradição Arcana: Você é proficiente com um conjunto de ferramentas mágicas."
+          },
+          "pontos_de_modificador": {
+            "Destreza": 2,
+            "Inteligência": 1
+          }
+        },
+        {
+          "nome": "Elfo da Floresta",
+          "descricao": "Elfos da floresta são elfos ágeis, com um vínculo profundo com a natureza e com grande habilidade em se mover silenciosamente entre as árvores.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Destreza": 2,
+              "Sabedoria": 1
+            },
+            "idiomas": [
+              "Comum",
+              "Élfico",
+              "Silvestre"
+            ],
+            "habilidade racial": "Sentidos Aguçados: Você tem vantagem em testes de sabedoria para rastrear."
+          },
+          "pontos_de_modificador": {
+            "Destreza": 2,
+            "Sabedoria": 1
+          }
+        },
+        {
+          "nome": "Elfo Negro (Drow)",
+          "descricao": "Os drows são uma sub-raça élfica que vive nas profundezas da terra, conhecidos por suas habilidades psíquicas e pelo domínio das sombras.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Destreza": 2,
+              "Carisma": 1
+            },
+            "idiomas": [
+              "Comum",
+              "Élfico",
+              "Drow"
+            ],
+            "habilidade racial": "Visão no Escuro: Você pode ver na escuridão como se fosse luz fraca até 36 metros."
+          },
+          "pontos_de_modificador": {
+            "Destreza": 2,
+            "Carisma": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "Meio-Elfo",
+      "descricao": "Meio-Elfos possuem a graça e longevidade dos elfos, mas com a versatilidade dos humanos, o que lhes dá habilidades adaptáveis.",
+      "habilidades": {
+        "Aumento de Atributos": {
+          "Destreza": 1,
+          "Carisma": 2,
+          "Constituição": 1
+        },
+        "idiomas": [
+          "Comum",
+          "Élfico"
+        ],
+        "habilidade racial": "Visão no Escuro: Você pode ver na escuridão como se fosse luz fraca até 18 metros."
+      },
+      "pontos_de_modificador": {
+        "Destreza": 1,
+        "Carisma": 2,
+        "Constituição": 1
+      }
+    },
+    {
+      "nome": "Halflings",
+      "descricao": "Halflings são conhecidos por sua boa sorte e natureza alegre, além de sua grande habilidade para se esconder.",
+      "subracas": [
+        {
+          "nome": "Pés Leves",
+          "descricao": "Os Pés Leves são rápidos e ágeis, conhecidos por sua capacidade de se mover silenciosamente e por sua sorte incomum.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Destreza": 2
+            },
+            "idiomas": [
+              "Comum",
+              "Halfling"
+            ],
+            "habilidade racial": "Sorte: Quando você rolar um 1 em um teste de ataque, habilidade ou salvamento, pode rerolar o dado e usar o novo valor."
+          },
+          "pontos_de_modificador": {
+            "Destreza": 2
+          }
+        },
+        {
+          "nome": "Robusto",
+          "descricao": "Os Halflings Robustos são mais fortes e resistentes, conhecidos por sua resistência a danos e capacidades em combate.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Constituição": 2
+            },
+            "idiomas": [
+              "Comum",
+              "Halfling"
+            ],
+            "habilidade racial": "Resistência: Você tem vantagem em testes de resistência contra veneno."
+          },
+          "pontos_de_modificador": {
+            "Constituição": 2
+          }
+        }
+      ]
+    },
+    {
+      "nome": "Humanos",
+      "descricao": "Humanos são a raça mais adaptável e diversa, com grande capacidade de se moldar a qualquer situação e fazer alianças com outras raças.",
+      "habilidades": {
+        "Aumento de Atributos": {
+          "Todos os Atributos": 1
+        },
+        "idiomas": [
+          "Comum"
+        ],
+        "habilidade racial": "Versatilidade: Você pode escolher uma perícia adicional de sua escolha."
+      },
+      "pontos_de_modificador": {
+        "Força": 1,
+        "Destreza": 1,
+        "Constituição": 1,
+        "Inteligência": 1,
+        "Sabedoria": 1,
+        "Carisma": 1
+      }
+    },
+    {
+      "nome": "Draconatos",
+      "descricao": "Draconatos são descendentes de dragões, com habilidades de sopro elementar e uma aparência imponente.",
+      "habilidades": {
+        "Aumento de Atributos": {
+          "Força": 2,
+          "Carisma": 1
+        },
+        "idiomas": [
+          "Comum",
+          "Dracônico"
+        ],
+        "habilidade racial": "Sopro Dracônico: Você pode usar uma ação para lançar um sopro de dano elemental (fogo, gelo, raio, etc.) em um cone de 4,5 metros."
+      },
+      "pontos_de_modificador": {
+        "Força": 2,
+        "Carisma": 1
+      }
+    },
+    {
+      "nome": "Gnomos",
+      "descricao": "Gnomos são uma raça engenhosa e curiosa, com uma habilidade natural para invenções e magia.",
+      "subracas": [
+        {
+          "nome": "Gnomo da Floresta",
+          "descricao": "Os Gnomos da Floresta são místicos e conectados à natureza, com habilidades mágicas poderosas.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Inteligência": 2,
+              "Sabedoria": 1
+            },
+            "idiomas": [
+              "Comum",
+              "Gnômico",
+              "Silvestre"
+            ],
+            "habilidade racial": "Tradição Mágica: Você tem proficiência com feitiços de encantamento e ilusão."
+          },
+          "pontos_de_modificador": {
+            "Inteligência": 2,
+            "Sabedoria": 1
+          }
+        },
+        {
+          "nome": "Gnomo das Rochas",
+          "descricao": "Os Gnomos das Rochas são mestres em artesanato e engenharia, com um forte vínculo com a terra.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Inteligência": 2,
+              "Constituição": 1
+            },
+            "idiomas": [
+              "Comum",
+              "Gnômico"
+            ],
+            "habilidade racial": "Resiliência: Você tem vantagem em testes de resistência contra veneno."
+          },
+          "pontos_de_modificador": {
+            "Inteligência": 2,
+            "Constituição": 1
+          }
+        }
+      ]
+    },
+    {
+      "nome": "Meio-Orc",
+      "descricao": "Meio-Orcs possuem grande força e resistência, com uma natureza feroz e muitas vezes intimidante.",
+      "habilidades": {
+        "Aumento de Atributos": {
+          "Força": 2,
+          "Constituição": 1
+        },
+        "idiomas": [
+          "Comum",
+          "Orc"
+        ],
+        "habilidade racial": "Visão no Escuro: Você pode ver na escuridão como se fosse luz fraca até 18 metros."
+      },
+      "pontos_de_modificador": {
+        "Força": 2,
+        "Constituição": 1
+      }
+    },
+    {
+      "nome": "Tieflings",
+      "descricao": "Tieflings são conhecidos por sua linhagem infernal e habilidades mágicas, possuindo traços demoníacos em sua aparência.",
+      "subracas": [
+        {
+          "nome": "Infernal",
+          "descricao": "Tieflings Infernais possuem uma conexão direta com os infernos, dando-lhes habilidades mágicas e resistência ao fogo.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Carisma": 2,
+              "Inteligência": 1
+            },
+            "idiomas": [
+              "Comum",
+              "Infernal"
+            ],
+            "habilidade racial": "Resistência ao Fogo: Você tem resistência ao dano de fogo."
+          },
+          "pontos_de_modificador": {
+            "Carisma": 2,
+            "Inteligência": 1
+          }
+        },
+        {
+          "nome": "Abissal",
+          "descricao": "Tieflings Abissais possuem uma ligação com planos infernais profundos, dotando-os de uma presença ameaçadora.",
+          "habilidades": {
+            "Aumento de Atributos": {
+              "Carisma": 2,
+              "Constituição": 1
+            },
+            "idiomas": [
+              "Comum",
+              "Abissal"
+            ],
+            "habilidade racial": "Poder Infernal: Você pode usar uma habilidade psíquica para confundir inimigos à distância."
+          },
+          "pontos_de_modificador": {
+            "Carisma": 2,
+            "Constituição": 1
+          }
+        }
+      ]
+    }
+  ]
+  

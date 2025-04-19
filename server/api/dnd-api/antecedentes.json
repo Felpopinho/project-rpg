@@ -1,0 +1,204 @@
+{
+  "acólito": {
+    "nome": "Acólito",
+    "descricao": "Você passou sua vida em um templo dedicado a uma divindade, estudando suas escrituras e servindo aos fiéis.",
+    "habilidades": [
+      "Intuição",
+      "Religião"
+    ],
+    "equipamento": [
+      "Símbolo sagrado",
+      "Roupas sacerdotais",
+      "15 po"
+    ],
+    "caracteristicas": [
+      "Refúgio dos fiéis",
+      "Você tem acesso a templos e locais sagrados, podendo buscar abrigo e proteção em momentos de necessidade."
+    ]
+  },
+  "artista": {
+    "nome": "Artista",
+    "descricao": "Você é um criador de obras de arte, seja pintor, escultor ou performer.",
+    "habilidades": [
+      "Acrobacia",
+      "Atuação"
+    ],
+    "equipamento": [
+      "Instrumento musical ou material de arte",
+      "Kit de disfarce",
+      "10 po"
+    ],
+    "caracteristicas": [
+      "Talento artístico",
+      "Você tem uma rede de contatos no mundo artístico e acesso a locais culturais."
+    ]
+  },
+  "charlatão": {
+    "nome": "Charlatão",
+    "descricao": "Você é um mestre da enganação, usando truques e disfarces para enganar os outros.",
+    "habilidades": [
+      "Enganação",
+      "Prestidigitação"
+    ],
+    "equipamento": [
+      "Kit de disfarce",
+      "Kit de falsificação",
+      "5 po"
+    ],
+    "caracteristicas": [
+      "Falsificação",
+      "Você pode criar identidades falsas e falsificar documentos com facilidade."
+    ]
+  },
+  "criminoso": {
+    "nome": "Criminoso",
+    "descricao": "Você tem um passado no submundo, envolvido em atividades ilícitas.",
+    "habilidades": [
+      "Enganação",
+      "Furtividade"
+    ],
+    "equipamento": [
+      "Kit de ladrão",
+      "Ferramenta de jogo",
+      "15 po"
+    ],
+    "caracteristicas": [
+      "Rede criminosa",
+      "Você tem uma rede de contatos no submundo, o que pode ser útil em diversas situações."
+    ]
+  },
+  "eremita": {
+    "nome": "Eremita",
+    "descricao": "Você viveu isolado, buscando conhecimento ou iluminação espiritual.",
+    "habilidades": [
+      "Medicina",
+      "Religião"
+    ],
+    "equipamento": [
+      "Kit de herbalismo",
+      "10 po"
+    ],
+    "caracteristicas": [
+      "Vida isolada",
+      "Você fez uma descoberta importante durante seu período de reclusão, algo que pode mudar o curso de eventos."
+    ]
+  },
+  "forasteiro": {
+    "nome": "Forasteiro",
+    "descricao": "Você cresceu em regiões selvagens, longe da civilização.",
+    "habilidades": [
+      "Atletismo",
+      "Sobrevivência"
+    ],
+    "equipamento": [
+      "Instrumento musical ou ferramenta de artesão",
+      "Mochila de aventureiro",
+      "10 po"
+    ],
+    "caracteristicas": [
+      "Caçador experiente",
+      "Você tem uma grande compreensão da natureza e sobrevive em ambientes selvagens."
+    ]
+  },
+  "heroi_do_povo": {
+    "nome": "Herói do Povo",
+    "descricao": "Você é um defensor do povo, conhecido por suas ações heroicas.",
+    "habilidades": [
+      "Adestrar Animais",
+      "Sobrevivência"
+    ],
+    "equipamento": [
+      "Ferramenta de artesão",
+      "Veículo terrestre",
+      "15 po"
+    ],
+    "caracteristicas": [
+      "Popularidade",
+      "Você é bem conhecido e respeitado por suas boas ações, podendo contar com o apoio da população."
+    ]
+  },
+  "marinheiro": {
+    "nome": "Marinheiro",
+    "descricao": "Você passou sua vida no mar, navegando e enfrentando os desafios oceânicos.",
+    "habilidades": [
+      "Atletismo",
+      "Percepção"
+    ],
+    "equipamento": [
+      "Kit de navegador",
+      "Veículo aquático",
+      "10 po"
+    ],
+    "caracteristicas": [
+      "Conhecimento marítimo",
+      "Você tem um excelente conhecimento sobre navegação e pode enfrentar os perigos do mar."
+    ]
+  },
+  "nobre": {
+    "nome": "Nobre",
+    "descricao": "Você nasceu em uma família de alta posição social e riqueza.",
+    "habilidades": [
+      "História",
+      "Persuasão"
+    ],
+    "equipamento": [
+      "Kit de jogo",
+      "Veículo terrestre",
+      "25 po"
+    ],
+    "caracteristicas": [
+      "Posição social",
+      "Você possui uma rede de contatos influentes, o que garante privilégios e acesso a locais exclusivos."
+    ]
+  },
+  "orfa": {
+    "nome": "Órfão",
+    "descricao": "Você cresceu sem pais, aprendendo a sobreviver por conta própria.",
+    "habilidades": [
+      "Furtividade",
+      "Prestidigitação"
+    ],
+    "equipamento": [
+      "Kit de disfarce",
+      "Ferramentas de ladrão",
+      "10 po"
+    ],
+    "caracteristicas": [
+      "Resiliência",
+      "Você aprendeu a se virar sozinho e possui habilidades de sobrevivência e adaptação."
+    ]
+  },
+  "sabio": {
+    "nome": "Sábio",
+    "descricao": "Você dedicou sua vida ao estudo e à busca por conhecimento.",
+    "habilidades": [
+      "Arcanismo",
+      "História"
+    ],
+    "equipamento": [
+      "Livro de estudos",
+      "10 po"
+    ],
+    "caracteristicas": [
+      "Rede acadêmica",
+      "Você tem acesso a uma rede de eruditos e fontes de conhecimento valiosas."
+    ]
+  },
+  "soldado": {
+    "nome": "Soldado",
+    "descricao": "Você serviu em um exército, treinado para combate e disciplina.",
+    "habilidades": [
+      "Atletismo",
+      "Intimidação"
+    ],
+    "equipamento": [
+      "Kit de jogo",
+      "Veículo terrestre",
+      "10 po"
+    ],
+    "caracteristicas": [
+      "Treinamento militar",
+      "Você tem experiência em combate e sabe como trabalhar em equipe com outros soldados."
+    ]
+  }
+}

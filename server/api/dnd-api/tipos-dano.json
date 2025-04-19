@@ -1,0 +1,55 @@
+{
+    "cortante": {
+      "nome": "Cortante",
+      "descricao": "Dano físico causado por armas com lâminas afiadas, como espadas, machados ou garras."
+    },
+    "contundente": {
+      "nome": "Contundente",
+      "descricao": "Dano físico causado por impactos pesados, como martelos, maças ou quedas."
+    },
+    "perfurante": {
+      "nome": "Perfurante",
+      "descricao": "Dano físico causado por objetos pontiagudos, como lanças, flechas ou presas."
+    },
+    "ácido": {
+      "nome": "Ácido",
+      "descricao": "Dano químico causado por substâncias corrosivas que queimam ou dissolvem materiais."
+    },
+    "gélido": {
+      "nome": "Gélido",
+      "descricao": "Dano causado por frio extremo, que pode congelar ou retardar movimentos."
+    },
+    "elétrico": {
+      "nome": "Elétrico",
+      "descricao": "Dano causado por descargas elétricas ou raios, afetando sistemas nervosos e musculares."
+    },
+    "fogo": {
+      "nome": "Fogo",
+      "descricao": "Dano causado por calor intenso, chamas ou explosões que queimam tecidos e materiais."
+    },
+    "força": {
+      "nome": "Força",
+      "descricao": "Dano causado por energia mágica pura, muitas vezes associada a magias como Míssil Mágico."
+    },
+    "necrótico": {
+      "nome": "Necrótico",
+      "descricao": "Dano causado por energia negativa que drena a força vital, frequentemente usado por mortos-vivos."
+    },
+    "psíquico": {
+      "nome": "Psíquico",
+      "descricao": "Dano causado por ataques mentais que afetam a mente, emoções ou percepção."
+    },
+    "radiante": {
+      "nome": "Radiante",
+      "descricao": "Dano causado por energia divina ou sagrada, eficaz contra criaturas malignas ou mortos-vivos."
+    },
+    "trovão": {
+      "nome": "Trovão",
+      "descricao": "Dano causado por ondas de choque ou explosões sônicas que podem ensurdecer ou derrubar."
+    },
+    "veneno": {
+      "nome": "Veneno",
+      "descricao": "Dano causado por substâncias tóxicas que envenenam o corpo, podendo causar efeitos contínuos."
+    }
+}
+  

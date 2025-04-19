@@ -1,0 +1,93 @@
+[
+    {
+      "nome": "Comum",
+      "escrito": true,
+      "tipo": "Comum",
+      "falantes": ["Humanos", "a maioria das raças civilizadas"]
+    },
+    {
+      "nome": "Anão",
+      "escrito": true,
+      "tipo": "Comum",
+      "falantes": ["Anões"]
+    },
+    {
+      "nome": "Élfico",
+      "escrito": true,
+      "tipo": "Comum",
+      "falantes": ["Elfos"]
+    },
+    {
+      "nome": "Gigante",
+      "escrito": true,
+      "tipo": "Comum",
+      "falantes": ["Gigantes", "ogros"]
+    },
+    {
+      "nome": "Gnômico",
+      "escrito": true,
+      "tipo": "Comum",
+      "falantes": ["Gnomos"]
+    },
+    {
+      "nome": "Goblinoide",
+      "escrito": true,
+      "tipo": "Comum",
+      "falantes": ["Goblins", "hobgoblins", "bugbears"]
+    },
+    {
+      "nome": "Halfling",
+      "escrito": true,
+      "tipo": "Comum",
+      "falantes": ["Halflings"]
+    },
+    {
+      "nome": "Orc",
+      "escrito": true,
+      "tipo": "Comum",
+      "falantes": ["Orcs"]
+    },
+    {
+      "nome": "Abissal",
+      "escrito": true,
+      "tipo": "Exótico",
+      "falantes": ["Demônios"]
+    },
+    {
+      "nome": "Celestial",
+      "escrito": true,
+      "tipo": "Exótico",
+      "falantes": ["Anjos", "seres celestiais"]
+    },
+    {
+      "nome": "Dracônico",
+      "escrito": true,
+      "tipo": "Exótico",
+      "falantes": ["Dragões", "feiticeiros dracônicos"]
+    },
+    {
+      "nome": "Infernal",
+      "escrito": true,
+      "tipo": "Exótico",
+      "falantes": ["Diabos"]
+    },
+    {
+      "nome": "Primordial",
+      "escrito": true,
+      "tipo": "Exótico",
+      "falantes": ["Elementais"]
+    },
+    {
+      "nome": "Silvestre",
+      "escrito": true,
+      "tipo": "Exótico",
+      "falantes": ["Fadas", "criaturas feéricas"]
+    },
+    {
+      "nome": "Subcomum (Subterrâneo)",
+      "escrito": true,
+      "tipo": "Exótico",
+      "falantes": ["Drows", "duergar", "criaturas do Subterrâneo"]
+    }
+]
+  

@@ -1,0 +1,75 @@
+[
+    {
+      "nome": "Abjuração",
+      "descricao": "A escola de Abjuração foca em proteger e proteger contra as forças maléficas. Mágicas desta escola geralmente envolvem escudos, barreiras e resistências a danos.",
+      "magias": [
+        "Escudo",
+        "Proteção contra o mal e o bem",
+        "Reflexo Arcano"
+      ]
+    },
+    {
+      "nome": "Conjuração",
+      "descricao": "Conjuração é a arte de trazer algo à existência, seja uma criatura, objeto ou força mágica. Conjuradores podem invocar aliados ou invocar poderosos feitiços de ataque.",
+      "magias": [
+        "Invocar monstros",
+        "Porta dimensional",
+        "Mão mágica"
+      ]
+    },
+    {
+      "nome": "Divinação",
+      "descricao": "A escola de Divinação envolve a manipulação e revelação de conhecimento oculto. Os magos desta escola podem prever o futuro, ler mentes e ver através das barreiras.",
+      "magias": [
+        "Visão verdadeira",
+        "Compreensão dos idiomas",
+        "Augúrio"
+      ]
+    },
+    {
+      "nome": "Encantamento",
+      "descricao": "Encantamento foca na manipulação das emoções, pensamentos e ações dos outros. As magias desta escola podem cativar, controlar e enfraquecer a vontade dos inimigos.",
+      "magias": [
+        "Charme",
+        "Hipnose",
+        "Dominando"
+      ]
+    },
+    {
+      "nome": "Evocação",
+      "descricao": "Evocação é a escola que lida com a criação de energia pura e destrutiva. Magos dessa escola são conhecidos por conjurar feitiços de ataque com grandes danos, como bolas de fogo e raios.",
+      "magias": [
+        "Bola de fogo",
+        "Raio",
+        "Explosão de fogo"
+      ]
+    },
+    {
+      "nome": "Ilusão",
+      "descricao": "A escola de Ilusão manipula as percepções sensoriais, criando imagens, sons ou até mesmo realidades inteiras que enganam os sentidos. Ela permite enganar e confundir os inimigos.",
+      "magias": [
+        "Ilusão maior",
+        "Imagem enganadora",
+        "Esfera ilusória"
+      ]
+    },
+    {
+      "nome": "Necromancia",
+      "descricao": "Necromancia lida com a manipulação de energias vitais e a morte. Magias desta escola incluem a animação de mortos e o controle das forças vitais de criaturas.",
+      "magias": [
+        "Toque vampírico",
+        "Animar mortos",
+        "Mão de morte"
+      ]
+    },
+    {
+      "nome": "Transmutação",
+      "descricao": "Transmutação é a escola da transformação. Magias dessa escola permitem alterar a forma ou propriedades de objetos, criaturas ou até o próprio corpo.",
+      "magias": [
+        "Polimorfia",
+        "Mudar forma",
+        "Aceleração"
+      ]
+    }
+]
+  

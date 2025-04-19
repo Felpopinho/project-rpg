@@ -1,0 +1,745 @@
+{
+    "armas": [
+      {
+        "nome": "Adaga",
+        "preco": "2po",
+        "dano": "1d4",
+        "tipo": "P",
+        "peso": 0.5,
+        "propriedades": ["Ágil", "leve", "arremesso (6/18)"]
+      },
+      {
+        "nome": "Azagaia",
+        "preco": "5pp",
+        "dano": "1d6",
+        "tipo": "P",
+        "peso": 1,
+        "propriedades": ["arremesso (9/36)"]
+      },
+      {
+        "nome": "Cajado",
+        "preco": "2pp",
+        "dano": "1d6",
+        "tipo": "E",
+        "peso": 2,
+        "propriedades": ["versátil (1d8)"]
+      },
+      {
+        "nome": "Clava Grande",
+        "preco": "2pp",
+        "dano": "1d8",
+        "tipo": "E",
+        "peso": 5,
+        "propriedades": ["duas mãos"]
+      },
+      {
+        "nome": "Desarmado",
+        "preco": "-",
+        "dano": "1",
+        "tipo": "E",
+        "peso": 0,
+        "propriedades": []
+      },
+      {
+        "nome": "Foice Curta",
+        "preco": "1po",
+        "dano": "1d4",
+        "tipo": "C",
+        "peso": 1,
+        "propriedades": ["leve"]
+      },
+      {
+        "nome": "Lança",
+        "preco": "1po",
+        "dano": "1d6",
+        "tipo": "P",
+        "peso": 1.5,
+        "propriedades": ["versátil (1d8)", "arremesso (6/18)"]
+      },
+      {
+        "nome": "Maça",
+        "preco": "5po",
+        "dano": "1d6",
+        "tipo": "E",
+        "peso": 2,
+        "propriedades": []
+      },
+      {
+        "nome": "Machadinha",
+        "preco": "5po",
+        "dano": "1d6",
+        "tipo": "C",
+        "peso": 1,
+        "propriedades": ["leve", "arremesso (6/18)"]
+      },
+      {
+        "nome": "Martelo Leve",
+        "preco": "2po",
+        "dano": "1d4",
+        "tipo": "E",
+        "peso": 1,
+        "propriedades": ["leve", "arremesso (6/18)"]
+      },
+      {
+        "nome": "Porrete",
+        "preco": "1pp",
+        "dano": "1d4",
+        "tipo": "E",
+        "peso": 1,
+        "propriedades": ["leve"]
+      },
+      {
+        "nome": "Arco Curto",
+        "preco": "25po",
+        "dano": "1d6",
+        "tipo": "P",
+        "peso": 1,
+        "propriedades": ["munição", "duas mãos"],
+        "alcance": "24/96"
+      },
+      {
+        "nome": "Beste Leve",
+        "preco": "25po",
+        "dano": "1d8",
+        "tipo": "P",
+        "peso": 2.5,
+        "propriedades": ["munição", "recarga", "duas mãos"],
+        "alcance": "24/96"
+      },
+      {
+        "nome": "Dardo",
+        "preco": "5pc",
+        "dano": "1d4",
+        "tipo": "P",
+        "peso": 0.125,
+        "propriedades": ["ágil", "arremesso"],
+        "alcance": "6/18"
+      },
+      {
+        "nome": "Funda",
+        "preco": "1pp",
+        "dano": "1d4",
+        "tipo": "E",
+        "peso": 0.25,
+        "propriedades": ["munição"],
+        "alcance": "9/36"
+      },
+      {
+        "nome": "Machado",
+        "preco": "10po",
+        "dano": "1d8",
+        "tipo": "C",
+        "peso": 2,
+        "propriedades": ["versátil (1d10)"]
+      },
+      {
+        "nome": "Mangual",
+        "preco": "10po",
+        "dano": "1d8",
+        "tipo": "E",
+        "peso": 1,
+        "propriedades": []
+      },
+      {
+        "nome": "Glaive",
+        "preco": "20po",
+        "dano": "1d10",
+        "tipo": "C",
+        "peso": 3,
+        "propriedades": ["pesada", "alcance", "duas mãos"]
+      },
+      {
+        "nome": "Machado Grande",
+        "preco": "30po",
+        "dano": "1d12",
+        "tipo": "C",
+        "peso": 3.5,
+        "propriedades": ["pesada", "duas mãos"]
+      },
+      {
+        "nome": "Espada Duas Mãos",
+        "preco": "50po",
+        "dano": "2d6",
+        "tipo": "C",
+        "peso": 3,
+        "propriedades": ["pesada", "duas mãos"]
+      },
+      {
+        "nome": "Alabarda",
+        "preco": "20po",
+        "dano": "1d10",
+        "tipo": "C",
+        "peso": 3,
+        "propriedades": ["pesada", "alcance", "duas mãos"]
+      },
+      {
+        "nome": "Lança de Montaria",
+        "preco": "10po",
+        "dano": "1d12",
+        "tipo": "P",
+        "peso": 3,
+        "propriedades": ["alcance", "especial"]
+      },
+      {
+        "nome": "Espada Longa",
+        "preco": "15po",
+        "dano": "1d8",
+        "tipo": "C",
+        "peso": 1.5,
+        "propriedades": ["versátil (1d10)"]
+      },
+      {
+        "nome": "Marreta",
+        "preco": "10po",
+        "dano": "2d6",
+        "tipo": "E",
+        "peso": 5,
+        "propriedades": ["pesada", "duas mãos"]
+      },
+      {
+        "nome": "Maça Estrela",
+        "preco": "15po",
+        "dano": "1d8",
+        "tipo": "P",
+        "peso": 2,
+        "propriedades": []
+      },
+      {
+        "nome": "Pique",
+        "preco": "5po",
+        "dano": "1d10",
+        "tipo": "P",
+        "peso": 9,
+        "propriedades": ["pesada", "alcance", "duas mãos"]
+      },
+      {
+        "nome": "Florete",
+        "preco": "25po",
+        "dano": "1d8",
+        "tipo": "P",
+        "peso": 1,
+        "propriedades": ["ágil"]
+      },
+      {
+        "nome": "Cimitarra",
+        "preco": "25po",
+        "dano": "1d6",
+        "tipo": "C",
+        "peso": 1.5,
+        "propriedades": ["ágil", "leve"]
+      },
+      {
+        "nome": "Espada Curta",
+        "preco": "10po",
+        "dano": "1d6",
+        "tipo": "P",
+        "peso": 1,
+        "propriedades": ["ágil", "leve"]
+      },
+      {
+        "nome": "Tridente",
+        "preco": "5po",
+        "dano": "1d6",
+        "tipo": "P",
+        "peso": 2,
+        "propriedades": ["arremesso (6/18)", "versátil (1d8)"]
+      },
+      {
+        "nome": "Picareta de Guerra",
+        "preco": "5po",
+        "dano": "1d8",
+        "tipo": "P",
+        "peso": 1,
+        "propriedades": []
+      },
+      {
+        "nome": "Martelo de Guerra",
+        "preco": "15po",
+        "dano": "1d8",
+        "tipo": "E",
+        "peso": 1,
+        "propriedades": ["versátil (1d10)"]
+      },
+      {
+        "nome": "Chicote",
+        "preco": "2po",
+        "dano": "1d4",
+        "tipo": "C",
+        "peso": 1.5,
+        "propriedades": ["ágil", "alcance"]
+      },
+      {
+        "nome": "Zarabatana",
+        "preco": "10po",
+        "dano": "1",
+        "tipo": "P",
+        "peso": 0.5,
+        "propriedades": ["munição", "recarga"],
+        "alcance": "7,5/30"
+      },
+      {
+        "nome": "Besta de Mão",
+        "preco": "75po",
+        "dano": "1d6",
+        "tipo": "P",
+        "peso": 1.5,
+        "propriedades": ["munição", "leve", "recarga"],
+        "alcance": "9/36"
+      },
+      {
+        "nome": "Besta Pesada",
+        "preco": "50po",
+        "dano": "1d10",
+        "tipo": "P",
+        "peso": 9,
+        "propriedades": ["munição", "pesada", "recarga", "duas mãos"],
+        "alcance": "30/120"
+      },
+      {
+        "nome": "Arco Longo",
+        "preco": "50po",
+        "dano": "1d8",
+        "tipo": "P",
+        "peso": 1,
+        "propriedades": ["munição", "pesada", "duas mãos"],
+        "alcance": "45/180"
+      },
+      {
+        "nome": "Rede",
+        "preco": "1po",
+        "dano": "-",
+        "tipo": "-",
+        "peso": 1.5,
+        "propriedades": ["especial", "arremesso"],
+        "alcance": "1,5/4,5"
+      }
+    ],
+    "armaduras": [
+      {
+        "nome": "Acolchoada",
+        "preco": "5po",
+        "ca": 1,
+        "furtividade": "-",
+        "peso": 4,
+        "categoria": "leve"
+      },
+      {
+        "nome": "Couro",
+        "preco": "10po",
+        "ca": 1,
+        "furtividade": "-",
+        "peso": 5,
+        "categoria": "leve"
+      },
+      {
+        "nome": "Couro Batido",
+        "preco": "45po",
+        "ca": 2,
+        "furtividade": "-",
+        "peso": 6.5,
+        "categoria": "leve"
+      },
+      {
+        "nome": "Gibão de Peles",
+        "preco": "10po",
+        "ca": 2,
+        "furtividade": "-",
+        "peso": 6,
+        "categoria": "média"
+      },
+      {
+        "nome": "Camisão de Malha",
+        "preco": "50po",
+        "ca": 3,
+        "furtividade": "-",
+        "peso": 10,
+        "categoria": "média"
+      },
+      {
+        "nome": "Brunea",
+        "preco": "50po",
+        "ca": 4,
+        "furtividade": "Desvantagem",
+        "peso": 22.5,
+        "categoria": "média"
+      },
+      {
+        "nome": "Peitoral de Aço",
+        "preco": "400po",
+        "ca": 4,
+        "furtividade": "-",
+        "peso": 10,
+        "categoria": "média"
+      },
+      {
+        "nome": "Meia-Armadura",
+        "preco": "750po",
+        "ca": 5,
+        "furtividade": "Desvantagem",
+        "peso": 20,
+        "categoria": "média"
+      },
+      {
+        "nome": "Cota de Anéis",
+        "preco": "30po",
+        "ca": 4,
+        "furtividade": "Desvantagem",
+        "peso": 20,
+        "categoria": "pesada"
+      },
+      {
+        "nome": "Cota de Malha",
+        "preco": "75po",
+        "ca": 6,
+        "furtividade": "Desvantagem",
+        "peso": 22.5,
+        "categoria": "pesada"
+      },
+      {
+        "nome": "Cota de Talas",
+        "preco": "200po",
+        "ca": 7,
+        "furtividade": "Desvantagem",
+        "peso": 30,
+        "categoria": "pesada"
+      },
+      {
+        "nome": "Armadura de Placas",
+        "preco": "1500po",
+        "ca": 8,
+        "furtividade": "Desvantagem",
+        "peso": 32.5,
+        "categoria": "pesada"
+      },
+      {
+        "nome": "Escudo",
+        "preco": "10po",
+        "ca": "+2",
+        "furtividade": "-",
+        "peso": 3,
+        "categoria": "escudo"
+      }
+    ],
+    "equipamentos-aventura": [
+        { "nome": "Ábaco", "preco": "2po", "peso": "1k", "descricao": "" },
+        { "nome": "Ácido (vidro)", "preco": "25po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Água benta (frasco)", "preco": "25po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Algemas", "preco": "2po", "peso": "2k", "descricao": "" },
+        { "nome": "Algibeira", "preco": "5po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Aljava", "preco": "1po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Ampulheta", "preco": "25po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Antídoto (vidro)", "preco": "50po", "peso": "-", "descricao": "" },
+        { "nome": "Apito de advertência", "preco": "25po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Aríete portátil", "preco": "4po", "peso": "17,5k", "descricao": "" },
+        { "nome": "Armadilha de caça", "preco": "5po", "peso": "12,5k", "descricao": "" },
+        { "nome": "Arpéu", "preco": "2po", "peso": "2k", "descricao": "" },
+        { "nome": "Balança de mercador", "preco": "5po", "peso": "1,5k", "descricao": "" },
+        { "nome": "Balde", "preco": "5pc", "peso": "1k", "descricao": "" },
+        { "nome": "Barril", "preco": "2po", "peso": "35k", "descricao": "" },
+        { "nome": "Baú", "preco": "5po", "peso": "12,5k", "descricao": "" },
+        { "nome": "Bolsa de componentes", "preco": "25po", "peso": "1k", "descricao": "" },
+        { "nome": "Caixa de Fogo", "preco": "5pp", "peso": "0,5k", "descricao": "" },
+        { "nome": "Caneca", "preco": "2pc", "peso": "0,5k", "descricao": "" },
+        { "nome": "Caneta tinteiro", "preco": "2pc", "peso": "-", "descricao": "" },
+        { "nome": "Cantil", "preco": "2pp", "peso": "2,5k", "descricao": "" },
+        { "nome": "Cesto", "preco": "4pp", "peso": "1k", "descricao": "" },
+        { "nome": "Cobertor de inverno", "preco": "5pp", "peso": "1,5k", "descricao": "" },
+        { "nome": "Corda de cânhamo (15 metros)", "preco": "1po", "peso": "5k", "descricao": "" },
+        { "nome": "Corda de seda (15 metros)", "preco": "10po", "peso": "2,5k", "descricao": "" },
+        { "nome": "Corrente (3 metros)", "preco": "5po", "peso": "5k", "descricao": "" },
+        { "nome": "Equipamento de pescaria", "preco": "1po", "peso": "2k", "descricao": "" },
+        { "nome": "Escada (3 metros)", "preco": "1pp", "peso": "12,5k", "descricao": "" },
+        { "nome": "Esferas (bolsa com 1.000)", "preco": "1po", "peso": "1k", "descricao": "" },
+        { "nome": "Esmeril", "preco": "1pc", "peso": "0,5k", "descricao": "" },
+        { "nome": "Espelho de aço", "preco": "5po", "peso": "0,25k", "descricao": "" },
+        { "nome": "Estrepes (bolsa com 20)", "preco": "1po", "peso": "1k", "descricao": "" },
+        { "nome": "Fechadura", "preco": "10po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Fogo alquímico (frasco)", "preco": "50po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Garrafa de vidro", "preco": "2pc", "peso": "1k", "descricao": "" },
+        { "nome": "Giz (1 peça)", "preco": "1pc", "peso": "-", "descricao": "" },
+        { "nome": "Grimório", "preco": "50po", "peso": "1,5k", "descricao": "" },
+        { "nome": "Implemento Arcano - Bastão", "preco": "10po", "peso": "1k", "descricao": "" },
+        { "nome": "Implemento Arcano - Cajado", "preco": "5po", "peso": "2k", "descricao": "" },
+        { "nome": "Implemento Arcano - Cristal", "preco": "10po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Orbe", "preco": "20po", "peso": "1,5k", "descricao": "" },
+        { "nome": "Varinha (implemento arcano)", "preco": "10po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Cajado de madeira (implemento druídico)", "preco": "5po", "peso": "2k", "descricao": "" },
+        { "nome": "Ramo de visco (implemento druídico)", "preco": "1po", "peso": "-", "descricao": "" },
+        { "nome": "Totem (implemento druídico)", "preco": "1po", "peso": "-", "descricao": "" },
+        { "nome": "Varinha (implemento druídico)", "preco": "10po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Jarro", "preco": "4pc", "peso": "2k", "descricao": "" },
+        { "nome": "Kit de escalada", "preco": "25po", "peso": "6k", "descricao": "" },
+        { "nome": "Kit de primeiros socorros", "preco": "5po", "peso": "1,5k", "descricao": "" },
+        { "nome": "Kit de refeição", "preco": "2pp", "peso": "0,5k", "descricao": "" },
+        { "nome": "Lâmpada", "preco": "5pp", "peso": "0,5k", "descricao": "" },
+        { "nome": "Lanterna coberta", "preco": "5po", "peso": "1k", "descricao": "" },
+        { "nome": "Lanterna furta-fogo", "preco": "10po", "peso": "1k", "descricao": "" },
+        { "nome": "Lente de aumento", "preco": "100po", "peso": "-", "descricao": "" },
+        { "nome": "Livro", "preco": "25po", "peso": "2,5k", "descricao": "" },
+        { "nome": "Luneta", "preco": "1000po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Manto", "preco": "1po", "peso": "2k", "descricao": "" },
+        { "nome": "Marreta", "preco": "2po", "peso": "5k", "descricao": "" },
+        { "nome": "Martelo", "preco": "1po", "peso": "1,5k", "descricao": "" },
+        { "nome": "Mochila", "preco": "2po", "peso": "2,5k", "descricao": "" },
+        { "nome": "Munição - Zarabatana (50)", "preco": "1po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Munição - Balas de funda (20)", "preco": "4pc", "peso": "0,75k", "descricao": "" },
+        { "nome": "Munição - Flechas (20)", "preco": "1po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Munição - Virotes (20)", "preco": "1po", "peso": "0,75k", "descricao": "" },
+        { "nome": "Óleo (frasco)", "preco": "1pp", "peso": "0,5k", "descricao": "" },
+        { "nome": "Pá", "preco": "2po", "peso": "2,5k", "descricao": "" },
+        { "nome": "Panela de ferro", "preco": "2po", "peso": "5k", "descricao": "" },
+        { "nome": "Papel (uma folha)", "preco": "2pp", "peso": "-", "descricao": "" },
+        { "nome": "Parafina", "preco": "5pp", "peso": "-", "descricao": "" },
+        { "nome": "Pé de cabra", "preco": "2po", "peso": "2,5k", "descricao": "" },
+        { "nome": "Perfume (vidro)", "preco": "5po", "peso": "-", "descricao": "" },
+        { "nome": "Pergaminho (uma folha)", "preco": "1pp", "peso": "-", "descricao": "" },
+        { "nome": "Picareta de mina", "preco": "2po", "peso": "5k", "descricao": "" },
+        { "nome": "Píton", "preco": "5pc", "peso": "-", "descricao": "" },
+        { "nome": "Poção de cura", "preco": "50po", "peso": "0,25k", "descricao": "" },
+        { "nome": "Porta mapas ou pergaminhos", "preco": "1po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Porta virotes de besta", "preco": "1po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Pregos de ferro (10)", "preco": "1po", "peso": "2,5k", "descricao": "" },
+        { "nome": "Rações de viagem (1 dia)", "preco": "5pp", "peso": "1k", "descricao": "" },
+        { "nome": "Sabão", "preco": "2pc", "peso": "-", "descricao": "" },
+        { "nome": "Saco", "preco": "1pc", "peso": "0,25k", "descricao": "" },
+        { "nome": "Saco de dormir", "preco": "1po", "peso": "3,5k", "descricao": "" },
+        { "nome": "Símbolo Sagrado - Amuleto", "preco": "5po", "peso": "0,5k", "descricao": "" },
+        { "nome": "Símbolo Sagrado - Emblema", "preco": "5po", "peso": "-", "descricao": "" },
+        { "nome": "Símbolo Sagrado - Relicário", "preco": "5po", "peso": "1k", "descricao": "" },
+        { "nome": "Sinete", "preco": "5po", "peso": "-", "descricao": "" },
+        { "nome": "Sino", "preco": "1po", "peso": "-", "descricao": "" },
+        { "nome": "Talha ou sisal", "preco": "1po", "peso": "2,5k", "descricao": "" },
+        { "nome": "Tenda para duas pessoas", "preco": "2po", "peso": "10k", "descricao": "" },
+        { "nome": "Tocha", "preco": "1pc", "peso": "0,5k", "descricao": "" },
+        { "nome": "Tinta (vidro de 30ml)", "preco": "10po", "peso": "-", "descricao": "" },
+        { "nome": "Traje, comum", "preco": "5pp", "peso": "1,5k", "descricao": "" },
+        { "nome": "Traje, elegante", "preco": "5po", "peso": "3k", "descricao": "" },
+        { "nome": "Traje, fantasia", "preco": "15po", "peso": "2k", "descricao": "" },
+        { "nome": "Traje, viajante", "preco": "2po", "peso": "2k", "descricao": "" },
+        { "nome": "Vara (3 metros)", "preco": "5pc", "peso": "3,5k", "descricao": "" },
+        { "nome": "Vela", "preco": "1pc", "peso": "-", "descricao": "" },
+        { "nome": "Veneno básico (vidro)", "preco": "100po", "peso": "-", "descricao": "" },
+        { "nome": "Vidro ou frasco", "preco": "1po", "peso": "-", "descricao": "" }
+    ],
+    "ferramentas": [
+        {
+          "nome": "Conjunto de Jogo - Baralho",
+          "preco": "5pp",
+          "peso": "-",
+          "descricao": "Este item abrange uma ampla gama de peças de jogo, incluindo dados e baralhos de cartas (para jogos como Três Dragões). Se for proficiente com um conjunto de jogos, o jogador pode adicionar seu bônus de proficiência nos testes de atributo que realizar usando esse conjunto."
+        },
+        {
+          "nome": "Conjunto de Jogo - Dados",
+          "preco": "1pp",
+          "peso": "-",
+          "descricao": "Este item abrange uma ampla gama de peças de jogo, incluindo dados e baralhos de cartas (para jogos como Três Dragões). Se for proficiente com um conjunto de jogos, o jogador pode adicionar seu bônus de proficiência nos testes de atributo que realizar usando esse conjunto."
+        },
+        {
+          "nome": "Conjunto de Jogo - Tabuleiro",
+          "preco": "1po",
+          "peso": "0,2k",
+          "descricao": "Este item abrange uma ampla gama de peças de jogo, incluindo dados e baralhos de cartas (para jogos como Três Dragões). Se for proficiente com um conjunto de jogos, o jogador pode adicionar seu bônus de proficiência nos testes de atributo que realizar usando esse conjunto."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Carpinteiro",
+          "preco": "8po",
+          "peso": "2,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Cartógrafo",
+          "preco": "15po",
+          "peso": "2,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Coureiro",
+          "preco": "5po",
+          "peso": "2k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Entalhador",
+          "preco": "1po",
+          "peso": "2k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Ferreiro",
+          "preco": "20po",
+          "peso": "3,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Joalheiro",
+          "preco": "25po",
+          "peso": "1k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Oleiro",
+          "preco": "10po",
+          "peso": "1,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Pedreiro",
+          "preco": "10po",
+          "peso": "3,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Sapateiro",
+          "preco": "5po",
+          "peso": "2,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Serralheiro",
+          "preco": "50po",
+          "peso": "4,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Tecelão",
+          "preco": "1po",
+          "peso": "2,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Vidreiro",
+          "preco": "30po",
+          "peso": "2,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Alquimista",
+          "preco": "50po",
+          "peso": "3,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Calígrafo",
+          "preco": "10po",
+          "peso": "2,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Cervejeiro",
+          "preco": "20po",
+          "peso": "4k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Pintor",
+          "preco": "10po",
+          "peso": "2,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Artesão - Cozinheiro",
+          "preco": "1po",
+          "peso": "3,5k",
+          "descricao": "Estas ferramentas especiais incluem os itens necessários para executar um ofício ou profissão. Cada tipo de ferramentas de artesão requer uma proficiência em separado."
+        },
+        {
+          "nome": "Ferramentas de Ladrão",
+          "preco": "25po",
+          "peso": "0,5k",
+          "descricao": "Inclui gazuas, espelho com cabo, tesouras de precisão e alicates. Usadas para desarmar armadilhas e abrir fechaduras. Requer proficiência separada."
+        },
+        {
+          "nome": "Ferramentas de Navegador",
+          "preco": "25po",
+          "peso": "1k",
+          "descricao": "Instrumentos usados para navegação marítima. Permite traçar rotas e não se perder no mar. Requer proficiência separada."
+        },
+        {
+          "nome": "Instrumento Musical - Alaúde",
+          "preco": "35po",
+          "peso": "1k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Charamela",
+          "preco": "2po",
+          "peso": "0,5k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Flauta Doce",
+          "preco": "2po",
+          "peso": "0,5k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Flauta",
+          "preco": "12po",
+          "peso": "1k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Gaita de Fole",
+          "preco": "30po",
+          "peso": "2,5k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Lira",
+          "preco": "30po",
+          "peso": "1k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Tambor",
+          "preco": "6po",
+          "peso": "1,5k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Trombeta",
+          "preco": "3po",
+          "peso": "1k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Viola",
+          "preco": "30po",
+          "peso": "0,5k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Instrumento Musical - Xilofone",
+          "preco": "25po",
+          "peso": "4,5k",
+          "descricao": "Permite realizar testes musicais. Cada instrumento exige proficiência separada para testes com bônus de proficiência."
+        },
+        {
+          "nome": "Kit de Disfarce",
+          "preco": "25po",
+          "peso": "1,5k",
+          "descricao": "Inclui cosméticos e adereços para mudar aparência física. Requer proficiência para testes de disfarce com bônus de proficiência."
+        },
+        {
+          "nome": "Kit de Falsificação",
+          "preco": "15po",
+          "peso": "2,5k",
+          "descricao": "Contém papéis, tintas, selos e materiais para falsificar documentos. Requer proficiência para testes de falsificação com bônus de proficiência."
+        },
+        {
+          "nome": "Kit de Herbalismo",
+          "preco": "5po",
+          "peso": "1,5k",
+          "descricao": "Usado para identificar, aplicar e criar poções e remédios com ervas. Necessário para criar antídotos e poções de cura. Requer proficiência."
+        },
+        {
+          "nome": "Kit de Venenos",
+          "preco": "50po",
+          "peso": "1k",
+          "descricao": "Inclui materiais e utensílios para criar e aplicar venenos. Requer proficiência para testes de manuseio ou criação de venenos."
+        }
+    ]
+      
+
+}
+  

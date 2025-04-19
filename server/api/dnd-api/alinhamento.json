@@ -1,0 +1,39 @@
+{
+    "leal_bom": {
+      "nome": "Leal e Bom",
+      "descricao": "Aderem a um código de conduta ou um sistema moral rígido, buscando o bem e a justiça, priorizando as necessidades do grupo e da sociedade."
+    },
+    "neutro_bom": {
+      "nome": "Neutro e Bom",
+      "descricao": "Fazem o bem sem se importar com regras ou codificações, buscando a melhor ação para ajudar os outros."
+    },
+    "caotico_bom": {
+      "nome": "Caótico e Bom",
+      "descricao": "Acreditam no bem, mas rejeitam a ordem e a autoridade, buscando liberdade para fazer o bem à sua maneira."
+    },
+    "leal_neutro": {
+      "nome": "Leal e Neutro",
+      "descricao": "Cumpridores de regras e códigos, mas sem grande foco em questões morais. Valorizam a ordem acima de tudo."
+    },
+    "neutro": {
+      "nome": "Neutro",
+      "descricao": "Equilibrados, não se comprometem totalmente com o bem ou o mal. Preferem manter uma posição imparcial."
+    },
+    "caotico_neutro": {
+      "nome": "Caótico e Neutro",
+      "descricao": "Valorizam a liberdade acima de tudo e evitam se comprometer com regras, códigos ou o bem e o mal."
+    },
+    "leal_mau": {
+      "nome": "Leal e Mau",
+      "descricao": "Aderem a um código ou sistema de regras, mas para obter poder e controlar os outros, com uma visão egoísta e impiedosa."
+    },
+    "neutro_mau": {
+      "nome": "Neutro e Mau",
+      "descricao": "Agem de forma egoísta, sempre buscando o próprio interesse, sem se importar com os outros ou com a moralidade."
+    },
+    "caotico_mau": {
+      "nome": "Caótico e Mau",
+      "descricao": "Agem de forma destrutiva, sem regras ou moral, buscando o caos e o sofrimento, geralmente por prazer ou ganho pessoal."
+    }
+}
+  

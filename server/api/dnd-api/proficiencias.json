@@ -1,0 +1,122 @@
+{
+    "proficiencias": {
+      "habilidades": [
+        { "nome": "Acrobacia", "atributo": "Destreza" },
+        { "nome": "Adestrar Animais", "atributo": "Sabedoria" },
+        { "nome": "Arcanismo", "atributo": "Inteligência" },
+        { "nome": "Atletismo", "atributo": "Força" },
+        { "nome": "Atuação", "atributo": "Carisma" },
+        { "nome": "Enganação", "atributo": "Carisma" },
+        { "nome": "Furtividade", "atributo": "Destreza" },
+        { "nome": "História", "atributo": "Inteligência" },
+        { "nome": "Intimidação", "atributo": "Carisma" },
+        { "nome": "Intuição", "atributo": "Sabedoria" },
+        { "nome": "Investigação", "atributo": "Inteligência" },
+        { "nome": "Medicina", "atributo": "Sabedoria" },
+        { "nome": "Natureza", "atributo": "Inteligência" },
+        { "nome": "Percepção", "atributo": "Sabedoria" },
+        { "nome": "Persuasão", "atributo": "Carisma" },
+        { "nome": "Prestidigitação", "atributo": "Destreza" },
+        { "nome": "Religião", "atributo": "Inteligência" },
+        { "nome": "Sobrevivência", "atributo": "Sabedoria" }
+      ],
+      "armaduras": [
+        "Armadura Leve",
+        "Armadura Média",
+        "Armadura Pesada",
+        "Escudos"
+      ],
+      "armas": [
+        "Armas Simples",
+        "Armas Marciais",
+        "Adaga",
+        "Besta leve",
+        "Besta pesada",
+        "Cajado",
+        "Clava",
+        "Espada longa",
+        "Espada curta",
+        "Lança",
+        "Machado de batalha",
+        "Maça",
+        "Martelo de guerra",
+        "Porrete",
+        "Rapieira",
+        "Rede",
+        "Zarabatana"
+      ],
+      "ferramentas": [
+        "Ferramentas de Alquimista",
+        "Ferramentas de Carpinteiro",
+        "Ferramentas de Cartógrafo",
+        "Ferramentas de Coureiro",
+        "Ferramentas de Entalhador",
+        "Ferramentas de Ferreiro",
+        "Ferramentas de Joalheiro",
+        "Ferramentas de Oleiro",
+        "Ferramentas de Pedreiro",
+        "Ferramentas de Sapateiro",
+        "Ferramentas de Serralheiro",
+        "Ferramentas de Tecelão",
+        "Ferramentas de Vidreiro",
+        "Ferramentas de Calígrafo",
+        "Ferramentas de Cervejeiro",
+        "Ferramentas de Pintor",
+        "Ferramentas de Cozinheiro",
+        "Kit de Disfarce",
+        "Kit de Falsificação",
+        "Kit de Herbalismo",
+        "Kit de Venenos",
+        "Ferramentas de Ladrão",
+        "Ferramentas de Navegador"
+      ],
+      "instrumentos_musicais": [
+        "Alaúde",
+        "Charamela",
+        "Flauta Doce",
+        "Flauta",
+        "Gaita de Fole",
+        "Lira",
+        "Tambor",
+        "Trombeta",
+        "Viola",
+        "Xilofone"
+      ],
+      "jogos": [
+        "Conjunto de Dados",
+        "Conjunto de Cartas",
+        "Tabuleiro de Dragonete",
+        "Outros jogos de tabuleiro"
+      ],
+      "veiculos": [
+        "Veículos Terrestres",
+        "Veículos Aquáticos"
+      ],
+      "testes_de_resistencia": [
+        "Força",
+        "Destreza",
+        "Constituição",
+        "Inteligência",
+        "Sabedoria",
+        "Carisma"
+      ],
+      "idiomas": [
+        "Comum",
+        "Anão",
+        "Élfico",
+        "Gigante",
+        "Gnômico",
+        "Goblinoide",
+        "Halfling",
+        "Orc",
+        "Abissal",
+        "Celestial",
+        "Dracônico",
+        "Infernal",
+        "Primordial",
+        "Silvestre",
+        "Subcomum (Subterrâneo)"
+      ]
+    }
+  }
+  

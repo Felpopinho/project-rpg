@@ -1,0 +1,1150 @@
+{
+    "itens_comuns": [
+      {
+        "item": "Pergaminho de magia (1° nível)",
+        "preco": "100 po",
+        "sintoniza": "N"
+      },
+      {
+        "item": "Pergaminho de magia (truque)",
+        "preco": "50 po",
+        "sintoniza": "N"
+      },
+      {
+        "item": "Poção de cura",
+        "preco": "50 po",
+        "sintoniza": "N"
+      },
+      {
+        "item": "Poção de escalada",
+        "preco": "75 po",
+        "sintoniza": "N"
+      }
+    ],
+    "itens_incomuns": [
+          {
+            "item": "Aljava de Ehlonna",
+            "preco": "2.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Amuleto de proteção contra detecção e localização",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Anel de andar na água",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Anel de calor",
+            "preco": "1.500 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Anel de escudo mental",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Anel de natação",
+            "preco": "2.500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Anel de saltar",
+            "preco": "2.500 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Arma +1",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Armadura de adamante",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Armadura de mitral",
+            "preco": "2.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Armadura do marinheiro",
+            "preco": "3.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Azagaia de relâmpago",
+            "preco": "2.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Baralho das ilusões",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Bastão guardião de pactos +1",
+            "preco": "3.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Bastão imóvel",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Bolsa de truques",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Botas aladas",
+            "preco": "4.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Botas de caminhar e saltar",
+            "preco": "3.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Botas do inverno",
+            "preco": "2.500 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Botas élficas",
+            "preco": "2.500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Braceletes de arquearia",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Broche do escudo",
+            "preco": "2.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Cajado da píton",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Cajado da víbora",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Capa de respirar na água",
+            "preco": "3.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Chapéu de disfarce",
+            "preco": "2.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Corda de escalada",
+            "preco": "3.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Decantador de água infinita",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Diadema de destruição",
+            "preco": "4.500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Elmo de compreensão de idiomas",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Elmo de telepatia",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Escudo +1",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Escudo sentinela",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Espada da vingança",
+            "preco": "3.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Estátua de poderes incríveis (corvo de prata)",
+            "preco": "3.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Filtro do amor",
+            "preco": "500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Flauta assombrada",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Flauta dos esgotos",
+            "preco": "1.500 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Garrafa de fumaça eterna",
+            "preco": "4.500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Gema da luminosidade",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Gema elemental",
+            "preco": "2.500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Globo de fluxo",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Instrumento do bardo (alaúde de Doss)",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Instrumento do bardo (bandolim de Fochlucan)",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Instrumento do bardo (citara de Mac-Fuimidh)",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Jarra de alquimia",
+            "preco": "2.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Lanterna de revelação",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Luvas de apanhar projéteis",
+            "preco": "4.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Luvas de destreza",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Luvas de nadar e escalar",
+            "preco": "3.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Luvas do ladrão",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Manoplas de força do ogro",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Manto da arraia",
+            "preco": "4.500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Manto de carisma",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Manto de proteção",
+            "preco": "4.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Manto élfico",
+            "preco": "2.500 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Medalhão de pensamentos",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Mochila de carga",
+            "preco": "3.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Munição +1",
+            "preco": "250 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Óculos noturnos",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Óleo escorregadio",
+            "preco": "500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Olhos de águia",
+            "preco": "2.500 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Olhos de encantamento",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Olhos de visão momentânea",
+            "preco": "2.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Pedra da boa sorte (pedra da sorte)",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Pedras de mensagem",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Pergaminho de magia (2° nível)",
+            "preco": "250 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Pergaminho de magia (3° nível)",
+            "preco": "500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Periapto (Colar) da adaptação",
+            "preco": "4.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Periapto de cicatrização",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Periapto de sabedoria",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Periapto de saúde",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Pérola do poder",
+            "preco": "4.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Pó da seca",
+            "preco": "200 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Pó de desaparecimento",
+            "preco": "500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Pó de espirrar e tossir",
+            "preco": "200 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Poção de amizade animal",
+            "preco": "300 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Poção de aumentar",
+            "preco": "500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Poção de cura maior",
+            "preco": "250 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Poção de envenenamento",
+            "preco": "500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Poção de força do gigante (colina)",
+            "preco": "800 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Poção de resistência",
+            "preco": "400 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Poção de respirar na água",
+            "preco": "300 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Poção de sopro de fogo",
+            "preco": "500 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Robe dos itens úteis",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Sandálias de patas de aranha",
+            "preco": "4.500 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Sela do cavaleiro",
+            "preco": "2.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Tiara do intelecto",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Tridente de comandar peixes",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Unguento de Keoghtom",
+            "preco": "4.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Varinha de detectar magia",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Varinha de mísseis mágicos",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Varinha de segredos",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          },
+          {
+            "item": "Varinha do arcano de guerra +1",
+            "preco": "5.000 po",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Vassoura voadora",
+            "preco": "5.000 po",
+            "sintoniza": "N"
+          }
+    ],
+    "itens_muito_raros": [
+        {
+          "item": "Amuleto dos planos",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Anel de estrelas cadentes",
+          "preco": "40.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Anel de regeneração",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Anel de telecinésia",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Arco do juramento",
+          "preco": "35.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Arma +3",
+          "preco": "50.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Armadura +2",
+          "preco": "40.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Armadura anã",
+          "preco": "22.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Armadura demoníaca",
+          "preco": "45.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Arremessador anão",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Bastão de absorção",
+          "preco": "40.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Bastão de prontidão",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Bastão de segurança",
+          "preco": "45.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Bastão guardião de pactos +3",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Bola de cristal (ler mentes)",
+          "preco": "40.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Bolsa devoradora",
+          "preco": "20.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Brunea de escamas de dragão",
+          "preco": "25.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cajado de ataque",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cajado de trovão e relâmpago",
+          "preco": "40.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cajado do fogo",
+          "preco": "25.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cajado do frio",
+          "preco": "25.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cajado do poder",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cimitarra da velocidade",
+          "preco": "35.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cinturão de força do gigante (Fogo)",
+          "preco": "35.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cinturão de força do gigante (Gelo e Pedra)",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Elmo brilhante",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Escudo +3",
+          "preco": "50.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Escudo animado",
+          "preco": "20.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Escudo de proteção contra magia",
+          "preco": "25.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Espada dançarina",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Espada decepadora",
+          "preco": "20.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Espelho do aprisionamento",
+          "preco": "50.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Estátua de poderes incríveis (corcel de obsidiana)",
+          "preco": "20.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Ferraduras de zéfiro",
+          "preco": "20.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Flecha assassina",
+          "preco": "5.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Garrafa do efreeti",
+          "preco": "50.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Instrumento do bardo (Harpa de Anstruth)",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Ladra das nove vidas",
+          "preco": "25.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Manto da aranha",
+          "preco": "20.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Manual da rapidez de movimentos",
+          "preco": "45.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Manual da saúde corporal",
+          "preco": "45.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Manual do bom exercício",
+          "preco": "45.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Manual dos golens",
+          "preco": "50.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Marca congelante",
+          "preco": "25.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Munição +3",
+          "preco": "2.500 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Óleo de precisão",
+          "preco": "5.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Pedra iônica (absorção)",
+          "preco": "40.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pedra iônica (agilidade)",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pedra iônica (força)",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pedra iônica (fortitude)",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pedra iônica (intelecto)",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pedra iônica (intuição)",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pedra iônica (liderança)",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pergaminho de magia (6° nível)",
+          "preco": "2.500 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Pergaminho de magia (7° nível)",
+          "preco": "4.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Pergaminho de magia (8° nível)",
+          "preco": "6.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Pigmentos maravilhosos de Nolzur",
+          "preco": "5.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de cura suprema",
+          "preco": "3.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de força do gigante (Nuvens)",
+          "preco": "8.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de invisibilidade",
+          "preco": "4.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de longevidade",
+          "preco": "6.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de velocidade",
+          "preco": "3.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de vitalidade",
+          "preco": "8.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de voô",
+          "preco": "4.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Robe das cores cintilantes",
+          "preco": "30.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Robe das estrelas",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Tapete voador",
+          "preco": "35.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Tomo da compreensão",
+          "preco": "45.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Tomo de liderança e influência",
+          "preco": "45.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Tomo dos grandes pensamentos",
+          "preco": "45.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Trombeta do Valhalla (bronze)",
+          "preco": "40.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Varinha de metamorfose",
+          "preco": "40.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Varinha do arcano de guerra +3",
+          "preco": "50.000 po",
+          "sintoniza": "S"
+        }
+    ],
+    "itens_lendarios": [
+        {
+          "item": "Anel de comandar elementais",
+          "preco": "300.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Anel de invisibilidade",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Anel de invocação de djinni",
+          "preco": "350.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Anel de refletir magia",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Anel dos três desejos",
+          "preco": "150.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Armadura +3",
+          "preco": "100.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Armadura de invulnerabilidade",
+          "preco": "120.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Armadura de placas da forma etérea",
+          "preco": "180.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Baralho das surpresas",
+          "preco": "500.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Bastão de ressurreição",
+          "preco": "300.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Bastão do grande poder",
+          "preco": "75.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Bola de cristal (telepatia ou visão da verdade)",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cajado do arcano",
+          "preco": "500.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cinturão de força do gigante (Tempestade)",
+          "preco": "300.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cinturão de força do gigante (Nuvens)",
+          "preco": "200.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Cola soberana",
+          "preco": "10.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Cubo do portal",
+          "preco": "175.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Defensora",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Dispositivo de Kwalish",
+          "preco": "200.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Escaravelho de proteção",
+          "preco": "250.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Esfera da aniquilação",
+          "preco": "200.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Espada da retaliação",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Espada vorpal",
+          "preco": "300.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Frasco de ferro",
+          "preco": "250.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Instrumento do bardo (harpa de Ollamh)",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Lâmina da sorte",
+          "preco": "250.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Malha do efreeti",
+          "preco": "200.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Manto de invisibilidade",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Martelo dos trovões",
+          "preco": "450.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Pedra iônica (absorção maior)",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pedra iônica (maestria)",
+          "preco": "200.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pedra iônica (regeneração)",
+          "preco": "90.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Pergaminho de magia (9° nível)",
+          "preco": "10.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de cura completa",
+          "preco": "6.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poção de força do gigante (Tempestade)",
+          "preco": "12.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Poço dos muitos mundos",
+          "preco": "400.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Robe do arquimago",
+          "preco": "250.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Solvente universal",
+          "preco": "5.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Talismã da bondade pura",
+          "preco": "350.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Talismã da esfera",
+          "preco": "100.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Talismã do mal absoluto",
+          "preco": "350.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Tomo da língua quieta",
+          "preco": "200.000 po",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Trombeta do Valhalla (ferro)",
+          "preco": "120.000 po",
+          "sintoniza": "N"
+        },
+        {
+          "item": "Vingadora sagrada",
+          "preco": "350.000 po",
+          "sintoniza": "S"
+        }
+    ],
+    "itens_inteligentes": [
+          {
+            "item": "Esmagador",
+            "preco": "Inestimável",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Lâmina da Lua",
+            "preco": "Inestimável",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Navalha Negra",
+            "preco": "Inestimável",
+            "sintoniza": "S"
+          },
+          {
+            "item": "Onda",
+            "preco": "Inestimável",
+            "sintoniza": "S"
+          }
+    ],
+    "artefatos": [
+        {
+          "item": "Cetro de Orcus",
+          "preco": "Inestimável",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Espada de Kas",
+          "preco": "Inestimável",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Livro da Escuridão Perversa",
+          "preco": "Inestimável",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Livro dos Grandes Feitos",
+          "preco": "Inestimável",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Machado dos Lordes Anões",
+          "preco": "Inestimável",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Olho e Mão de Vecna",
+          "preco": "Inestimável",
+          "sintoniza": "S"
+        },
+        {
+          "item": "Orbe dos Dragões",
+          "preco": "Inestimável",
+          "sintoniza": "S"
+        }
+    ]
+}
+  

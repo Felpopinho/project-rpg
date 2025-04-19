@@ -1,0 +1,412 @@
+[
+    {
+      "nome": "Alquimista",
+      "classe": "Artífice",
+      "descricao": "Especializado em alquimia, o Alquimista cria poções e elixires mágicos com efeitos diversos, desde cura até explosões elementais."
+    },
+    {
+      "nome": "Armeiro",
+      "classe": "Artífice",
+      "descricao": "O Armeiro canaliza magia em uma armadura arcana, tornando-se uma força de combate blindada com poderosos ataques mágicos integrados."
+    },
+    {
+      "nome": "Artilheiro",
+      "classe": "Artífice",
+      "descricao": "Um mestre em criar armas mágicas de longo alcance, o Artilheiro manipula energia arcana para lançar ataques à distância com sua arcana."
+    },
+    {
+      "nome": "Ferreiro de Batalha",
+      "classe": "Artífice",
+      "descricao": "Focado em combate direto, o Ferreiro de Batalha combina armamento mágico com um companheiro construto para dominar o campo de batalha."
+    },
+    {
+        "nome": "Caminho do Berserker",
+        "classe": "Bárbaro",
+        "descricao": "Um bárbaro tomado por uma fúria incontrolável. O Berserker mergulha em um estado de fúria intensa, capaz de realizar feitos sobre-humanos de força e resistência."
+      },
+      {
+        "nome": "Caminho do Guerreiro Totêmico",
+        "classe": "Bárbaro",
+        "descricao": "Este bárbaro canaliza os espíritos de animais totêmicos, ganhando habilidades místicas e força espiritual guiadas por seu animal totêmico escolhido, como urso, águia ou lobo."
+      },
+      {
+        "nome": "Caminho do Ancestral",
+        "classe": "Bárbaro",
+        "descricao": "Guiado pelos espíritos de seus ancestrais, este bárbaro recebe proteção espiritual e pode interceder com poderes espectrais durante a batalha."
+      },
+      {
+        "nome": "Caminho da Besta",
+        "classe": "Bárbaro",
+        "descricao": "Abraçando sua natureza mais selvagem, o Bárbaro da Besta se transforma parcialmente em criatura bestial durante a fúria, adquirindo ataques naturais poderosos."
+      },
+      {
+        "nome": "Caminho da Tempestade",
+        "classe": "Bárbaro",
+        "descricao": "Este bárbaro invoca o poder das tempestades, canalizando raios, trovões e ventos furiosos durante sua fúria para devastar seus inimigos."
+      },
+      {
+        "nome": "Caminho do Selvagem Mágico",
+        "classe": "Bárbaro",
+        "descricao": "Tocado pela magia caótica, este bárbaro manifesta efeitos mágicos aleatórios e selvagens sempre que entra em fúria, tornando-o imprevisível e perigoso."
+      },
+      {
+        "nome": "Caminho da Fúria Imortal",
+        "classe": "Bárbaro",
+        "descricao": "Um guerreiro quase impossível de matar, este bárbaro desafia a morte constantemente, recuperando vitalidade e mantendo-se de pé mesmo após ferimentos devastadores."
+      },
+      {
+        "nome": "Colégio da Bravura",
+        "classe": "Bardo",
+        "descricao": "Bardos deste colégio inspiram coragem em combate. Eles encorajam aliados com canções de heroísmo e podem lutar na linha de frente, motivando seus companheiros com bravura."
+      },
+      {
+        "nome": "Colégio do Conhecimento",
+        "classe": "Bardo",
+        "descricao": "Especialistas em saberes arcanos e habilidades, estes bardos valorizam o aprendizado acima de tudo, usando seu vasto conhecimento para manipular e inspirar."
+      },
+      {
+        "nome": "Colégio das Espadas",
+        "classe": "Bardo",
+        "descricao": "Artistas do combate com lâminas, esses bardos misturam esgrima com performance, encantando e devastando seus inimigos com movimentos graciosos e mortais."
+      },
+      {
+        "nome": "Colégio do Sussurro",
+        "classe": "Bardo",
+        "descricao": "Mestres da manipulação e do medo, os bardos deste colégio utilizam palavras venenosas e segredos para desestabilizar inimigos e assumir identidades."
+      },
+      {
+        "nome": "Colégio do Valor",
+        "classe": "Bardo",
+        "descricao": "Inspirando coragem em meio à guerra, esses bardos lutam lado a lado com seus aliados, usando magia e música para proteger e motivar seus companheiros."
+      },
+      {
+        "nome": "Colégio das Máscaras",
+        "classe": "Bardo",
+        "descricao": "Esses bardos são mestres em assumir diferentes papéis e personalidades, manipulando situações sociais com precisão dramática e teatral."
+      },
+      {
+        "nome": "Colégio da Criação",
+        "classe": "Bardo",
+        "descricao": "Estes bardos moldam a matéria e a magia através da música, canalizando a energia criativa do universo para criar objetos e afetar o mundo ao seu redor."
+      },
+      {
+        "nome": "Colégio da Eloquência",
+        "classe": "Bardo",
+        "descricao": "Mestres da retórica e da persuasão, os bardos deste colégio nunca desperdiçam uma palavra. Eles usam seu domínio da linguagem para influenciar qualquer situação."
+      },
+      {
+        "nome": "Colégio das Lamentações",
+        "classe": "Bardo",
+        "descricao": "Estes bardos evocam tristeza e sofrimento com suas melodias, manipulando emoções profundas e canalizando a dor para fortalecer sua magia."
+      },
+      {
+        "nome": "O Arquifada",
+        "classe": "Bruxo",
+        "descricao": "Um ser do Reino das Fadas concede sua magia. Arquifadas são criaturas caprichosas e encantadoras que envolvem seus pactos com mistério e beleza sobrenatural."
+      },
+      {
+        "nome": "O Corruptor",
+        "classe": "Bruxo",
+        "descricao": "Um ser das profundezas do inferno, como um diabo poderoso, concede sua magia. Esses patronos oferecem poder em troca de obediência e ambição."
+      },
+      {
+        "nome": "O Grande Antigo",
+        "classe": "Bruxo",
+        "descricao": "Uma entidade alienígena de poder imensurável, perdida no tempo e espaço, é a fonte do seu pacto. Sua influência distorce a mente e toca os limites da realidade."
+      },
+      {
+        "nome": "O Celestial",
+        "classe": "Bruxo",
+        "descricao": "Seu patrono é uma entidade do bem supremo, como um unicórnio solar ou um anjo. Essa força luminosa lhe concede poder para curar e proteger."
+      },
+      {
+        "nome": "O Flagelo",
+        "classe": "Bruxo",
+        "descricao": "Você fez um pacto com uma força do caos e destruição elementar. Vulcões, terremotos e tempestades alimentam seu poder."
+      },
+      {
+        "nome": "O Enganador Sombrio",
+        "classe": "Bruxo",
+        "descricao": "Este patrono habita as sombras e manipula os fracos. Seu poder envolve ilusão, manipulação e o domínio da escuridão."
+      },
+      {
+        "nome": "O Gênio",
+        "classe": "Bruxo",
+        "descricao": "Você firmou um pacto com um gênio — dao, djinni, efreeti ou marid. Eles são entidades extraplanares de poder elemental que moldam o mundo ao seu capricho."
+      },
+      {
+        "nome": "O Inefável",
+        "classe": "Bruxo",
+        "descricao": "Seu patrono é um conceito abstrato, uma presença desconhecida que se manifesta por meio de símbolos, ideias e coincidências. Seu poder desafia a compreensão."
+      },
+      {
+        "nome": "A Rainha Corvo",
+        "classe": "Bruxo",
+        "descricao": "A Rainha Corvo governa o domínio dos mortos e comanda o destino das almas. Seu pacto lhe concede poder sobre a vida, a morte e os mistérios além do véu."
+      },
+      {
+        "nome": "O Lurker nas Profundezas",
+        "classe": "Bruxo",
+        "descricao": "Seu patrono é uma criatura das profundezas do oceano ou do vácuo estelar — insondável, alienígena e faminta. Ele oferece poder vindo dos lugares esquecidos."
+      },
+      {
+        "nome": "Domínio da Guerra",
+        "classe": "Clérigo",
+        "descricao": "Deuses da guerra promovem poder, glória e a arte do combate. Clérigos desse domínio são líderes militares e campeões sagrados no campo de batalha."
+      },
+      {
+        "nome": "Domínio da Vida",
+        "classe": "Clérigo",
+        "descricao": "Este domínio está associado à vitalidade, cura e proteção. Os clérigos da vida são verdadeiros guardiões da saúde e benfeitores das comunidades."
+      },
+      {
+        "nome": "Domínio da Luz",
+        "classe": "Clérigo",
+        "descricao": "A luz é símbolo da verdade, renovação e destruição das trevas. Clérigos da luz usam magias flamejantes e irradiam energia divina contra o mal."
+      },
+      {
+        "nome": "Domínio das Tempestades",
+        "classe": "Clérigo",
+        "descricao": "Deuses do céu, mar e trovão abençoam esses clérigos com o poder dos elementos. Eles invocam relâmpagos, ventos e tempestades para subjugar inimigos."
+      },
+      {
+        "nome": "Domínio do Conhecimento",
+        "classe": "Clérigo",
+        "descricao": "Sabedoria, aprendizado e mistérios ocultos definem esse domínio. Seus clérigos são estudiosos, conselheiros e buscadores da verdade."
+      },
+      {
+        "nome": "Domínio do Engano",
+        "classe": "Clérigo",
+        "descricao": "Deuses da trapaça, ilusão e liberdade abençoam os clérigos do engano. Eles usam truques, disfarces e manipulações para cumprir seus objetivos."
+      },
+      {
+        "nome": "Domínio da Natureza",
+        "classe": "Clérigo",
+        "descricao": "Clérigos ligados à natureza protegem o equilíbrio entre os mundos e os reinos naturais. Controlam animais, plantas e forças elementais da terra."
+      },
+      {
+        "nome": "Domínio da Morte",
+        "classe": "Clérigo",
+        "descricao": "Este domínio se conecta ao poder sombrio sobre a morte e os mortos-vivos. Clérigos da morte são executores do fim ou agentes de forças nefastas."
+      },
+      {
+        "nome": "Domínio da Tumba",
+        "classe": "Clérigo",
+        "descricao": "Enquanto a morte encerra a vida, a tumba guarda a passagem. Clérigos deste domínio impedem que a morte seja profanada e mantêm o equilíbrio do ciclo mortal."
+      },
+      {
+        "nome": "Domínio da Forja",
+        "classe": "Clérigo",
+        "descricao": "Deuses da criação e metalurgia abençoam esses clérigos. Eles forjam armas e armaduras mágicas e invocam o poder do fogo sagrado."
+      },
+      {
+        "nome": "Domínio da Ordem",
+        "classe": "Clérigo",
+        "descricao": "Ordem, estrutura e justiça são os pilares desse domínio. Clérigos da ordem impõem disciplina, leis e equilíbrio na sociedade e no campo de batalha."
+      },
+      {
+        "nome": "Domínio da Gravidade",
+        "classe": "Clérigo",
+        "descricao": "A força da gravidade, a atração entre mundos e o peso do cosmos guiam esses clérigos. Seus poderes distorcem espaço e movimento à sua vontade."
+      },
+      {
+        "nome": "Domínio da Unidade",
+        "classe": "Clérigo",
+        "descricao": "Unidade, sacrifício e comunhão com os outros são os fundamentos desse domínio. Clérigos da unidade protegem aliados e fortalecem vínculos espirituais."
+      },
+      {
+        "nome": "Domínio da Peste",
+        "classe": "Clérigo",
+        "descricao": "Esse domínio é associado à decadência, veneno e contágio. Seus seguidores podem tanto espalhar doenças quanto usá-las como ferramentas divinas."
+      },
+      {
+        "nome": "Círculo da Terra",
+        "classe": "Druida",
+        "descricao": "Druidas da Terra estão ligados profundamente ao solo e à magia da natureza. Eles preservam o equilíbrio natural e canalizam a força do mundo em suas magias."
+      },
+      {
+        "nome": "Círculo da Lua",
+        "classe": "Druida",
+        "descricao": "Este círculo se concentra na transformação. Druidas da Lua se transformam em feras maiores e mais ferozes, tornando-se verdadeiros combatentes da natureza."
+      },
+      {
+        "nome": "Círculo dos Sonhos",
+        "classe": "Druida",
+        "descricao": "Protetores dos reinos feéricos e do mundo dos sonhos, esses druidas curam e protegem com magias oníricas, inspiradas na beleza e magia das fadas."
+      },
+      {
+        "nome": "Círculo do Pastor",
+        "classe": "Druida",
+        "descricao": "Druidas pastores invocam e protegem espíritos da natureza, especialmente animais e criaturas feéricas. Eles lideram rebanhos e defendem os indefesos."
+      },
+      {
+        "nome": "Círculo da Espora",
+        "classe": "Druida",
+        "descricao": "Esses druidas veem a morte como parte essencial da vida. Eles usam fungos, esporos e decomposição para atacar, curar e manipular os ciclos naturais."
+      },
+      {
+        "nome": "Círculo da Estrela",
+        "classe": "Druida",
+        "descricao": "Inspirados pelas constelações e pelos mistérios do céu, esses druidas usam padrões estelares para canalizar magia cósmica e curar, proteger ou atacar."
+      },
+      {
+        "nome": "Círculo da Chama Selvagem",
+        "classe": "Druida",
+        "descricao": "Este círculo celebra o fogo da renovação. Seus membros utilizam o poder destrutivo das chamas para limpar, renascer e proteger o equilíbrio da natureza."
+      },
+      {
+        "nome": "Círculo da Areia Escaldante",
+        "classe": "Druida",
+        "descricao": "Fortemente ligados aos desertos e regiões áridas, esses druidas dominam tempestades de areia, calor abrasador e forças da desolação para proteger seu território."
+      },
+      {
+        "nome": "Alma Dracônica",
+        "classe": "Feiticeiro",
+        "descricao": "Sua magia vem do sangue de dragões ancestrais. Essa herança dracônica concede poderes mágicos, resistência elemental e presença imponente."
+      },
+      {
+        "nome": "Magia do Caos Selvagem",
+        "classe": "Feiticeiro",
+        "descricao": "Você canaliza uma magia caótica e imprevisível. Seus feitiços podem gerar efeitos aleatórios, trazendo tanto sorte quanto desastre ao campo de batalha."
+      },
+      {
+        "nome": "Alma Abissal",
+        "classe": "Feiticeiro",
+        "descricao": "Sua linhagem mágica está ligada aos planos infernais. Você invoca chamas, caos e resistência através do sangue demoníaco ou diabólico que corre em suas veias."
+      },
+      {
+        "nome": "Alma Devota",
+        "classe": "Feiticeiro",
+        "descricao": "A origem da sua magia é divina. A alma devota mistura poderes de clérigos com a espontaneidade arcana do feiticeiro, permitindo canalizar bênçãos sagradas."
+      },
+      {
+        "nome": "Alma Sombria",
+        "classe": "Feiticeiro",
+        "descricao": "Sua magia provém das sombras. Você manipula a escuridão, domina ambientes noturnos e resiste aos efeitos de morte e medo com facilidade."
+      },
+      {
+        "nome": "Tempestade Mística",
+        "classe": "Feiticeiro",
+        "descricao": "Você comanda trovões, ventos e relâmpagos. Essa origem concede velocidade, poder elemental e presença inspiradora, como uma verdadeira tempestade viva."
+      },
+      {
+        "nome": "Toque do Gelo Eterno",
+        "classe": "Feiticeiro",
+        "descricao": "Sua magia provém do frio ancestral. Você congela inimigos, manipula gelo e nevascas, e resiste ao toque gelado da morte com serenidade congelante."
+      },
+      {
+        "nome": "Caminho do Protetor",
+        "classe": "Guardião",
+        "descricao": "Você se especializa em defender aliados e repelir ataques. Com armadura reforçada e técnicas de interposição, você se torna um verdadeiro escudo vivo no campo de batalha."
+      },
+      {
+        "nome": "Caminho do Predador",
+        "classe": "Guardião",
+        "descricao": "Você adota táticas ofensivas e predatórias. Rápido, agressivo e implacável, você caça seus inimigos com golpes precisos e movimentos calculados."
+      },
+      {
+        "nome": "Caminho do Guardião Elemental",
+        "classe": "Guardião",
+        "descricao": "Você canaliza forças elementais da natureza para proteger e atacar. Fogo, terra, ar ou água fluem através de você, ampliando seu poder físico com energias primordiais."
+      },
+      {
+        "nome": "Caminho da Besta Interior",
+        "classe": "Guardião",
+        "descricao": "Dentro de você há uma criatura selvagem. Ao liberar sua fera interior, você ganha força, velocidade e sentidos animalescos para dominar o campo de batalha."
+      },
+      {
+        "nome": "Campeão",
+        "classe": "Guerreiro",
+        "descricao": "O Campeão é um guerreiro altamente focado no combate físico. Ele se destaca com ataques rápidos e golpes devastadores, além de ser resistente, capaz de suportar ataques que outros guerreiros não resistiriam."
+      },
+      {
+        "nome": "Mestre de Luta",
+        "classe": "Guerreiro",
+        "descricao": "O Mestre de Luta é um guerreiro que se especializa em técnicas de combate, seja com armas ou com o uso de estratégia. Ele pode derrotar um oponente com habilidade e precisão, sempre usando sua experiência de combate para se sair vitorioso."
+      },
+      {
+        "nome": "Cavaleiro Arqueiro",
+        "classe": "Guerreiro",
+        "descricao": "O Cavaleiro Arqueiro é um mestre em combate a distância. Com a habilidade de disparar flechas com precisão letal, ele também pode se manter ágil e lutar bem no corpo a corpo, adaptando-se às situações de batalha."
+      },
+      {
+        "nome": "Guardião de Ferro",
+        "classe": "Guerreiro",
+        "descricao": "O Guardião de Ferro é um guerreiro impenetrável, que usa armaduras pesadas e técnicas de defesa aprimoradas. Ele é o defensor supremo, absorvendo danos e protegendo seus aliados."
+      },
+      {
+        "nome": "Ladrão",
+        "classe": "Ladino",
+        "descricao": "O Ladrão é o mestre do furtividade e da agilidade. Ele é especializado em roubo, desarme de armadilhas e ações rápidas, surpreendendo seus inimigos com ataques repentinos e esquivas inesperadas."
+      },
+      {
+        "nome": "Assassino",
+        "classe": "Ladino",
+        "descricao": "O Assassino é uma máquina de morte furtiva, especializado em eliminar alvos rapidamente e com precisão mortal. Ele é perfeito para ataques furtivos, com a capacidade de desferir golpes fatais e escapar sem deixar vestígios."
+      },
+      {
+        "nome": "Trapaceiro Arcano",
+        "classe": "Ladino",
+        "descricao": "O Trapaceiro Arcano combina a astúcia do ladino com habilidades arcanas. Ele é capaz de conjurar magias menores para enganar, manipular e sobreviver em situações perigosas, além de ser um mestre no uso de magias ilusórias e enganosas."
+      },
+      {
+        "nome": "Espreitador Sombrio",
+        "classe": "Ladino",
+        "descricao": "O Espreitador Sombrio é um especialista em espionagem e em movimentos silenciosos. Ele se destaca no controle das sombras, sendo capaz de se mover pela escuridão e observar seus inimigos sem ser detectado, podendo realizar ataques furtivos devastadores."
+      },
+      {
+        "nome": "Escola de Abjuração",
+        "classe": "Mago",
+        "descricao": "A Escola de Abjuração se foca na proteção e resistência mágica. Magos dessa escola podem criar barreiras mágicas, proteger aliados e desviar feitiços inimigos, tornando-se baluartes contra ameaças mágicas."
+      },
+      {
+        "nome": "Escola de Conjuração",
+        "classe": "Mago",
+        "descricao": "Os magos da Escola de Conjuração são mestres na invocação de criaturas e objetos. Eles são capazes de conjurar aliados temporários ou trazer objetos de outros planos, sempre prontos para manipular o campo de batalha a seu favor."
+      },
+      {
+        "nome": "Escola de Divinação",
+        "classe": "Mago",
+        "descricao": "Magos da Escola de Divinação possuem uma conexão profunda com o fluxo do destino e da sorte. Eles podem prever eventos futuros, encontrar informações ocultas e manipular a probabilidade a seu favor."
+      },
+      {
+        "nome": "Escola de Encantamento",
+        "classe": "Mago",
+        "descricao": "A Escola de Encantamento foca no controle das mentes e emoções. Magos dessa escola são especializados em fascinar, controlar ou amedrontar seus inimigos, tornando-os poderosos manipuladores de mentes."
+      },
+      {
+        "nome": "Escola de Ilusão",
+        "classe": "Mago",
+        "descricao": "Os magos da Escola de Ilusão são mestres da enganação e do disfarce. Eles podem criar ilusões poderosas para confundir, enganar e manipular seus inimigos, fazendo-os ver o que não é real."
+      },
+      {
+        "nome": "Escola de Necromancia",
+        "classe": "Mago",
+        "descricao": "Magos da Escola de Necromancia têm o poder de manipular a vida e a morte. Eles podem conjurar mortos-vivos, drenar a energia vital de seus inimigos e até mesmo controlar almas e espíritos."
+      },
+      {
+        "nome": "Escola de Transmutação",
+        "classe": "Mago",
+        "descricao": "A Escola de Transmutação foca na transformação de matéria. Magos dessa escola podem alterar as propriedades de objetos e criaturas, mudando suas formas, propriedades ou até mesmo os estados da matéria."
+      },
+      {
+        "nome": "Caminho da Mão Aberta",
+        "classe": "Monge",
+        "descricao": "Os monges do Caminho da Mão Aberta se tornam mestres em combate corpo a corpo. Sua habilidade de desarmar, derrubar e ferir seus inimigos de maneira letal os torna imbatíveis no combate físico. Eles também podem controlar a energia interna de seus corpos para curar e resistir a danos."
+      },
+      {
+        "nome": "Caminho do Tranquilo",
+        "classe": "Monge",
+        "descricao": "Monges do Caminho do Tranquilo são focados na meditação e no controle de sua mente e espírito. Eles buscam a harmonia, a paciência e a serenidade, usando esses princípios para aprimorar suas habilidades físicas e mentais, além de curar os outros."
+      },
+      {
+        "nome": "Caminho dos Elementos",
+        "classe": "Monge",
+        "descricao": "Monges do Caminho dos Elementos são imbuídos com o poder dos elementos naturais. Cada monge neste caminho escolhe um elemento, como fogo, água, terra ou ar, e aprende a manipular essas energias para aprimorar suas habilidades marciais e criar efeitos devastadores."
+      },
+      {
+        "nome": "Caminho do Vento Tempestuoso",
+        "classe": "Monge",
+        "descricao": "Monges do Caminho do Vento Tempestuoso têm uma ligação profunda com o ar e o vento, utilizando sua agilidade e velocidade excepcionais. Eles são capazes de se mover com a leveza de uma brisa ou com a força de um tornado, tornando-se verdadeiras forças da natureza no campo de batalha."
+      }
+]

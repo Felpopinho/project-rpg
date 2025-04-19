@@ -18,6 +18,7 @@ if(localStorage.getItem("mui-mode") === null){
 
 
 export const baseURL = 'https://projectrpg-api.vercel.app'
+export const dndURL = 'https://www.dnd5eapi.co/api/2014'
 
 function App() {
 
@@ -68,13 +69,10 @@ function App() {
   const [races, setRaces] = useState("")
   const [backgrounds, setBackgrounds] = useState("")
 
-  const [formDisabled, setFormDisabled] = useState(0)
-
   const getClasses = async () =>{
     try {
-        await axios.get("https://api.open5e.com/v1/classes/").then(res =>{
+        await axios.get(dndURL+"/classes/").then(res =>{
             setClasses(res.data)
-            setFormDisabled(formDisabled + 1)
             console.log(res.data)
         })
     } catch (error) {
@@ -83,9 +81,9 @@ function App() {
   }
   const getRaces = async () =>{
       try {
-          await axios.get("https://api.open5e.com/v2/races/").then(res =>{
+          await axios.get(dndURL+"/races/").then(res =>{
               setRaces(res.data)
-              setFormDisabled(formDisabled + 1)
+              console.log(res.data)
           })
       } catch (error) {
           console.log(error)
@@ -94,9 +92,9 @@ function App() {
   }
   const getBackgrounds = async () =>{
       try {
-          await axios.get("https://api.open5e.com/v2/backgrounds/").then(res =>{
+          await axios.get(dndURL+"/backgrounds/").then(res =>{
               setBackgrounds(res.data)
-              setFormDisabled(formDisabled + 1)
+              console.log(res.data)
           })
       } catch (error) {
           console.log(error)
@@ -123,7 +121,7 @@ function App() {
         <Routes>
           <Route path={`/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
           <Route path={`/signin`} element={<Signin setUser={setUser}/>}/>
-          <Route path={`/home/*`} element={<Home user={user} personagens={personagens} setPersonagens={setPersonagens} formDisabled={formDisabled} setActualPers={setActualPers}/>}/>
+          <Route path={`/home/*`} element={<Home user={user} personagens={personagens} classes={classes} races={races} backgrounds={backgrounds} setPersonagens={setPersonagens} setActualPers={setActualPers}/>}/>
           <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser} classes={classes} races={races} backgrounds={backgrounds}/>}/>
           <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} classes={classes} races={races} backgrounds={backgrounds} setActualPers={setActualPers}/>}/>
         </Routes>

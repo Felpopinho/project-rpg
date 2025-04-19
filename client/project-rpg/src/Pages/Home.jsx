@@ -47,7 +47,6 @@ export function Home(props){
                 }
                 props.setPersonagens(res.data)
                 setNpersonagens([res.data])
-                console.log("a")
             })
         } catch (error) {
             console.log(error)
@@ -88,7 +87,7 @@ export function Home(props){
             <h1 className='text-4xl text-black font-bold dark:text-white text-nowrap max-lg:col-start-1 max-md:text-3xl'>Fichas</h1>
             <TextField fullWidth label="Pesquisar personagens" className='max-lg:col-span-2' onChange={(e)=>{pesquisarPersonagens(e)}}></TextField>
             <div className='flex self-stretch max-lg:col-start-2 row-start-1 justify-self-end'>
-                <Button loading={props.formDisabled >= 1 ? false : true} variant='contained' onClick={()=>{navigate("/form-personagem")}}><Icon>note_add</Icon></Button> 
+                <Button loading={!(props.classes.length) && !(props.races.length) && !(props.backgrounds.length)} variant='contained' onClick={()=>{navigate("/form-personagem")}}><Icon>note_add</Icon></Button> 
             </div>
         </div>
         <Divider sx={{margin: "2vh 0"}}/>

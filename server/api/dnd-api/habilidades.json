@@ -1,0 +1,27 @@
+{
+    "forca": {
+      "nome": "Força",
+      "descricao": "Mede o poder físico bruto de uma criatura. Usada para testes que envolvem levantamento, arrombamento, combate corpo a corpo e saltos."
+    },
+    "destreza": {
+      "nome": "Destreza",
+      "descricao": "Mede agilidade, reflexos e equilíbrio. Influencia a Classe de Armadura, iniciativa, testes de Furtividade, Acrobacia e ataques à distância."
+    },
+    "constituicao": {
+      "nome": "Constituição",
+      "descricao": "Representa saúde, resistência física e vigor. Afeta os pontos de vida e testes de resistência contra venenos e fadiga."
+    },
+    "inteligencia": {
+      "nome": "Inteligência",
+      "descricao": "Avalia raciocínio lógico, memória e conhecimento. Importante para magos, afeta testes de Arcana, História, Investigação, Natureza e Religião."
+    },
+    "sabedoria": {
+      "nome": "Sabedoria",
+      "descricao": "Reflete percepção e intuição. Usada para testes de Percepção, Intuição, Sobrevivência e testes de resistência contra ilusões ou encantamentos."
+    },
+    "carisma": {
+      "nome": "Carisma",
+      "descricao": "Mede força de personalidade, persuasão e liderança. Afeta testes sociais como Persuasão, Intimidação, Enganação e Performance."
+    }
+}
+  
