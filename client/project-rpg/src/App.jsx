@@ -18,7 +18,6 @@ if(localStorage.getItem("mui-mode") === null){
 
 
 export const baseURL = 'https://projectrpg-api.vercel.app'
-export const dndURL = 'https://www.dnd5eapi.co/api/2014'
 
 function App() {
 
@@ -71,7 +70,7 @@ function App() {
 
   const getClasses = async () =>{
     try {
-        await axios.get(dndURL+"/classes/").then(res =>{
+        await axios.get(baseURL+"/dnd/classes").then(res =>{
             setClasses(res.data)
             console.log(res.data)
         })
@@ -81,7 +80,7 @@ function App() {
   }
   const getRaces = async () =>{
       try {
-          await axios.get(dndURL+"/races/").then(res =>{
+          await axios.get(baseURL+"/dnd/racas").then(res =>{
               setRaces(res.data)
               console.log(res.data)
           })
@@ -92,7 +91,7 @@ function App() {
   }
   const getBackgrounds = async () =>{
       try {
-          await axios.get(dndURL+"/backgrounds/").then(res =>{
+          await axios.get(baseURL+"/dnd/antecedentes").then(res =>{
               setBackgrounds(res.data)
               console.log(res.data)
           })
