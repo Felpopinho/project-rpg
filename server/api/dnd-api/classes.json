@@ -1,4 +1,4 @@
-{
+[{
     "artifice": {
       "nome": "Artífice",
       "descricao": "Um mestre em criar itens mágicos e engenhocas, utilizando sua inteligência e habilidades em artesanato.",
@@ -338,5 +338,5 @@
         "Uma capa e um grimório"
       ]
     }
-  }
+}]
   
