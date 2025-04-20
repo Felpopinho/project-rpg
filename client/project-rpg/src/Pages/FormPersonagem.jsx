@@ -141,11 +141,10 @@ export function FormPersonagem(props){
         })
     }
 
-    const [sAlinhamentoUm, setSalinhamentoUm] = useState('')
-    const [sAlinhamentoDois, setSalinhamentoDois] = useState('')
+    const [sAlinhamento, setSalinhamento] = useState('')
 
-    const handleAlinhamento = (e, n) =>{
-        n === 1 ? setSalinhamentoUm(e.target.value) : setSalinhamentoDois(e.target.value)
+    const handleAlinhamento = (e) =>{
+        setSalinhamento(e.target.value)
     }
 
     const finalizarPers = async (e) =>{
@@ -153,8 +152,6 @@ export function FormPersonagem(props){
         e.preventDefault()
 
         const d = ref.current
-
-        const rAlinhamento = (`${d.AlinhamentoUm.value} e ${d.AlinhamentoDois.value}`).toUpperCase()
 
         console.log(pWeapons)
         console.log(pArmor)
@@ -169,9 +166,9 @@ export function FormPersonagem(props){
                 inteligencia: objSkills.Inteligencia[1],
                 sabedoria: objSkills.Sabedoria[1],
                 carisma: objSkills.Carisma[1],
-                classe: classe.name,
-                raca: raca.name,
-                antecedente: antecedente.name,
+                classe: classe.nome,
+                raca: raca.nome,
+                antecedente: antecedente.nome,
                 nome: d.Nome.value,
                 jogador: d.Jogador.value,
                 historia: d.Historia.value,
@@ -181,7 +178,7 @@ export function FormPersonagem(props){
                 aparencia: d.Aparencia.value,
                 sabpassiva: 0,
                 intupassiva: 0,
-                alinhamento: rAlinhamento,
+                alinhamento: sAlinhamento,
                 personalidade: d.Personalidade.value,
                 ideais: d.Ideais.value,
                 vinculos: d.Vinculos.value,
@@ -252,7 +249,7 @@ export function FormPersonagem(props){
         <div className='flex flex-col justify-between items-center w-1/1 h-full'>
             <h1 className='text-3xl text-bold p-5 w-full text-black dark:text-white max-[570px]:text-2xl'>{title}</h1>
             {passo === 1 ? (<Fragment>
-                <div className='grid grid-cols-[1fr_1fr_1fr] grid-rows-[1fr_1fr] w-1/1 h-auto p-10 gap-20 max-[760px]:grid-cols-[1fr_1fr] max-[760px]:grid-rows-[1fr_1fr_1fr] max-[760px]:gap-10 max-[440px]:gap-x-5'>
+                <div className='grid grid-cols-[1fr_1fr_1fr] grid-rows-[1fr_1fr] w-1/1 max-w-160 h-auto p-10 gap-20 max-[760px]:grid-cols-[1fr_1fr] max-[760px]:grid-rows-[1fr_1fr_1fr] max-[760px]:gap-10 max-[440px]:gap-x-5'>
                 {arrSkills.map(skill =>(
                     <div key={skill} className='flex flex-col justify-center items-center size-1/1 bg-gray-100 outline-3 outline-black rounded-xl dark:bg-gray-800 dark:outline-white'>
                         <h1 className='text-center h-10% text-2xl m-4 text-black dark:text-white max-[760px]:text-base'>{skill}</h1>
@@ -270,7 +267,7 @@ export function FormPersonagem(props){
                         <LinearProgress sx={selectClass === false ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
                         <div>
                             <NativeSelect className='w-full' sx={selectClass === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectClasses' label="Classes" onChange={(e)=>{setVdata(0,e)}}><option></option></NativeSelect>
-                            <div className='overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ classe === "" ? "" :
+                            <div className='overflow-y-auto w-90% h-90 pt-2 max-[560px]:text-sm'>{ classe === "" ? "" :
                                     <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{classe.descricao}</span></h1>
                             }</div>
                         </div>
@@ -305,22 +302,16 @@ export function FormPersonagem(props){
                     <TextField label="Peso" name="Peso" className='max-[670px]:col-span-2'></TextField>
                     <FormControl className='flex max-[670px]:col-span-2'>
                         <InputLabel>Alinhamento</InputLabel>
-                        <Select required id='selectAlinhamentoUm' value={sAlinhamentoUm} label="Alinhamento" name='AlinhamentoUm' onChange={(e)=>{handleAlinhamento(e, 1)}}>
-                            <MenuItem value={"Leal"}>Leal</MenuItem>
-                            <MenuItem value={"Bom"}>Bom</MenuItem>
+                        <Select required id='selectAlinhamentoUm' value={sAlinhamento} label="Alinhamento" name='AlinhamentoUm' onChange={(e)=>{handleAlinhamento(e, 1)}}>
+                            <MenuItem value={"Leal e bom"}>Leal e bom</MenuItem>
+                            <MenuItem value={"Neutro e bom"}>Neutro e Bom</MenuItem>
+                            <MenuItem value={"Caótico e bom"}>Caótico e Bom</MenuItem>
+                            <MenuItem value={"Leal e neutro"}>Leal e Neutro</MenuItem>
                             <MenuItem value={"Neutro"}>Neutro</MenuItem>
-                            <MenuItem value={"Mau"}>Mau</MenuItem>
-                            <MenuItem value={"Caotico"}>Caotico</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <FormControl className='flex max-[670px]:col-span-2'>
-                        <InputLabel>Alinhamento</InputLabel>
-                        <Select required value={sAlinhamentoDois} label="Alinhamento" name="AlinhamentoDois" onChange={(e)=>{handleAlinhamento(e, 2)}}>
-                            <MenuItem value={"leal"}>Leal</MenuItem>
-                            <MenuItem value={"bom"}>Bom</MenuItem>
-                            <MenuItem value={"neutro"}>Neutro</MenuItem>
-                            <MenuItem value={"mau"}>Mau</MenuItem>
-                            <MenuItem value={"caotico"}>Caotico</MenuItem>
+                            <MenuItem value={"Caótico e neutro"}>Caótico e Neutro</MenuItem>
+                            <MenuItem value={"Leal e mau"}>Leal e Mau</MenuItem>
+                            <MenuItem value={"Neutro e mau"}>Neutro e Mau</MenuItem>
+                            <MenuItem value={"Caotico e mau"}>Caótico e Mau</MenuItem>
                         </Select>
                     </FormControl>
                     <TextField multiline rows={2} label="Aparência" name="Aparencia" className='col-span-4'></TextField>

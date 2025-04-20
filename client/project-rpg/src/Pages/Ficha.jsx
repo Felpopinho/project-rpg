@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, FormControl, InputLabel, FilledInput, Tabs, Tab, Select, MenuItem, Alert, Snackbar, AlertTitle, Drawer } from '@mui/material'
+import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, Dialog, DialogActions, DialogTitle, DialogContent, DialogContentText, Menu, Tabs, Tab, Select, MenuItem, Alert, Snackbar, AlertTitle, Drawer } from '@mui/material'
 import axios from 'axios'
 import { red } from '@mui/material/colors'
 import { baseURL } from '../App'
@@ -39,14 +39,58 @@ export function Ficha(props){
         }
     }
 
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl)
+    const openMenu = (e) => {
+        setAnchorEl(e.currentTarget);
+      };
+
+    const closeMenu = (e) =>{
+        setAnchorEl(null);
+        if(e === "delete"){
+            openDialogDelete()
+        } else if(e === "delete"){
+            alterarImagem()
+        } else{
+            return
+        }
+    }
+
+    const [dialogDelete, setDialogDelete] = useState(false)
+
+    const closeDialogDelete = (n, id)=>{
+        if(n === 1){
+            setDialogDelete(false)
+        } else{
+            deletarPersonagem(id)
+            navigate("/home")
+        }
+    }
+    const openDialogDelete = () =>{
+        setDialogDelete(true)
+    }
+
+    const deletarPersonagem = async (id) =>{
+        try {
+            await axios.post(baseURL+"/personagens/delete", {
+                id: id
+            }).then(res=>{
+                console.log(res.data)
+                props.getPersonagens()
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const [skills, setSkills] = useState("")
 
     const [skillMvalue, setSkillMvalue] = useState("")
 
     const getSkills = async () =>{
         try {
-            await axios.get("https://www.dnd5eapi.co/api/2014/skills/").then(res=>{
-                setSkills(res.data)
+            await axios.get(baseURL+"/dnd/proficiencias").then(res=>{
+                setSkills(res.data.habilidades.habilidades)
             })
         } catch (error) {
             console.log(error)
@@ -315,7 +359,27 @@ export function Ficha(props){
     return (<>
         {props.pers !== "" ? 
         <div className=' relative w-1/1 min-h-dvh p-10 max-[584px]:p-5'>
-            <div className='p-5 rounded-xl bg-gray-300 flex gap-5 dark:bg-gray-950 max-[800px]:flex-col'>
+            <Dialog open={dialogDelete} onClose={closeDialogDelete}>
+                <DialogTitle>{"Você tem certeza que deseja excluir seu personagem?"}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Lembre-se, após a exclusão seu personagem será excluido permanentemente e você sera redirecionado para a pagina principal
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions sx={{justifyContent: "space-between"}}>
+                    <Button onClick={()=>{closeDialogDelete(1)}}>Cancelar</Button>
+                    <Button color='error' onClick={()=>{closeDialogDelete(2, props.pers.uid)}}>Excluir</Button>
+                </DialogActions>
+            </Dialog>
+            
+            <div className='relative p-5 rounded-xl bg-gray-300 flex gap-5 dark:bg-gray-950 max-[800px]:flex-col'>
+                <div className='absolute bg-white rounded-full top-2 left-2'>
+                    <IconButton onClick={openMenu}><Icon>settings</Icon></IconButton>
+                    <Menu anchorEl={anchorEl} open={open} onClose={closeMenu} >
+                        <MenuItem onClick={()=>{closeMenu("delete")}}><Icon sx={{marginRight: "5px"}}>delete</Icon>Apagar</MenuItem>
+                        <MenuItem><Icon sx={{marginRight: "5px"}}>image</Icon>Imagem</MenuItem>
+                    </Menu>
+                </div>
                 <div className='grid grid-cols-[auto_auto_auto] gap-4 justify-items-start p-3 items-center font-bold text-lg bg-gray-200 rounded-lg dark:bg-gray-800'>
                     <div className='col-span-3 grid grid-cols-[100px_auto] gap-5 w-1/1 rounded-lg overflow-hidden'>
                         <div className='w-[100px] h-25 overflow-hidden rounded-lg'>
