@@ -90,7 +90,13 @@ export function Ficha(props){
     const getSkills = async () =>{
         try {
             await axios.get(baseURL+"/dnd/proficiencias").then(res=>{
-                setSkills(res.data.habilidades.habilidades)
+                const result = res.data.filter(proficiencia => (
+                    Object.entries(proficiencia)[0][0] === "habilidades"
+                ))
+                console.log(result[0].habilidades)
+                setSkills(result[0].habilidades)
+                
+                
             })
         } catch (error) {
             console.log(error)
@@ -452,12 +458,12 @@ export function Ficha(props){
                         <h1 className='text-xs'>Proficiencia</h1>
                         <h1 className='text-xs'>outros</h1>
                     </div>
-                    {skills === "" ? "" : Array.from(skills.results).map(skill => (
-                        <div key={skill.name} className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] items-center justify-between'>
+                    {skills === "" ? "" : Array.from(skills).map(skill => (
+                        <div key={skill.nome} className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] items-center justify-between'>
                             <IconButton><Icon>casino</Icon></IconButton>
-                            <h1 className='text-xs'>{skill.name}</h1>
-                            <Checkbox onChange={(e)=>{setNewProf(e, 1)}} name="pericias" id={skill.index.replaceAll("-", "")} defaultChecked={props.pers.pericias[skill.index.replaceAll("-", "")][1]}/>
-                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill.index.replaceAll("-", "")}`} onChange={(e)=>{setNewProf(e, 2)}} defaultValue={props.pers.pericias[skill.index.replaceAll("-", "")][0]} variant='standard' size='small' type='number'/>
+                            <h1 className='text-xs'>{skill.nome}</h1>
+                            <Checkbox onChange={(e)=>{setNewProf(e, 1)}} name="pericias" id={`${skill["index"]}`} defaultChecked={props.pers.pericias[skill.nome]}/>
+                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill.nome}`} onChange={(e)=>{setNewProf(e, 2)}} defaultValue={props.pers.pericias[skill.nome]} variant='standard' size='small' type='number'/>
                         </div>
                     ))}
                 </div>
@@ -587,7 +593,7 @@ export function Ficha(props){
                 </Snackbar>
             </div>
 
-            <div className='absolute bottom-5 right-5 bg-gray-300 rounded-full dark:bg-white'>
+            <div className='fixed bottom-5 right-5 bg-gray-200 rounded-full dark:bg-white'>
                 <IconButton color='primary' size='large' onClick={()=>{setHistorico(true)}}>
                     <Icon fontSize='large'>history</Icon>
                 </IconButton>
