@@ -25,9 +25,6 @@ function App() {
   const [user, setUser] = useState("")
   const [logado,  setLogado] = useState(false)
 
-  if(localStorage.getItem("historicoDados") === null){
-    localStorage.setItem("historicoDados", JSON.stringify({result: []}))
-  }
 
   const getUsers = async () =>{
     try {

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, Dialog, DialogActions, DialogTitle, DialogContent, DialogContentText, Menu, Tabs, Tab, Select, MenuItem, Alert, Snackbar, AlertTitle, Drawer } from '@mui/material'
+import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, Dialog, DialogActions, DialogTitle, DialogContent, DialogContentText, Menu, Tabs, Tab, Select, MenuItem, Alert, Snackbar, AlertTitle, Drawer, Switch, FormControlLabel, Modal } from '@mui/material'
 import axios from 'axios'
 import { red } from '@mui/material/colors'
 import { baseURL } from '../App'
@@ -9,8 +9,6 @@ export function Ficha(props){
 
     const navigate = useNavigate()
 
-    const [objHistoricoDados, setObjHistoricoDados] = useState("")
-
     const verificarLogin = () =>{
         if(localStorage.getItem("personagem").length){
             props.setActualPers(JSON.parse(localStorage.getItem("personagem")))
@@ -18,10 +16,6 @@ export function Ficha(props){
             return navigate("/")
         }else{
             return navigate("/home")
-        }
-
-        if(localStorage.getItem("historicoDados").length){
-            setObjHistoricoDados(JSON.parse(localStorage.getItem("historicoDados")))
         }
     }
 
@@ -318,22 +312,37 @@ export function Ficha(props){
     const [resultDados, setResultDados] = useState(0)
     const [arrResultDados, setArrResultDados] = useState([])
 
+    const [actualSoma, setActualSoma] = useState(0)
+
     const rolarDados = (q, d, s) =>{
+        setActualSoma(s)
         let result = 0;
         let arrDados = []
         for (let i = 0; i < q; i++) {
             let dadoValue = Math.floor( 1 + d*Math.random())
             arrDados.push(dadoValue)
-            result = result + dadoValue
+            if(somarDados === true){
+                result = result + dadoValue
+            } else{
+                result = result > dadoValue ? result : dadoValue
+            }
         }
         result = result + s
         let dadosJogados = `${q}d${d}+${s}`
         let dadosResult = `${arrDados} + ${s} = ${result}`
-        setObjHistoricoDados(prevItems=>({
-            ...prevItems,
-            result: [...objHistoricoDados.result,
-                [dadosJogados, dadosResult, result]
-            ]
+        props.setActualPers(prevState => ({
+            ...prevState,
+            status: {
+                ...props.pers.status,
+                dados: [
+                    ...props.pers.status.dados,
+                    {
+                        djogados: dadosJogados, 
+                        dresult: dadosResult, 
+                        result: result
+                    }
+                ]
+            }
         }))
         setArrResultDados(arrDados)
         setResultDados(result)
@@ -345,11 +354,67 @@ export function Ficha(props){
         setResultSnack(false)
     }
 
+    const [somarDados, setSomarDados] = useState(false)
+
     const [historico, setHistorico] = useState(false)
 
-    useEffect(()=>{
-        objHistoricoDados === "" ? "" : localStorage.setItem("historicoDados", JSON.stringify(objHistoricoDados))
-    }, [objHistoricoDados])
+    const [mCriarRolagem, setMcriarRolagem] = useState(false)
+    const [nomeDadoCriar, setNomeDadoCriar] = useState("")
+    const [sDadoValueCriar, setSdadoValueCriar] = useState(4)
+    const [qDadosCriar, setQdadosCriar] = useState(0)
+    const [somaCriar, setSomaCriar] = useState(0)
+    const [somarDadosCriar, setSomarDadosCriar] = useState(false)
+
+    const handleCloseCriarRolagem = () =>{
+        setSdadoValueCriar(4)
+        setQdadosCriar(0)
+        setSomaCriar(0)
+        setSomarDadosCriar(false)
+        setMcriarRolagem(false)
+    }
+
+    const criarRolagem = () =>{
+        props.setActualPers(prevState => ({
+            ...prevState,
+            status: {
+                ...props.pers.status,
+                rolagens: [
+                    ...props.pers.status.rolagens,
+                    {
+                        nome: nomeDadoCriar,
+                        quantidade: qDadosCriar,
+                        tipo: sDadoValueCriar,
+                        soma: somaCriar,
+                        somadados: somarDadosCriar
+                    }
+                ]
+            }
+        }))
+        handleCloseCriarRolagem()
+    }
+
+    const editarRolagem = () =>{
+
+    }
+
+    const deletarRolagem = () =>{
+        props.setActualPers(prevState => ({
+            ...prevState,
+            status: {
+                ...props.pers.status,
+                rolagens: [
+                    ...props.pers.status.rolagens,
+                    {
+                        nome: nomeDadoCriar,
+                        quantidade: qDadosCriar,
+                        tipo: sDadoValueCriar,
+                        soma: somaCriar,
+                        somadados: somarDadosCriar
+                    }
+                ]
+            }
+        }))
+    }
 
     useEffect(()=>{
         props.pers === "" ? "" : setModificadores()
@@ -392,7 +457,7 @@ export function Ficha(props){
                 <div className='grid grid-cols-[auto_auto_auto] gap-4 justify-items-start p-3 items-center font-bold text-lg bg-gray-200 rounded-lg dark:bg-gray-800'>
                     <div className='col-span-3 grid grid-cols-[100px_auto] gap-5 w-1/1 rounded-lg overflow-hidden'>
                         <div className='w-[100px] h-25 overflow-hidden rounded-lg'>
-                            <img className='' src='https://orbedosdragoes.com/wp-content/uploads/2017/06/DD5-Guerreiro_1.jpg'/>
+                            <img className='' src={'https://orbedosdragoes.com/wp-content/uploads/2017/06/DD5-Guerreiro_1.jpg'}/>
                         </div>
                         <Input sx={{fontSize: "2rem", height: "100%"}} name='identidade' id='nome' multiline maxRows={2} variant="filled" size='normal' className='text-xl' fullWidth defaultValue={props.pers.identidade.nome} onChange={(e)=>{setNewValues(e)}}/>
                     </div>
@@ -571,9 +636,9 @@ export function Ficha(props){
             </div>
 
             <div hidden={tabValue !== "2"} className='w-1/1'>
-                <div className='flex w-1/1'>
-                    <TextField value={qDados} label="Quantidade" type='number' onChange={(e)=>{setQdados(e.target.value)}}/>
-                    <Select value={sDadoValue} onChange={handleSdado}>
+                <div className='grid grid-cols-[auto_auto_auto_auto_auto_1fr] w-1/1 justify-between gap-4 flex-wrap max-[1046px]:grid-cols-5 max-[618px]:grid-cols-6'>
+                    <TextField className='max-[618px]:col-span-2' value={qDados} label="Quantidade" type='number' onChange={(e)=>{setQdados(e.target.value)}}/>
+                    <Select className='max-[618px]:col-span-2' value={sDadoValue} onChange={handleSdado}>
                         <MenuItem value={4}>d4</MenuItem>
                         <MenuItem value={6}>d6</MenuItem>
                         <MenuItem value={8}>d8</MenuItem>
@@ -582,14 +647,63 @@ export function Ficha(props){
                         <MenuItem value={20}>d20</MenuItem>
                         <MenuItem value={100}>d100</MenuItem>
                     </Select>
-                    <TextField value={soma} label="Adicionar" type='number' onChange={(e)=>{setSoma(e.target.value)}}/>
-                    <IconButton sx={{width: "50px", height: "50px", marginLeft: "10px"}} onClick={()=>{rolarDados(parseInt(qDados), parseInt(sDadoValue), parseInt(soma))}}><Icon>casino</Icon></IconButton>
+                    <TextField className='max-[618px]:col-span-2' value={soma} label="Adicionar" type='number' onChange={(e)=>{setSoma(e.target.value)}}/>
+                    <FormControlLabel className='max-[618px]:col-span-5' control={<Switch checked={somarDados} onChange={(e)=>{setSomarDados(e.target.checked)}}/>} label="Somar dados"/>
+                    <IconButton className='max-[618px]:col-span-1 justify-self-end' size="large" color='primary' disabled={qDados === 0 || resultSnack === true} sx={{width: "50px", height: "50px", marginLeft: "10px"}} onClick={()=>{rolarDados(parseInt(qDados), parseInt(sDadoValue), parseInt(soma))}}><Icon fontSize="inherit">casino</Icon></IconButton>
+                    <div className='max-w-[230px] justify-self-end h-1/1 max-[1046px]:col-span-5 max-[618px]:col-span-6'>
+                        <Button sx={{height: "100%"}} fullWidth variant="contained" onClick={()=>{setMcriarRolagem(true)}}>Criar rolagem</Button>
+                    </div>
                 </div>
+                <Divider sx={{margin: "2vh 0"}}/>
+                <div className='flex flex-col overflow-y-scroll gap-y-4'>
+                    <h1 className='text-3xl font-bold'>Suas rolagens</h1>
+                    {props.pers.status.rolagens.lenght === 0 ? 
+                        <h1>Você ainda não criou nenhuma rolagem</h1> :
+                        Array.from(props.pers.status.rolagens).map(rolagem =>(
+                            <div className='flex bg-gray-200 p-4 rounded-xl justify-between'>
+                                <div>
+                                    <h1 className='text-xl'>{rolagem.nome}</h1>
+                                    <FormHelperText>{`${rolagem.quantidade}d${rolagem.tipo}+${rolagem.soma}`}</FormHelperText>
+                                </div>
+                                <div>
+                                    <IconButton color='error' onClick={()=>{deletarRolagem()}}><Icon fontSize="inherit">delete</Icon></IconButton>
+                                    <IconButton onClick={()=>{editarRolagem()}}><Icon fontSize="inherit">edit</Icon></IconButton>
+                                    <IconButton color='primary' size="large" onClick={()=>{rolarDados(parseInt(rolagem.quantidade), parseInt(rolagem.tipo), parseInt(rolagem.soma))}}><Icon fontSize="inherit">casino</Icon></IconButton>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <Modal open={mCriarRolagem} onClose={()=>{handleCloseCriarRolagem()}}>
+                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
+                        <h1 className='text-2xl font-semibold mb-4'>Criar rolagem</h1>
+                        <div className='flex flex-col gap-y-5'>
+                            <TextField value={nomeDadoCriar} label="Nome" type='text' onChange={(e)=>{setNomeDadoCriar(e.target.value)}}/>
+                            <TextField value={qDadosCriar} label="Quantidade" type='number' onChange={(e)=>{setQdadosCriar(e.target.value)}}/>
+                            <Select value={sDadoValueCriar} onChange={(e)=>{setSdadoValueCriar(e.target.value)}} label="Tipo">
+                                <MenuItem value={4}>d4</MenuItem>
+                                <MenuItem value={6}>d6</MenuItem>
+                                <MenuItem value={8}>d8</MenuItem>
+                                <MenuItem value={10}>d10</MenuItem>
+                                <MenuItem value={12}>d12</MenuItem>
+                                <MenuItem value={20}>d20</MenuItem>
+                                <MenuItem value={100}>d100</MenuItem>
+                            </Select>
+                            <TextField value={somaCriar} label="Adicionar" type='number' onChange={(e)=>{setSomaCriar(e.target.value)}}/>
+                            <FormControlLabel control={<Switch checked={somarDadosCriar} onChange={(e)=>{setSomarDadosCriar(e.target.checked)}}/>} label="Somar dados"/>
+                        </div>
+                        <div className='flex justify-between mt-4 gap-x-8'>
+                            <Button variant='outlined' onClick={()=>{handleCloseCriarRolagem()}}>Cancelar</Button>
+                            <Button variant='contained' onClick={()=>{criarRolagem()}} disabled={nomeDadoCriar === "" || qDadosCriar === 0}>Salvar</Button>
+                        </div>
+                    </div>
+                </Modal>
 
                 <Snackbar open={resultSnack} onClose={handleCloseResult}>
                     <Alert onClose={handleCloseResult} severity='info' >
                         <AlertTitle>Resultado</AlertTitle>
-                        {`${arrResultDados} + ${soma} = ${resultDados}`}
+                        {`${arrResultDados} + ${actualSoma} = ${resultDados}`}
                     </Alert>
                 </Snackbar>
             </div>
@@ -599,23 +713,25 @@ export function Ficha(props){
                     <Icon fontSize='large'>history</Icon>
                 </IconButton>
                 <Drawer open={historico} onClose={()=>{setHistorico(false)}}>
-                    <div className='w-100 flex flex-col bg-gray-200 h-[100%] p-2 gap-y-2'>
+                    <div className='w-100 flex flex-col bg-white h-[100%] p-2'>
                         <h1 className='text-center p-2 text-2xl font-bold dark:text-white'>Histórico de dados</h1>
-                        {objHistoricoDados.result.length === 0 ? (
-                        <div>
-                            <h1>Você ainda não rolou nenhum dado</h1>
-                        </div>) : objHistoricoDados.result.map(result =>(
-                            <div key={result} className="p-3 bg-white rounded-xl flex justify-between items-center">
-                                <div>
-                                    <h1 className='text-xl font-semibold'>{result[0]}</h1>
-                                    <p>{result[1].replaceAll(",", ", ")}</p>
+                        <div className='flex flex-col overflow-y-scroll gap-y-2 [&>*:first-child]:bg-purple-200'>
+                            {Array.from(props.pers.status.dados).length === 0 ? (
+                            <div>
+                                <h1>Você ainda não rolou nenhum dado</h1>
+                            </div>) : Array.from(props.pers.status.dados).reverse().map(result =>(
+                                <div key={props.pers.status.dados.indexOf(result)} className="p-3 bg-gray-200 rounded-xl flex justify-between items-center">
+                                    <div>
+                                        <h1 className='text-xl font-semibold'>{result.djogados}</h1>
+                                        <p>{result.dresult.replaceAll(",", ", ")}</p>
+                                    </div>
+                                    <div className='h-[100%] flex items-center justify-between'>
+                                        <Divider orientation='vertical' sx={{height: "100%", margin: "0 8px"}}/>
+                                        <h1 className='text-2xl'>{result.result}</h1>
+                                    </div>
                                 </div>
-                                <div className='h-[100%] flex items-center justify-between'>
-                                    <Divider orientation='vertical' sx={{height: "100%", margin: "0 8px"}}/>
-                                    <h1 className='text-2xl'>{result[2]}</h1>
-                                </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </Drawer>
             </div>

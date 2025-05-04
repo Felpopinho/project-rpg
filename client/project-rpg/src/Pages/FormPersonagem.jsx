@@ -215,6 +215,7 @@ export function FormPersonagem(props){
                 armaduras: pArmor,
                 idiomas: "",
                 ferramentas: pTools,
+                dados: []
             }).then(res =>{
                 console.log(res.data)
             })
