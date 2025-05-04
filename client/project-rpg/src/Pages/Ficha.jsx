@@ -142,6 +142,7 @@ export function Ficha(props){
     }
 
     const handleLife = (num) =>{
+        console.log(life)
         const pontos = pontosVida.length ? Number(pontosVida) : 1
         let n = 100/props.pers.status.pv
         let n2 = n * pontos
@@ -162,7 +163,7 @@ export function Ficha(props){
                   pvatual: props.pers.status.pvatual + pontos
                 }
             }))
-            setLife(life+n2)
+            setLife(parseInt(life+n2))
         }
         setPontosVida("")
     }
@@ -231,8 +232,9 @@ export function Ficha(props){
 
     const setNewProf = (e, n) =>{
         let nValue;
+        console.log(e.target.value)
         if(n === 1){
-            if(e.target.value === "on"){
+            if(props.pers.pericias[e.target.id][1] === false){
                 nValue = true
             } else{
                 nValue = false
@@ -325,11 +327,12 @@ export function Ficha(props){
             result = result + dadoValue
         }
         result = result + s
+        let dadosJogados = `${q}d${d}+${s}`
         let dadosResult = `${arrDados} + ${s} = ${result}`
         setObjHistoricoDados(prevItems=>({
             ...prevItems,
             result: [...objHistoricoDados.result,
-                dadosResult
+                [dadosJogados, dadosResult, result]
             ]
         }))
         setArrResultDados(arrDados)
@@ -462,8 +465,8 @@ export function Ficha(props){
                         <div key={skill.nome} className='grid grid-cols-[auto_minmax(100px,_1fr)_auto_auto] items-center justify-between'>
                             <IconButton><Icon>casino</Icon></IconButton>
                             <h1 className='text-xs'>{skill.nome}</h1>
-                            <Checkbox onChange={(e)=>{setNewProf(e, 1)}} name="pericias" id={`${skill["index"]}`} defaultChecked={props.pers.pericias[skill.nome]}/>
-                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill.nome}`} onChange={(e)=>{setNewProf(e, 2)}} defaultValue={props.pers.pericias[skill.nome]} variant='standard' size='small' type='number'/>
+                            <Checkbox onChange={(e)=>{setNewProf(e, 1)}} name="pericias" id={`${skill["index"]}`} defaultChecked={props.pers.pericias[skill["index"]][1]}/>
+                            <TextField sx={{width: "50px"}} name="pericias" id={`${skill["index"]}`} onChange={(e)=>{setNewProf(e, 2)}} defaultValue={props.pers.pericias[skill["index"]][0]} variant='standard' size='small' type='number'/>
                         </div>
                     ))}
                 </div>
@@ -484,7 +487,7 @@ export function Ficha(props){
                             <h1 className='w-1/1 text-center'>Pontos de vida</h1>
                             <div className="flex flex-col w-1/1 gap-1">
                                 <div className='flex w-1/1 h-10 items-stretch items-center justify-center relative'>
-                                    <LinearProgress color='red' variant="determinate" value={life} sx={{width: "100%", height: "100%", backgroundColor: props.pers.status.pvatual >= props.pers.status.pv ? "#ef5350" : "#2f1a1a"}}/>
+                                    <LinearProgress color='error' variant="determinate" value={life} sx={{width: "100%", height: "100%", backgroundColor: props.pers.status.pvatual >= props.pers.status.pv ? "#aa2e25" : "#2f1a1a"}}/>
                                     <h1 className='absolute self-center text-white flex'><p className='w-10 text-end'>{props.pers.status.pvatual+" /"}</p><input type='number' defaultValue={props.pers.status.pv} name='status' id='pv' onChange={(e)=>{setNewValues(e)}} className='min-w-10 max-w-15 focus:outline-0 focus:b-0'/></h1>
                                 </div>
                                 <div className="w-1/1 flex">
@@ -497,12 +500,10 @@ export function Ficha(props){
                         </div>
                         <div className='col-span-3 p-5 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                             <div className='flex items-center'>
-                                <p>Total</p>
-                                <Input type='number' value={props.pers.status.dadovida} fullWidth variant='standard'/>
+                                <TextField fullWidth variant="filled" name="status" id="dadovida" onChange={(e)=>{setNewValues(e)}} label="total" type='number' defaultValue={props.pers.status.dadovida}/>
                             </div>
                             <div>
-                                <Input type='number' value={props.pers.status.dadovidaatual} fullWidth variant='standard'/>
-                                <FormHelperText className=''>Dado de vida</FormHelperText>
+                                <TextField type='number' name="status" id="dadovidaatual" label="Dado de vida" onChange={(e)=>{setNewValues(e)}} defaultValue={props.pers.status.dadovidaatual} fullWidth variant='filled'/>
                             </div>
                         </div>
                         <div className='col-span-3 p-3 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
@@ -598,10 +599,21 @@ export function Ficha(props){
                     <Icon fontSize='large'>history</Icon>
                 </IconButton>
                 <Drawer open={historico} onClose={()=>{setHistorico(false)}}>
-                    <div className='w-100 flex flex-col'>
-                        {Array(objHistoricoDados).map(result =>(
-                            <div key={result}>
-                                {result}
+                    <div className='w-100 flex flex-col bg-gray-200 h-[100%] p-2 gap-y-2'>
+                        <h1 className='text-center p-2 text-2xl font-bold dark:text-white'>Histórico de dados</h1>
+                        {objHistoricoDados.result.length === 0 ? (
+                        <div>
+                            <h1>Você ainda não rolou nenhum dado</h1>
+                        </div>) : objHistoricoDados.result.map(result =>(
+                            <div key={result} className="p-3 bg-white rounded-xl flex justify-between items-center">
+                                <div>
+                                    <h1 className='text-xl font-semibold'>{result[0]}</h1>
+                                    <p>{result[1].replaceAll(",", ", ")}</p>
+                                </div>
+                                <div className='h-[100%] flex items-center justify-between'>
+                                    <Divider orientation='vertical' sx={{height: "100%", margin: "0 8px"}}/>
+                                    <h1 className='text-2xl'>{result[2]}</h1>
+                                </div>
                             </div>
                         ))}
                     </div>
