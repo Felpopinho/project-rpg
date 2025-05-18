@@ -314,14 +314,16 @@ export function Ficha(props){
 
     const [actualSoma, setActualSoma] = useState(0)
 
-    const rolarDados = (q, d, s) =>{
+    const [resultTime, setResultTime] = useState(false)
+
+    const rolarDados = (q, d, s, sd) =>{
         setActualSoma(s)
         let result = 0;
         let arrDados = []
         for (let i = 0; i < q; i++) {
             let dadoValue = Math.floor( 1 + d*Math.random())
             arrDados.push(dadoValue)
-            if(somarDados === true){
+            if(sd === true){
                 result = result + dadoValue
             } else{
                 result = result > dadoValue ? result : dadoValue
@@ -330,28 +332,53 @@ export function Ficha(props){
         result = result + s
         let dadosJogados = `${q}d${d}+${s}`
         let dadosResult = `${arrDados} + ${s} = ${result}`
-        props.setActualPers(prevState => ({
-            ...prevState,
-            status: {
-                ...props.pers.status,
-                dados: [
-                    ...props.pers.status.dados,
-                    {
-                        djogados: dadosJogados, 
-                        dresult: dadosResult, 
-                        result: result
-                    }
-                ]
-            }
-        }))
+
+        if(Array.from(props.pers.status.dados).length > 20){
+
+            const arrHistorico = props.pers.status.dados
+            arrHistorico.shift()
+            arrHistorico.push({
+                djogados: dadosJogados, 
+                dresult: dadosResult, 
+                result: result
+            })
+            props.setActualPers(prevState => ({
+                ...prevState,
+                status: {
+                    ...props.pers.status,
+                    dados: arrHistorico
+                }
+            }))
+
+
+        }else{
+            props.setActualPers(prevState => ({
+                ...prevState,
+                status: {
+                    ...props.pers.status,
+                    dados: [
+                        ...props.pers.status.dados,
+                        {
+                            djogados: dadosJogados, 
+                            dresult: dadosResult, 
+                            result: result
+                        }
+                    ]
+                }
+            }))
+        }
         setArrResultDados(arrDados)
         setResultDados(result)
         setResultSnack(true)
+        setResultTime(true)
     }
 
     const [resultSnack, setResultSnack] = useState(false)
     const handleCloseResult = () =>{
         setResultSnack(false)
+        setTimeout(()=>{
+            setResultTime(false)
+        }, "500")
     }
 
     const [somarDados, setSomarDados] = useState(false)
@@ -374,44 +401,68 @@ export function Ficha(props){
     }
 
     const criarRolagem = () =>{
-        props.setActualPers(prevState => ({
-            ...prevState,
-            status: {
-                ...props.pers.status,
-                rolagens: [
-                    ...props.pers.status.rolagens,
-                    {
-                        nome: nomeDadoCriar,
-                        quantidade: qDadosCriar,
-                        tipo: sDadoValueCriar,
-                        soma: somaCriar,
-                        somadados: somarDadosCriar
-                    }
-                ]
+        if(editRolagem===true){
+
+            const arrRolagem = props.pers.status.rolagens
+            arrRolagem[indexRolagem] = {
+                nome: nomeDadoCriar,
+                quantidade: qDadosCriar,
+                tipo: sDadoValueCriar,
+                soma: somaCriar,
+                somadados: somarDadosCriar
             }
-        }))
+
+            props.setActualPers(prevState => ({
+                ...prevState,
+                status: {
+                    ...props.pers.status,
+                    rolagens: arrRolagem
+                }
+            }))
+        }else{
+            props.setActualPers(prevState => ({
+                ...prevState,
+                status: {
+                    ...props.pers.status,
+                    rolagens: [
+                        ...props.pers.status.rolagens,
+                        {
+                            nome: nomeDadoCriar,
+                            quantidade: qDadosCriar,
+                            tipo: sDadoValueCriar,
+                            soma: somaCriar,
+                            somadados: somarDadosCriar
+                        }
+                    ]
+                }
+            }))
+        }
         handleCloseCriarRolagem()
     }
 
-    const editarRolagem = () =>{
-
+    const [editRolagem, setEditRolagem] = useState(false)
+    const [indexRolagem, setIndexRolagem] = useState("")
+    const editarRolagem = (r) =>{
+        setIndexRolagem(Array.from(props.pers.status.rolagens).indexOf(r))
+        setEditRolagem(true)
+        setNomeDadoCriar(r.nome)
+        setSdadoValueCriar(r.tipo)
+        setQdadosCriar(r.quantidade)
+        setSomaCriar(r.soma)
+        setSomarDadosCriar(r.somadados)
+        setMcriarRolagem(true)
     }
 
-    const deletarRolagem = () =>{
+    const deletarRolagem = (r) =>{
+        const arrRolagem = props.pers.status.rolagens
+        const index = arrRolagem.indexOf(r)
+        arrRolagem.splice(index, 1)
+
         props.setActualPers(prevState => ({
             ...prevState,
             status: {
                 ...props.pers.status,
-                rolagens: [
-                    ...props.pers.status.rolagens,
-                    {
-                        nome: nomeDadoCriar,
-                        quantidade: qDadosCriar,
-                        tipo: sDadoValueCriar,
-                        soma: somaCriar,
-                        somadados: somarDadosCriar
-                    }
-                ]
+                rolagens: arrRolagem
             }
         }))
     }
@@ -497,13 +548,13 @@ export function Ficha(props){
                 </div>
             </div>
             <Divider sx={{ margin: "2% 0" }}/>
-            <div>
-                <Tabs value={tabValue} onChange={handleTab} sx={{margin: "2% 0"}}>
+            <div className='w-1/1'>
+                <Tabs variant='scrollable' scrollButtons allowScrollButtonsMobile value={tabValue} onChange={handleTab} sx={{margin: "2% 0"}}>
                     <Tab value={"1"} label="Principal"/>
                     <Tab value={"2"} label="Rolagem"/>
                     <Tab value={"3"} label="Inventario"/>
-                    <Tab value={"4"} label="Magias"/>
-                    <Tab value={"5"} label="Habilidades"/>
+                    <Tab value={"4"} label="Habilidades"/>
+                    <Tab value={"5"} label="Magias"/>
                 </Tabs>
             </div>
 
@@ -649,7 +700,7 @@ export function Ficha(props){
                     </Select>
                     <TextField className='max-[618px]:col-span-2' value={soma} label="Adicionar" type='number' onChange={(e)=>{setSoma(e.target.value)}}/>
                     <FormControlLabel className='max-[618px]:col-span-5' control={<Switch checked={somarDados} onChange={(e)=>{setSomarDados(e.target.checked)}}/>} label="Somar dados"/>
-                    <IconButton className='max-[618px]:col-span-1 justify-self-end' size="large" color='primary' disabled={qDados === 0 || resultSnack === true} sx={{width: "50px", height: "50px", marginLeft: "10px"}} onClick={()=>{rolarDados(parseInt(qDados), parseInt(sDadoValue), parseInt(soma))}}><Icon fontSize="inherit">casino</Icon></IconButton>
+                    <IconButton className='max-[618px]:col-span-1 justify-self-end' size="large" color='primary' disabled={qDados === 0 || resultTime === true} sx={{width: "50px", height: "50px", marginLeft: "10px"}} onClick={()=>{rolarDados(parseInt(qDados), parseInt(sDadoValue), parseInt(soma), somarDados)}}><Icon fontSize="inherit">casino</Icon></IconButton>
                     <div className='max-w-[230px] justify-self-end h-1/1 max-[1046px]:col-span-5 max-[618px]:col-span-6'>
                         <Button sx={{height: "100%"}} fullWidth variant="contained" onClick={()=>{setMcriarRolagem(true)}}>Criar rolagem</Button>
                     </div>
@@ -666,9 +717,9 @@ export function Ficha(props){
                                     <FormHelperText>{`${rolagem.quantidade}d${rolagem.tipo}+${rolagem.soma}`}</FormHelperText>
                                 </div>
                                 <div>
-                                    <IconButton color='error' onClick={()=>{deletarRolagem()}}><Icon fontSize="inherit">delete</Icon></IconButton>
-                                    <IconButton onClick={()=>{editarRolagem()}}><Icon fontSize="inherit">edit</Icon></IconButton>
-                                    <IconButton color='primary' size="large" onClick={()=>{rolarDados(parseInt(rolagem.quantidade), parseInt(rolagem.tipo), parseInt(rolagem.soma))}}><Icon fontSize="inherit">casino</Icon></IconButton>
+                                    <IconButton color='error' onClick={()=>{deletarRolagem(rolagem)}}><Icon fontSize="inherit">delete</Icon></IconButton>
+                                    <IconButton onClick={()=>{editarRolagem(rolagem)}}><Icon fontSize="inherit">edit</Icon></IconButton>
+                                    <IconButton color='primary' size="large" disabled={resultTime === true} onClick={()=>{rolarDados(parseInt(rolagem.quantidade), parseInt(rolagem.tipo), parseInt(rolagem.soma), rolagem.somadados)}}><Icon fontSize="inherit">casino</Icon></IconButton>
                                 </div>
                             </div>
                         ))
@@ -677,7 +728,7 @@ export function Ficha(props){
 
                 <Modal open={mCriarRolagem} onClose={()=>{handleCloseCriarRolagem()}}>
                     <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
-                        <h1 className='text-2xl font-semibold mb-4'>Criar rolagem</h1>
+                        <h1 className='text-2xl font-semibold mb-4'>{editRolagem===true?"Editar rolagem":"Criar rolagem"}</h1>
                         <div className='flex flex-col gap-y-5'>
                             <TextField value={nomeDadoCriar} label="Nome" type='text' onChange={(e)=>{setNomeDadoCriar(e.target.value)}}/>
                             <TextField value={qDadosCriar} label="Quantidade" type='number' onChange={(e)=>{setQdadosCriar(e.target.value)}}/>
@@ -708,12 +759,26 @@ export function Ficha(props){
                 </Snackbar>
             </div>
 
-            <div className='fixed bottom-5 right-5 bg-gray-200 rounded-full dark:bg-white'>
+            <div hidden={tabValue !== "3"} className='w-1/1'>
+                <div className='flex gap-x-5'>
+                    <TextField label="Pesquisar itens" fullWidth/>
+                    <Button variant='outlined'>Criar</Button>
+                    <Button variant='contained'>Adicionar</Button>
+                </div>
+                <div className=''>
+
+                </div>
+                <div className=''>
+                    
+                </div>
+            </div>
+
+            <div className='fixed top-5 right-5 bg-gray-200 rounded-full dark:bg-white'>
                 <IconButton color='primary' size='large' onClick={()=>{setHistorico(true)}}>
                     <Icon fontSize='large'>history</Icon>
                 </IconButton>
                 <Drawer open={historico} onClose={()=>{setHistorico(false)}}>
-                    <div className='w-100 flex flex-col bg-white h-[100%] p-2'>
+                    <div className='w-100 flex flex-col bg-white h-[100%] p-2 max-[450px]:w-full'>
                         <h1 className='text-center p-2 text-2xl font-bold dark:text-white'>Histórico de dados</h1>
                         <div className='flex flex-col overflow-y-scroll gap-y-2 [&>*:first-child]:bg-purple-200'>
                             {Array.from(props.pers.status.dados).length === 0 ? (

@@ -215,7 +215,14 @@ export function FormPersonagem(props){
                 armaduras: pArmor,
                 idiomas: "",
                 ferramentas: pTools,
-                dados: []
+                dados: [],
+                inventario: {
+                    armaduras: [],
+                    armas: [],
+                    equipamentos: [],
+                    ferramentas: [],
+                    dinheiro: []
+                }
             }).then(res =>{
                 console.log(res.data)
             })

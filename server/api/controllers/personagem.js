@@ -78,7 +78,8 @@ export const addPersonagem = async (req, res) =>{
                 armaduras: req.body.armaduras,
                 idiomas: req.body.idiomas,
                 ferramentas: req.body.ferramentas,
-            }
+            },
+            inventario: req.body.inventario
         }
 
         await db.collection("personagens").add(values)
