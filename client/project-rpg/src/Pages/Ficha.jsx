@@ -467,6 +467,25 @@ export function Ficha(props){
         }))
     }
 
+    const [modalCriar, setModalCriar] = useState(false)
+    const [modalAdicionar, setModalAdicionar] = useState(false)
+
+    const openModalItem = (n) =>{
+        if(n === 0){
+            setModalCriar(true)
+        }else{
+            setModalAdicionar(true)
+        }
+    }
+
+    const closeModalItem = (n) =>{
+        if(n === 0){
+            setModalCriar(false)
+        }else{
+            setModalAdicionar(false)
+        }
+    }
+
     useEffect(()=>{
         props.pers === "" ? "" : setModificadores()
         props.pers === "" ? "" : setarNivel()
@@ -484,6 +503,7 @@ export function Ficha(props){
     return (<>
         {props.pers !== "" ? 
         <div className=' relative w-1/1 min-h-dvh p-10 max-[584px]:p-5'>
+
             <Dialog open={dialogDelete} onClose={closeDialogDelete}>
                 <DialogTitle>{"Você tem certeza que deseja excluir seu personagem?"}</DialogTitle>
                 <DialogContent>
@@ -760,10 +780,23 @@ export function Ficha(props){
             </div>
 
             <div hidden={tabValue !== "3"} className='w-1/1'>
+                <Modal open={modalCriar} onClose={()=>{closeModalItem(0)}}>
+                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
+                        <h1>Criar item</h1>
+                        <div>
+                            <TextField value={nomeItemCriar} label="Nome" onChange={(e)=>{setNomeItemCriar(e.target.value)}}/>
+                        </div>
+                    </div>
+                </Modal>
+                <Modal open={modalAdicionar} onClose={()=>{closeModalItem(1)}}>
+                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
+
+                    </div>
+                </Modal>
                 <div className='flex gap-x-5'>
                     <TextField label="Pesquisar itens" fullWidth/>
-                    <Button variant='outlined'>Criar</Button>
-                    <Button variant='contained'>Adicionar</Button>
+                    <Button onClick={()=>{openModalItem(0)}} variant='outlined'>Criar</Button>
+                    <Button onClick={()=>{openModalItem(1)}} variant='contained'>Adicionar</Button>
                 </div>
                 <div className=''>
 
