@@ -71,7 +71,8 @@ export const addPersonagem = async (req, res) =>{
                 dadovidaatual: req.body.dadovidaatual,
                 salvaguarda: req.body.salvaguarda,
                 experiencia: req.body.experiencia,
-                dados: req.body.dados
+                dados: req.body.dados,
+                rolagens: req.body.rolagens
             },
             proficiencias:{
                 armas: req.body.armas,

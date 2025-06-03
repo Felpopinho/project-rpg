@@ -211,6 +211,7 @@ export function FormPersonagem(props){
                 dadovidaatual: 0,
                 salvaguarda: [0, 0],
                 experiencia: 0,
+                rolagens: [],
                 armas: pWeapons,
                 armaduras: pArmor,
                 idiomas: "",
