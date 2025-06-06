@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Fragment, useEffect, useState } from 'react'
-import { Avatar, Box, OutlinedInput, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, Dialog, DialogActions, DialogTitle, DialogContent, DialogContentText, Menu, Tabs, Tab, Select, MenuItem, Alert, Snackbar, AlertTitle, Drawer, Switch, FormControlLabel, Modal } from '@mui/material'
+import { OutlinedInput, InputLabel, Button, Divider, TextField, IconButton, Icon, Checkbox, Input, LinearProgress, FormHelperText, Dialog, DialogActions, DialogTitle, DialogContent, DialogContentText, Menu, Tabs, Tab, Select, MenuItem, Alert, Snackbar, AlertTitle, Drawer, Switch, FormControlLabel, Modal, FormControl } from '@mui/material'
 import axios from 'axios'
 import { red } from '@mui/material/colors'
 import { baseURL } from '../App'
@@ -470,7 +470,7 @@ export function Ficha(props){
     const [modalCriar, setModalCriar] = useState(false)
     const [modalAdicionar, setModalAdicionar] = useState(false)
 
-    const [sTipoItemCriar, setStipoItemCriar] = useState(1)
+    const [sTipoItemCriar, setStipoItemCriar] = useState("")
     const [nomeItemCriar, setNomeItemCriar] = useState("")
     const [pesoItemCriar, setPesoItemCriar] = useState("")
     const [precoItemCriar, setPrecoItemCriar] = useState("")
@@ -498,10 +498,63 @@ export function Ficha(props){
 
     const closeModalItem = (n) =>{
         if(n === 0){
+            setStipoItemCriar("")
+            setNomeItemCriar("")
+            setPesoItemCriar("")
+            setPrecoItemCriar("")
+            setDescItemCriar("")
+            setArmaCriar({
+                dano: "",
+                tipo: "",
+                propriedades: [],
+                categoria: ""
+            })
+            setArmaduraCriar({
+                ca: "",
+                furtividade: false
+            })
             setModalCriar(false)
         }else{
             setModalAdicionar(false)
         }
+    }
+
+    const salvarItem = () =>{
+        let valueItem
+
+        if(sTipoItemCriar==="armas"){
+            valueItem = armaCriar
+        } else if(sTipoItemCriar === "armaduras"){
+            valueItem = armaduraCriar
+        } else if(sTipoItemCriar === "equipamentos"){
+            valueItem = equipamentoCriar
+        } else{
+            valueItem = ferramentaCriar
+        }
+
+        props.setActualPers(prevState =>({
+            ...prevState,
+            inventario: {
+                ...props.pers.inventario,
+                [sTipoItemCriar]: [
+                    ...props.pers.inventario[sTipoItemCriar],
+                    {
+                        nome: nomeItemCriar,
+                        peso: pesoItemCriar,
+                        preco: precoItemCriar,
+                        desc: descItemCriar,
+                        valor: valueItem
+                    }
+                ]
+            }
+        }))
+
+        closeModalItem(0)
+    }
+
+    const [tabItems, setTabItems] = useState("1")
+    const handleTabItems = (e, v) =>{
+        setTabItems(v)
     }
 
     useEffect(()=>{
@@ -799,56 +852,71 @@ export function Ficha(props){
 
             <div hidden={tabValue !== "3"} className='w-1/1'>
                 <Modal open={modalCriar} onClose={()=>{closeModalItem(0)}}>
-                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
-                        <h1>Criar item</h1>
+                    <div className='max-w-[500px] flex flex-col gap-y-4 absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
+                        <h1 className='text-2xl'>Criar item</h1>
                         <div className='flex flex-col gap-y-5'>
                             <TextField fullWidth value={nomeItemCriar} label="Nome" onChange={(e)=>{setNomeItemCriar(e.target.value)}}/>
                             <div className='flex wrap gap-x-3'>
-                                <Select value={sTipoItemCriar} onChange={(e)=>{setStipoItemCriar(e.target.value)}}>
-                                    <MenuItem value={1}>Arma</MenuItem>
-                                    <MenuItem value={2}>Armadura</MenuItem>
-                                    <MenuItem value={3}>Equipamento</MenuItem>
-                                    <MenuItem value={4}>Ferramenta</MenuItem>
-                                </Select>
+                                <FormControl fullWidth>
+                                    <InputLabel>Categoria</InputLabel>
+                                    <Select label="Tipo do item" value={sTipoItemCriar} onChange={(e)=>{setStipoItemCriar(e.target.value)}}>
+                                        <MenuItem value={"armas"}>Arma</MenuItem>
+                                        <MenuItem value={"armaduras"}>Armadura</MenuItem>
+                                        <MenuItem value={"equipamentos"}>Equipamento</MenuItem>
+                                        <MenuItem value={"ferramentas"}>Ferramenta</MenuItem>
+                                    </Select>
+                                </FormControl>
                                 <TextField value={pesoItemCriar} label="Peso" onChange={(e)=>{setPesoItemCriar(e.target.value)}}/>
                                 <TextField value={precoItemCriar} label="Preço" onChange={(e)=>{setPrecoItemCriar(e.target.value)}}/>
                             </div>
-                            {sTipoItemCriar === 1 ? <Fragment>
-                                <div>
-                                    <TextField value={armaCriar.dano} label="Dano" onChange={(e)=>{setArmaCriar(prevState => ({...prevState, dano: e.target.value}))}}/>
-                                    <Select value={armaCriar.categoria} onChange={(e)=>{setArmaCriar(prevState => ({...prevState, categoria: e.target.value}))}}>
-                                        <MenuItem value={"Simples"}>Simples</MenuItem>
-                                        <MenuItem value={"Marcial"}>Marcial</MenuItem>
-                                    </Select>
-                                    <Select value={armaCriar.tipo} onChange={(e)=>{setArmaCriar(prevState => ({...prevState, tipo: e.target.value}))}}>
-                                        <MenuItem value={"Cortante"}>Cortante</MenuItem>
-                                        <MenuItem value={"Contundente"}>Contundente</MenuItem>
-                                        <MenuItem value={"Perfurante"}>Perfurante</MenuItem>
-                                    </Select>
-                                    <Select input={<OutlinedInput id="select-multiple-chip" label="Chip" />} multiple value={armaCriar.propriedades} onChange={(e)=>{setArmaCriar(prevState => ({...prevState, propriedades: e.target.value}))}}>
-                                        <MenuItem value={"Agil"}>Ágil</MenuItem>
-                                        <MenuItem value={"Alcance"}>Alcance</MenuItem>
-                                        <MenuItem value={"Arremesso"}>Arremesso</MenuItem>
-                                        <MenuItem value={"Duas Maos"}>Duas Mãos</MenuItem>
-                                        <MenuItem value={"Especial"}>Especial</MenuItem>
-                                        <MenuItem value={"Leve"}>Leve</MenuItem>
-                                        <MenuItem value={"Munição"}>Munição</MenuItem>
-                                        <MenuItem value={"Pesada"}>Pesada</MenuItem>
-                                        <MenuItem value={"Versatil"}>Versátil</MenuItem>
-                                        <MenuItem value={"Lanca de Montaria"}>Lança de Montaria</MenuItem>
-                                        <MenuItem value={"Rede"}>Rede</MenuItem>
-                                    </Select>
+                            {sTipoItemCriar === "armas" ? <Fragment>
+                                <div className='flex justify-between gap-x-2'>
+                                    <FormControl fullWidth>
+                                        <InputLabel>Categoria</InputLabel>
+                                        <Select label="Categoria" value={armaCriar.categoria} onChange={(e)=>{setArmaCriar(prevState => ({...prevState, categoria: e.target.value}))}}>
+                                            <MenuItem value={"Simples"}>Simples</MenuItem>
+                                            <MenuItem value={"Marcial"}>Marcial</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                    <FormControl fullWidth>
+                                        <InputLabel>Tipo</InputLabel>
+                                        <Select label="Tipo" value={armaCriar.tipo} onChange={(e)=>{setArmaCriar(prevState => ({...prevState, tipo: e.target.value}))}}>
+                                            <MenuItem value={"Cortante"}>Cortante</MenuItem>
+                                            <MenuItem value={"Contundente"}>Contundente</MenuItem>
+                                            <MenuItem value={"Perfurante"}>Perfurante</MenuItem>
+                                        </Select>
+                                    </FormControl>
                                 </div>
-                            </Fragment> : sTipoItemCriar === 2 ? <Fragment>
+                                <FormControl fullWidth>
+                                    <InputLabel>Propriedades</InputLabel>
+                                    <Select label="Propriedades" multiline multiple value={armaCriar.propriedades} onChange={(e)=>{setArmaCriar(prevState => ({...prevState, propriedades: e.target.value}))}}>
+                                        <MenuItem value={"Agil"}><Checkbox checked={armaCriar.propriedades.includes("Agil")} />Ágil</MenuItem>
+                                        <MenuItem value={"Alcance"}><Checkbox checked={armaCriar.propriedades.includes("Alcance")} />Alcance</MenuItem>
+                                        <MenuItem value={"Arremesso"}><Checkbox checked={armaCriar.propriedades.includes("Arremesso")} />Arremesso</MenuItem>
+                                        <MenuItem value={"Duas Maos"}><Checkbox checked={armaCriar.propriedades.includes("Duas Maos")} />Duas Mãos</MenuItem>
+                                        <MenuItem value={"Especial"}><Checkbox checked={armaCriar.propriedades.includes("Especial")} />Especial</MenuItem>
+                                        <MenuItem value={"Leve"}><Checkbox checked={armaCriar.propriedades.includes("Leve")} />Leve</MenuItem>
+                                        <MenuItem value={"Municao"}><Checkbox checked={armaCriar.propriedades.includes("Municao")} />Munição</MenuItem>
+                                        <MenuItem value={"Pesada"}><Checkbox checked={armaCriar.propriedades.includes("Pesada")} />Pesada</MenuItem>
+                                        <MenuItem value={"Versatil"}><Checkbox checked={armaCriar.propriedades.includes("Versatil")} />Versátil</MenuItem>
+                                        <MenuItem value={"Lanca de Montaria"}><Checkbox checked={armaCriar.propriedades.includes("Lanca de Montaria")} />Lança de Montaria</MenuItem>
+                                        <MenuItem value={"Rede"}><Checkbox checked={armaCriar.propriedades.includes("Rede")} />Rede</MenuItem>
+                                    </Select>
+                                </FormControl>
+                                <TextField value={armaCriar.dano} label="Dano" onChange={(e)=>{setArmaCriar(prevState => ({...prevState, dano: e.target.value}))}}/>
+                            </Fragment> : sTipoItemCriar === "armaduras" ? <Fragment>
 
-                            </Fragment> : sTipoItemCriar === 3 ? <Fragment>
+                            </Fragment> : sTipoItemCriar === "equipamentos" ? <Fragment>
 
                             </Fragment> : <Fragment>
 
                             </Fragment>
                             }
-                            <TextField fullWidth value={descItemCriar} multiline label="Descrição" onChange={(e)=>{setDescItemCriar(e.target.value)}}/>
-
+                            <TextField maxRows={"3"} fullWidth value={descItemCriar} multiline label="Descrição" onChange={(e)=>{setDescItemCriar(e.target.value)}}/>
+                        </div>
+                        <div className='flex justify-between'>
+                            <Button onClick={()=>{closeModalItem(0)}} variant='outlined'>Cancelar</Button>
+                            <Button onClick={()=>{salvarItem()}} variant='contained'>Salvar</Button>
                         </div>
                     </div>
                 </Modal>
@@ -863,10 +931,40 @@ export function Ficha(props){
                     <Button onClick={()=>{openModalItem(1)}} variant='contained'>Adicionar</Button>
                 </div>
                 <div className=''>
-
+                    <Tabs variant='scrollable' scrollButtons allowScrollButtonsMobile value={tabItems} onChange={handleTabItems} sx={{margin: "2% 0"}}>
+                        <Tab value={"1"} label="Armas"/>
+                        <Tab value={"2"} label="Armaduras"/>
+                        <Tab value={"3"} label="Equipamentos"/>
+                        <Tab value={"4"} label="Ferramentas"/>
+                        <Tab value={"5"} label="Dinheiro"/>
+                    </Tabs>
                 </div>
-                <div className=''>
+                <div>
+                    {tabItems === "1" ? <Fragment>
+                        <div className='flex gap-3 flex-wrap'>
+                            {Array.from(props.pers.inventario.armas).map(arma=>(
+                                <div className='bg-gray-300 p-2 flex flex-col gap-y-2 rounded-xl ' key={props.pers.inventario.armas.indexOf(arma)}>
+                                    <h1 className='text-xl'>{arma.nome}</h1>
+                                    <div className='flex gap-x-2 max-w-50'>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Dano" value={arma.valor.dano}/>   
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={arma.peso}/>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </Fragment> : tabItems === "2" ? <Fragment>
+
+                    </Fragment> : tabItems === "3" ? <Fragment>
+
+                    </Fragment> : tabItems === "4" ? <Fragment>
+
+                    </Fragment> : <Fragment>
                     
+                    </Fragment>}
                 </div>
             </div>
 
