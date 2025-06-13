@@ -222,7 +222,12 @@ export function FormPersonagem(props){
                     armas: [],
                     equipamentos: [],
                     ferramentas: [],
-                    dinheiro: []
+                    dinheiro: [],
+                    equipados: {
+                        arma: "",
+                        armadura: "",
+                        escudo: ""
+                    }
                 }
             }).then(res =>{
                 console.log(res.data)
