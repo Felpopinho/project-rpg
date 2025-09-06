@@ -584,6 +584,19 @@ export function Ficha(props){
         }))
     }
 
+    const desequiparItem = (itemN) =>{
+        props.setActualPers(prevState => ({
+            ...prevState,
+            inventario: {
+                ...props.pers.inventario,
+                equipados: {
+                    ...props.pers.inventario.equipados,
+                    [itemN]: {}
+                }
+            }
+        }))
+    }
+
     useEffect(()=>{
         props.pers === "" ? "" : setModificadores()
         props.pers === "" ? "" : setarNivel()
@@ -1001,10 +1014,13 @@ export function Ficha(props){
                     <div className='bg-gray-300 p-3 rounded-xl w-1/1 flex flex-col gap-y-2'>
                         <h1 className='text-2xl'>Itens Equipados</h1>
                         <div className='flex gap-4 max-[1310px]:flex-col max-[1310px]:overflow-y-scroll max-[1310px]:max-h-[300px]'>
-                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 min-h-[300px] dark:bg-gray-800'>
-                                <div className='flex gap-x-2 '>
+                            <div className={props.pers.inventario.equipados.arma.hasOwnProperty("desc") ? "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-300px" : "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-[auto]"}>
+                                <div className='flex gap-x-2 relative'>
                                     <h1 className="text-2xl text-center">Arma |</h1>
                                     <h1 className='text-2xl'>{props.pers.inventario.equipados.arma.nome}</h1>
+                                    <div className='absolute right-0'>
+                                        <Button onClick={()=>{desequiparItem("arma")}}>Desequipar</Button>
+                                    </div>
                                 </div>
                                 {props.pers.inventario.equipados.arma.hasOwnProperty("desc") ? <Fragment>
                                     <div className='grid gap-2 grid-cols-4'>
@@ -1037,10 +1053,13 @@ export function Ficha(props){
                                     Você não possui nenhuma arma equipada
                                 </Fragment>}
                             </div>
-                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 min-h-[300px] dark:bg-gray-800'>
-                                <div className='flex gap-x-2 '>
+                            <div className={props.pers.inventario.equipados.armadura.hasOwnProperty("desc") ? "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-300px" : "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-[auto]"}>
+                                <div className='flex gap-x-2 relative'>
                                     <h1 className="text-2xl text-center">Armadura |</h1>
                                     <h1 className='text-2xl'>{props.pers.inventario.equipados.armadura.nome}</h1>
+                                    <div className='absolute right-0'>
+                                        <Button onClick={()=>{desequiparItem("armadura")}}>Desequipar</Button>
+                                    </div>
                                 </div>
                                 {props.pers.inventario.equipados.armadura.hasOwnProperty("desc") ? <Fragment>
                                     
@@ -1071,10 +1090,13 @@ export function Ficha(props){
                                     Você não possui nenhuma armadura equipada
                                 </Fragment>}
                             </div>
-                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 min-h-[300px] dark:bg-gray-800'>
-                                <div className='flex gap-x-2 '>
+                            <div className={props.pers.inventario.equipados.escudo.hasOwnProperty("desc") ? "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-300px" : "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-[auto]"}>
+                                <div className='flex gap-x-2 relative'>
                                     <h1 className="text-2xl text-center">Escudo |</h1>
                                     <h1 className='text-2xl'>{props.pers.inventario.equipados.escudo.nome}</h1>
+                                    <div className='absolute right-0'>
+                                        <Button onClick={()=>{desequiparItem("escudo")}}>Desequipar</Button>
+                                    </div>
                                 </div>
                                 {props.pers.inventario.equipados.escudo.hasOwnProperty("desc") ? <Fragment>
                                     <div className='grid gap-2 grid-cols-6'>
