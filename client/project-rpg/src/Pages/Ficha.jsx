@@ -891,6 +891,7 @@ export function Ficha(props){
                                         <MenuItem value={"armaduras"}>Armadura</MenuItem>
                                         <MenuItem value={"equipamentos"}>Equipamento</MenuItem>
                                         <MenuItem value={"ferramentas"}>Ferramenta</MenuItem>
+                                        <MenuItem value={"outros"}>Outros</MenuItem>
                                     </Select>
                                 </FormControl>
                                 <TextField value={pesoItemCriar} label="Peso" onChange={(e)=>{setPesoItemCriar(e.target.value)}}/>
@@ -952,6 +953,8 @@ export function Ficha(props){
                                 </div>
                             </Fragment> : sTipoItemCriar === "equipamentos" ? <Fragment>
 
+                            </Fragment> : sTipoItemCriar === "ferramentas" ? <Fragment>
+
                             </Fragment> : <Fragment>
 
                             </Fragment>
@@ -974,10 +977,10 @@ export function Ficha(props){
                     <Button onClick={()=>{openModalItem(0)}} variant='outlined'>Criar</Button>
                     <Button onClick={()=>{openModalItem(1)}} variant='contained'>Adicionar</Button>
                 </div>
-                <div className='flex justify-between gap-x-4'>
-                    <div className='bg-gray-300 p-3 rounded-xl w-[10%] flex flex-col gap-y-2'>
+                <div className='flex justify-between gap-4 max-[500px]:flex-col'>
+                    <div className='bg-gray-300 p-3 rounded-xl w-[10%] min-w-[110px] flex flex-col gap-y-2 max-[500px]:w-1/1'>
                         <h1 className='text-2xl'>Moedas</h1>
-                        <div className='grid gap-y-2'>
+                        <div className='grid gap-2 max-[500px]:w-1/1 max-[500px]:grid-rows-1 max-[500px]:grid-cols-5 max-[390px]:grid-cols-3'>
                             <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                                 <TextField variant="filled" size="small" label="Cobre" value={props.pers.inventario.dinheiro[0]}/>   
                             </div>
@@ -997,12 +1000,14 @@ export function Ficha(props){
                     </div>
                     <div className='bg-gray-300 p-3 rounded-xl w-1/1 flex flex-col gap-y-2'>
                         <h1 className='text-2xl'>Itens Equipados</h1>
-                        <div className='flex gap-x-4'>
-                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                        <div className='flex gap-4 max-[1310px]:flex-col max-[1310px]:overflow-y-scroll max-[1310px]:max-h-[300px]'>
+                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 min-h-[300px] dark:bg-gray-800'>
+                                <div className='flex gap-x-2 '>
+                                    <h1 className="text-2xl text-center">Arma |</h1>
+                                    <h1 className='text-2xl'>{props.pers.inventario.equipados.arma.nome}</h1>
+                                </div>
                                 {props.pers.inventario.equipados.arma.hasOwnProperty("desc") ? <Fragment>
-                                    <h1 className="text-2xl text-center">Arma</h1>
-                                    <h1 className='text-xl'>{props.pers.inventario.equipados.arma.nome}</h1>
-                                    <div className='flex justify-center gap-2 flex-wrap'>
+                                    <div className='grid gap-2 grid-cols-4'>
                                         <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Dano" value={props.pers.inventario.equipados.arma.valor.dano}/>   
                                         </div>
@@ -1018,45 +1023,82 @@ export function Ficha(props){
                                         <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Tipo" value={props.pers.inventario.equipados.arma.valor.tipo}/>
                                         </div>
-                                        <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                        <div className='overflow-hidden rounded-xl bg-gray-100 flex flex-col justify-between col-span-3 dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Tipo" value={props.pers.inventario.equipados.arma.valor.propriedades}/>
                                         </div>
                                         
                                     </div>
+                                    <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden mt-2 dark:bg-gray-800'>
+                                        <TextField variant="standard" id='' name='mentalidade' label="Descrição" multiline minRows={1} maxRows={2} defaultValue={props.pers.inventario.equipados.arma.desc}/>
+                                    </div>
                                     <div>
-                                        <p>{props.pers.inventario.equipados.arma.desc}</p>
                                     </div>
                                 </Fragment> : <Fragment>
                                     Você não possui nenhuma arma equipada
                                 </Fragment>}
                             </div>
-                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                <h1 className="text-2xl text-center">Armadura</h1>
+                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 min-h-[300px] dark:bg-gray-800'>
+                                <div className='flex gap-x-2 '>
+                                    <h1 className="text-2xl text-center">Armadura |</h1>
+                                    <h1 className='text-2xl'>{props.pers.inventario.equipados.armadura.nome}</h1>
+                                </div>
                                 {props.pers.inventario.equipados.armadura.hasOwnProperty("desc") ? <Fragment>
-                                    <h1 className='text-xl'>{props.pers.inventario.equipados.armadura.nome}</h1>
-                                    <div className='flex gap-x-2 max-w-50'>
-                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                    
+                                    <div className='grid gap-2 grid-cols-6'>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="CA" value={props.pers.inventario.equipados.armadura.valor.ca}/>   
                                         </div>
-                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={props.pers.inventario.equipados.armadura.peso}/>
-                                        </div> 
-                                    </div>  
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preço" value={props.pers.inventario.equipados.armadura.preco}/>
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Categoria" value={props.pers.inventario.equipados.armadura.valor.categoria}/>
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Força" value={props.pers.inventario.equipados.armadura.valor.forca === "" ? "Sem requisito" : props.pers.inventario.equipados.armadura.valor.forca}/>
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Furtividade" value={props.pers.inventario.equipados.armadura.valor.furtividade === false ? "Sem desvantagem" : "Desvantagem"}/>
+                                        </div>
+                                    </div>
+                                    <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden mt-2 dark:bg-gray-800'>
+                                        <TextField variant="standard" id='' name='mentalidade' label="Descrição" multiline minRows={1} maxRows={2} defaultValue={props.pers.inventario.equipados.armadura.desc}/>
+                                    </div> 
                                 </Fragment> : <Fragment>
                                     Você não possui nenhuma armadura equipada
                                 </Fragment>}
                             </div>
-                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                <h1 className="text-2xl text-center">Escudo</h1>
+                            <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 min-h-[300px] dark:bg-gray-800'>
+                                <div className='flex gap-x-2 '>
+                                    <h1 className="text-2xl text-center">Escudo |</h1>
+                                    <h1 className='text-2xl'>{props.pers.inventario.equipados.escudo.nome}</h1>
+                                </div>
                                 {props.pers.inventario.equipados.escudo.hasOwnProperty("desc") ? <Fragment>
-                                    <h1 className='text-xl'>{props.pers.inventario.equipados.escudo.nome}</h1>
-                                    <div className='flex gap-x-2 max-w-50'>
-                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                    <div className='grid gap-2 grid-cols-6'>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="CA" value={props.pers.inventario.equipados.escudo.valor.ca}/>   
                                         </div>
-                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={props.pers.inventario.equipados.escudo.peso}/>
-                                        </div> 
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preço" value={props.pers.inventario.equipados.escudo.preco}/>
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Categoria" value={props.pers.inventario.equipados.escudo.valor.categoria}/>
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Força" value={props.pers.inventario.equipados.escudo.valor.forca === "" ? "Sem requisito" : props.pers.inventario.equipados.escudo.valor.forca}/>
+                                        </div>
+                                        <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between col-span-2 dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Furtividade" value={props.pers.inventario.equipados.escudo.valor.furtividade === false ? "Sem desvantagem" : "Desvantagem"}/>
+                                        </div>
+                                    </div>
+                                    <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden mt-2 dark:bg-gray-800'>
+                                        <TextField variant="standard" id='' name='mentalidade' label="Descrição" multiline minRows={1} maxRows={2} defaultValue={props.pers.inventario.equipados.escudo.desc}/>
                                     </div>  
                                 </Fragment> : <Fragment>
                                     Você não possui nenhum escudo equipado
@@ -1076,7 +1118,7 @@ export function Ficha(props){
                 </div>
                 <div>
                     {tabItems === "1" ? <Fragment>
-                        <div className='flex gap-3 flex-wrap'>
+                        <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
                             {Array.from(props.pers.inventario.armas).map(arma=>(
                                 <div className='relative bg-gray-300 p-2 flex flex-col gap-y-2 rounded-xl group' key={props.pers.inventario.armas.indexOf(arma)}>
                                     <h1 className='text-xl'>{arma.nome}</h1>
@@ -1088,14 +1130,14 @@ export function Ficha(props){
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={arma.peso}/>
                                         </div>
                                     </div>
-                                    <div className='absolute right-0 hidden group-hover:block'>
+                                    <div className='absolute right-0'>
                                         <Button onClick={()=>{equiparItem("arma", arma)}}>Equipar</Button>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </Fragment> : tabItems === "2" ? <Fragment>
-                        <div className='flex gap-3 flex-wrap'>
+                        <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
                             {Array.from(props.pers.inventario.armaduras).map(armadura=>(
                                 <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl' key={props.pers.inventario.armaduras.indexOf(armadura)}>
                                     <h1 className='text-xl'>{armadura.nome}</h1>
@@ -1107,35 +1149,60 @@ export function Ficha(props){
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={armadura.peso}/>
                                         </div>
                                     </div>
-                                    <div className='absolute right-0 hidden group-hover:block'>
+                                    <div className='absolute right-0'>
                                         <Button onClick={()=>{equiparItem((armadura.valor["categoria"] === "Escudo" ? "escudo" : "armadura"), armadura)}}>Equipar</Button>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     </Fragment> : tabItems === "3" ? <Fragment>
-                        <div className='flex gap-3 flex-wrap'>
+                        <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
                         {Array.from(props.pers.inventario.equipamentos).map(equipamento=>(
                             <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl' key={props.pers.inventario.equipamentos.indexOf(equipamento)}>
                                 <h1 className='text-xl'>{equipamento.nome}</h1>
                                 <div className='flex gap-x-2 max-w-50 group'>
                                     <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                        <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="CA" value={equipamento.peso}/>   
+                                        <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preco" value={equipamento.preco}/>   
                                     </div>
                                     <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                        <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={equipamento.preco}/>
+                                        <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={equipamento.peso}/>
                                     </div>
-                                </div>
-                                <div className='absolute right-0 hidden group-hover:block'>
-                                    <Button onClick={()=>{equiparItem((equipamento.valor["categoria"] === "Escudo" ? "escudo" : "equipamento"), equipamento)}}>Equipar</Button>
                                 </div>
                             </div>
                         ))}
                         </div>
                     </Fragment> : tabItems === "4" ? <Fragment>
-
+                        <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
+                        {Array.from(props.pers.inventario.ferramentas).map(ferramenta=>(
+                            <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl' key={props.pers.inventario.ferramentas.indexOf(ferramenta)}>
+                                <h1 className='text-xl'>{ferramenta.nome}</h1>
+                                <div className='flex gap-x-2 max-w-50 group'>
+                                    <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                        <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preçoo" value={ferramenta.preco}/>   
+                                    </div>
+                                    <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                        <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={ferramenta.peso}/>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                        </div>
                     </Fragment> : <Fragment>
-                    
+                        <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
+                        {Array.from(props.pers.inventario.outros).map(item=>(
+                            <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl' key={props.pers.inventario.outros.indexOf(item)}>
+                                <h1 className='text-xl'>{item.nome}</h1>
+                                <div className='flex gap-x-2 max-w-50 group'>
+                                    <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                        <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preçoo" value={item.preco}/>   
+                                    </div>
+                                    <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
+                                        <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={item.peso}/>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                        </div>
                     </Fragment>}
                 </div>
             </div>
