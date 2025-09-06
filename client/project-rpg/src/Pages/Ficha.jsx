@@ -892,7 +892,10 @@ export function Ficha(props){
 
             <div hidden={tabValue !== "3"} className='w-1/1'>
                 <Modal open={modalCriar} onClose={()=>{closeModalItem(0)}}>
-                    <div className='max-w-[500px] flex flex-col gap-y-4 absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
+                    <div className=' relative flex flex-col gap-y-4 absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8 max-[745px]:w-1/1 max-[745px]:h-1/1'>
+                        <div className='absolute right-0'> 
+                            <Button onClick={()=>{closeModalItem(0)}}><Icon>close</Icon></Button>
+                        </div>
                         <h1 className='text-2xl'>Criar item</h1>
                         <div className='flex flex-col gap-y-5'>
                             <TextField fullWidth value={nomeItemCriar} label="Nome" onChange={(e)=>{setNomeItemCriar(e.target.value)}}/>
