@@ -985,7 +985,12 @@ export function Ficha(props){
                 </Modal>
                 <Modal open={modalAdicionar} onClose={()=>{closeModalItem(1)}}>
                     <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
-
+                        <div>
+                            <TextField label="Pesquisar itens" fullWidth/>
+                        </div>
+                        <div>
+                            {Array.from(props.pers)}
+                        </div>
                     </div>
                 </Modal>
                 <div className='flex gap-x-5 mb-5'>
@@ -1230,6 +1235,9 @@ export function Ficha(props){
                         </div>
                     </Fragment>}
                 </div>
+            </div>
+            <div hidden={tabValue !== "4"} className='w-1/1'>
+                
             </div>
 
             <div className='fixed top-5 right-5 bg-gray-200 rounded-full dark:bg-white'>

@@ -73,3 +73,16 @@ export const getProficiencias = async (req, res) =>{
         return res.status(500).json(error.message)
     }
 }
+export const getEquipamentos = async (req, res) =>{
+    try {
+        await db.collection("equipamentos").get().then(snpashot =>{
+            const data = snpashot.docs.map(doc =>({
+                ...doc.data(),
+                uid: doc.id
+            }))
+            return res.status(200).json(data)
+        })
+    } catch (error) {
+        return res.status(500).json(error.message)
+    }
+}
