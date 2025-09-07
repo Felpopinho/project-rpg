@@ -521,27 +521,20 @@ export function Ficha(props){
         }
     }
 
-    const salvarItem = () =>{
-        let valueItem
-
-        if(sTipoItemCriar === "armas" || sTipoItemCriar === "armaduras"){
-            if(sTipoItemCriar === "armas"){
-                valueItem = armaCriar
-            } else{
-                valueItem = armaduraCriar
-            }
+    const salvarItem = (tipoItem, nItem, pesoItem, precoItem, descItem, vItem) =>{
+        if(tipoItem === "armas" || tipoItem === "armaduras"){
             props.setActualPers(prevState =>({
                 ...prevState,
                 inventario: {
                     ...props.pers.inventario,
-                    [sTipoItemCriar]: [
-                        ...props.pers.inventario[sTipoItemCriar],
+                    [tipoItem]: [
+                        ...props.pers.inventario[tipoItem],
                         {
-                            nome: nomeItemCriar,
-                            peso: pesoItemCriar,
-                            preco: precoItemCriar,
-                            desc: descItemCriar,
-                            valor: valueItem
+                            nome: nItem,
+                            peso: pesoItem,
+                            preco: precoItem,
+                            desc: descItem,
+                            valor: vItem
                         }
             ]}}))
         } else{
@@ -549,13 +542,13 @@ export function Ficha(props){
                 ...prevState,
                 inventario: {
                     ...props.pers.inventario,
-                    [sTipoItemCriar]: [
-                        ...props.pers.inventario[sTipoItemCriar],
+                    [tipoItem]: [
+                        ...props.pers.inventario[tipoItem],
                         {
-                            nome: nomeItemCriar,
-                            peso: pesoItemCriar,
-                            preco: precoItemCriar,
-                            desc: descItemCriar,
+                            nome: nItem,
+                            peso: pesoItem,
+                            preco: precoItem,
+                            desc: descItem,
                         }
             ]}}))
         }
@@ -568,6 +561,42 @@ export function Ficha(props){
     const [tabItems, setTabItems] = useState("1")
     const handleTabItems = (e, v) =>{
         setTabItems(v)
+    }
+
+    const [nEquipamentos, setNequipamento] = useState("")
+    const [tabEquipamentos, setTabEquipamentos] = useState("armas")
+    
+    const handleTabEquipamentos = (e, v) =>{
+        setTabEquipamentos(v)
+        setNequipamento("")
+    }
+
+    const pesquisarItens = (value, equipamentos) =>{
+        setNequipamento(props[equipamentos].filter((equipamento=>(equipamento.nome.toLowerCase().startsWith(value.toLowerCase())))))
+    }
+
+    const adicionarItem = (item, itemN) =>{
+        console.log(item)
+        setNomeItemCriar(item.nome)
+        setPesoItemCriar(item.peso)
+        setPrecoItemCriar(item.preco)
+        setDescItemCriar(item.hasOwnProperty("desc") ? item.descricao : "")
+        let valorItem;
+        if(itemN === "armas"){
+            valorItem ={
+                    dano: item.dano,
+                    tipo: item.tipo,
+                    propriedades: item.propriedades,
+                    categoria: ""
+                }
+        } else if(itemN === "armaduras"){
+            valorItem = {
+                ca: item.ca,
+                furtividade: item.furtividade,
+                categoria: ""
+            }
+        }
+        salvarItem(itemN, item.nome, item.peso, item.preco, item.hasOwnProperty("desc") ? item.descricao : "", valorItem)
     }
 
     const equiparItem = (itemN, item) =>{
@@ -892,7 +921,7 @@ export function Ficha(props){
 
             <div hidden={tabValue !== "3"} className='w-1/1'>
                 <Modal open={modalCriar} onClose={()=>{closeModalItem(0)}}>
-                    <div className=' relative flex flex-col gap-y-4 absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8 max-[745px]:w-1/1 max-[745px]:h-1/1'>
+                    <div className=' relative flex flex-col gap-y-4 absolute top-1/2 left-1/2 -translate-1/2 w-2/3 h-auto bg-white p-8 max-[745px]:w-1/1 max-[745px]:h-[100%]'>
                         <div className='absolute right-0'> 
                             <Button onClick={()=>{closeModalItem(0)}}><Icon>close</Icon></Button>
                         </div>
@@ -979,17 +1008,119 @@ export function Ficha(props){
                         </div>
                         <div className='flex justify-between'>
                             <Button onClick={()=>{closeModalItem(0)}} variant='outlined'>Cancelar</Button>
-                            <Button onClick={()=>{salvarItem()}} variant='contained'>Salvar</Button>
+                            <Button onClick={()=>{salvarItem(sTipoItemCriar, nomeItemCriar, pesoItemCriar, precoItemCriar, descItemCriar, (sTipoItemCriar === "armas" ? armaCriar : armaduraCriar))}} variant='contained'>Salvar</Button>
                         </div>
                     </div>
                 </Modal>
                 <Modal open={modalAdicionar} onClose={()=>{closeModalItem(1)}}>
-                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
-                        <div>
-                            <TextField label="Pesquisar itens" fullWidth/>
-                        </div>
-                        <div>
-                            {Array.from(props.pers)}
+                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8 gap-2'>
+                        <h1 className='text-3xl font-bold'>Adicionar Item</h1>
+                        <Tabs variant='scrollable' scrollButtons allowScrollButtonsMobile value={tabEquipamentos} onChange={handleTabEquipamentos} sx={{margin: "2% 0"}}>
+                            <Tab value={"armas"} label="Armas"/>
+                            <Tab value={"armaduras"} label="Armaduras"/>
+                            <Tab value={"equipamentos"} label="Equipamentos"/>
+                            <Tab value={"ferramentas"} label="Ferramentas"/>
+                            <Tab value={"outros"} label="Outros"/>
+                        </Tabs>
+                        <div className='flex flex-col gap-2'>
+                            <TextField label="Pesquisar itens" fullWidth onChange={(e)=>{pesquisarItens(e.target.value, tabEquipamentos)}}/>
+                            <div hidden={tabEquipamentos !== "armas"} className='w-1/1 flex flex-col gap-2 max-h-[400px] overflow-y-scroll'>
+                                {(nEquipamentos.length ? Array.from(nEquipamentos) : Array.from(props.armas)).map(arma =>(<Fragment key={arma.nome}>
+                                    <div className='grid gap-2 grid-cols-4 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
+                                        <div className='absolute right-0'> 
+                                            <Button onClick={()=>{adicionarItem(arma, tabEquipamentos)}}>Adicionar</Button>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col col-span-4 justify-between dark:bg-gray-800'>
+                                            <Input sx={{fontSize: "1.5rem"}} slotProps={{input: {readOnly: true,},}} variant="standard" value={arma.nome}/>   
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Dano" value={arma.dano}/>   
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={arma.peso}/>
+                                        </div> 
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preço" value={arma.preco}/>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Tipo" value={arma.tipo}/>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col col-span-4 justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Propriedades" value={arma.propriedades}/>
+                                        </div>
+                                    </div>
+                                    </Fragment>
+                                ))}
+                            </div>
+                            <div hidden={tabEquipamentos !== "armaduras"} className='w-1/1 max-h-[400px] overflow-y-scroll'>
+                                {(nEquipamentos.length ? Array.from(nEquipamentos) : Array.from(props.armaduras)).map(armadura =>(<Fragment key={armadura.nome}>
+                                    <div className='grid gap-2 grid-cols-5 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
+                                        <div className='absolute right-0'> 
+                                            <Button onClick={()=>{adicionarItem(armadura, tabEquipamentos)}}>Adicionar</Button>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl col-span-5 flex flex-col justify-between dark:bg-gray-800'>
+                                            <Input sx={{fontSize: "1.5rem"}} slotProps={{input: {readOnly: true,},}} variant="standard" value={armadura.nome}/>   
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="CA" value={armadura.ca}/>   
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={armadura.peso}/>
+                                        </div> 
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preço" value={armadura.preco}/>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Categoria" value={armadura.categoria}/>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Furtividade" value={armadura.furtividade}/>
+                                        </div>
+                                    </div>
+                                </Fragment>))}
+                            </div>
+                            <div hidden={tabEquipamentos !== "equipamentos"} className='w-1/1 max-h-[400px] overflow-y-scroll'>
+                                {(nEquipamentos.length ? Array.from(nEquipamentos) : Array.from(props.equipamentosAventura)).map(equipamento =>(<Fragment key={equipamento.nome}>
+                                    <div className='grid gap-2 grid-cols-5 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
+                                        <div className='absolute right-0'> 
+                                            <Button onClick={()=>{adicionarItem(equipamento, tabEquipamentos)}}>Adicionar</Button>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl col-span-5 flex flex-col justify-between dark:bg-gray-800'>
+                                            <Input sx={{fontSize: "1.5rem"}} slotProps={{input: {readOnly: true,},}} variant="standard" value={equipamento.nome}/>   
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={equipamento.peso}/>
+                                        </div> 
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preço" value={equipamento.preco}/>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col col-span-3 justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Descrição" value={equipamento.descricao}/>
+                                        </div>
+                                    </div>
+                                </Fragment>))}
+                            </div>
+                            <div hidden={tabEquipamentos !== "ferramentas"} className='w-1/1 max-h-[400px] overflow-y-scroll'>
+                                {(nEquipamentos.length ? Array.from(nEquipamentos) : Array.from(props.ferramentas)).map(ferramenta =>(<Fragment key={ferramenta.nome}>
+                                    <div className='grid gap-2 grid-cols-5 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
+                                        <div className='absolute right-0'> 
+                                            <Button onClick={()=>{adicionarItem(ferramenta, tabEquipamentos)}}>Adicionar</Button>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl col-span-5 flex flex-col justify-between dark:bg-gray-800'>
+                                            <Input sx={{fontSize: "1.5rem"}} slotProps={{input: {readOnly: true,},}} variant="standard" value={ferramenta.nome}/>   
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={ferramenta.peso}/>
+                                        </div> 
+                                        <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Preço" value={ferramenta.preco}/>
+                                        </div>
+                                        <div className='overflow-hidden rounded-xl flex flex-col col-span-3 justify-between dark:bg-gray-800'>
+                                            <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Descrição" value={ferramenta.descricao}/>
+                                        </div>
+                                    </div>
+                                </Fragment>))}
+                            </div>
                         </div>
                     </div>
                 </Modal>

@@ -64,6 +64,11 @@ function App() {
   const [classes, setClasses] = useState("")
   const [races, setRaces] = useState("")
   const [backgrounds, setBackgrounds] = useState("")
+  const [equipamentos, setEquipamentos] = useState("")
+  const [armaduras, setArmaduras] = useState("")
+  const [armas, setArmas] = useState("")
+  const [equipamentosAventura, setEquipamentosAventura] = useState("")
+  const [ferramentas, setFerramentas] = useState("")
 
   const getClasses = async () =>{
     try {
@@ -96,6 +101,19 @@ function App() {
           console.log(error)
       }
   }
+  const getEquipamentos = async () =>{
+    try {
+      await axios.get(baseURL+"/dnd/equipamentos").then(res =>{
+          console.log(res.data)
+          setArmaduras(res.data[0].armaduras)
+          setArmas(res.data[1].armas)
+          setEquipamentosAventura(res.data[2]["equipamentos-aventura"])
+          setFerramentas(res.data[3].ferramentas)
+      })
+    } catch (error) {
+        console.log(error)
+    }
+  }
 
   useEffect(()=>{
     getUsers()
@@ -103,6 +121,7 @@ function App() {
     classes === "" ? getClasses() : ""
     races === "" ? getRaces() : ""
     backgrounds === "" ? getBackgrounds() : ""
+    equipamentos === "" ? getEquipamentos() : ""
   }, [])
 
   useEffect(()=>{
@@ -119,7 +138,7 @@ function App() {
           <Route path={`/signin`} element={<Signin setUser={setUser}/>}/>
           <Route path={`/home/*`} element={<Home user={user} personagens={personagens} classes={classes} races={races} backgrounds={backgrounds} setPersonagens={setPersonagens} setActualPers={setActualPers}/>}/>
           <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser} classes={classes} races={races} backgrounds={backgrounds}/>}/>
-          <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} classes={classes} races={races} backgrounds={backgrounds} setActualPers={setActualPers}/>}/>
+          <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} classes={classes} races={races} backgrounds={backgrounds} setActualPers={setActualPers} armaduras={armaduras} armas={armas} equipamentosAventura={equipamentosAventura} ferramentas={ferramentas}/>}/>
         </Routes>
       </HashRouter>
     </div>
