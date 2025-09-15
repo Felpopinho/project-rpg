@@ -1130,12 +1130,12 @@ export function Ficha(props){
                             <TextField label="Pesquisar itens" fullWidth onChange={(e)=>{pesquisarItens(e.target.value, tabEquipamentos)}}/>
                             <div hidden={tabEquipamentos !== "armas"} className='w-1/1 flex flex-col gap-2 max-h-[400px] overflow-y-scroll max-[750px]:max-h-1/1'>
                                 {(nEquipamentos.length ? Array.from(nEquipamentos) : Array.from(props.armas)).map(arma =>(<Fragment key={arma.nome}>
-                                    <div className='grid gap-2 grid-cols-4 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
-                                        <div className='overflow-hidden rounded-xl flex flex-col col-span-3 justify-between dark:bg-gray-800'>
+                                    <div className='grid gap-2 grid-cols-5 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
+                                        <div className='overflow-hidden rounded-xl flex flex-col col-span-5 justify-between dark:bg-gray-800'>
                                             <Input sx={{fontSize: "1.5rem"}} slotProps={{input: {readOnly: true,},}} variant="standard" value={arma.nome}/>   
                                         </div>
-                                        <div className='w-1/1 flex justify-end'> 
-                                            <Button onClick={()=>{adicionarItem(arma, tabEquipamentos)}}>Adicionar</Button>
+                                        <div className='w-1/1 flex justify-end absolute top-2 right-2'> 
+                                            <IconButton onClick={()=>{adicionarItem(arma, tabEquipamentos)}}><Icon>add</Icon></IconButton>
                                         </div>
                                         <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Dano" value={arma.dano}/>   
@@ -1158,12 +1158,12 @@ export function Ficha(props){
                             </div>
                             <div hidden={tabEquipamentos !== "armaduras"} className='w-1/1 max-h-[400px] overflow-y-scroll max-[750px]:max-h-1/1'>
                                 {(nEquipamentos.length ? Array.from(nEquipamentos) : Array.from(props.armaduras)).map(armadura =>(<Fragment key={armadura.nome}>
-                                    <div className='grid gap-2 grid-cols-5 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
+                                    <div className='grid gap-2 grid-cols-4 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
                                         <div className='overflow-hidden rounded-xl col-span-4 flex flex-col justify-between dark:bg-gray-800'>
                                             <Input sx={{fontSize: "1.5rem"}} slotProps={{input: {readOnly: true,},}} variant="standard" value={armadura.nome}/>   
                                         </div>
-                                        <div className='w-1/1 flex justify-end'> 
-                                            <Button onClick={()=>{adicionarItem(armadura, tabEquipamentos)}}>Adicionar</Button>
+                                        <div className='w-1/1 flex justify-end absolute top-2 right-2'> 
+                                            <IconButton onClick={()=>{adicionarItem(armadura, tabEquipamentos)}}><Icon>add</Icon></IconButton>
                                         </div>
                                         <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="CA" value={armadura.ca}/>   
@@ -1186,11 +1186,11 @@ export function Ficha(props){
                             <div hidden={tabEquipamentos !== "equipamentos"} className='w-1/1 max-h-[400px] overflow-y-scroll max-[750px]:max-h-1/1'>
                                 {(nEquipamentos.length ? Array.from(nEquipamentos) : Array.from(props.equipamentosAventura)).map(equipamento =>(<Fragment key={equipamento.nome}>
                                     <div className='grid gap-2 grid-cols-5 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
-                                        <div className='overflow-hidden rounded-xl col-span-4 flex flex-col justify-between dark:bg-gray-800'>
+                                        <div className='overflow-hidden rounded-xl col-span-5 flex flex-col justify-between dark:bg-gray-800'>
                                             <Input sx={{fontSize: "1.5rem"}} slotProps={{input: {readOnly: true,},}} variant="standard" value={equipamento.nome}/>   
                                         </div>
-                                        <div className='w-1/1 flex justify-end'> 
-                                            <Button onClick={()=>{adicionarItem(equipamento, tabEquipamentos)}}>Adicionar</Button>
+                                        <div className='w-1/1 flex justify-end absolute top-2 right-2'> 
+                                            <IconButton onClick={()=>{adicionarItem(equipamento, tabEquipamentos)}}><Icon>add</Icon></IconButton>
                                         </div>
                                         <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={equipamento.peso}/>
@@ -1207,11 +1207,11 @@ export function Ficha(props){
                             <div hidden={tabEquipamentos !== "ferramentas"} className='w-1/1 max-h-[400px] overflow-y-scroll max-[750px]:max-h-1/1'>
                                 {(nEquipamentos.length ? Array.from(nEquipamentos) : Array.from(props.ferramentas)).map(ferramenta =>(<Fragment key={ferramenta.nome}>
                                     <div className='grid gap-2 grid-cols-5 grid-rows-2 mb-3 p-3 rounded-xl relative bg-gray-200 dark:bg-gray-800'>
-                                        <div className='overflow-hidden rounded-xl col-span-4 flex flex-col justify-between dark:bg-gray-800'>
+                                        <div className='overflow-hidden rounded-xl col-span-5 flex flex-col justify-between dark:bg-gray-800'>
                                             <Input sx={{fontSize: "1.5rem"}} slotProps={{input: {readOnly: true,},}} variant="standard" value={ferramenta.nome}/>   
                                         </div>
-                                        <div className='w-1/1 flex justify-end'> 
-                                            <Button onClick={()=>{adicionarItem(ferramenta, tabEquipamentos)}}>Adicionar</Button>
+                                        <div className='w-1/1 flex justify-end absolute top-2 right-2'> 
+                                            <IconButton onClick={()=>{adicionarItem(ferramenta, tabEquipamentos)}}><Icon>add</Icon></IconButton>
                                         </div>
                                         <div className='overflow-hidden rounded-xl flex flex-col justify-between dark:bg-gray-800'>
                                             <TextField slotProps={{input: {readOnly: true,},}} variant="filled" size="small" label="Peso" value={ferramenta.peso}/>
