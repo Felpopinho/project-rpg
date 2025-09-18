@@ -7,8 +7,14 @@ import axios from 'axios'
 export function Login(props) {
 
     const trocarTema = (t) =>{
-      props.setMode(t)
-      localStorage.setItem("tailwind-mode", t)
+        const html = document.getElementById("html")
+        if(t === "dark"){
+            html.classList.add("dark")
+        } else{
+            html.classList.remove("dark")
+        }
+        props.setMode(t)
+        localStorage.setItem("tailwind-mode", t)
     }
 
     const ref = useRef()

@@ -9,7 +9,7 @@ export function Home(props){
     const navigate = useNavigate()
 
     const trocarTema = (t) =>{
-        const html = document.querySelector("html")
+        const html = document.getElementById("html")
         if(t === "dark"){
             html.classList.add("dark")
         } else{
