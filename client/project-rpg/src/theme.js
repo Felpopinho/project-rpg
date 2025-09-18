@@ -3,7 +3,7 @@ import { purple, red } from '@mui/material/colors';
 
 const modo = createTheme({
   palette: {
-    mode: localStorage.getItem("mui-mode"),
+    mode: localStorage.getItem("mui-mode") || "light",
     primary: {
       main: purple[400],
     },
