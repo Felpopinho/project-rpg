@@ -988,7 +988,7 @@ export function Ficha(props){
                 </div>
 
                 <Modal open={mCriarRolagem} onClose={()=>{handleCloseCriarRolagem()}}>
-                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8'>
+                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8 dark:bg-gray-900'>
                         <h1 className='text-2xl font-semibold mb-4'>{editRolagem===true?"Editar rolagem":"Criar rolagem"}</h1>
                         <div className='flex flex-col gap-y-5'>
                             <TextField value={nomeDadoCriar} label="Nome" type='text' onChange={(e)=>{setNomeDadoCriar(e.target.value)}}/>
@@ -1022,7 +1022,7 @@ export function Ficha(props){
 
             <div hidden={tabValue !== "3"} className='w-1/1'>
                 <Modal open={modalCriar} onClose={()=>{closeModalItem(0)}}>
-                    <div className=' relative flex flex-col gap-y-4 absolute top-1/2 left-1/2 -translate-1/2 w-2/3 h-auto bg-white p-8 max-[745px]:w-1/1 max-[745px]:h-[100%]'>
+                    <div className=' relative flex flex-col gap-y-4 absolute top-1/2 left-1/2 -translate-1/2 w-2/3 h-auto bg-white p-8 max-[745px]:w-1/1 max-[745px]:h-[100%] dark:bg-gray-900'>
                         <div className='absolute right-0'> 
                             <Button onClick={()=>{closeModalItem(0)}}><Icon>close</Icon></Button>
                         </div>
@@ -1114,7 +1114,7 @@ export function Ficha(props){
                     </div>
                 </Modal>
                 <Modal open={modalAdicionar} onClose={()=>{closeModalItem(1)}}>
-                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8 gap-2 max-[750px]:w-1/1 max-[750px]:h-1/1'>
+                    <div className='absolute top-1/2 left-1/2 -translate-1/2 w-auto h-auto bg-white p-8 gap-2 max-[750px]:w-1/1 max-[750px]:h-1/1 dark:bg-gray-900'>
                         <div className='absolute right-0'> 
                             <Button onClick={()=>{closeModalItem(1)}}><Icon>close</Icon></Button>
                         </div>
@@ -1257,7 +1257,7 @@ export function Ficha(props){
                     <div className='bg-gray-300 p-3 rounded-xl w-1/1 flex flex-col gap-y-2 dark:bg-gray-800'>
                         <h1 className='text-2xl'>Itens Equipados</h1>
                         <div className='flex gap-4 max-[1310px]:flex-col max-[1310px]:overflow-y-scroll max-[1310px]:max-h-[300px]'>
-                            <div className={props.pers.inventario.equipados.arma.hasOwnProperty("desc") ? "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-300px" : "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-[auto]"}>
+                            <div className={props.pers.inventario.equipados.arma.hasOwnProperty("desc") ? "overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 min-h-300px dark:bg-gray-900" : "overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 min-h-[auto] dark:bg-gray-900"}>
                                 <div className='flex gap-x-2 relative'>
                                     <h1 className="text-2xl text-center">Arma |</h1>
                                     <h1 className='text-2xl'>{props.pers.inventario.equipados.arma.nome}</h1>
@@ -1296,7 +1296,7 @@ export function Ficha(props){
                                     Você não possui nenhuma arma equipada
                                 </Fragment>}
                             </div>
-                            <div className={props.pers.inventario.equipados.armadura.hasOwnProperty("desc") ? "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-300px" : "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-[auto]"}>
+                            <div className={props.pers.inventario.equipados.armadura.hasOwnProperty("desc") ? "overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3  dark:bg-gray-900 min-h-300px" : "overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3  dark:bg-gray-900 min-h-[auto]"}>
                                 <div className='flex gap-x-2 relative'>
                                     <h1 className="text-2xl text-center">Armadura |</h1>
                                     <h1 className='text-2xl'>{props.pers.inventario.equipados.armadura.nome}</h1>
@@ -1333,7 +1333,7 @@ export function Ficha(props){
                                     Você não possui nenhuma armadura equipada
                                 </Fragment>}
                             </div>
-                            <div className={props.pers.inventario.equipados.escudo.hasOwnProperty("desc") ? "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-300px" : "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-[auto]"}>
+                            <div className={props.pers.inventario.equipados.escudo.hasOwnProperty("desc") ? "overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3  dark:bg-gray-900 min-h-300px" : "overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3  dark:bg-gray-900 min-h-[auto]"}>
                                 <div className='flex gap-x-2 relative'>
                                     <h1 className="text-2xl text-center">Escudo |</h1>
                                     <h1 className='text-2xl'>{props.pers.inventario.equipados.escudo.nome}</h1>
@@ -1385,7 +1385,7 @@ export function Ficha(props){
                     {tabItems === "1" ? <Fragment>
                         <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
                             {Array.from(props.pers.inventario.armas).map(arma=>(
-                                <div className='relative bg-gray-300 p-2 flex flex-col gap-y-2 rounded-xl group' key={props.pers.inventario.armas.indexOf(arma)}>
+                                <div className='relative bg-gray-300 p-2 flex flex-col gap-y-2 rounded-xl group dark:bg-gray-800' key={props.pers.inventario.armas.indexOf(arma)}>
                                     <h1 className='text-xl w-7/8 overflow-hidden text-nowrap'>{arma.nome}</h1>
                                     <div className='flex gap-x-2 max-w-50'>
                                         <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
@@ -1409,7 +1409,7 @@ export function Ficha(props){
                     </Fragment> : tabItems === "2" ? <Fragment>
                         <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
                             {Array.from(props.pers.inventario.armaduras).map(armadura=>(
-                                <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl' key={props.pers.inventario.armaduras.indexOf(armadura)}>
+                                <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl dark:bg-gray-800' key={props.pers.inventario.armaduras.indexOf(armadura)}>
                                     <h1 className='text-xl w-7/8 overflow-hidden text-nowrap'>{armadura.nome}</h1>
                                     <div className='flex gap-x-2 max-w-50 group'>
                                         <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
@@ -1433,7 +1433,7 @@ export function Ficha(props){
                     </Fragment> : tabItems === "3" ? <Fragment>
                         <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
                             {Array.from(props.pers.inventario.equipamentos).map(equipamento=>(
-                                <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl' key={props.pers.inventario.equipamentos.indexOf(equipamento)}>
+                                <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl dark:bg-gray-800' key={props.pers.inventario.equipamentos.indexOf(equipamento)}>
                                     <h1 className='text-xl w-7/8 overflow-hidden text-nowrap'>{equipamento.nome}</h1>
                                     <div className='flex gap-x-2 max-w-50 group'>
                                         <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
@@ -1456,7 +1456,7 @@ export function Ficha(props){
                     </Fragment> : tabItems === "4" ? <Fragment>
                         <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
                             {Array.from(props.pers.inventario.ferramentas).map(ferramenta=>(
-                                <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl' key={props.pers.inventario.ferramentas.indexOf(ferramenta)}>
+                                <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl dark:bg-gray-800' key={props.pers.inventario.ferramentas.indexOf(ferramenta)}>
                                     <h1 className='text-xl w-7/8 overflow-hidden text-nowrap'>{ferramenta.nome}</h1>
                                     <div className='flex gap-x-2 max-w-50 group'>
                                         <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
@@ -1479,7 +1479,7 @@ export function Ficha(props){
                     </Fragment> : <Fragment>
                         <div className='flex gap-3 flex-wrap max-[500px]:grid max-[500px]:grid-cols-2'>
                         {Array.from(props.pers.inventario.outros).map(item=>(
-                            <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl' key={props.pers.inventario.outros.indexOf(item)}>
+                            <div className='bg-gray-300 relative group p-2 flex flex-col gap-y-2 rounded-xl dark:bg-gray-800' key={props.pers.inventario.outros.indexOf(item)}>
                                 <h1 className='text-xl'>{item.nome}</h1>
                                 <div className='flex gap-x-2 max-w-50 group'>
                                     <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
