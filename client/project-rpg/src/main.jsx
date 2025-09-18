@@ -2,9 +2,19 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './style.css'
 import App from './App.jsx'
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
+  const theme = createTheme({
+    colorSchemes: {
+      dark: true,
+    },
+  });
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <ThemeProvider theme={theme} defaultMode='light'>
+      <App />
+    </ThemeProvider>
   </StrictMode>,
 )

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Box, ThemeProvider } from '@mui/material'
 import { Login } from './Pages/Login.jsx'
 import { Signin } from './Pages/Signin.jsx'
 import { Home } from './Pages/Home.jsx'
@@ -7,7 +6,7 @@ import { FormPersonagem } from './Pages/FormPersonagem.jsx'
 import { Ficha } from './Pages/Ficha.jsx'
 import axios from "axios"
 import { Routes, Route, HashRouter } from 'react-router-dom'
-import modo from './theme.js'
+import { useColorScheme } from '@mui/material/styles';
 
 if(localStorage.getItem("historicoDados") === null){
   localStorage.setItem("historicoDados", JSON.stringify({result: []}))
@@ -21,7 +20,8 @@ export const baseURL = 'https://projectrpg-api.vercel.app'
 
 function App() {
 
-  const [users, setUsers] = useState("")
+  const {mode, setMode} = useColorScheme();
+
   const [user, setUser] = useState("")
   const [logado,  setLogado] = useState(false)
 
@@ -130,19 +130,18 @@ function App() {
 
 
   return (
-    <ThemeProvider theme={modo} defaultMode='light'>
+    
     <div>
       <HashRouter>
         <Routes>
-          <Route path={`/`} element={<Login logado={logado} user={user} setUser={setUser}/>}/>
+          <Route path={`/`} element={<Login logado={logado} user={user} setUser={setUser} setMode={setMode}/>}/>
           <Route path={`/signin`} element={<Signin setUser={setUser}/>}/>
-          <Route path={`/home/*`} element={<Home user={user} personagens={personagens} classes={classes} races={races} backgrounds={backgrounds} setPersonagens={setPersonagens} setActualPers={setActualPers}/>}/>
-          <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser} classes={classes} races={races} backgrounds={backgrounds}/>}/>
-          <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} classes={classes} races={races} backgrounds={backgrounds} setActualPers={setActualPers} armaduras={armaduras} armas={armas} equipamentosAventura={equipamentosAventura} ferramentas={ferramentas}/>}/>
+          <Route path={`/home/*`} element={<Home user={user} personagens={personagens} classes={classes} races={races} backgrounds={backgrounds} setPersonagens={setPersonagens} setActualPers={setActualPers} setMode={setMode}/>}/>
+          <Route path={`/form-personagem`} element={<FormPersonagem user={user} setUser={setUser} classes={classes} races={races} backgrounds={backgrounds} setMode={setMode}/>}/>
+          <Route path={`/ficha`} element={<Ficha user={user} pers={actualPers} classes={classes} races={races} backgrounds={backgrounds} setActualPers={setActualPers} armaduras={armaduras} armas={armas} equipamentosAventura={equipamentosAventura} ferramentas={ferramentas} setMode={setMode}/>}/>
         </Routes>
       </HashRouter>
     </div>
-    </ThemeProvider>
   )
 }
 

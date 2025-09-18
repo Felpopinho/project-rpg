@@ -3,21 +3,12 @@ import { Box, FormControl, TextField, FormHelperText, InputLabel, Button, Typogr
 import { baseURL } from "../App.jsx"
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { useColorScheme } from '@mui/material/styles';
 
 export function Login(props) {
 
-    const {mode, setMode} = useColorScheme()
-
     const trocarTema = (t) =>{
-      const html = document.querySelector("html")
-      if(t === "dark"){
-          html.classList.add("dark")
-      }else{
-          html.classList.remove("dark")
-      }
+      props.setMode(t)
       localStorage.setItem("tailwind-mode", t)
-      setMode(t)
     }
 
     const ref = useRef()

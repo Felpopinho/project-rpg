@@ -1,25 +1,22 @@
-import { Avatar, Box, Button, Divider, TextField, IconButton, Icon } from '@mui/material'
+import { Avatar, Box, Button, Divider, TextField, IconButton, Icon, useColorScheme } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Personagem } from './Personagem.jsx'
 import axios from 'axios'
 import { baseURL } from '../App.jsx'
-import { createTheme, useColorScheme } from '@mui/material/styles';
 
 export function Home(props){
     const navigate = useNavigate()
 
-    const {mode, setMode} = useColorScheme()
-
     const trocarTema = (t) =>{
-      const html = document.querySelector("html")
-      if(t === "dark"){
-          html.classList.add("dark")
-      }else{
-          html.classList.remove("dark")
-      }
-      localStorage.setItem("tailwind-mode", t)
-      setMode(t)
+        const html = document.querySelector("html")
+        if(t === "dark"){
+            html.classList.add("dark")
+        } else{
+            html.classList.remove("dark")
+        }
+        props.setMode(t)
+        localStorage.setItem("tailwind-mode", t)
     }
 
     const verificarLogin = () =>{

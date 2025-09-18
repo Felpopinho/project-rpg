@@ -1234,7 +1234,7 @@ export function Ficha(props){
                     <Button onClick={()=>{openModalItem(1)}} variant='contained'>Adicionar</Button>
                 </div>
                 <div className='flex justify-between gap-4 max-[500px]:flex-col'>
-                    <div className='bg-gray-300 p-3 rounded-xl w-[10%] min-w-[110px] flex flex-col gap-y-2 max-[500px]:w-1/1'>
+                    <div className='bg-gray-300 p-3 rounded-xl w-[10%] min-w-[110px] flex flex-col gap-y-2 max-[500px]:w-1/1 dark:bg-gray-800'>
                         <h1 className='text-2xl'>Moedas</h1>
                         <div className='grid gap-2 max-[500px]:w-1/1 max-[500px]:grid-rows-1 max-[500px]:grid-cols-5 max-[390px]:grid-cols-3'>
                             <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
@@ -1254,7 +1254,7 @@ export function Ficha(props){
                             </div>
                         </div>
                     </div>
-                    <div className='bg-gray-300 p-3 rounded-xl w-1/1 flex flex-col gap-y-2'>
+                    <div className='bg-gray-300 p-3 rounded-xl w-1/1 flex flex-col gap-y-2 dark:bg-gray-800'>
                         <h1 className='text-2xl'>Itens Equipados</h1>
                         <div className='flex gap-4 max-[1310px]:flex-col max-[1310px]:overflow-y-scroll max-[1310px]:max-h-[300px]'>
                             <div className={props.pers.inventario.equipados.arma.hasOwnProperty("desc") ? "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-300px" : "'overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between p-3 dark:bg-gray-800' min-h-[auto]"}>
@@ -1288,7 +1288,7 @@ export function Ficha(props){
                                         
                                     </div>
                                     <div className='p-3 h-1/1 bg-gray-200 w-1/1 flex flex-col justify-between relative rounded-xl overflow-hidden mt-2 dark:bg-gray-800'>
-                                        <TextField variant="standard" id='' name='mentalidade' label="Descrição" multiline minRows={1} maxRows={2} defaultValue={props.pers.inventario.equipados.arma.desc}/>
+                                        <TextField variant="standard" id='' name='' label="Descrição" multiline minRows={1} maxRows={2} defaultValue={props.pers.inventario.equipados.arma.desc}/>
                                     </div>
                                     <div>
                                     </div>
