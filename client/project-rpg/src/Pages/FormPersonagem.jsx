@@ -277,34 +277,34 @@ export function FormPersonagem(props){
                 ))}
                 </div>
             </Fragment>) : passo === 2 ? (<Fragment>
-                <div className='grid grid-cols-3 gap-20 w-9/10 h-8/10 max-[1100px]:flex max-[1100px]:flex-col max-[1100px]:h-auto max-[1100px]:justify-start'>
-                    <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-100 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
+                <div className='grid grid-cols-3 gap-10 w-9/10 h-8/10 max-[1100px]:flex max-[1100px]:flex-col max-[1100px]:h-auto max-[1100px]:justify-start'>
+                    <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-200 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
                         <h1 className='text-2xl text-bold text-black dark:text-white'>Classe</h1>
                         <LinearProgress sx={selectClass === false ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
                         <div>
                             <NativeSelect className='w-full' sx={selectClass === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectClasses' label="Classes" onChange={(e)=>{setVdata(0,e)}}><option></option></NativeSelect>
-                            <div className='overflow-y-auto w-90% h-90 pt-2 max-[560px]:text-sm'>{ classe === "" ? "" :
+                            <div className='overflow-y-auto w-90% h-auto pt-2 max-[560px]:text-sm'>{ classe === "" ? "" :
                                     <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{classe.descricao}</span></h1>
                             }</div>
                         </div>
                     </div>
-                    <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-100 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
+                    <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-200 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
                         <h1 className='text-2xl text-bold text-black dark:text-white'>Raça</h1>
                         <LinearProgress sx={selectRaces === false ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
                         <div>
                             <NativeSelect className='w-full' sx={selectRaces === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectRacas' label="Raças" onChange={(e)=>{setVdata(1,e)}}><option></option></NativeSelect>
-                            <div className='h-50 overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ raca === "" ? "" :
+                            <div className='h-50 overflow-y-auto w-90% h-auto p-2 max-[560px]:text-sm'>{ raca === "" ? "" :
                                     <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{raca.descricao}</span></h1>
                             }</div>
                         </div>
                         
                     </div>
-                    <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-100 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
+                    <div className='flex flex-col justify-between w-1/1 p-10 bg-gray-200 rounded-2xl relative overflow-hidden dark:bg-gray-800'>
                         <h1 className='text-2xl text-bold text-black dark:text-white'>Antecedente</h1>
                         <LinearProgress sx={selectBackgrounds === false ? {position: "absolute", width: "100%", top: '0', left: "0", display: "block"} : {display: "none"}}/>
                         <div>
                             <NativeSelect className='w-full' sx={selectBackgrounds === false ? {display: "none"} : {fontSize: "1.3rem", display: "block"}} id='selectAntecedentes' label="Antecedentes" onChange={(e)=>{setVdata(2,e)}}><option></option></NativeSelect>
-                            <div className='h-50 overflow-y-auto w-90% h-90 p-2 max-[560px]:text-sm'>{ antecedente === "" ? "" :
+                            <div className='h-50 overflow-y-auto w-90% h-auto p-2 max-[560px]:text-sm'>{ antecedente === "" ? "" :
                                     <h1 className='h-1/1 text-black dark:text-white'>Descricao: <span>{antecedente.descricao}</span></h1>
                             }</div>
                         </div>

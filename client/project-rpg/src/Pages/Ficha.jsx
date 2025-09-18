@@ -759,7 +759,7 @@ export function Ficha(props){
             </Dialog>
             
             <div className='relative p-5 rounded-xl bg-gray-300 flex gap-5 dark:bg-gray-950 max-[800px]:flex-col'>
-                <div className='absolute bg-white rounded-full top-2 left-2'>
+                <div className='absolute bg-white rounded-full top-2 left-2 dark:bg-gray-900'>
                     <IconButton onClick={openMenu}><Icon>settings</Icon></IconButton>
                     <Menu anchorEl={anchorEl} open={open} onClose={closeMenu} >
                         <MenuItem onClick={()=>{closeMenu("delete")}}><Icon sx={{marginRight: "5px"}}>delete</Icon>Apagar</MenuItem>
@@ -1499,19 +1499,19 @@ export function Ficha(props){
                 
             </div>
 
-            <div className='fixed top-5 right-5 bg-gray-200 rounded-full dark:bg-white'>
+            <div className='fixed top-5 right-5 bg-gray-200 rounded-full dark:bg-gray-800'>
                 <IconButton color='primary' size='large' onClick={()=>{setHistorico(true)}}>
                     <Icon fontSize='large'>history</Icon>
                 </IconButton>
                 <Drawer open={historico} onClose={()=>{setHistorico(false)}}>
-                    <div className='w-100 flex flex-col bg-white h-[100%] p-2 max-[450px]:w-full'>
+                    <div className='w-100 flex flex-col bg-white h-[100%] p-2 max-[450px]:w-full dark:bg-gray-900'>
                         <h1 className='text-center p-2 text-2xl font-bold dark:text-white'>Histórico de dados</h1>
-                        <div className='flex flex-col overflow-y-scroll gap-y-2 [&>*:first-child]:bg-purple-200'>
+                        <div className='flex flex-col overflow-y-scroll gap-y-2 [&>*:first-child]:bg-purple-200 dark:[&>*:first-child]:bg-purple-900'>
                             {Array.from(props.pers.status.dados).length === 0 ? (
                             <div>
                                 <h1>Você ainda não rolou nenhum dado</h1>
                             </div>) : Array.from(props.pers.status.dados).reverse().map(result =>(
-                                <div key={props.pers.status.dados.indexOf(result)} className="p-3 bg-gray-200 rounded-xl flex justify-between items-center">
+                                <div key={props.pers.status.dados.indexOf(result)} className="p-3 bg-gray-200 rounded-xl flex justify-between items-center dark:bg-gray-800">
                                     <div>
                                         <h1 className='text-xl font-semibold'>{result.djogados}</h1>
                                         <p>{result.dresult.replaceAll(",", ", ")}</p>
