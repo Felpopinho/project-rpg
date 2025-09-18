@@ -79,7 +79,7 @@ export function Home(props){
             </div>
             <div className='grid grid-cols-2 gap-x-5 max-md:flex'>
                 <IconButton onClick={()=>{trocarTema("light")}} ><Icon>light_mode</Icon></IconButton>
-                <IconButton ><Icon>dark_mode</Icon></IconButton>
+                <IconButton onClick={()=>{trocarTema("dark")}}><Icon>dark_mode</Icon></IconButton>
             </div>
         </div>
         <Divider sx={{margin: "2vh 0"}}/>

@@ -71,7 +71,7 @@ export function Login(props) {
         </div>
         <div className='absolute bottom-5 grid grid-cols-2 gap-x-5 '>
             <IconButton onClick={()=>{trocarTema("light")}} ><Icon>light_mode</Icon></IconButton>
-            <IconButton ><Icon>dark_mode</Icon></IconButton>
+            <IconButton onClick={()=>{trocarTema("dark")}}><Icon>dark_mode</Icon></IconButton>
         </div>
     </div>
   )
