@@ -69,6 +69,8 @@ function App() {
   const [armas, setArmas] = useState("")
   const [equipamentosAventura, setEquipamentosAventura] = useState("")
   const [ferramentas, setFerramentas] = useState("")
+  const [artefatos, setArtefatos] = useState("")
+
 
   const getClasses = async () =>{
     try {
@@ -109,9 +111,6 @@ function App() {
           setArmas(res.data[1].armas)
           setEquipamentosAventura(res.data[2]["equipamentos-aventura"])
           setFerramentas(res.data[3].ferramentas)
-      })
-      await axios.get(baseURL+"/dnd/itens-magicos").then(res =>{
-        console.log(res.data)
       })
     } catch (error) {
         console.log(error)
