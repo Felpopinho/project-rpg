@@ -110,6 +110,9 @@ function App() {
           setEquipamentosAventura(res.data[2]["equipamentos-aventura"])
           setFerramentas(res.data[3].ferramentas)
       })
+      await axios.get(baseURL+"/dnd/itens-magicos").then(res =>{
+        console.log(res.data)
+      })
     } catch (error) {
         console.log(error)
     }
