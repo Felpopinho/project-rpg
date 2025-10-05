@@ -69,7 +69,6 @@ function App() {
   const [armas, setArmas] = useState("")
   const [equipamentosAventura, setEquipamentosAventura] = useState("")
   const [ferramentas, setFerramentas] = useState("")
-  const [artefatos, setArtefatos] = useState("")
 
 
   const getClasses = async () =>{

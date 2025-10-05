@@ -606,6 +606,13 @@ export function Ficha(props){
         setTabItems(v)
     }
 
+    const newDinheiro = (e) =>{
+        const arrDinheiro = props.pers.inventario.dinheiro
+        console.log(e)
+        const index = arrDinheiro.indexOf(e.target.defaultValue)
+
+    }
+
     const [nEquipamentos, setNequipamento] = useState("")
     const [tabEquipamentos, setTabEquipamentos] = useState("armas")
     
@@ -1238,19 +1245,19 @@ export function Ficha(props){
                         <h1 className='text-2xl'>Moedas</h1>
                         <div className='grid gap-2 max-[500px]:w-1/1 max-[500px]:grid-rows-1 max-[500px]:grid-cols-5 max-[390px]:grid-cols-3'>
                             <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                <TextField variant="filled" size="small" label="Cobre" value={props.pers.inventario.dinheiro[0]}/>   
+                                <TextField variant="filled" size="small" label="Cobre" defaultValue={props.pers.inventario.dinheiro[0]} onChange={(e)=>{newDinheiro(e)}}/>   
                             </div>
                             <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                <TextField variant="filled" size="small" label="Prata" value={props.pers.inventario.dinheiro[1]}/>   
+                                <TextField variant="filled" size="small" label="Prata" defaultValue={props.pers.inventario.dinheiro[1]}/>   
                             </div>
                             <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                <TextField variant="filled" size="small" label="Electro" value={props.pers.inventario.dinheiro[2]}/>   
+                                <TextField variant="filled" size="small" label="Electro" defaultValue={props.pers.inventario.dinheiro[2]}/>   
                             </div>
                             <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                <TextField variant="filled" size="small" label="Ouro" value={props.pers.inventario.dinheiro[3]}/>   
+                                <TextField variant="filled" size="small" label="Ouro" defaultValue={props.pers.inventario.dinheiro[3]}/>   
                             </div>
                             <div className='overflow-hidden w-1/1 rounded-xl bg-gray-100 flex flex-col justify-between dark:bg-gray-800'>
-                                <TextField variant="filled" size="small" label="Platina" value={props.pers.inventario.dinheiro[4]}/>   
+                                <TextField variant="filled" size="small" label="Platina" defaultValue={props.pers.inventario.dinheiro[4]}/>   
                             </div>
                         </div>
                     </div>
