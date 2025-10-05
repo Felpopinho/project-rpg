@@ -1,5 +1,5 @@
 import express from 'express'
-import { addCollection, getAntecedentes, getClasses, getProficiencias, getRacas, getEquipamentos, getItensMagicos } from '../controllers/dnd.js'
+import { addCollection, getAntecedentes, getClasses, getProficiencias, getRacas, getEquipamentos } from '../controllers/dnd.js'
 
 export const dndRouter = express.Router()
 
